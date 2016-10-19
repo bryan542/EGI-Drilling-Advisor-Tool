@@ -3,7 +3,7 @@ package Executable;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
+
 
 /**
  * Created by bryan on 10/17/2016.
@@ -14,8 +14,27 @@ public class testGUI extends JFrame{
     public JMenuBar barTest;
     public JMenu menuTest;
     public JMenuItem clickMe;
+    private String labelText;
+
+private JLabel ext;
+
+    private ActionListener action = new ActionListener()
+    {
+        public void actionPerformed(ActionEvent ae)
+        {
+            setLabelText((String) ae.getActionCommand());
+            testLabel.setText(getLabelText());
+        }
+    };
+
+    public void setLabelText(String labelText) {
+        this.labelText = labelText;
+    }
 
 
+    public String getLabelText() {
+        return labelText;
+    }
 
 
     //Constructor
@@ -24,23 +43,15 @@ public class testGUI extends JFrame{
         //build the dropdown menu bar
         barTest = new JMenuBar();
         menuTest = new JMenu("Tester");
-        menuTest.addSeparator();
+
 
 
         clickMe = new JMenuItem("Click Me");
-
+        clickMe.setActionCommand("lols");
+        clickMe.addActionListener(action);
 
         //add the actionListener
-        clickMe.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String text = "hi";
-                testLabel.setText(text);
-                System.out.println(testLabel.getText());
-                validate();
 
-            }
-        });
 
         //populate the menubar
         menuTest.add(clickMe);
@@ -55,11 +66,12 @@ public class testGUI extends JFrame{
     public void initialize(){
 
         //set objects to a main panel
-        testGUI.this.setContentPane(new testGUI().mainPanel);
+        testGUI.this.setContentPane(this.mainPanel);
 
         //center GUI location
         testGUI.this.setLocationRelativeTo(null);
         testGUI.this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 
         //pack the GUI
         testGUI.this.pack();
@@ -67,7 +79,15 @@ public class testGUI extends JFrame{
     }
 
     public static void main(String[] args) {
-        testGUI frame = new testGUI();
-        frame.initialize();
+        SwingUtilities.invokeLater(new Runnable(){
+            public void run(){
+
+                new testGUI().initialize();
+
+            }
+        });
+
     }
+
+
 }

@@ -584,7 +584,7 @@ public JLabel getLabel(){
     //initializer method that builds the frame
     public void initialize(){
 
-        mainWindow.this.setContentPane(new mainWindow().MainPanel);
+        mainWindow.this.setContentPane(this.MainPanel);
         mainWindow.this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainWindow.this.pack();
         mainWindow.this.setLocationRelativeTo(null);
@@ -592,13 +592,12 @@ public JLabel getLabel(){
 
     }
     public static void main(String[] args) {
-        mainWindow mw = new mainWindow();
-        mw.initialize();
-    }
+        SwingUtilities.invokeLater(new Runnable() {
 
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
+            public void run() {
+                new mainWindow().initialize();
+            }
+        });
     }
-
 
 }
