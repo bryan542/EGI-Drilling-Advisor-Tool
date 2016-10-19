@@ -35,7 +35,10 @@ public class RootTest {
             RootTest fileSearch = new RootTest();
 
             //try different directory and filename :)
-            fileSearch.searchDirectory(new File("C:\\"), fileToSearch);
+            fileSearch.searchDirectory(new File("C:\\Program FIles"), fileToSearch);
+            fileSearch.searchDirectory(new File("C:\\Program FIles (x86)"), fileToSearch);
+            fileSearch.searchDirectory(new File("C:\\Users"), fileToSearch);
+
 
             int count = fileSearch.getResult().size();
             if(count ==0){
@@ -45,7 +48,7 @@ public class RootTest {
                 System.out.println("\nFound " + count + " result!\n");
                 for (String matched : fileSearch.getResult()){
                     System.out.println("Found : " + matched);
-                    outputFilePath = fileSearch.getResult().toString().replace("[","").replace("]","");
+                    outputFilePath = fileSearch.getResult().get(0).toString().replace("[","").replace("]","");
                     System.out.println(outputFilePath);
 
 
