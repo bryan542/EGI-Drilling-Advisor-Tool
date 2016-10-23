@@ -5,6 +5,7 @@ package Executable;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
+import javax.swing.plaf.synth.SynthLookAndFeel;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.SimpleAttributeSet;
 import java.awt.*;
@@ -668,6 +669,20 @@ public JLabel getLabel(){
 
     }
     public static void main(String[] args) {
+
+        //sets the look and feel
+        try {
+            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    UIManager.setLookAndFeel(info.getClassName());
+                    break;
+
+                }
+            }
+        } catch (Exception e) {
+        }
+
+        //builds the GUI and all it's functionality
         SwingUtilities.invokeLater(new Runnable() {
 
             public void run() {
