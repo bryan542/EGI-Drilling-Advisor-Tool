@@ -137,13 +137,22 @@ public class mainWindow extends JFrame {
     public double getDensityUM() {
         return densityUM;
     }
+    public void setDensityUM(double unitChange){
+        densityUM = unitChange;
+    }
     public double getPressureUM() {
         return pressureUM;
+    }
+    public void setPressureUM(double unitChange){
+        pressureUM = unitChange;
     }
     public double getLengthUM() {
         return lengthUM;
     }
+    public void setLengthUM(double unitChange){
+        lengthUM = unitChange;
 
+    }
     private ActionListener action = new ActionListener() {
         public void actionPerformed(ActionEvent ae){
             String text = "hi";
@@ -325,10 +334,10 @@ public JLabel getLabel(){
                 this.Alpha = Equations.Alpha(Double.parseDouble(Alpha1Text.getText()),Double.parseDouble((Alpha2Text.getText())));
 
                 //Retrieve sigma ranges
-                this.SigmaVR = Equations.SigmaVRange(FaultTypeCombo.getSelectedItem().toString(),PoreCombo.getSelectedItem().toString())*pressureUM;
-                this.SigmaHR = Equations.SigmaHRange(FaultTypeCombo.getSelectedItem().toString(),PoreCombo.getSelectedItem().toString())*pressureUM;
-                this.SigmahR = Equations.SigmahRange(FaultTypeCombo.getSelectedItem().toString(),PoreCombo.getSelectedItem().toString())*pressureUM;
-                this.PorePR =  Equations.PorePressureRange(FaultTypeCombo.getSelectedItem().toString(),PoreCombo.getSelectedItem().toString())*pressureUM;
+                this.SigmaVR = Equations.SigmaVRange(FaultTypeCombo.getSelectedItem().toString(),PoreCombo.getSelectedItem().toString());
+                this.SigmaHR = Equations.SigmaHRange(FaultTypeCombo.getSelectedItem().toString(),PoreCombo.getSelectedItem().toString());
+                this.SigmahR = Equations.SigmahRange(FaultTypeCombo.getSelectedItem().toString(),PoreCombo.getSelectedItem().toString());
+                this.PorePR =  Equations.PorePressureRange(FaultTypeCombo.getSelectedItem().toString(),PoreCombo.getSelectedItem().toString());
 
                 //Retrieve sigma values
                 this.SigmaV = Equations.SigmaV(Double.parseDouble(DepthText.getText())*lengthUM,SigmaVR,PorePR);
@@ -479,13 +488,13 @@ public JLabel getLabel(){
 
 
 
-                PorePressureResult.setText(Integer.toString((int) (PorePR*Integer.parseInt(DepthText.getText()))));
-                SigmaVResult.setText(Integer.toString((int) SigmaV));
-                SigmaHResult.setText(Integer.toString((int) SigmaH));
-                SigmahResult.setText(Integer.toString((int) Sigmah));
-                Principle1Result.setText(Integer.toString((int) Sigma1));
-                Principle2Result.setText(Integer.toString((int) Sigma2));
-                Principle3Result.setText(Integer.toString((int) Sigma3));
+                PorePressureResult.setText(Integer.toString((int) (PorePR*Integer.parseInt(DepthText.getText())*lengthUM*(1/pressureUM))));
+                SigmaVResult.setText(Integer.toString((int) (SigmaV*(1/pressureUM))));
+                SigmaHResult.setText(Integer.toString((int) (SigmaH*(1/pressureUM))));
+                SigmahResult.setText(Integer.toString((int) (Sigmah*(1/pressureUM))));
+                Principle1Result.setText(Integer.toString((int) (Sigma1*(1/pressureUM))));
+                Principle2Result.setText(Integer.toString((int) (Sigma2*(1/pressureUM))));
+                Principle3Result.setText(Integer.toString((int) (Sigma3*(1/pressureUM))));
                 TensileFailResult.setText(failType);
                 ShearFailResult.setText(shearType);
                 InstabilityRating.setText(Integer.toString((int) sumInstability));

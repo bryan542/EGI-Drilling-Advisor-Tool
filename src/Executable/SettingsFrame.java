@@ -34,7 +34,9 @@ public class SettingsFrame extends JFrame{
 
         boolean generalCustom;
         boolean oilfieldSI;
-
+        densityChange = 1;
+        pressureChange =1;
+        lengthChange =1;
 
 
     //Set Image Icon
@@ -121,9 +123,6 @@ public class SettingsFrame extends JFrame{
 
     //Apply unit changes
         applyChangesButton.addActionListener(new ActionListener() {
-            double densityChange =mw.getDensityUM();
-            double pressureChange=mw.getPressureUM();
-            double lengthChange=mw.getLengthUM();
             String depth = "Depth ";
             String mudweight = "Mud Weight ECD ";
             String cohesion = "Cohesion ";
@@ -159,15 +158,17 @@ public class SettingsFrame extends JFrame{
                         mw.setPrincipalSigma1Label(principal1+pressure);
                         mw.setPrincipalSigma2Label(principal2+pressure);
                         mw.setPrincipalSigma3Label(principal3+pressure);
-
+                        mw.setDensityUM(densityChange);
+                        mw.setPressureUM(pressureChange);
+                        mw.setLengthUM(lengthChange);
 
                     }
                     else if(SIUnitsRadioButton.isSelected() && SIUnitsRadioButton.isEnabled()){
 
                         densityChange = 8.3454;
-                        pressureChange =0.000145038;
+                        pressureChange =0.145038;
                         lengthChange =3.28084;
-                        String pressure = "(Pa)";
+                        String pressure = "(kPa)";
                         String density = "(g/cc)";
                         String length = "(m)";
                         mw.setDepthLabel(depth+length);
@@ -181,7 +182,9 @@ public class SettingsFrame extends JFrame{
                         mw.setPrincipalSigma1Label(principal1+pressure);
                         mw.setPrincipalSigma2Label(principal2+pressure);
                         mw.setPrincipalSigma3Label(principal3+pressure);
-
+                        mw.setDensityUM(densityChange);
+                        mw.setPressureUM(pressureChange);
+                        mw.setLengthUM(lengthChange);
                     }
                     else{
 
@@ -194,12 +197,14 @@ public class SettingsFrame extends JFrame{
                         densityChange = 1;
                         String density = "(lb/gal)";
                         mw.setMudWeightLabel(mudweight+density);
+                        mw.setDensityUM(densityChange);
                     }
                     else if(comboBox1.getSelectedItem() =="g/cc" && comboBox1.isEnabled()){
 
                         densityChange = 8.3454;
                         String density = "(g/cc)";
                         mw.setMudWeightLabel(mudweight+density);
+                        mw.setDensityUM(densityChange);
                     }
                     else{
 
@@ -218,11 +223,12 @@ public class SettingsFrame extends JFrame{
                         mw.setPrincipalSigma1Label(principal1+pressure);
                         mw.setPrincipalSigma2Label(principal2+pressure);
                         mw.setPrincipalSigma3Label(principal3+pressure);
+                        mw.setPressureUM(pressureChange);
                     }
                     else if(comboBox2.getSelectedItem() =="Pa" && comboBox2.isEnabled()){
 
-                        pressureChange =0.000145038;
-                        String pressure = "(Pa)";
+                        pressureChange =0.145038;
+                        String pressure = "(kPa)";
                         mw.setCohesionLabel(cohesion+pressure);
                         mw.setTensileLabel(tensileStrength+pressure);
                         mw.setPorePressureLabel(porePressure+pressure);
@@ -232,6 +238,7 @@ public class SettingsFrame extends JFrame{
                         mw.setPrincipalSigma1Label(principal1+pressure);
                         mw.setPrincipalSigma2Label(principal2+pressure);
                         mw.setPrincipalSigma3Label(principal3+pressure);
+                        mw.setPressureUM(pressureChange);
                     }
                     else{
 
@@ -242,12 +249,14 @@ public class SettingsFrame extends JFrame{
                         lengthChange =1;
                         String length = "(ft)";
                         mw.setDepthLabel(depth+length);
+                        mw.setLengthUM(lengthChange);
                     }
                     else if(comboBox3.getSelectedItem() =="m" && comboBox3.isEnabled()){
 
                         lengthChange =3.28084;
                         String length = "(m)";
                         mw.setDepthLabel(depth+length);
+                        mw.setLengthUM(lengthChange);
                     }
                     else{
 

@@ -30,25 +30,39 @@ public class RootTest {
             return result;
         }
 
-        public  String Execute(String fileToSearch){
+        public  String Execute(String fileToSearch) {
 
             RootTest fileSearch = new RootTest();
 
             //try different directory and filename :)
             fileSearch.searchDirectory(new File("C:\\Program FIles"), fileToSearch);
-            fileSearch.searchDirectory(new File("C:\\Program FIles (x86)"), fileToSearch);
-            fileSearch.searchDirectory(new File("C:\\Users"), fileToSearch);
+
+            //if statement to search other directories if we don't find the file the first time
+            if (fileSearch.getResult() ==null && fileSearch.getResult().get(0).isEmpty()) {
+                fileSearch.searchDirectory(new File("C:\\Program FIles (x86)"), fileToSearch);
+            }
+
+            else if (fileSearch.getResult() ==null && fileSearch.getResult().get(0).isEmpty()) {
+                fileSearch.searchDirectory(new File("C:\\Users"), fileToSearch);
+            }
+
+            //
+            //Put in user input search here if we can't find the program!!
+            //
+
+
 
 
             int count = fileSearch.getResult().size();
-            if(count ==0){
+            if (count == 0) {
                 System.out.println("\nNo result found!");
 
-            }else{
+            } else {
                 System.out.println("\nFound " + count + " result!\n");
-                for (String matched : fileSearch.getResult()){
+                for (String matched : fileSearch.getResult()) {
                     System.out.println("Found : " + matched);
-                    outputFilePath = fileSearch.getResult().get(0).toString().replace("[","").replace("]","");
+                    //get the first filepath found
+                    outputFilePath = fileSearch.getResult().get(0).toString().replace("[", "").replace("]", "");
                     System.out.println(outputFilePath);
 
 
