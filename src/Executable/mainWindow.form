@@ -46,7 +46,7 @@
                   <font size="16" style="1"/>
                 </border>
                 <children>
-                  <grid id="fdf50" layout-manager="GridLayoutManager" row-count="4" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                  <grid id="fdf50" layout-manager="GridLayoutManager" row-count="5" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                     <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
                       <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -56,7 +56,7 @@
                     <children>
                       <component id="a474b" class="javax.swing.JLabel">
                         <constraints>
-                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <font name="Candara"/>
@@ -65,7 +65,7 @@
                       </component>
                       <component id="4cd26" class="javax.swing.JLabel">
                         <constraints>
-                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <font name="Candara"/>
@@ -74,7 +74,7 @@
                       </component>
                       <component id="6e8eb" class="javax.swing.JLabel">
                         <constraints>
-                          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <font name="Candara"/>
@@ -83,16 +83,25 @@
                       </component>
                       <component id="bb135" class="javax.swing.JLabel">
                         <constraints>
-                          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <font name="Candara"/>
                           <text value="Bedding Unconformity"/>
                         </properties>
                       </component>
+                      <component id="11905" class="javax.swing.JLabel" binding="betaLabel">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <font name="Candara"/>
+                          <text value="Bedding Orientation β (Degrees)"/>
+                        </properties>
+                      </component>
                     </children>
                   </grid>
-                  <grid id="5082" layout-manager="GridLayoutManager" row-count="4" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                  <grid id="5082" layout-manager="GridLayoutManager" row-count="5" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                     <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
                       <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -102,7 +111,7 @@
                     <children>
                       <component id="b1881" class="javax.swing.JComboBox" binding="FaultConductCombo">
                         <constraints>
-                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <font name="Candara"/>
@@ -110,7 +119,7 @@
                       </component>
                       <component id="86aca" class="javax.swing.JComboBox" binding="BeddingCombo">
                         <constraints>
-                          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <font name="Candara"/>
@@ -118,7 +127,7 @@
                       </component>
                       <component id="5f6f5" class="javax.swing.JComboBox" binding="DeformationCombo">
                         <constraints>
-                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <font name="Candara"/>
@@ -126,7 +135,17 @@
                       </component>
                       <component id="9be02" class="javax.swing.JComboBox" binding="JointCombo">
                         <constraints>
-                          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <font name="Candara"/>
+                        </properties>
+                      </component>
+                      <component id="879f9" class="javax.swing.JTextField" binding="BetaText">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
                         </constraints>
                         <properties>
                           <font name="Candara"/>
@@ -164,7 +183,7 @@
                   <title-color color="-16777216"/>
                 </border>
                 <children>
-                  <grid id="c23bc" layout-manager="GridLayoutManager" row-count="11" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                  <grid id="c23bc" layout-manager="GridLayoutManager" row-count="10" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                     <margin top="0" left="40" bottom="0" right="0"/>
                     <constraints>
                       <grid row="0" column="1" row-span="3" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
@@ -204,7 +223,7 @@
                           <font name="Candara"/>
                         </properties>
                       </component>
-                      <component id="278e6" class="javax.swing.JTextField" binding="BetaText">
+                      <component id="d93ea" class="javax.swing.JTextField" binding="GammaText">
                         <constraints>
                           <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                             <preferred-size width="150" height="-1"/>
@@ -214,7 +233,7 @@
                           <font name="Candara"/>
                         </properties>
                       </component>
-                      <component id="d93ea" class="javax.swing.JTextField" binding="GammaText">
+                      <component id="a5df0" class="javax.swing.JTextField" binding="Alpha1Text">
                         <constraints>
                           <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                             <preferred-size width="150" height="-1"/>
@@ -224,7 +243,7 @@
                           <font name="Candara"/>
                         </properties>
                       </component>
-                      <component id="a5df0" class="javax.swing.JTextField" binding="Alpha1Text">
+                      <component id="3e952" class="javax.swing.JTextField" binding="Alpha2Text">
                         <constraints>
                           <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                             <preferred-size width="150" height="-1"/>
@@ -234,7 +253,7 @@
                           <font name="Candara"/>
                         </properties>
                       </component>
-                      <component id="3e952" class="javax.swing.JTextField" binding="Alpha2Text">
+                      <component id="61024" class="javax.swing.JTextField" binding="TensileText">
                         <constraints>
                           <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                             <preferred-size width="150" height="-1"/>
@@ -244,7 +263,7 @@
                           <font name="Candara"/>
                         </properties>
                       </component>
-                      <component id="61024" class="javax.swing.JTextField" binding="TensileText">
+                      <component id="b6d27" class="javax.swing.JFormattedTextField" binding="PoissonText">
                         <constraints>
                           <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                             <preferred-size width="150" height="-1"/>
@@ -254,17 +273,18 @@
                           <font name="Candara"/>
                         </properties>
                       </component>
-                      <component id="b6d27" class="javax.swing.JFormattedTextField" binding="PoissonText">
+                      <component id="2f03a" class="javax.swing.JComboBox" binding="PoreCombo">
                         <constraints>
-                          <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                            <preferred-size width="150" height="-1"/>
+                          <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="-1" height="2"/>
+                            <maximum-size width="-1" height="22"/>
                           </grid>
                         </constraints>
                         <properties>
                           <font name="Candara"/>
                         </properties>
                       </component>
-                      <component id="bac47" class="javax.swing.JComboBox" binding="FaultTypeCombo">
+                      <component id="fe2d6" class="javax.swing.JComboBox" binding="FaultTypeCombo">
                         <constraints>
                           <grid row="9" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false">
                             <preferred-size width="-1" height="2"/>
@@ -275,20 +295,9 @@
                           <font name="Candara"/>
                         </properties>
                       </component>
-                      <component id="2f03a" class="javax.swing.JComboBox" binding="PoreCombo">
-                        <constraints>
-                          <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                            <preferred-size width="-1" height="2"/>
-                            <maximum-size width="-1" height="22"/>
-                          </grid>
-                        </constraints>
-                        <properties>
-                          <font name="Candara"/>
-                        </properties>
-                      </component>
                     </children>
                   </grid>
-                  <grid id="8cbb0" layout-manager="GridLayoutManager" row-count="11" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                  <grid id="8cbb0" layout-manager="GridLayoutManager" row-count="10" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                     <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
                       <grid row="0" column="0" row-span="3" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
@@ -316,29 +325,20 @@
                           <text value="Cohesion (psi)"/>
                         </properties>
                       </component>
-                      <component id="b09fb" class="javax.swing.JLabel" binding="betaLabel">
-                        <constraints>
-                          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                        <properties>
-                          <font name="Candara"/>
-                          <text value="Borehole Inclination β (Degrees)"/>
-                        </properties>
-                      </component>
                       <component id="206d5" class="javax.swing.JLabel" binding="gammaLabel">
                         <constraints>
-                          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
                             <preferred-size width="10" height="-1"/>
                           </grid>
                         </constraints>
                         <properties>
                           <font name="Candara"/>
-                          <text value="Angle Between Wellbore and Vertical Stress γ (Degrees)"/>
+                          <text value="Deviaiton Angle γ (Degrees)"/>
                         </properties>
                       </component>
                       <component id="57f8a" class="javax.swing.JLabel" binding="alpha1Label">
                         <constraints>
-                          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <font name="Candara"/>
@@ -347,7 +347,7 @@
                       </component>
                       <component id="81eb0" class="javax.swing.JLabel" binding="alpha2Label">
                         <constraints>
-                          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <font name="Candara"/>
@@ -356,7 +356,7 @@
                       </component>
                       <component id="70224" class="javax.swing.JLabel" binding="tensileLabel">
                         <constraints>
-                          <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <font name="Candara"/>
@@ -365,7 +365,7 @@
                       </component>
                       <component id="3fd45" class="javax.swing.JLabel" binding="poissonLabel">
                         <constraints>
-                          <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <font name="Candara"/>
@@ -383,16 +383,16 @@
                       </component>
                       <component id="f7d19" class="javax.swing.JLabel">
                         <constraints>
-                          <grid row="9" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <font name="Candara"/>
-                          <text value="Pore Pressure Type"/>
+                          <text value="Pore Pressure Gradient (psi/ft)"/>
                         </properties>
                       </component>
                       <component id="16c57" class="javax.swing.JLabel">
                         <constraints>
-                          <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="9" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <font name="Candara"/>
@@ -755,7 +755,7 @@
                           <font size="14" style="1"/>
                         </border>
                         <children>
-                          <component id="bf48c" class="javax.swing.JLabel">
+                          <component id="bf48c" class="javax.swing.JLabel" binding="porePressureLabel">
                             <constraints>
                               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                             </constraints>
@@ -764,13 +764,13 @@
                               <text value="Pore Pressure (psi):"/>
                             </properties>
                           </component>
-                          <component id="eb9fa" class="javax.swing.JLabel">
+                          <component id="eb9fa" class="javax.swing.JLabel" binding="principalSigma1Label">
                             <constraints>
                               <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                             </constraints>
                             <properties>
                               <font name="Candara"/>
-                              <text value="Secondary Principal Stress at Wellbore σ1 (psi):"/>
+                              <text value="Principal Stress at Wellbore σ1 (psi):"/>
                             </properties>
                           </component>
                           <component id="484f9" class="javax.swing.JLabel">
@@ -779,7 +779,7 @@
                             </constraints>
                             <properties>
                               <font name="Candara"/>
-                              <text value="Tensile Failure Type (psi):"/>
+                              <text value="Tensile Failure Type:"/>
                             </properties>
                           </component>
                           <component id="7678e" class="javax.swing.JLabel">
@@ -788,10 +788,10 @@
                             </constraints>
                             <properties>
                               <font name="Candara"/>
-                              <text value="Shear Failure Type (psi):"/>
+                              <text value="Shear Failure Type:"/>
                             </properties>
                           </component>
-                          <component id="cf002" class="javax.swing.JLabel">
+                          <component id="cf002" class="javax.swing.JLabel" binding="principalSigma3Label">
                             <constraints>
                               <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                             </constraints>
@@ -800,7 +800,7 @@
                               <text value="Principal Stress at Wellbore σ3 (psi):"/>
                             </properties>
                           </component>
-                          <component id="3abf2" class="javax.swing.JLabel">
+                          <component id="3abf2" class="javax.swing.JLabel" binding="principalSigma2Label">
                             <constraints>
                               <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                             </constraints>
@@ -809,7 +809,7 @@
                               <text value="Principal Stress at Wellbore σ2 (psi):"/>
                             </properties>
                           </component>
-                          <component id="7b30b" class="javax.swing.JLabel">
+                          <component id="7b30b" class="javax.swing.JLabel" binding="farSigmaVLabel">
                             <constraints>
                               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                             </constraints>
@@ -818,7 +818,7 @@
                               <text value="Far-field Vertical Stress σv (psi):"/>
                             </properties>
                           </component>
-                          <component id="1cec9" class="javax.swing.JLabel">
+                          <component id="1cec9" class="javax.swing.JLabel" binding="farSigmaHLabel">
                             <constraints>
                               <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                             </constraints>
@@ -827,7 +827,7 @@
                               <text value="Far-field Maximum Horizontal Stress σH (psi):"/>
                             </properties>
                           </component>
-                          <component id="c235c" class="javax.swing.JLabel">
+                          <component id="c235c" class="javax.swing.JLabel" binding="farSigmahLabel">
                             <constraints>
                               <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                             </constraints>

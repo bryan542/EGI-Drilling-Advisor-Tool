@@ -73,17 +73,66 @@ public class mainWindow extends JFrame {
     private JPanel secondInputsPanel;
     private JLabel mudWeightLabel;
     private JLabel CohesionLabel;
-    private JLabel betaLabel;
     private JLabel gammaLabel;
     private JLabel alpha1Label;
     private JLabel alpha2Label;
     private JLabel tensileLabel;
     private JLabel poissonLabel;
     private JTextField CohesionText;
+    private JLabel porePressureLabel;
+    private JLabel farSigmaVLabel;
+    private JLabel farSigmaHLabel;
+    private JLabel farSigmahLabel;
+    private JLabel principalSigma1Label;
+    private JLabel principalSigma2Label;
+    private JLabel principalSigma3Label;
+    private JLabel betaLabel;
     private JPanel PicturePanel;
     private static double densityUM = 1;
     private static double pressureUM =1;
     private static double lengthUM =1;
+
+    public void setDepthLabel(String text) {
+        this.DepthLabel.setText(text);
+    }
+    public void setMudWeightLabel(String text) {
+        this.mudWeightLabel.setText(text);
+    }
+    public void setCohesionLabel(String text) {
+        this.CohesionLabel.setText(text);
+    }
+
+    public void setTensileLabel(String text) {
+        this.tensileLabel.setText(text);
+    }
+
+    public void setPorePressureLabel(String text) {
+        this.porePressureLabel.setText(text);
+    }
+
+    public void setFarSigmaVLabel(String text) {
+        this.farSigmaVLabel.setText(text);
+    }
+
+    public void setFarSigmaHLabel(String text) {
+        this.farSigmaHLabel.setText(text);
+    }
+
+    public void setFarSigmahLabel(String text) {
+        this.farSigmahLabel.setText(text);
+    }
+
+    public void setPrincipalSigma1Label(String text) {
+        this.principalSigma1Label.setText(text);
+    }
+
+    public void setPrincipalSigma2Label(String text) {
+        this.principalSigma2Label.setText(text);
+    }
+
+    public void setPrincipalSigma3Label(String text) {
+        this.principalSigma3Label.setText(text);
+    }
 
     public double getDensityUM() {
         return densityUM;
@@ -271,20 +320,20 @@ public JLabel getLabel(){
                 // Equations
                 DrillingEquations Equations = new DrillingEquations();
                 // Convert mudweight to psi/ft
-                mudWeightPsiFt = Double.parseDouble(MudWeightText.getText())*.05194805195;
+                mudWeightPsiFt = Double.parseDouble(MudWeightText.getText())*.05194805195*getDensityUM();
                 //Retrieve alpha value
                 this.Alpha = Equations.Alpha(Double.parseDouble(Alpha1Text.getText()),Double.parseDouble((Alpha2Text.getText())));
 
                 //Retrieve sigma ranges
-                this.SigmaVR = Equations.SigmaVRange(FaultTypeCombo.getSelectedItem().toString(),PoreCombo.getSelectedItem().toString());
-                this.SigmaHR = Equations.SigmaHRange(FaultTypeCombo.getSelectedItem().toString(),PoreCombo.getSelectedItem().toString());
-                this.SigmahR = Equations.SigmahRange(FaultTypeCombo.getSelectedItem().toString(),PoreCombo.getSelectedItem().toString());
-                this.PorePR =  Equations.PorePressureRange(FaultTypeCombo.getSelectedItem().toString(),PoreCombo.getSelectedItem().toString());
+                this.SigmaVR = Equations.SigmaVRange(FaultTypeCombo.getSelectedItem().toString(),PoreCombo.getSelectedItem().toString())*pressureUM;
+                this.SigmaHR = Equations.SigmaHRange(FaultTypeCombo.getSelectedItem().toString(),PoreCombo.getSelectedItem().toString())*pressureUM;
+                this.SigmahR = Equations.SigmahRange(FaultTypeCombo.getSelectedItem().toString(),PoreCombo.getSelectedItem().toString())*pressureUM;
+                this.PorePR =  Equations.PorePressureRange(FaultTypeCombo.getSelectedItem().toString(),PoreCombo.getSelectedItem().toString())*pressureUM;
 
                 //Retrieve sigma values
-                this.SigmaV = Equations.SigmaV(Double.parseDouble(DepthText.getText()),SigmaVR,PorePR);
-                this.SigmaH = Equations.SigmaH(Double.parseDouble(DepthText.getText()),SigmaHR,PorePR);
-                this.Sigmah = Equations.Sigmah(Double.parseDouble(DepthText.getText()),SigmahR,PorePR);
+                this.SigmaV = Equations.SigmaV(Double.parseDouble(DepthText.getText())*lengthUM,SigmaVR,PorePR);
+                this.SigmaH = Equations.SigmaH(Double.parseDouble(DepthText.getText())*lengthUM,SigmaHR,PorePR);
+                this.Sigmah = Equations.Sigmah(Double.parseDouble(DepthText.getText())*lengthUM,SigmahR,PorePR);
 
                 //Retrieve stress tensors SV, SH, Sh
                 this.SV = Equations.SV(SigmaV,SigmaH,Sigmah,Double.parseDouble(GammaText.getText()),Alpha);
@@ -297,7 +346,7 @@ public JLabel getLabel(){
                 this.ThoYZ = Equations.ThoYZ(SigmaH,Sigmah,Alpha,Double.parseDouble(GammaText.getText()));
 
                 // DeltaP
-                this.DeltaP = Equations.deltaP(Double.parseDouble(DepthText.getText()),mudWeightPsiFt,PorePR);
+                this.DeltaP = Equations.deltaP(Double.parseDouble(DepthText.getText())*lengthUM,mudWeightPsiFt,PorePR);
 
                 // Retrieve SigmaR
                 this.SigmaR = Equations.sigmaR(DeltaP);
@@ -327,7 +376,7 @@ public JLabel getLabel(){
 
                 // Determine if tensile failure
 
-                this.failType = Equations.tensileFailureCondition(Sigma2,Double.parseDouble(TensileText.getText()));
+                this.failType = Equations.tensileFailureCondition(Sigma1,Double.parseDouble(TensileText.getText()));
 
                 //phi if tensile failure occurs
 /*

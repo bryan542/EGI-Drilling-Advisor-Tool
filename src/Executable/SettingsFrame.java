@@ -124,6 +124,17 @@ public class SettingsFrame extends JFrame{
             double densityChange =mw.getDensityUM();
             double pressureChange=mw.getPressureUM();
             double lengthChange=mw.getLengthUM();
+            String depth = "Depth ";
+            String mudweight = "Mud Weight ECD ";
+            String cohesion = "Cohesion ";
+            String tensileStrength = "Tensile Strength ";
+            String porePressure = "Pore Pressure ";
+            String farSigmaV = "Far-field Vertical Stress σv ";
+            String farSigmaH = "Far-field Vertical Stress σH ";
+            String farSigmah = "Far-field Vertical Stress σh ";
+            String principal1 = "Principal Stress at the Wellbore σ1 ";
+            String principal2 = "Principal Stress at the Wellbore σ2 ";
+            String principal3 = "Principal Stress at the Wellbore σ3 ";
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -131,9 +142,24 @@ public class SettingsFrame extends JFrame{
                 if(generalRadio.isSelected()){
 
                     if(oilFieldUnitsRadioButton.isSelected() && oilFieldUnitsRadioButton.isEnabled()){
-                        this.densityChange = 1;
+                        densityChange = 1;
                         pressureChange =1;
                         lengthChange =1;
+                        String pressure = "(psi)";
+                        String density = "(lb/gal)";
+                        String length = "(ft)";
+                        mw.setDepthLabel(depth+length);
+                        mw.setMudWeightLabel(mudweight+density);
+                        mw.setCohesionLabel(cohesion+pressure);
+                        mw.setTensileLabel(tensileStrength+pressure);
+                        mw.setPorePressureLabel(porePressure+pressure);
+                        mw.setFarSigmaHLabel(farSigmaH+pressure);
+                        mw.setFarSigmahLabel(farSigmah+pressure);
+                        mw.setFarSigmaVLabel(farSigmaV+pressure);
+                        mw.setPrincipalSigma1Label(principal1+pressure);
+                        mw.setPrincipalSigma2Label(principal2+pressure);
+                        mw.setPrincipalSigma3Label(principal3+pressure);
+
 
                     }
                     else if(SIUnitsRadioButton.isSelected() && SIUnitsRadioButton.isEnabled()){
@@ -141,6 +167,20 @@ public class SettingsFrame extends JFrame{
                         densityChange = 8.3454;
                         pressureChange =0.000145038;
                         lengthChange =3.28084;
+                        String pressure = "(Pa)";
+                        String density = "(g/cc)";
+                        String length = "(m)";
+                        mw.setDepthLabel(depth+length);
+                        mw.setMudWeightLabel(mudweight+density);
+                        mw.setCohesionLabel(cohesion+pressure);
+                        mw.setTensileLabel(tensileStrength+pressure);
+                        mw.setPorePressureLabel(porePressure+pressure);
+                        mw.setFarSigmaHLabel(farSigmaH+pressure);
+                        mw.setFarSigmahLabel(farSigmah+pressure);
+                        mw.setFarSigmaVLabel(farSigmaV+pressure);
+                        mw.setPrincipalSigma1Label(principal1+pressure);
+                        mw.setPrincipalSigma2Label(principal2+pressure);
+                        mw.setPrincipalSigma3Label(principal3+pressure);
 
                     }
                     else{
@@ -152,10 +192,14 @@ public class SettingsFrame extends JFrame{
                     if (comboBox1.getSelectedItem() =="ppg" && comboBox1.isEnabled()){
 
                         densityChange = 1;
+                        String density = "(lb/gal)";
+                        mw.setMudWeightLabel(mudweight+density);
                     }
                     else if(comboBox1.getSelectedItem() =="g/cc" && comboBox1.isEnabled()){
 
                         densityChange = 8.3454;
+                        String density = "(g/cc)";
+                        mw.setMudWeightLabel(mudweight+density);
                     }
                     else{
 
@@ -164,10 +208,30 @@ public class SettingsFrame extends JFrame{
                     if (comboBox2.getSelectedItem() =="psi" && comboBox2.isEnabled()){
 
                         pressureChange =1;
+                        String pressure = "(psi)";
+                        mw.setCohesionLabel(cohesion+pressure);
+                        mw.setTensileLabel(tensileStrength+pressure);
+                        mw.setPorePressureLabel(porePressure+pressure);
+                        mw.setFarSigmaHLabel(farSigmaH+pressure);
+                        mw.setFarSigmahLabel(farSigmah+pressure);
+                        mw.setFarSigmaVLabel(farSigmaV+pressure);
+                        mw.setPrincipalSigma1Label(principal1+pressure);
+                        mw.setPrincipalSigma2Label(principal2+pressure);
+                        mw.setPrincipalSigma3Label(principal3+pressure);
                     }
                     else if(comboBox2.getSelectedItem() =="Pa" && comboBox2.isEnabled()){
 
                         pressureChange =0.000145038;
+                        String pressure = "(Pa)";
+                        mw.setCohesionLabel(cohesion+pressure);
+                        mw.setTensileLabel(tensileStrength+pressure);
+                        mw.setPorePressureLabel(porePressure+pressure);
+                        mw.setFarSigmaHLabel(farSigmaH+pressure);
+                        mw.setFarSigmahLabel(farSigmah+pressure);
+                        mw.setFarSigmaVLabel(farSigmaV+pressure);
+                        mw.setPrincipalSigma1Label(principal1+pressure);
+                        mw.setPrincipalSigma2Label(principal2+pressure);
+                        mw.setPrincipalSigma3Label(principal3+pressure);
                     }
                     else{
 
@@ -176,10 +240,14 @@ public class SettingsFrame extends JFrame{
                     if (comboBox3.getSelectedItem() =="ft" && comboBox3.isEnabled()){
 
                         lengthChange =1;
+                        String length = "(ft)";
+                        mw.setDepthLabel(depth+length);
                     }
                     else if(comboBox3.getSelectedItem() =="m" && comboBox3.isEnabled()){
 
                         lengthChange =3.28084;
+                        String length = "(m)";
+                        mw.setDepthLabel(depth+length);
                     }
                     else{
 
@@ -196,7 +264,7 @@ public class SettingsFrame extends JFrame{
 
             public void actionPerformed(ActionEvent e) {
 
-mw.labelChanger("hi");
+
 
             }
         });

@@ -173,7 +173,7 @@ public class DrillingEquations {
     public static double SV(double sigv, double sigH, double sigh, double gamma, double alpha){
 
         double SV;
-        SV = sigv*Math.cos(Math.toRadians(gamma))*Math.cos(Math.toRadians(gamma))+sigH*Math.sin(Math.toRadians(gamma))*Math.sin(Math.toRadians(gamma))*Math.cos(Math.toRadians(gamma))*Math.cos(Math.toRadians(gamma))+sigh*Math.sin(Math.toRadians(gamma))*Math.sin(Math.toRadians(gamma))*Math.cos(Math.toRadians(gamma))*Math.cos(Math.toRadians(gamma));
+        SV = sigv*Math.cos(Math.toRadians(gamma))*Math.cos(Math.toRadians(gamma))+sigH*Math.sin(Math.toRadians(gamma))*Math.sin(Math.toRadians(gamma))*Math.cos(Math.toRadians(alpha))*Math.cos(Math.toRadians(alpha))+sigh*Math.sin(Math.toRadians(gamma))*Math.sin(Math.toRadians(gamma))*Math.sin(Math.toRadians(alpha))*Math.sin(Math.toRadians(alpha));
         return SV;
     }
     //SH
@@ -434,11 +434,11 @@ public class DrillingEquations {
 
     //Tensile fracture condition
 
-    public static String tensileFailureCondition(double Sigma2, double tensile){
+    public static String tensileFailureCondition(double Sigma1, double tensile){
 
         String tensileCondition;
 
-        if (Sigma2 > tensile){
+        if (Sigma1 > tensile){
 
             tensileCondition = "Failure";
         }
