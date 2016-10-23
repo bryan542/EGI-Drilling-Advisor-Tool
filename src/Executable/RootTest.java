@@ -61,7 +61,7 @@ public class RootTest {
                 System.out.println("\nFound " + count + " result!\n");
                 for (String matched : fileSearch.getResult()) {
                     System.out.println("Found : " + matched);
-                    //get the first filepath found
+                    //get the first filepath found in search
                     outputFilePath = fileSearch.getResult().get(0).toString().replace("[", "").replace("]", "");
                     System.out.println(outputFilePath);
 
