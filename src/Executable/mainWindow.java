@@ -5,6 +5,8 @@ package Executable;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.SimpleAttributeSet;
 import java.awt.*;
 import java.awt.event.*;
 import java.net.URL;
@@ -87,6 +89,8 @@ public class mainWindow extends JFrame {
     private JLabel principalSigma2Label;
     private JLabel principalSigma3Label;
     private JLabel betaLabel;
+    private JTextPane ratingTextPane;
+    private JButton exportReportButton;
     private JPanel PicturePanel;
     private static double densityUM = 1;
     private static double pressureUM =1;
@@ -195,6 +199,9 @@ public JLabel getLabel(){
         SettingsFrame sf = new SettingsFrame(mainWindow.this);
         DropdownMenu menu = new DropdownMenu();
         menu.buildMenuBar(sf,mainWindow.this);
+
+        //ratingTextPane UI settings
+        ratingTextPane.setBorder(new LineBorder(Color.black,1));
 
 
 
@@ -609,7 +616,18 @@ public JLabel getLabel(){
                     ROPConditionResult.setText("Low");
                 }
 
+                //generate rating textpane report
+                ReportStrings reportList = new ReportStrings();
+                String[] initSt = reportList.getInitString();
+                SimpleAttributeSet sim = new SimpleAttributeSet();
 
+                try {
+
+                    ratingTextPane.getStyledDocument().insertString(ratingTextPane.getStyledDocument().getLength(),initSt[0],sim);
+
+                } catch (BadLocationException ble) {
+                    System.err.println("Couldn't insert initial text into text pane.");
+                }
 
 
 
