@@ -10,7 +10,7 @@ import static sun.misc.PostVMInitHook.run;
 /**
  * Created by Bryan on 10/13/2016.
  */
-public class SettingsFrame extends JFrame{
+public class SettingDialog extends JDialog{
 
 
     public JPanel projectPanel;
@@ -30,7 +30,7 @@ public class SettingsFrame extends JFrame{
     private double lengthChange;;
 
 
-    public SettingsFrame(mainWindow mw){
+    public SettingDialog(mainWindow mw){
 
         boolean generalCustom;
         boolean oilfieldSI;
@@ -134,6 +134,7 @@ public class SettingsFrame extends JFrame{
             String principal1 = "Principal Stress at the Wellbore σ1 ";
             String principal2 = "Principal Stress at the Wellbore σ2 ";
             String principal3 = "Principal Stress at the Wellbore σ3 ";
+            String inputStressGradients = "Stress Gradients ";
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -147,6 +148,7 @@ public class SettingsFrame extends JFrame{
                         String pressure = "(psi)";
                         String density = "(lb/gal)";
                         String length = "(ft)";
+                        String gradient = "(psi/ft)";
                         mw.setDepthLabel(depth+length);
                         mw.setMudWeightLabel(mudweight+density);
                         mw.setCohesionLabel(cohesion+pressure);
@@ -158,6 +160,7 @@ public class SettingsFrame extends JFrame{
                         mw.setPrincipalSigma1Label(principal1+pressure);
                         mw.setPrincipalSigma2Label(principal2+pressure);
                         mw.setPrincipalSigma3Label(principal3+pressure);
+                        mw.setInputStressGradientLabel(inputStressGradients+gradient);
                         mw.setDensityUM(densityChange);
                         mw.setPressureUM(pressureChange);
                         mw.setLengthUM(lengthChange);
@@ -171,6 +174,7 @@ public class SettingsFrame extends JFrame{
                         String pressure = "(kPa)";
                         String density = "(g/cc)";
                         String length = "(m)";
+                        String gradient = "(Pa/m)";
                         mw.setDepthLabel(depth+length);
                         mw.setMudWeightLabel(mudweight+density);
                         mw.setCohesionLabel(cohesion+pressure);
@@ -182,6 +186,7 @@ public class SettingsFrame extends JFrame{
                         mw.setPrincipalSigma1Label(principal1+pressure);
                         mw.setPrincipalSigma2Label(principal2+pressure);
                         mw.setPrincipalSigma3Label(principal3+pressure);
+                        mw.setInputStressGradientLabel(inputStressGradients+gradient);
                         mw.setDensityUM(densityChange);
                         mw.setPressureUM(pressureChange);
                         mw.setLengthUM(lengthChange);
@@ -214,12 +219,14 @@ public class SettingsFrame extends JFrame{
 
                         pressureChange =1;
                         String pressure = "(psi)";
+                        String gradient = inputStressGradients+"(psi/"+comboBox3.getSelectedItem().toString()+")";
                         mw.setCohesionLabel(cohesion+pressure);
                         mw.setTensileLabel(tensileStrength+pressure);
                         mw.setPorePressureLabel(porePressure+pressure);
                         mw.setFarSigmaHLabel(farSigmaH+pressure);
                         mw.setFarSigmahLabel(farSigmah+pressure);
                         mw.setFarSigmaVLabel(farSigmaV+pressure);
+                        mw.setInputStressGradientLabel(gradient);
                         mw.setPrincipalSigma1Label(principal1+pressure);
                         mw.setPrincipalSigma2Label(principal2+pressure);
                         mw.setPrincipalSigma3Label(principal3+pressure);
@@ -229,12 +236,14 @@ public class SettingsFrame extends JFrame{
 
                         pressureChange =0.145038;
                         String pressure = "(kPa)";
+                        String gradient = inputStressGradients+"(Pa/"+comboBox2.getSelectedItem().toString()+")";
                         mw.setCohesionLabel(cohesion+pressure);
                         mw.setTensileLabel(tensileStrength+pressure);
                         mw.setPorePressureLabel(porePressure+pressure);
                         mw.setFarSigmaHLabel(farSigmaH+pressure);
                         mw.setFarSigmahLabel(farSigmah+pressure);
                         mw.setFarSigmaVLabel(farSigmaV+pressure);
+                        mw.setInputStressGradientLabel(gradient);
                         mw.setPrincipalSigma1Label(principal1+pressure);
                         mw.setPrincipalSigma2Label(principal2+pressure);
                         mw.setPrincipalSigma3Label(principal3+pressure);
@@ -248,15 +257,19 @@ public class SettingsFrame extends JFrame{
 
                         lengthChange =1;
                         String length = "(ft)";
+                        String gradient = inputStressGradients+"("+comboBox2.getSelectedItem().toString()+"/ft)";
                         mw.setDepthLabel(depth+length);
                         mw.setLengthUM(lengthChange);
+                        mw.setInputStressGradientLabel(gradient);
                     }
                     else if(comboBox3.getSelectedItem() =="m" && comboBox3.isEnabled()){
 
                         lengthChange =3.28084;
                         String length = "(m)";
+                        String gradient = inputStressGradients+"("+comboBox2.getSelectedItem().toString()+"/m)";
                         mw.setDepthLabel(depth+length);
                         mw.setLengthUM(lengthChange);
+                        mw.setInputStressGradientLabel(gradient);
                     }
                     else{
 
@@ -273,7 +286,7 @@ public class SettingsFrame extends JFrame{
 
             public void actionPerformed(ActionEvent e) {
 
-
+            dispose();
 
             }
         });

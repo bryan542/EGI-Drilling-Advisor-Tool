@@ -1,22 +1,12 @@
 package Executable;
 
-import com.sun.xml.internal.ws.api.config.management.policy.ManagementAssertion;
-import oracle.jrockit.jfr.JFR;
-import org.omg.SendingContext.RunTime;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.FilenameFilter;
 import java.io.IOException;
 import java.net.URL;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
-import static java.awt.SystemColor.desktop;
-import static java.awt.SystemColor.menu;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
 /**
@@ -25,7 +15,7 @@ import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 public class DropdownMenu  {
 
 
-    public void buildMenuBar( SettingsFrame sf, mainWindow mw){
+    public void buildMenuBar(SettingDialog sf, mainWindow mw){
 
         //build file menu
 

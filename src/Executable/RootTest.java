@@ -38,11 +38,11 @@ public class RootTest {
             fileSearch.searchDirectory(new File("C:\\Program FIles"), fileToSearch);
 
             //if statement to search other directories if we don't find the file the first time
-            if (fileSearch.getResult() ==null && fileSearch.getResult().get(0).isEmpty()) {
+            if (result.size() ==0 ) {
                 fileSearch.searchDirectory(new File("C:\\Program FIles (x86)"), fileToSearch);
             }
 
-            else if (fileSearch.getResult() ==null && fileSearch.getResult().get(0).isEmpty()) {
+            else if (result.size() ==0 ) {
                 fileSearch.searchDirectory(new File("C:\\Users"), fileToSearch);
             }
 
@@ -63,7 +63,7 @@ public class RootTest {
                     System.out.println("Found : " + matched);
                     //get the first filepath found in search
                     outputFilePath = fileSearch.getResult().get(0).toString().replace("[", "").replace("]", "");
-                    System.out.println(outputFilePath);
+
 
 
                 }

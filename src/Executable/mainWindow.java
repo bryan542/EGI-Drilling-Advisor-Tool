@@ -5,19 +5,13 @@ package Executable;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
-import javax.swing.plaf.synth.SynthLookAndFeel;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.SimpleAttributeSet;
 import java.awt.*;
 import java.awt.event.*;
 import java.net.URL;
 import java.util.Arrays;
-import java.util.Observable;
-import java.util.Observer;
-import java.util.Set;
 //scatter plotting tool imports
-import com.sun.scenario.Settings;
-import com.sun.xml.internal.ws.api.config.management.policy.ManagementAssertion;
 import org.jfree.data.xy.XYSeriesCollection;
 
 
@@ -67,6 +61,8 @@ public class mainWindow extends JFrame {
     private JLabel ROPRating;
     private JLabel InstableConditionResult;
     private JLabel LostCirculationConditionResult;
+
+
     private JLabel LongTermIntegrityConditionResult;
     private JLabel ROPConditionResult;
     private JLabel WellControlConditionResult;
@@ -92,10 +88,24 @@ public class mainWindow extends JFrame {
     private JLabel betaLabel;
     private JTextPane ratingTextPane;
     private JButton exportReportButton;
+    private JButton GSITableButton;
+    private JRadioButton automaticRadioButton;
+    private JRadioButton manualInputRadioButton;
+    private JTextField sigmaVTextField;
+    private JTextField sigmaMaxTextField;
+    private JTextField sigmaMinTextField;
+    private JTextField porePressureTextField;
+    private JLabel inputPorePressureLabel;
+    private JLabel inputSigmaMinLabel;
+    private JLabel inputSigmaMaxLabel;
+    private JLabel inputSigmaVLabel;
+    private JLabel inputStressGradientLabel;
     private JPanel PicturePanel;
     private static double densityUM = 1;
     private static double pressureUM =1;
     private static double lengthUM =1;
+    private boolean buttonCount = true;
+
 
     public void setDepthLabel(String text) {
         this.DepthLabel.setText(text);
@@ -109,6 +119,9 @@ public class mainWindow extends JFrame {
 
     public void setTensileLabel(String text) {
         this.tensileLabel.setText(text);
+    }
+    public void setInputStressGradientLabel(String text){
+        this.inputStressGradientLabel.setText(text);
     }
 
     public void setPorePressureLabel(String text) {
@@ -139,6 +152,29 @@ public class mainWindow extends JFrame {
         this.principalSigma3Label.setText(text);
     }
 
+    public void setInstableConditionResultText(String stringChange) {
+        InstableConditionResult.setText(stringChange);
+    }
+
+    public void setLostCirculationConditionResultText(String stringChange) {
+        LostCirculationConditionResult.setText(stringChange);
+    }
+
+    public void setLongTermIntegrityConditionResultText(String stringChange) {
+        LongTermIntegrityConditionResult.setText(stringChange);
+    }
+
+    public void setROPConditionResultText(String stringChange) {
+        this.ROPConditionResult.setText(stringChange);
+    }
+
+    public void setWellControlConditionResultText(String stringChange) {
+        WellControlConditionResult.setText(stringChange);
+    }
+
+
+
+
     public double getDensityUM() {
         return densityUM;
     }
@@ -158,22 +194,6 @@ public class mainWindow extends JFrame {
         lengthUM = unitChange;
 
     }
-    private ActionListener action = new ActionListener() {
-        public void actionPerformed(ActionEvent ae){
-            String text = "hi";
-            labelChanger(text);
-        }
-    };
-
-public void labelChanger(String input) {
-    DepthLabel.setText(input);
-    System.out.println(DepthLabel.getText());
-    DepthLabel.validate();
-}
-public JLabel getLabel(){
-
-    return DepthLabel;
-}
 
     public mainWindow() {
 
@@ -182,29 +202,14 @@ public JLabel getLabel(){
         ImageIcon bg = new ImageIcon(url);
         this.setIconImage(bg.getImage());
 
-
-
-
-        //Build the menu bar
-       // SettingsFrame sf = new SettingsFrame(mainWindow.this);
-
-/*
-        DropdownMenu menu = new DropdownMenu();
-        JMenuBar mb = menu.buildMenuBar(sf, mainWindow.this);
-        mainWindow.this.setJMenuBar(mb);
-*/
-
-
         //set tool title
         this.setTitle("EGI Drilling Advisory Tool");
-        SettingsFrame sf = new SettingsFrame(mainWindow.this);
+        SettingDialog sf = new SettingDialog(mainWindow.this);
         DropdownMenu menu = new DropdownMenu();
         menu.buildMenuBar(sf,mainWindow.this);
 
-        //ratingTextPane UI settings
+        //ratingTextPane UI settings in drilling input tab
         ratingTextPane.setBorder(new LineBorder(Color.black,1));
-
-
 
         //Generate dropdown lists.
         ComboBoxLists listComboLists = new ComboBoxLists();
@@ -244,15 +249,85 @@ public JLabel getLabel(){
         }
         for  (int i =0; i< PermeabilityList.length;i++) {
         PermCombo.addItem(PermeabilityList[i]);
-    }
+         }
 
+        //Assemble stress gradient buttongroup
+        ButtonGroup stressBg = new ButtonGroup();
+        stressBg.add(automaticRadioButton);
+        stressBg.add(manualInputRadioButton);
+
+        //set the automatic button as the default
+        automaticRadioButton.setSelected(true);
+
+        //set launch conditional parameters. Kinda redundant, but acts as a failsafe too.
+        if(automaticRadioButton.isSelected()){
+            sigmaVTextField.setEnabled(false);
+            sigmaMaxTextField.setEnabled(false);
+            sigmaMinTextField.setEnabled(false);
+            porePressureTextField.setEnabled(false);
+            inputPorePressureLabel.setEnabled(false);
+            inputSigmaMaxLabel.setEnabled(false);
+            inputSigmaMinLabel.setEnabled(false);
+            inputSigmaVLabel.setEnabled(false);
+            inputStressGradientLabel.setEnabled(false);
+            PoreCombo.setEnabled(true);
+            FaultTypeCombo.setEnabled(true);
+        }
+        else{
+            sigmaVTextField.setEnabled(true);
+            sigmaMaxTextField.setEnabled(true);
+            sigmaMinTextField.setEnabled(true);
+            porePressureTextField.setEnabled(true);
+            inputPorePressureLabel.setEnabled(true);
+            inputSigmaMaxLabel.setEnabled(true);
+            inputSigmaMinLabel.setEnabled(true);
+            inputSigmaVLabel.setEnabled(true);
+            inputStressGradientLabel.setEnabled(true);
+            PoreCombo.setEnabled(true);
+            FaultTypeCombo.setEnabled(true);
+        }
+
+        //enable/disable actions when the gradient buttons are clicked.
+        automaticRadioButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                sigmaVTextField.setEnabled(false);
+                sigmaMaxTextField.setEnabled(false);
+                sigmaMinTextField.setEnabled(false);
+                porePressureTextField.setEnabled(false);
+                inputPorePressureLabel.setEnabled(false);
+                inputSigmaMaxLabel.setEnabled(false);
+                inputSigmaMinLabel.setEnabled(false);
+                inputSigmaVLabel.setEnabled(false);
+                inputStressGradientLabel.setEnabled(false);
+                PoreCombo.setEnabled(true);
+                FaultTypeCombo.setEnabled(true);
+            }
+        });
+
+        manualInputRadioButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                sigmaVTextField.setEnabled(true);
+                sigmaMaxTextField.setEnabled(true);
+                sigmaMinTextField.setEnabled(true);
+                porePressureTextField.setEnabled(true);
+                inputPorePressureLabel.setEnabled(true);
+                inputSigmaMaxLabel.setEnabled(true);
+                inputSigmaMinLabel.setEnabled(true);
+                inputSigmaVLabel.setEnabled(true);
+                inputStressGradientLabel.setEnabled(true);
+                PoreCombo.setEnabled(false);
+                FaultTypeCombo.setEnabled(false);
+            }
+        });
 
         //Add alpha and beta images to input panel and resize
         ImageIcon AlphaIcon = new ImageIcon(getClass().getResource(("DrillingGUIPicture.png")));
         ImageResize Test1 = new ImageResize();
         AlphaIcon = Test1.getScaledImage(AlphaIcon,400,300);
         AlphaImageLabel.setIcon(AlphaIcon);
-
 
         ImageIcon BetaIcon = new ImageIcon(getClass().getResource(("betaImage.png")));
         ImageResize Test2 = new ImageResize();
@@ -326,7 +401,10 @@ public JLabel getLabel(){
             private double SHMaxDiagnol;
             private double SHMaxDiagnolMin;
             private double SHMaxDiagnolMax;
-            private int buttonCount = 0;
+
+
+
+
 
 
 
@@ -342,11 +420,22 @@ public JLabel getLabel(){
                 this.Alpha = Equations.Alpha(Double.parseDouble(Alpha1Text.getText()),Double.parseDouble((Alpha2Text.getText())));
 
                 //Retrieve sigma ranges
-                this.SigmaVR = Equations.SigmaVRange(FaultTypeCombo.getSelectedItem().toString(),PoreCombo.getSelectedItem().toString());
-                this.SigmaHR = Equations.SigmaHRange(FaultTypeCombo.getSelectedItem().toString(),PoreCombo.getSelectedItem().toString());
-                this.SigmahR = Equations.SigmahRange(FaultTypeCombo.getSelectedItem().toString(),PoreCombo.getSelectedItem().toString());
-                this.PorePR =  Equations.PorePressureRange(FaultTypeCombo.getSelectedItem().toString(),PoreCombo.getSelectedItem().toString());
 
+                if(automaticRadioButton.isSelected()) {
+
+
+                    this.SigmaVR = Equations.SigmaVRange(FaultTypeCombo.getSelectedItem().toString(), PoreCombo.getSelectedItem().toString());
+                    this.SigmaHR = Equations.SigmaHRange(FaultTypeCombo.getSelectedItem().toString(), PoreCombo.getSelectedItem().toString());
+                    this.SigmahR = Equations.SigmahRange(FaultTypeCombo.getSelectedItem().toString(), PoreCombo.getSelectedItem().toString());
+                    this.PorePR = Equations.PorePressureRange(FaultTypeCombo.getSelectedItem().toString(), PoreCombo.getSelectedItem().toString());
+
+                }
+                else{
+                    this.SigmaVR = Double.parseDouble(sigmaVTextField.getText())*lengthUM/pressureUM;
+                    this.SigmaHR = Double.parseDouble(sigmaMaxTextField.getText())*lengthUM/pressureUM;
+                    this.SigmahR = Double.parseDouble(sigmaMinTextField.getText())*lengthUM/pressureUM;
+                    this.PorePR =  Double.parseDouble(porePressureTextField.getText())*lengthUM/pressureUM;
+                }
                 //Retrieve sigma values
                 this.SigmaV = Equations.SigmaV(Double.parseDouble(DepthText.getText())*lengthUM,SigmaVR,PorePR);
                 this.SigmaH = Equations.SigmaH(Double.parseDouble(DepthText.getText())*lengthUM,SigmaHR,PorePR);
@@ -471,17 +560,18 @@ public JLabel getLabel(){
                 MohrDataset mohrDataset = new MohrDataset();
                 XYSeriesCollection mohrCollection = mohrDataset.mohrDatasetBuild(this.Sigma3,this.Sigma2,this.Sigma1,cohesionInitial);
 
-                if (buttonCount == 0) {
+                //buttonCount is a true/false condition to check if the graph panes are added/removed
+                if (buttonCount == true) {
                     GraphOutputPanel polygonGraphOutput = new GraphOutputPanel(polygonCollection);
                     tabbedPane1.addTab("Stress Polygon", null, polygonGraphOutput, null);
 
 
                     MohrFailureGraph MohrGraphOutput = new MohrFailureGraph(mohrCollection);
                     tabbedPane1.addTab("Mohr-Coulomb Failure",null,MohrGraphOutput,null);
-                    buttonCount = buttonCount +1;
+                    buttonCount = false;
 
                 }
-                else if (buttonCount == 1){
+                else if (buttonCount == false){
 
                     tabbedPane1.remove(3);
                     tabbedPane1.remove(2);
@@ -495,7 +585,7 @@ public JLabel getLabel(){
                 }
 
 
-
+                //populate textlabels with value results
                 PorePressureResult.setText(Integer.toString((int) (PorePR*Integer.parseInt(DepthText.getText())*lengthUM*(1/pressureUM))));
                 SigmaVResult.setText(Integer.toString((int) (SigmaV*(1/pressureUM))));
                 SigmaHResult.setText(Integer.toString((int) (SigmaH*(1/pressureUM))));
@@ -511,111 +601,16 @@ public JLabel getLabel(){
                 LongTermIntegrityRating.setText(Integer.toString((int) sumLongTermIntegrity));
                 ROPRating.setText(Integer.toString((int) sumROP));
 
-               if(sumInstability >0 && sumInstability <20){
 
-                   InstableConditionResult.setText("Stable");
-               }
-               else if(sumInstability >20 && sumInstability <40){
+                //set the stability rating criteria (output under well rating drilling output tab)
+                StabilityConditions sc = new StabilityConditions();
 
-                   InstableConditionResult.setText("Semi-stable");
-               }
-               else if(sumInstability >40 && sumInstability <60){
+                sc.sumInstabilityCriteria(sumInstability,mainWindow.this);
+                sc.sumLossCirculationCriteria(sumLossOfCirculation,mainWindow.this);
+                sc.sumWellControlCriteria(sumWellControl,mainWindow.this);
+                sc.sumLongTermIntegrityCriteria(sumLongTermIntegrity,mainWindow.this);
+                sc.sumROPCriteria(sumROP,mainWindow.this);
 
-                   InstableConditionResult.setText("Partially Unstable");
-               }
-               else if(sumInstability >60 && sumInstability <80){
-
-                   InstableConditionResult.setText("Semi-Unstable");
-               }
-               else {
-
-                   InstableConditionResult.setText("Unstable");
-               }
-
-                if(sumLossOfCirculation >0 && sumLossOfCirculation <20){
-
-                    LostCirculationConditionResult.setText("No Loss");
-                }
-                else if(sumLossOfCirculation >20 && sumLossOfCirculation <40){
-
-                    LostCirculationConditionResult.setText("2-4 bbl/hr");
-                }
-                else if(sumLossOfCirculation >40 && sumLossOfCirculation <60){
-
-                    LostCirculationConditionResult.setText("4-10 bbl/hr");
-                }
-                else if(sumLossOfCirculation >60 && sumLossOfCirculation <80){
-
-                    LostCirculationConditionResult.setText("10-20 bbl/hr");
-                }
-                else {
-
-                    LostCirculationConditionResult.setText("Complete Loss");
-                }
-
-
-                if(sumWellControl >0 && sumWellControl <20){
-
-                    WellControlConditionResult.setText("No Flow");
-                }
-                else if(sumWellControl >20 &&sumWellControl <40){
-
-                    WellControlConditionResult.setText("Negligible Flow");
-                }
-                else if(sumWellControl >40 &&sumWellControl <60){
-
-                    WellControlConditionResult.setText("4-10 bbl/hr");
-                }
-                else if(sumWellControl >60 &&sumWellControl <80){
-
-                    WellControlConditionResult.setText("10-20 bbl/hr");
-                }
-                else {
-
-                    WellControlConditionResult.setText("Kick/Blow Out");
-                }
-
-                if(sumLongTermIntegrity >0 && sumLongTermIntegrity <20){
-
-                    LongTermIntegrityConditionResult.setText("Stable");
-                }
-                else if(sumLongTermIntegrity >20 && sumLongTermIntegrity <40){
-
-                    LongTermIntegrityConditionResult.setText("Semi-Stable");
-                }
-                else if(sumLongTermIntegrity >40 && sumLongTermIntegrity <60){
-
-                    LongTermIntegrityConditionResult.setText("Partially Unstable");
-                }
-                else if(sumLongTermIntegrity >60 && sumLongTermIntegrity <80){
-
-                    LongTermIntegrityConditionResult.setText("Semi-Unstable");
-                }
-                else {
-
-                    LongTermIntegrityConditionResult.setText("Unstable");
-                }
-
-                if(sumROP >0 && sumROP <20){
-
-                    ROPConditionResult.setText("High");
-                }
-                else if(sumROP  >20 && sumROP  <40){
-
-                    ROPConditionResult.setText("Medium-high");
-                }
-                else if(sumROP  >40 && sumROP  <60){
-
-                    ROPConditionResult.setText("Medium");
-                }
-                else if(sumROP  >60 && sumROP  <80){
-
-                    ROPConditionResult.setText("Medium-low");
-                }
-                else {
-
-                    ROPConditionResult.setText("Low");
-                }
 
                 //generate rating textpane report
                 ReportStrings reportList = new ReportStrings();
@@ -623,15 +618,34 @@ public JLabel getLabel(){
                 SimpleAttributeSet sim = new SimpleAttributeSet();
 
                 try {
-
+                    ratingTextPane.setText(""); // Resets the pane
                     ratingTextPane.getStyledDocument().insertString(ratingTextPane.getStyledDocument().getLength(),initSt[0],sim);
 
                 } catch (BadLocationException ble) {
                     System.err.println("Couldn't insert initial text into text pane.");
                 }
+            }
+        });
 
 
 
+
+        GSITableButton.addMouseListener(new java.awt.event.MouseAdapter(){
+            GSIDialog GD = new GSIDialog();
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+
+
+                GD.setContentPane(GD.contentPane);
+                GD.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                GD.pack();
+                GD.setLocationRelativeTo(BetaImageLabel);
+                GD.setVisible(true);
+
+                GD.setTitle("GSI Selection Table");
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+
+                GD.onCancel();
             }
         });
 
@@ -639,16 +653,47 @@ public JLabel getLabel(){
         clearButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                //reset everything back to default
+                DepthText.setText("");
+                MudWeightText.setText("");
+                CohesionText.setText("");
+                GammaText.setText("");
+                Alpha1Text.setText("");
+                Alpha2Text.setText("");
+                TensileText.setText("");
+                PoissonText.setText("");
+                BetaText.setText("");
+                PorePressureResult.setText("");
+                SigmaVResult.setText("");
+                SigmaHResult.setText("");
+                SigmahResult.setText("");
+                Principle1Result.setText("");
+                Principle2Result.setText("");
+                Principle3Result.setText("");
+                TensileFailResult.setText("");
+                ShearFailResult.setText("");
+                ratingTextPane.setText("");
+                InstabilityRating.setText("");
+                LostCirculationRating.setText("");
+                WellControlRating.setText("");
+                LongTermIntegrityRating.setText("");
+                ROPRating.setText("");
+                InstableConditionResult.setText("");
+                LostCirculationConditionResult.setText("");
+                WellControlConditionResult.setText("");
+                LongTermIntegrityConditionResult.setText("");
+                ROPConditionResult.setText("");
 
+                //remove original graphs and reset buttonCount
+                try{
+                    tabbedPane1.remove(3);
+                    tabbedPane1.remove(2);
+                    buttonCount = true;
+                }
+                catch (Exception e2){
 
-                SettingsFrame sf = new SettingsFrame(mainWindow.this);
-                sf.setContentPane(sf.projectPanel);
-                sf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-                sf.pack();
-                sf.setLocationRelativeTo(null);
-                sf.setVisible(true);
-                //get menu
-                sf.setTitle("Project Settings");
+                }
+
 
             }
         });
