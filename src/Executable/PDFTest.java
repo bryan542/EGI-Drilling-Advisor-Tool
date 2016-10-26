@@ -52,6 +52,9 @@ public class PDFTest {
             // to draw the image at half size at (x=20, y=20) use
             // contents.drawImage(pdImage, 20, 20, pdImage.getWidth() / 2, pdImage.getHeight() / 2);
 
+
+
+
             contents.close();
             doc.save(pdfPath);
         } finally {
@@ -94,14 +97,43 @@ public class PDFTest {
             String filename = file.toString();
             filename = filename.replaceAll(".pdf", "");
             filename = filename + ".pdf";
+
             String image = "D:\\EGI Drilling Advisor Tool\\src\\Executable\\EGI.png";
 
 
-            try {
-                imageCreator(image, filename);
-            } catch (IOException e) {
-                e.printStackTrace();
+            //Checks to see if file pathname already exists and gives override option
+            File fileOverwriteCondition = new File(filename);
+            if(fileOverwriteCondition.exists()){
+
+                int a = JOptionPane.showConfirmDialog(null,"Do you want to overwrite an existing file?",null,JOptionPane.YES_NO_OPTION);
+
+                if(a == JOptionPane.YES_OPTION){
+
+                    try {
+                        imageCreator(image, filename);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+                else if (a == JOptionPane.NO_OPTION){
+
+                    getSaveLocation();
+                }
+
+
             }
+            else{
+
+                try {
+                    imageCreator(image, filename);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+
+
         }
         catch(Exception er){}
 

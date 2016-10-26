@@ -96,12 +96,22 @@ public class DropdownMenu  {
 
         });
 
-        //Work on this later. Use JFileChooser to open and import saved files(later implimentation too)
+        //Work on this later. Use JFileChooser to open and import
+        // saved files(later implimentation too). Will make the save document a
+        //tab delimited file
         open.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                JFileChooser fc = new JFileChooser();
+                JFileChooser fc = null;
+
+                LookAndFeel previousLF = UIManager.getLookAndFeel();
+                try {
+                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+                    fc = new JFileChooser();
+                    UIManager.setLookAndFeel(previousLF);
+                } catch (IllegalAccessException | UnsupportedLookAndFeelException | InstantiationException | ClassNotFoundException er) {}
+
                 fc.setCurrentDirectory(new java.io.File("C:/"));
                 fc.setDialogTitle("Choose Dataset to Open");
                 fc.setFileSelectionMode(JFileChooser.FILES_ONLY);

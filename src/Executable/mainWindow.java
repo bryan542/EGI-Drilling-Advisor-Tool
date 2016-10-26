@@ -7,11 +7,11 @@ import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyledDocument;
 import java.awt.*;
 import java.awt.event.*;
 import java.net.URL;
 import java.util.Arrays;
-//scatter plotting tool imports
 import org.jfree.data.xy.XYSeriesCollection;
 
 
@@ -43,7 +43,7 @@ public class mainWindow extends JFrame {
     private JButton calculateButton;
     private JButton clearButton;
     private JLabel AlphaImageLabel;
-    private JPanel MainPanel;
+    public JPanel MainPanel;
     private JTextField DepthText;
     private JLabel PorePressureResult;
     private JLabel SigmaVResult;
@@ -100,6 +100,7 @@ public class mainWindow extends JFrame {
     private JLabel inputSigmaMaxLabel;
     private JLabel inputSigmaVLabel;
     private JLabel inputStressGradientLabel;
+    private JPanel betaImagePanel;
     private JPanel PicturePanel;
     private static double densityUM = 1;
     private static double pressureUM =1;
@@ -210,6 +211,9 @@ public class mainWindow extends JFrame {
 
         //ratingTextPane UI settings in drilling input tab
         ratingTextPane.setBorder(new LineBorder(Color.black,1));
+        Font font = new Font("Candara", Font.PLAIN,12);     //set font
+        ratingTextPane.setFont(font);       //font
+        ratingTextPane.setEditable(false);     // User in the GUI cannot edit the pane now
 
         //Generate dropdown lists.
         ComboBoxLists listComboLists = new ComboBoxLists();
@@ -616,10 +620,12 @@ public class mainWindow extends JFrame {
                 ReportStrings reportList = new ReportStrings();
                 String[] initSt = reportList.getInitString();
                 SimpleAttributeSet sim = new SimpleAttributeSet();
+                StyledDocument doc = ratingTextPane.getStyledDocument();
+
 
                 try {
                     ratingTextPane.setText(""); // Resets the pane
-                    ratingTextPane.getStyledDocument().insertString(ratingTextPane.getStyledDocument().getLength(),initSt[0],sim);
+                    doc.insertString(ratingTextPane.getStyledDocument().getLength(),initSt[1],sim);
 
                 } catch (BadLocationException ble) {
                     System.err.println("Couldn't insert initial text into text pane.");
@@ -638,6 +644,8 @@ public class mainWindow extends JFrame {
             }
         });
 
+
+
         GSITableButton.addMouseListener(new java.awt.event.MouseAdapter(){
             GSIDialog GD = new GSIDialog();
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -646,9 +654,8 @@ public class mainWindow extends JFrame {
                 GD.setContentPane(GD.contentPane);
                 GD.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
                 GD.pack();
-                GD.setLocationRelativeTo(BetaImageLabel);
+                GD.setLocation(GSITableButton.getX()*2+50,100);
                 GD.setVisible(true);
-
                 GD.setTitle("GSI Selection Table");
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
@@ -717,6 +724,7 @@ public class mainWindow extends JFrame {
         mainWindow.this.setContentPane(this.MainPanel);
         mainWindow.this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainWindow.this.pack();
+        mainWindow.this.setMinimumSize(mainWindow.this.getSize()); //prevents shrinking the JFrame past the original default set from MainPanel size in GUI builder
         mainWindow.this.setLocationRelativeTo(null);
         mainWindow.this.setVisible(true);
 
