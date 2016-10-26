@@ -628,7 +628,15 @@ public class mainWindow extends JFrame {
         });
 
 
+        exportReportButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                PDFTest pt = new PDFTest();
+                pt.getSaveLocation();
 
+
+            }
+        });
 
         GSITableButton.addMouseListener(new java.awt.event.MouseAdapter(){
             GSIDialog GD = new GSIDialog();
