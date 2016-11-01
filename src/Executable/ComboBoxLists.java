@@ -7,10 +7,9 @@ public class ComboBoxLists {
 
     private String[] typeFault = {"Normal","Reverse","Strike-slip"};
     private String[] porePressure = {"Hydrostatic","Overpressure"};
-    private String[] faultConductivity = {"High","Medium","Low"};
-    private String[] deformation = {"Deformation Band","Compaction Band","Unknown"};
-    private String[] joint = {"High","Medium","Low"};
-    private String[] beddingUnconformity = {"Highly Conductive","Medium Conductive","Low Conductive","Unknown"};
+    private String[] faultConductivity = {"High","Medium","Low","Unknown/None"};
+    private String[] joint = {"High","Medium","Low","Unknown/None"};
+    private String[] beddingUnconformity = {"Highly Conductive","Medium Conductive","Low Conductive","Unknown/None"};
     private String[] lithology = {"Shale","Salt","Sandstone","Siltstone","Limestone","Dolomite"};
     private String[] GSI = {"0-35","35-55","55-75","75-100"};
     private String[] permeability = {"High(D)","Medium(mD)","Low(μD)"};
@@ -31,10 +30,6 @@ public class ComboBoxLists {
     public String[] GetFaultConductivity(){
 
         return this.faultConductivity;
-    }
-    public String[] GetDeformation(){
-
-        return this.deformation;
     }
     public String[] GetJoint(){
 

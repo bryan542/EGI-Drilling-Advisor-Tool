@@ -58,15 +58,15 @@ public class DrillingEquations {
 
             if (FaultType == "Normal") {
 
-                sigmaH = .7 + (.9 - .7) * rand.nextDouble();
+                sigmaH = .77 + (.9 - .77) * rand.nextDouble();
 
             } else if (FaultType == "Strike-slip") {
 
-                sigmaH = 1 + (1.2 - 1) * rand.nextDouble();
+                sigmaH = 1.1 + (1.2 - 1.1) * rand.nextDouble();
 
             } else {
 
-                sigmaH = 1 + (1.6 - 1) * rand.nextDouble();
+                sigmaH = 1.2 + (1.6 - 1.2) * rand.nextDouble();
             }
 
             return sigmaH;
@@ -74,7 +74,7 @@ public class DrillingEquations {
 
             if (FaultType == "Normal") {
 
-                sigmaH = .8 + (.92 - .8) * rand.nextDouble();
+                sigmaH = .8 + (.9 - .8) * rand.nextDouble();
 
             } else if (FaultType == "Strike-slip") {
 
@@ -82,7 +82,7 @@ public class DrillingEquations {
 
             } else {
 
-                sigmaH = 1.1 + (1.9 - 1.1) * rand.nextDouble();
+                sigmaH = 1.2 + (1.9 - 1.2) * rand.nextDouble();
             }
 
             return sigmaH;
@@ -97,7 +97,7 @@ public class DrillingEquations {
 
             if (FaultType == "Normal") {
 
-                sigmah = .6 + (.7 - .6) * rand.nextDouble();
+                sigmah = .6 + (.77 - .6) * rand.nextDouble();
 
             } else if (FaultType == "Strike-slip") {
 
@@ -105,7 +105,7 @@ public class DrillingEquations {
 
             } else {
 
-                sigmah = 1 + (1.2 - 1) * rand.nextDouble();
+                sigmah = 1.1 + (1.2 - 1.1) * rand.nextDouble();
             }
 
             return sigmah;
@@ -250,7 +250,7 @@ public class DrillingEquations {
         //sigmaTheta at all angles 0-360 degrees
         for (int i = 0; i < arrayLength; i++) {
 
-            sigmaTheta[i] = SH + Sh - 2 * (SH - Sh) * Math.cos(Math.toRadians(2 * i)) - 4 * ThoXY * Math.sin(Math.toRadians(2 * i)) - deltaP;
+            sigmaTheta[i] = SH + Sh - 2 * (SH - Sh) * Math.cos(Math.toRadians(2 * i)) - 4 * ThoXY * Math.sin(Math.toRadians(2 * i)) + deltaP;
 
 
         }
@@ -342,6 +342,7 @@ public class DrillingEquations {
         double sigmaZ[];
         double highestSigmaTheta;
 
+
         sigmaZ = new double[361];
         int arrayLength = sigmaZ.length;
 
@@ -381,11 +382,12 @@ public class DrillingEquations {
         this.ThoRZ = 0;
         return this.ThoRZ;
     }
+    //Calculate Sigma1 all angles array
+    public static double[] Sigma1Array(double[] sigmaTheta, double[] sigmaZ, double[] ThoThetaZ){
 
-    //Calculate Sigma1
-    public static double Sigma1(double[] sigmaTheta, double[] sigmaZ, double[] ThoThetaZ){
-
+        int index = -1;
         double[] Sigma1;
+        double[] sortedSigma1;
         double sigma1Max;
         Sigma1 = new double[361];
         int arrayLength = Sigma1.length;
@@ -395,33 +397,63 @@ public class DrillingEquations {
             Sigma1[i] = 0.5 * (sigmaTheta[i] + sigmaZ[i]) + 0.5 * Math.sqrt((sigmaTheta[i] - sigmaZ[i]) * (sigmaTheta[i] - sigmaZ[i]) + 4 * ThoThetaZ[i] * ThoThetaZ[i]);
         }
 
+        return Sigma1;
+    }
+
+    //Calculate Sigma1 max
+    public static double Sigma1(double[] sigmaTheta, double[] sigmaZ, double[] ThoThetaZ){
+
+        int index = -1;
+        double[] Sigma1;
+        double[] sortedSigma1;
+        double sigma1Max;
+        Sigma1 = new double[361];
+        int arrayLength = Sigma1.length;
+
+        //Sigma1 at all angles 0-360 degrees
+        for (int i = 0; i < arrayLength; i++) {
+            Sigma1[i] = 0.5 * (sigmaTheta[i] + sigmaZ[i]) + 0.5 * Math.sqrt((sigmaTheta[i] - sigmaZ[i]) * (sigmaTheta[i] - sigmaZ[i]) + 4 * ThoThetaZ[i] * ThoThetaZ[i]);
+        }
+
+        sortedSigma1 = Sigma1.clone();
+
         // Sort the array from smallest to highest
-        Arrays.sort(Sigma1);
+        Arrays.sort(sortedSigma1);
 
         //Find highest sigTheta value
         sigma1Max = Sigma1[Sigma1.length - 1];
 
+
         return sigma1Max;
     }
 
-    //Calculate Sigma2
-    public static double Sigma2(double[] sigmaTheta, double[] sigmaZ, double[] ThoThetaZ){
-        double[] Sigma2;
-        double sigma2Max;
-        Sigma2 = new double[361];
-        int arrayLength = Sigma2.length;
-        //Sigma2 at all angles 0-360 degrees
-        for (int i = 0; i < arrayLength; i++) {
-            Sigma2[i] = 0.5 * (sigmaTheta[i] + sigmaZ[i]) - 0.5 * Math.sqrt((sigmaTheta[i] - sigmaZ[i]) * (sigmaTheta[i] - sigmaZ[i]) + 4 * ThoThetaZ[i] * ThoThetaZ[i]);
+    public static int Sigma1MaxTheta(double[] Sigma1, double sigma1Max){
+
+        int index = -1;
+        int arrayLength = Sigma1.length;
+
+
+        //Find the angle that produced the highest sigTheta value.
+        for (int i = 0;i<arrayLength;i++){
+
+            if(Sigma1[i] == sigma1Max){
+                index = i;
+                break;
+            }
         }
 
-        // Sort the array from smallest to highest
-        Arrays.sort(Sigma2);
 
-        //Find highest sigTheta value
-        sigma2Max = Sigma2[Sigma2.length - 1];
+        return index;
+    }
 
-        return sigma2Max;
+    //Calculate Sigma2
+    public static double Sigma2(double[] sigmaTheta, double[] sigmaZ, double[] ThoThetaZ,int sigmaThetaAngle){
+        double Sigma2;
+
+        //Sigma2 at the angle that generates the maximum sigma1 value. sigmaTheaAngle comes from the method Sigma1MaxTheta
+            Sigma2 = 0.5 * (sigmaTheta[sigmaThetaAngle] + sigmaZ[sigmaThetaAngle]) - 0.5 * Math.sqrt((sigmaTheta[sigmaThetaAngle] - sigmaZ[sigmaThetaAngle]) * (sigmaTheta[sigmaThetaAngle] - sigmaZ[sigmaThetaAngle]) + 4 * ThoThetaZ[sigmaThetaAngle] * ThoThetaZ[sigmaThetaAngle]);
+
+        return Sigma2;
     }
 
     //Calculate Sigma3
@@ -434,11 +466,11 @@ public class DrillingEquations {
 
     //Tensile fracture condition
 
-    public static String tensileFailureCondition(double Sigma1, double tensile){
+    public static String tensileFailureCondition(double Sigma2, double tensile){
 
         String tensileCondition;
 
-        if (Sigma1 > tensile){
+        if (Sigma2 <= -1*tensile){
 
             tensileCondition = "Failure";
         }
@@ -579,5 +611,433 @@ public class DrillingEquations {
 
             return ROP;
         }
+    }
+
+    public double compressionStrengthInitial(double sigma1, double sigma3,String GSIValue, String jointValue, String lithology){
+
+        double compressionStrength=-1;
+        double mIndex =-1;
+        double calibrationFactor = -1;
+        double b;
+        double c = sigma3*sigma3-sigma1*sigma1;
+
+        if (GSIValue == "75-100") {
+
+            if (lithology =="Sandstone"){
+
+                if (jointValue =="Unknown/None"){
+
+                    mIndex = 15;
+                    calibrationFactor = 1;
+                    mIndex = mIndex*calibrationFactor;
+                    b = mIndex*sigma3;
+                    c = sigma3*sigma3-sigma1*sigma1;
+                    compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
+                }
+                else if (jointValue =="Low"){
+                    mIndex = 15;
+                    calibrationFactor = .8;
+                    mIndex = mIndex*calibrationFactor;
+                    b = mIndex*sigma3;
+                    compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
+                }
+                else if (jointValue =="Medium"){
+                    mIndex = 15;
+                    calibrationFactor = .66;
+                    mIndex = mIndex*calibrationFactor;
+                    b = mIndex*sigma3;
+
+
+                    compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
+                }
+                else{
+                    mIndex = 15;
+                    calibrationFactor = .5;
+                    mIndex = mIndex*calibrationFactor;
+                    b = mIndex*sigma3;
+                    compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
+                }
+
+            }
+            else if (lithology =="Limestone" || lithology == "Dolomite"){
+                if (jointValue =="Unknown/None"){
+
+                    mIndex = 7;
+                    calibrationFactor = 1;
+                    mIndex = mIndex*calibrationFactor;
+                    b = mIndex*sigma3;
+                    compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
+                }
+                else if (jointValue =="Low"){
+                    mIndex = 7;
+                    calibrationFactor = .8;
+                    mIndex = mIndex*calibrationFactor;
+                    b = mIndex*sigma3;
+                    compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
+                }
+                else if (jointValue =="Medium"){
+                    mIndex = 7;
+                    calibrationFactor = .66;
+                    mIndex = mIndex*calibrationFactor;
+                    b = mIndex*sigma3;
+                    compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
+                }
+                else{
+                    mIndex = 7;
+                    calibrationFactor = .5;
+                    mIndex = mIndex*calibrationFactor;
+                    b = mIndex*sigma3;
+                    compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
+                }
+            }
+            else if (lithology =="Shale" || lithology =="Siltstone"){
+                if (jointValue =="Unknown/None"){
+
+                    mIndex = 10;
+                    calibrationFactor = 1;
+                    mIndex = mIndex*calibrationFactor;
+                    b = mIndex*sigma3;
+                    compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
+                }
+                else if (jointValue =="Low"){
+                    mIndex = 10;
+                    calibrationFactor = .8;
+                    mIndex = mIndex*calibrationFactor;
+                    b = mIndex*sigma3;
+                    compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
+                }
+                else if (jointValue =="Medium"){
+                    mIndex = 10;
+                    calibrationFactor = .66;
+                    mIndex = mIndex*calibrationFactor;
+                    b = mIndex*sigma3;
+                    compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
+                }
+                else{
+                    mIndex = 10;
+                    calibrationFactor = .5;
+                    mIndex = mIndex*calibrationFactor;
+                    b = mIndex*sigma3;
+                    compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
+                }
+            }
+            else{
+
+                compressionStrength = 3625; //default value used for salt with ~3-4% porosity
+            }
+
+        }
+        else if (GSIValue == "55-75"){
+
+            if (lithology =="Sandstone"){
+
+                if (jointValue =="Unknown/None"){
+
+                    mIndex = 7.5;
+                    calibrationFactor = 1;
+                    mIndex = mIndex*calibrationFactor;
+                    b = mIndex*sigma3;
+                    compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
+                }
+                else if (jointValue =="Low"){
+                    mIndex = 7.5;
+                    calibrationFactor = .8;
+                    mIndex = mIndex*calibrationFactor;
+                    b = mIndex*sigma3;
+                    compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
+                }
+                else if (jointValue =="Medium"){
+                    mIndex = 7.5;
+                    calibrationFactor = .66;
+                    mIndex = mIndex*calibrationFactor;
+                    b = mIndex*sigma3;
+                    compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
+                }
+                else{
+                    mIndex = 7.5;
+                    calibrationFactor = .5;
+                    mIndex = mIndex*calibrationFactor;
+                    b = mIndex*sigma3;
+                    compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
+                }
+
+            }
+            else if (lithology =="Limestone" || lithology == "Dolomite"){
+                if (jointValue =="Unknown/None"){
+
+                    mIndex = 3.5;
+                    calibrationFactor = 1;
+                    mIndex = mIndex*calibrationFactor;
+                    b = mIndex*sigma3;
+                    compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
+                }
+                else if (jointValue =="Low"){
+                    mIndex = 3.5;
+                    calibrationFactor = .8;
+                    mIndex = mIndex*calibrationFactor;
+                    b = mIndex*sigma3;
+                    compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
+                }
+                else if (jointValue =="Medium"){
+                    mIndex = 3.5;
+                    calibrationFactor = .66;
+                    mIndex = mIndex*calibrationFactor;
+                    b = mIndex*sigma3;
+                    compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
+                }
+                else{
+                    mIndex = 3.5;
+                    calibrationFactor = .5;
+                    mIndex = mIndex*calibrationFactor;
+                    b = mIndex*sigma3;
+                    compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
+                }
+            }
+            else if (lithology =="Shale" || lithology =="Siltstone"){
+
+                if (jointValue =="Unknown/None"){
+
+                    mIndex = 5;
+                    calibrationFactor = 1;
+                    mIndex = mIndex*calibrationFactor;
+                    b = mIndex*sigma3;
+                    compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
+                }
+                else if (jointValue =="Low"){
+                    mIndex = 5;
+                    calibrationFactor = .8;
+                    mIndex = mIndex*calibrationFactor;
+                    b = mIndex*sigma3;
+                    compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
+                }
+                else if (jointValue =="Medium"){
+                    mIndex = 5;
+                    calibrationFactor = .66;
+                    mIndex = mIndex*calibrationFactor;
+                    b = mIndex*sigma3;
+                    compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
+                }
+                else{
+                    mIndex = 5;
+                    calibrationFactor = .5;
+                    mIndex = mIndex*calibrationFactor;
+                    b = mIndex*sigma3;
+                    compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
+                }
+            }
+            else{
+
+                compressionStrength = 3625; //default value used for salt with ~3-4% porosity
+            }
+        }
+        else if (GSIValue == "35-55"){
+
+            if (lithology =="Sandstone"){
+
+                if (jointValue =="Unknown/None"){
+
+                    mIndex = 0.3;
+                    calibrationFactor = 1;
+                    mIndex = mIndex*calibrationFactor;
+                    b = mIndex*sigma3;
+                    compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
+                }
+                else if (jointValue =="Low"){
+                    mIndex = 0.3;
+                    calibrationFactor = .8;
+                    mIndex = mIndex*calibrationFactor;
+                    b = mIndex*sigma3;
+                    compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
+                }
+                else if (jointValue =="Medium"){
+                    mIndex = 0.3;
+                    calibrationFactor = .66;
+                    mIndex = mIndex*calibrationFactor;
+                    b = mIndex*sigma3;
+                    compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
+                }
+                else{
+                    mIndex = 0.3;
+                    calibrationFactor = .5;
+                    mIndex = mIndex*calibrationFactor;
+                    b = mIndex*sigma3;
+                    compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
+                }
+
+            }
+            else if (lithology =="Limestone" || lithology == "Dolomite"){
+
+                if (jointValue =="Unknown/None"){
+
+                    mIndex = 0.14;
+                    calibrationFactor = 1;
+                    mIndex = mIndex*calibrationFactor;
+                    b = mIndex*sigma3;
+                    compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
+                }
+                else if (jointValue =="Low"){
+                    mIndex = 0.14;
+                    calibrationFactor = .8;
+                    mIndex = mIndex*calibrationFactor;
+                    b = mIndex*sigma3;
+                    compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
+                }
+                else if (jointValue =="Medium"){
+                    mIndex = 0.14;
+                    calibrationFactor = .66;
+                    mIndex = mIndex*calibrationFactor;
+                    b = mIndex*sigma3;
+                    compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
+                }
+                else{
+                    mIndex = 0.14;
+                    calibrationFactor = .5;
+                    mIndex = mIndex*calibrationFactor;
+                    b = mIndex*sigma3;
+                    compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
+                }
+            }
+            else if (lithology =="Shale" || lithology =="Siltstone"){
+                if (jointValue =="Unknown/None"){
+
+                    mIndex = 0.2;
+                    calibrationFactor = 1;
+                    mIndex = mIndex*calibrationFactor;
+                    b = mIndex*sigma3;
+                    compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
+                }
+                else if (jointValue =="Low"){
+                    mIndex = 0.2;
+                    calibrationFactor = .8;
+                    mIndex = mIndex*calibrationFactor;
+                    b = mIndex*sigma3;
+                    compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
+                }
+                else if (jointValue =="Medium"){
+                    mIndex = 0.2;
+                    calibrationFactor = .66;
+                    mIndex = mIndex*calibrationFactor;
+                    b = mIndex*sigma3;
+                    compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
+                }
+                else{
+                    mIndex = 0.2;
+                    calibrationFactor = .5;
+                    mIndex = mIndex*calibrationFactor;
+                    b = mIndex*sigma3;
+                    compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
+                }
+            }
+            else{
+
+                compressionStrength = 3625; //default value used for salt with ~3-4% porosity
+            }
+
+        }
+        else {
+
+            if (lithology =="Sandstone"){
+
+                if (jointValue =="Unknown/None"){
+
+                    mIndex = .15;
+                    calibrationFactor = 1;
+                    mIndex = mIndex*calibrationFactor;
+                    b = mIndex*sigma3;
+                    compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
+                }
+                else if (jointValue =="Low"){
+                    mIndex = .15;
+                    calibrationFactor = .8;
+                    mIndex = mIndex*calibrationFactor;
+                    b = mIndex*sigma3;
+                    compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
+                }
+                else if (jointValue =="Medium"){
+                    mIndex = .15;
+                    calibrationFactor = .66;
+                    mIndex = mIndex*calibrationFactor;
+                    b = mIndex*sigma3;
+                    compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
+                }
+                else{
+                    mIndex = .15;
+                    calibrationFactor = .5;
+                    mIndex = mIndex*calibrationFactor;
+                    b = mIndex*sigma3;
+                    compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
+                }
+
+            }
+            else if (lithology =="Limestone" || lithology == "Dolomite"){
+
+                if (jointValue =="Unknown/None"){
+
+                    mIndex = 0.04;
+                    calibrationFactor = 1;
+                    mIndex = mIndex*calibrationFactor;
+                    b = mIndex*sigma3;
+                    compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
+                }
+                else if (jointValue =="Low"){
+                    mIndex = 0.04;
+                    calibrationFactor = .8;
+                    mIndex = mIndex*calibrationFactor;
+                    b = mIndex*sigma3;
+                    compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
+                }
+                else if (jointValue =="Medium"){
+                    mIndex = 0.04;
+                    calibrationFactor = .66;
+                    mIndex = mIndex*calibrationFactor;
+                    b = mIndex*sigma3;
+                    compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
+                }
+                else{
+                    mIndex = 0.04;
+                    calibrationFactor = .5;
+                    mIndex = mIndex*calibrationFactor;
+                    b = mIndex*sigma3;
+                    compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
+                }
+            }
+            else if (lithology =="Shale" || lithology =="Siltstone"){
+                if (jointValue =="Unknown/None"){
+
+                    mIndex = 0.05;
+                    calibrationFactor = 1;
+                    mIndex = mIndex*calibrationFactor;
+                    b = mIndex*sigma3;
+                    compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
+                }
+                else if (jointValue =="Low"){
+                    mIndex = 0.05;
+                    calibrationFactor = .8;
+                    mIndex = mIndex*calibrationFactor;
+                    b = mIndex*sigma3;
+                    compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
+                }
+                else if (jointValue =="Medium"){
+                    mIndex = 0.05;
+                    calibrationFactor = .66;
+                    mIndex = mIndex*calibrationFactor;
+                    b = mIndex*sigma3;
+                    compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
+                }
+                else{
+                    mIndex = 0.05;
+                    calibrationFactor = .5;
+                    mIndex = mIndex*calibrationFactor;
+                    b = mIndex*sigma3;
+                    compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
+                }
+            }
+            else{
+
+                compressionStrength = 3625; //default value used for salt with ~3-4% porosity
+            }
+
+        }
+        return compressionStrength;
     }
 }

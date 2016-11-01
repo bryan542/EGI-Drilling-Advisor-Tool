@@ -27,7 +27,8 @@ public class SettingDialog extends JDialog{
     private double test;
     private double densityChange;
     private double pressureChange;
-    private double lengthChange;;
+    private double lengthChange;
+    private double gradientChange;
 
 
     public SettingDialog(mainWindow mw){
@@ -37,6 +38,8 @@ public class SettingDialog extends JDialog{
         densityChange = 1;
         pressureChange =1;
         lengthChange =1;
+        gradientChange = 1;
+
 
 
     //Set Image Icon
@@ -136,6 +139,7 @@ public class SettingDialog extends JDialog{
             String principal3 = "Principal Stress at the Wellbore σ3 ";
             String inputStressGradients = "Stress Gradients ";
 
+
             @Override
             public void actionPerformed(ActionEvent e) {
 
@@ -145,14 +149,17 @@ public class SettingDialog extends JDialog{
                         densityChange = 1;
                         pressureChange =1;
                         lengthChange =1;
+                        gradientChange =1;
                         String pressure = "(psi)";
-                        String density = "(lb/gal)";
+                        String density = "(ppg)";
                         String length = "(ft)";
                         String gradient = "(psi/ft)";
                         mw.setDepthLabel(depth+length);
                         mw.setMudWeightLabel(mudweight+density);
                         mw.setCohesionLabel(cohesion+pressure);
                         mw.setTensileLabel(tensileStrength+pressure);
+                        mw.setInputTensileStrengthLabel(tensileStrength+pressure);
+                        mw.setTensileStrengthOutputLabel(tensileStrength+pressure);
                         mw.setPorePressureLabel(porePressure+pressure);
                         mw.setFarSigmaHLabel(farSigmaH+pressure);
                         mw.setFarSigmahLabel(farSigmah+pressure);
@@ -164,6 +171,8 @@ public class SettingDialog extends JDialog{
                         mw.setDensityUM(densityChange);
                         mw.setPressureUM(pressureChange);
                         mw.setLengthUM(lengthChange);
+                        mw.setGradientUM(gradientChange);
+
 
                     }
                     else if(SIUnitsRadioButton.isSelected() && SIUnitsRadioButton.isEnabled()){
@@ -171,6 +180,7 @@ public class SettingDialog extends JDialog{
                         densityChange = 8.3454;
                         pressureChange =0.145038;
                         lengthChange =3.28084;
+                        gradientChange = 4.4208e-5;
                         String pressure = "(kPa)";
                         String density = "(g/cc)";
                         String length = "(m)";
@@ -179,6 +189,8 @@ public class SettingDialog extends JDialog{
                         mw.setMudWeightLabel(mudweight+density);
                         mw.setCohesionLabel(cohesion+pressure);
                         mw.setTensileLabel(tensileStrength+pressure);
+                        mw.setInputTensileStrengthLabel(tensileStrength+pressure);
+                        mw.setTensileStrengthOutputLabel(tensileStrength+pressure);
                         mw.setPorePressureLabel(porePressure+pressure);
                         mw.setFarSigmaHLabel(farSigmaH+pressure);
                         mw.setFarSigmahLabel(farSigmah+pressure);
@@ -190,6 +202,7 @@ public class SettingDialog extends JDialog{
                         mw.setDensityUM(densityChange);
                         mw.setPressureUM(pressureChange);
                         mw.setLengthUM(lengthChange);
+                        mw.setGradientUM(gradientChange);
                     }
                     else{
 
@@ -200,7 +213,7 @@ public class SettingDialog extends JDialog{
                     if (comboBox1.getSelectedItem() =="ppg" && comboBox1.isEnabled()){
 
                         densityChange = 1;
-                        String density = "(lb/gal)";
+                        String density = "(ppg)";
                         mw.setMudWeightLabel(mudweight+density);
                         mw.setDensityUM(densityChange);
                     }
@@ -219,14 +232,15 @@ public class SettingDialog extends JDialog{
 
                         pressureChange =1;
                         String pressure = "(psi)";
-                        String gradient = inputStressGradients+"(psi/"+comboBox3.getSelectedItem().toString()+")";
+
                         mw.setCohesionLabel(cohesion+pressure);
                         mw.setTensileLabel(tensileStrength+pressure);
+                        mw.setInputTensileStrengthLabel(tensileStrength+pressure);
+                        mw.setTensileStrengthOutputLabel(tensileStrength+pressure);
                         mw.setPorePressureLabel(porePressure+pressure);
                         mw.setFarSigmaHLabel(farSigmaH+pressure);
                         mw.setFarSigmahLabel(farSigmah+pressure);
                         mw.setFarSigmaVLabel(farSigmaV+pressure);
-                        mw.setInputStressGradientLabel(gradient);
                         mw.setPrincipalSigma1Label(principal1+pressure);
                         mw.setPrincipalSigma2Label(principal2+pressure);
                         mw.setPrincipalSigma3Label(principal3+pressure);
@@ -236,14 +250,15 @@ public class SettingDialog extends JDialog{
 
                         pressureChange =0.145038;
                         String pressure = "(kPa)";
-                        String gradient = inputStressGradients+"(Pa/"+comboBox2.getSelectedItem().toString()+")";
+
                         mw.setCohesionLabel(cohesion+pressure);
                         mw.setTensileLabel(tensileStrength+pressure);
+                        mw.setInputTensileStrengthLabel(tensileStrength+pressure);
+                        mw.setTensileStrengthOutputLabel(tensileStrength+pressure);
                         mw.setPorePressureLabel(porePressure+pressure);
                         mw.setFarSigmaHLabel(farSigmaH+pressure);
                         mw.setFarSigmahLabel(farSigmah+pressure);
                         mw.setFarSigmaVLabel(farSigmaV+pressure);
-                        mw.setInputStressGradientLabel(gradient);
                         mw.setPrincipalSigma1Label(principal1+pressure);
                         mw.setPrincipalSigma2Label(principal2+pressure);
                         mw.setPrincipalSigma3Label(principal3+pressure);
@@ -257,24 +272,24 @@ public class SettingDialog extends JDialog{
 
                         lengthChange =1;
                         String length = "(ft)";
-                        String gradient = inputStressGradients+"("+comboBox2.getSelectedItem().toString()+"/ft)";
                         mw.setDepthLabel(depth+length);
                         mw.setLengthUM(lengthChange);
-                        mw.setInputStressGradientLabel(gradient);
+
                     }
                     else if(comboBox3.getSelectedItem() =="m" && comboBox3.isEnabled()){
 
                         lengthChange =3.28084;
                         String length = "(m)";
-                        String gradient = inputStressGradients+"("+comboBox2.getSelectedItem().toString()+"/m)";
                         mw.setDepthLabel(depth+length);
                         mw.setLengthUM(lengthChange);
-                        mw.setInputStressGradientLabel(gradient);
+
                     }
                     else{
 
                     }
                 }
+
+            mw.resetTool();
 
             }
 

@@ -17,6 +17,8 @@ public class StressPolygonDataset {
 
         ShMin = (SigmaV/3.1)+PorePR*depth;
         SHMax = SigmaV*3.1-PorePR*depth;
+
+
         SHMaxDiagnolMin = (SHMax+depth*PorePR)/3.1+depth*PorePR;
         SHMaxDiagnolMax = SigmaV+PorePR*depth;
 

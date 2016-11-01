@@ -98,7 +98,7 @@ public class PDFTest {
             filename = filename.replaceAll(".pdf", "");
             filename = filename + ".pdf";
 
-            String image = "D:\\EGI Drilling Advisor Tool\\src\\Executable\\EGI.png";
+            String image = "F:\\EGI Drilling Advisor Tool\\src\\Executable\\EGI.png";
 
 
             //Checks to see if file pathname already exists and gives override option

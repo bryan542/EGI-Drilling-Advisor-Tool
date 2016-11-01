@@ -7,6 +7,13 @@ import java.util.Random;
  */
 public class SecondSetEquations {
 
+
+    //Find betaAngle
+
+    public double betaAngle(int maxStressStrike,int inputStrike){
+int betaAngle=-1;
+return betaAngle;
+    }
     //Faults range calculations
     public static double fault(String conductivity, double beta,String chooseParam) {
 
@@ -17,7 +24,16 @@ public class SecondSetEquations {
         double longTermIntegrity;
         double ROP;
 
-        if(conductivity =="High"){
+
+        if(conductivity =="Unknown/None"){
+            instability=0;
+            lossOfCirc=0;
+            wellControl=0;
+            longTermIntegrity=0;
+            ROP=0;
+
+        }
+        else if(conductivity =="High"){
 
             if(beta>30 && beta<75){
 
@@ -98,7 +114,15 @@ public class SecondSetEquations {
         double longTermIntegrity;
         double ROP;
 
-        if(joint =="High"){
+        if(joint =="Unknown/None"){
+            instability=0;
+            lossOfCirc=0;
+            wellControl=0;
+            longTermIntegrity=0;
+            ROP=0;
+
+        }
+        else if(joint =="High"){
 
             instability = 12 + (5-12)*rand.nextDouble();
             lossOfCirc = 15+ (20-15)*rand.nextDouble();
@@ -153,133 +177,6 @@ public class SecondSetEquations {
         }
     }
 
-    //Deformation range calculations
-    public static double deformation(String deformation, double beta,String chooseParam) {
-
-        Random rand = new Random();
-        double instability;
-        double lossOfCirc;
-        double wellControl;
-        double longTermIntegrity;
-        double ROP;
-        if (deformation == "Unknown"){
-
-             instability=0;
-             lossOfCirc=0;
-             wellControl=0;
-             longTermIntegrity=0;
-             ROP=0;
-        }
-
-        else if(deformation =="Deformation Band"){
-
-            if(beta>30 && beta<75){
-
-                instability = 8+ (10-8)*rand.nextDouble();
-                longTermIntegrity = 8+ (10-8)*rand.nextDouble();
-                ROP = 8+ (10-8)*rand.nextDouble();
-            }
-            else{
-                instability = 3 + (6-3)*rand.nextDouble();
-                longTermIntegrity = 4+ (6-4)*rand.nextDouble();
-                ROP = 4+ (7-4)*rand.nextDouble();
-            }
-            lossOfCirc = 10+ (15-10)*rand.nextDouble();
-            wellControl = 10+ (15-10)*rand.nextDouble();
-        }
-        else if(deformation =="Compaction Band"){
-
-            if(beta>30 && beta<75){
-
-                instability = 10+ (15-10)*rand.nextDouble();
-                longTermIntegrity = 10+ (15-10)*rand.nextDouble();
-                ROP = 12+ (15-12)*rand.nextDouble();
-            }
-            else{
-                instability = 8 + (10-8)*rand.nextDouble();
-                longTermIntegrity = 8+ (10-8)*rand.nextDouble();
-                ROP = 8+ (10-8)*rand.nextDouble();
-            }
-            lossOfCirc = 15+ (20-15)*rand.nextDouble();
-            wellControl = 15+ (20-15)*rand.nextDouble();
-        }
-        else{
-
-            if(beta>30 && beta<75){
-
-                instability = 15+ (20-15)*rand.nextDouble();
-                longTermIntegrity = 9+ (10-9)*rand.nextDouble();
-                ROP = 5+ (7-5)*rand.nextDouble();
-            }
-            else{
-                instability = 10 + (15-10)*rand.nextDouble();
-                longTermIntegrity = 4+ (6-4)*rand.nextDouble();
-                ROP = 0+ (5-0)*rand.nextDouble();
-            }
-            lossOfCirc = 5+ (10-5)*rand.nextDouble();
-            wellControl = 5+ (10-5)*rand.nextDouble();
-        }
-
-        if (chooseParam == "Instability"){
-
-            return instability;
-        }
-        else if(chooseParam == "LossOfCirculation"){
-
-            return lossOfCirc;
-        }
-        else if (chooseParam == "WellControl"){
-
-            return wellControl;
-        }
-        else if (chooseParam == "LongTermIntegrity"){
-
-            return longTermIntegrity;
-        }
-        else{
-
-            return ROP;
-        }
-    }
-
-    //Stylolite range calculations
-    public static double stylolite(String chooseParam) {
-
-        Random rand = new Random();
-        double instability;
-        double lossOfCirc;
-        double wellControl;
-        double longTermIntegrity;
-        double ROP;
-
-              instability = 5 + (10-5)*rand.nextDouble();
-              lossOfCirc = 10+ (15-10)*rand.nextDouble();
-              wellControl = 10+ (15-10)*rand.nextDouble();
-              longTermIntegrity = 5+ (10-5)*rand.nextDouble();
-              ROP = 5+ (10-5)*rand.nextDouble();
-
-        if (chooseParam == "Instability"){
-
-            return instability;
-        }
-        else if(chooseParam == "LossOfCirculation"){
-
-            return lossOfCirc;
-        }
-        else if (chooseParam == "WellControl"){
-
-            return wellControl;
-        }
-        else if (chooseParam == "LongTermIntegrity"){
-
-            return longTermIntegrity;
-        }
-        else{
-
-            return ROP;
-        }
-    }
-
     //Unconformity between bedding range calculations
     public static double unconformity(String unconformity, double beta, String chooseParam) {
 
@@ -290,7 +187,7 @@ public class SecondSetEquations {
         double longTermIntegrity;
         double ROP;
 
-        if(unconformity =="Unknown"){
+        if(unconformity =="Unknown/None"){
             instability=0;
             lossOfCirc=0;
             wellControl=0;
@@ -372,16 +269,16 @@ public class SecondSetEquations {
 
     //Find Instability,LossOfCirculation, WellControl, LongTermIntegrity, and ROP values
 
-    public static double secondSetValues(String faultParam, String jointParam,String deformationParam,String unconformityParam,double betaParam,String chooseParam) {
+    public static double secondSetValues(String faultParam, String jointParam,String unconformityParam,double betaParam,String chooseParam) {
         double valueAverage;
         double value1=0;
         double value2=0;
         double value3=0;
-        double value4=0;
+
         double count = 0;
         int i = 1;
 
-        while(i <5) {
+        while(i <4) {
 
             if (i == 1) {
 
@@ -399,26 +296,22 @@ public class SecondSetEquations {
                     count = count + 1;
                 }
 
-            } else if (i == 3) {
+            }  else {
 
-                value3 = deformation(deformationParam, betaParam, chooseParam);
+                value3 = unconformity(unconformityParam, betaParam, chooseParam);
+
                 if (value3 != 0) {
-
-                    count = count + 1;
-                }
-
-            } else {
-
-                value4 = unconformity(unconformityParam, betaParam, chooseParam);
-
-                if (value4 != 0) {
 
                     count = count + 1;
                 }
             }
             i++;
         }
-        valueAverage = (value1+value2+value3+value4)/count;
+        valueAverage = (value1+value2+value3)/count;
+
+        if (Double.isNaN(valueAverage)){
+            valueAverage = 0;
+        }
 
         return valueAverage;
     }

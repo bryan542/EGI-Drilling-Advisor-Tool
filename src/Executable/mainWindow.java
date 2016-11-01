@@ -12,6 +12,8 @@ import java.awt.*;
 import java.awt.event.*;
 import java.net.URL;
 import java.util.Arrays;
+import java.util.concurrent.TimeUnit;
+
 import org.jfree.data.xy.XYSeriesCollection;
 
 
@@ -24,27 +26,49 @@ public class mainWindow extends JFrame {
     private JTabbedPane tabbedPane1;
     private JPanel DrilOutPanel2;
     private JPanel InputPanel1;
+    private JPanel WellControlRatingConditionResult;
+    public JPanel MainPanel;
+    private JPanel betaImagePanel;
+    private JPanel secondInputsPanel;
+    private JPanel JPanelTest;
+    private JPanel PicturePanel;
+
     private JComboBox PoreCombo;
     private JComboBox FaultTypeCombo;
     private JComboBox FaultConductCombo;
     private JComboBox BeddingCombo;
-    private JComboBox DeformationCombo;
     private JComboBox JointCombo;
     private JComboBox LithologyCombo;
     private JComboBox PermCombo;
     private JComboBox GSICombo;
-    private JTextField Alpha1Text;
+
     private JTextField BetaText;
-    private JTextField GammaText;
-    private JTextField Alpha2Text;
-    private JTextField MudWeightText;
-    private JTextField TensileText;
-    private JFormattedTextField PoissonText;
-    private JButton calculateButton;
-    private JButton clearButton;
+    private JTextField alpha1Text;
+    private JTextField gammaText;
+    private JTextField alpha2Text;
+    private JTextField mudWeightText;
+    private JTextField tensileText;
+    private JTextField poissonText;
+    private JTextField depthText;
+    private JTextField cohesionText;
+    private JTextField sigmaVTextField;
+    private JTextField sigmaMaxTextField;
+    private JTextField sigmaMinTextField;
+    private JTextField porePressureTextField;
+    private JTextField sigmaVStrikeTextField;
+    private JTextField sigmaMaxStrikeTextField;
+    private JTextField sigmaMinStrikeTextField;
+    private JTextField beddingPlaneStrikeTextField;
+    private JTextField faultConductivityStrikeTextField;
+    private JTextField jointStrikeTextField;
+    private JTextField sigmaVDipTextField;
+    private JTextField sigmaMaxDipTextField;
+    private JTextField sigmaMinDipTextField;
+    private JTextField beddingPlaneDipTextField;
+    private JTextField faultConductivityDipTextField;
+    private JTextField jointDipTextField;
+
     private JLabel AlphaImageLabel;
-    public JPanel MainPanel;
-    private JTextField DepthText;
     private JLabel PorePressureResult;
     private JLabel SigmaVResult;
     private JLabel SigmaHResult;
@@ -61,23 +85,26 @@ public class mainWindow extends JFrame {
     private JLabel ROPRating;
     private JLabel InstableConditionResult;
     private JLabel LostCirculationConditionResult;
-
-
     private JLabel LongTermIntegrityConditionResult;
     private JLabel ROPConditionResult;
     private JLabel WellControlConditionResult;
     private JLabel BetaImageLabel;
-    private JPanel WellControlRatingConditionResult;
-    private JLabel DepthLabel;
-    private JPanel secondInputsPanel;
+    private JLabel depthLabel;
     private JLabel mudWeightLabel;
-    private JLabel CohesionLabel;
+    private JLabel cohesionLabel;
     private JLabel gammaLabel;
     private JLabel alpha1Label;
     private JLabel alpha2Label;
     private JLabel tensileLabel;
     private JLabel poissonLabel;
-    private JTextField CohesionText;
+    private JLabel inputPorePressureLabel;
+    private JLabel inputSigmaMinLabel;
+    private JLabel inputSigmaMaxLabel;
+    private JLabel inputSigmaVLabel;
+    private JLabel beddingPlaneConductivityLabel;
+    private JLabel faultConductivityLabel;
+    private JLabel jointLabel;
+    private JLabel inputStressGradientLabel;
     private JLabel porePressureLabel;
     private JLabel farSigmaVLabel;
     private JLabel farSigmaHLabel;
@@ -85,37 +112,216 @@ public class mainWindow extends JFrame {
     private JLabel principalSigma1Label;
     private JLabel principalSigma2Label;
     private JLabel principalSigma3Label;
-    private JLabel betaLabel;
+    private JLabel tensileStrengthLabel;
+    private JLabel inputTensileStrengthLabel;
+    private JLabel tensileStrengthOutputLabel;
+
     private JTextPane ratingTextPane;
+
+    private JButton calculateButton;
+    private JButton clearButton;
     private JButton exportReportButton;
     private JButton GSITableButton;
-    private JRadioButton automaticRadioButton;
-    private JRadioButton manualInputRadioButton;
-    private JTextField sigmaVTextField;
-    private JTextField sigmaMaxTextField;
-    private JTextField sigmaMinTextField;
-    private JTextField porePressureTextField;
-    private JLabel inputPorePressureLabel;
-    private JLabel inputSigmaMinLabel;
-    private JLabel inputSigmaMaxLabel;
-    private JLabel inputSigmaVLabel;
-    private JLabel inputStressGradientLabel;
-    private JPanel betaImagePanel;
-    private JPanel PicturePanel;
+
+    private JRadioButton stressAutomaticRadioButton;
+
+    private JRadioButton stressManualInputRadioButton;
+    private JRadioButton tensileAutomaticRadioButton;
+    private JRadioButton tensileManualRadioButton;
+
     private static double densityUM = 1;
     private static double pressureUM =1;
     private static double lengthUM =1;
+    private static double gradientUM = 1;
     private boolean buttonCount = true;
 
+    public JLabel getDepthLabel() {
+        return depthLabel;
+    }
 
+    public JLabel getMudWeightLabel() {
+        return mudWeightLabel;
+    }
+
+    public JLabel getCohesionLabel() {
+        return cohesionLabel;
+    }
+
+    public JLabel getGammaLabel() {
+        return gammaLabel;
+    }
+
+    public JLabel getAlpha1Label() {
+        return alpha1Label;
+    }
+
+    public JLabel getAlpha2Label() {
+        return alpha2Label;
+    }
+
+    public JLabel getTensileLabel() {
+        return tensileLabel;
+    }
+
+    public JLabel getPoissonLabel() {
+        return poissonLabel;
+    }
+
+    public JLabel getInputPorePressureLabel() {
+        return inputPorePressureLabel;
+    }
+
+    public JLabel getInputSigmaMinLabel() {
+        return inputSigmaMinLabel;
+    }
+
+    public JLabel getInputSigmaMaxLabel() {
+        return inputSigmaMaxLabel;
+    }
+
+    public JLabel getInputSigmaVLabel() {
+        return inputSigmaVLabel;
+    }
+
+    public JLabel getBeddingPlaneConductivityLabel() {
+        return beddingPlaneConductivityLabel;
+    }
+
+    public JLabel getFaultConductivityLabel() {
+        return faultConductivityLabel;
+    }
+
+    public JLabel getJointLabel() {
+        return jointLabel;
+    }
+
+    public JTextField getAlpha1Text() {
+        return alpha1Text;
+    }
+
+    public JTextField getGammaText() {
+        return gammaText;
+    }
+
+    public JTextField getAlpha2Text() {
+        return alpha2Text;
+    }
+
+    public JTextField getMudWeightText() {
+        return mudWeightText;
+    }
+
+    public JTextField getTensileText() {
+        return tensileText;
+    }
+
+    public JTextField getPoissonText() {
+        return poissonText;
+    }
+
+    public JTextField getDepthText() {
+        return depthText;
+    }
+
+    public JTextField getCohesionText() {
+        return cohesionText;
+    }
+
+    public JTextField getSigmaVTextField() {
+        return sigmaVTextField;
+    }
+
+    public JTextField getSigmaMaxTextField() {
+        return sigmaMaxTextField;
+    }
+
+    public JTextField getSigmaMinTextField() {
+        return sigmaMinTextField;
+    }
+
+    public JTextField getPorePressureTextField() {
+        return porePressureTextField;
+    }
+
+    public JTextField getSigmaVStrikeTextField() {
+        return sigmaVStrikeTextField;
+    }
+
+    public JTextField getSigmaMaxStrikeTextField() {
+        return sigmaMaxStrikeTextField;
+    }
+
+    public JTextField getSigmaMinStrikeTextField() {
+        return sigmaMinStrikeTextField;
+    }
+
+    public JTextField getBeddingPlaneStrikeTextField() {
+        return beddingPlaneStrikeTextField;
+    }
+
+    public JTextField getFaultConductivityStrikeTextField() {
+        return faultConductivityStrikeTextField;
+    }
+
+    public JTextField getJointStrikeTextField() {
+        return jointStrikeTextField;
+    }
+
+    public JTextField getSigmaVDipTextField() {
+        return sigmaVDipTextField;
+    }
+
+    public JTextField getSigmaMaxDipTextField() {
+        return sigmaMaxDipTextField;
+    }
+
+    public JTextField getSigmaMinDipTextField() {
+        return sigmaMinDipTextField;
+    }
+
+    public JTextField getBeddingPlaneDipTextField() {
+        return beddingPlaneDipTextField;
+    }
+
+    public JTextField getFaultConductivityDipTextField() {
+        return faultConductivityDipTextField;
+    }
+
+    public JTextField getJointDipTextField() {
+        return jointDipTextField;
+    }
+
+    public JRadioButton getStressAutomaticRadioButton() {
+        return stressAutomaticRadioButton;
+    }
+
+    public JRadioButton getStressManualInputRadioButton() {
+        return stressManualInputRadioButton;
+    }
+
+    public JRadioButton getTensileAutomaticRadioButton() {
+        return tensileAutomaticRadioButton;
+    }
+
+    public JRadioButton getTensileManualRadioButton() {
+        return tensileManualRadioButton;
+    }
+
+
+    public void setTensileStrengthOutputLabel(String text) {
+        this.tensileStrengthOutputLabel.setText(text);
+    }
+    public void setInputTensileStrengthLabel(String text) {
+        this.inputTensileStrengthLabel.setText(text);
+    }
     public void setDepthLabel(String text) {
-        this.DepthLabel.setText(text);
+        this.depthLabel.setText(text);
     }
     public void setMudWeightLabel(String text) {
         this.mudWeightLabel.setText(text);
     }
     public void setCohesionLabel(String text) {
-        this.CohesionLabel.setText(text);
+        this.cohesionLabel.setText(text);
     }
 
     public void setTensileLabel(String text) {
@@ -193,10 +399,73 @@ public class mainWindow extends JFrame {
     }
     public void setLengthUM(double unitChange){
         lengthUM = unitChange;
-
+    }
+    public static void setGradientUM(double unitChange) {
+        gradientUM = unitChange;
     }
 
+    //reset everything back to default
+    public void resetTool() {
+
+
+        depthText.setText("");
+        mudWeightText.setText("");
+        cohesionText.setText("");
+        gammaText.setText("");
+        alpha1Text.setText("");
+        alpha2Text.setText("");
+        tensileText.setText("");
+        poissonText.setText("");
+        PorePressureResult.setText("");
+        SigmaVResult.setText("");
+        SigmaHResult.setText("");
+        SigmahResult.setText("");
+        Principle1Result.setText("");
+        Principle2Result.setText("");
+        Principle3Result.setText("");
+        TensileFailResult.setText("");
+        ShearFailResult.setText("");
+        ratingTextPane.setText("");
+        InstableConditionResult.setText("");
+        LostCirculationConditionResult.setText("");
+        WellControlConditionResult.setText("");
+        LongTermIntegrityConditionResult.setText("");
+        ROPConditionResult.setText("");
+        sigmaVTextField.setText("");
+        sigmaMaxTextField.setText("");
+        sigmaMinTextField.setText("");
+        porePressureTextField.setText("");
+        tensileStrengthLabel.setText("");
+        beddingPlaneStrikeTextField.setText("");
+        beddingPlaneDipTextField.setText("");
+        faultConductivityStrikeTextField.setText("");
+        faultConductivityDipTextField.setText("");
+        jointStrikeTextField.setText("");
+        jointDipTextField.setText("");
+        sigmaVStrikeTextField.setText("");
+        sigmaVDipTextField.setText("");
+        sigmaMaxStrikeTextField.setText("");
+        sigmaMaxDipTextField.setText("");
+        sigmaMinStrikeTextField.setText("");
+        sigmaMinDipTextField.setText("");
+
+        //remove original graphs and reset buttonCount
+        try{
+            tabbedPane1.remove(3);
+            tabbedPane1.remove(2);
+            buttonCount = true;
+        }
+        catch (Exception e2){
+
+        }
+    }
+
+
     public mainWindow() {
+
+
+        //Does not let you resize the window
+        mainWindow.this.setResizable(false);
 
         //sets EGI image icon
         URL url = mainWindow.class.getResource("EGI.png");
@@ -220,7 +489,7 @@ public class mainWindow extends JFrame {
         String faultList[] = listComboLists.GetFaultTypes();
         String PorePressureList[] = listComboLists.GetPorePressure();
         String FaultConductivityList[] = listComboLists.GetFaultConductivity();
-        String DeformationList[] = listComboLists.GetDeformation();
+
         String JointList[] = listComboLists.GetJoint();
         String BeddingUnconformityList[] = listComboLists.GetBeddingUnconformity();
         String LithologyList[] = listComboLists.GetLithology();
@@ -236,9 +505,6 @@ public class mainWindow extends JFrame {
         for  (int i =0; i< FaultConductivityList.length;i++) {
             FaultConductCombo.addItem(FaultConductivityList[i]);
         }
-        for  (int i =0; i< DeformationList.length;i++) {
-            DeformationCombo.addItem(DeformationList[i]);
-        }
         for  (int i =0; i< JointList.length;i++) {
             JointCombo.addItem(JointList[i]);
         }
@@ -253,18 +519,21 @@ public class mainWindow extends JFrame {
         }
         for  (int i =0; i< PermeabilityList.length;i++) {
         PermCombo.addItem(PermeabilityList[i]);
-         }
+        }
 
         //Assemble stress gradient buttongroup
         ButtonGroup stressBg = new ButtonGroup();
-        stressBg.add(automaticRadioButton);
-        stressBg.add(manualInputRadioButton);
+        stressBg.add(stressAutomaticRadioButton);
+        stressBg.add(stressManualInputRadioButton);
 
         //set the automatic button as the default
-        automaticRadioButton.setSelected(true);
+        stressAutomaticRadioButton.setSelected(true);
+
+
+
 
         //set launch conditional parameters. Kinda redundant, but acts as a failsafe too.
-        if(automaticRadioButton.isSelected()){
+        if(stressAutomaticRadioButton.isSelected()){
             sigmaVTextField.setEnabled(false);
             sigmaMaxTextField.setEnabled(false);
             sigmaMinTextField.setEnabled(false);
@@ -292,7 +561,7 @@ public class mainWindow extends JFrame {
         }
 
         //enable/disable actions when the gradient buttons are clicked.
-        automaticRadioButton.addActionListener(new ActionListener() {
+        stressAutomaticRadioButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 sigmaVTextField.setEnabled(false);
@@ -309,7 +578,7 @@ public class mainWindow extends JFrame {
             }
         });
 
-        manualInputRadioButton.addActionListener(new ActionListener() {
+        stressManualInputRadioButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
@@ -327,6 +596,38 @@ public class mainWindow extends JFrame {
             }
         });
 
+        //Assemble tensile button group
+        ButtonGroup tensileBG = new ButtonGroup();
+        tensileBG.add(tensileAutomaticRadioButton);
+        tensileBG.add(tensileManualRadioButton);
+        tensileAutomaticRadioButton.setSelected(true);
+
+        if(tensileAutomaticRadioButton.isSelected()){
+            tensileText.setEnabled(false);
+        }
+        else{
+
+            tensileText.setEnabled(true);
+        }
+
+        tensileAutomaticRadioButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                tensileText.setEnabled(false);
+            }
+        });
+
+        tensileManualRadioButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                tensileText.setEnabled(true);
+            }
+        });
+
+
+
         //Add alpha and beta images to input panel and resize
         ImageIcon AlphaIcon = new ImageIcon(getClass().getResource(("DrillingGUIPicture.png")));
         ImageResize Test1 = new ImageResize();
@@ -341,6 +642,7 @@ public class mainWindow extends JFrame {
         BetaImageLabel.setBorder(b2);
 
         calculateButton.addActionListener(new ActionListener() {
+            private boolean checkResult;
             private double mudWeightPsiFt;
             private double phi;
             private double Alpha;
@@ -405,6 +707,10 @@ public class mainWindow extends JFrame {
             private double SHMaxDiagnol;
             private double SHMaxDiagnolMin;
             private double SHMaxDiagnolMax;
+            private double compressiveStrength;
+            private int tensileStrength;
+            private double porePressureGradient;
+            private int betaAngle;
 
 
 
@@ -416,47 +722,62 @@ public class mainWindow extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                TextFieldChecker tfc = new TextFieldChecker();
+                checkResult =tfc.runInputCheck(mainWindow.this);
+
+                if (checkResult == false){
+
+                }
+                else{
+
                 // Equations
                 DrillingEquations Equations = new DrillingEquations();
                 // Convert mudweight to psi/ft
-                mudWeightPsiFt = Double.parseDouble(MudWeightText.getText())*.05194805195*getDensityUM();
+                mudWeightPsiFt = Double.parseDouble(mudWeightText.getText())*.05194805195*getDensityUM();
                 //Retrieve alpha value
-                this.Alpha = Equations.Alpha(Double.parseDouble(Alpha1Text.getText()),Double.parseDouble((Alpha2Text.getText())));
+                this.Alpha = Equations.Alpha(Double.parseDouble(alpha1Text.getText()),Double.parseDouble((alpha2Text.getText())));
 
                 //Retrieve sigma ranges
 
-                if(automaticRadioButton.isSelected()) {
+                if(stressAutomaticRadioButton.isSelected()) {
 
 
                     this.SigmaVR = Equations.SigmaVRange(FaultTypeCombo.getSelectedItem().toString(), PoreCombo.getSelectedItem().toString());
                     this.SigmaHR = Equations.SigmaHRange(FaultTypeCombo.getSelectedItem().toString(), PoreCombo.getSelectedItem().toString());
                     this.SigmahR = Equations.SigmahRange(FaultTypeCombo.getSelectedItem().toString(), PoreCombo.getSelectedItem().toString());
                     this.PorePR = Equations.PorePressureRange(FaultTypeCombo.getSelectedItem().toString(), PoreCombo.getSelectedItem().toString());
+                    PorePressureResult.setText(Integer.toString((int) (PorePR*Integer.parseInt(depthText.getText())*lengthUM*(1/pressureUM))));
+
+                    // DeltaP
+                    this.DeltaP = Equations.deltaP(Double.parseDouble(depthText.getText())*lengthUM,mudWeightPsiFt,PorePR);
 
                 }
                 else{
-                    this.SigmaVR = Double.parseDouble(sigmaVTextField.getText())*lengthUM/pressureUM;
-                    this.SigmaHR = Double.parseDouble(sigmaMaxTextField.getText())*lengthUM/pressureUM;
-                    this.SigmahR = Double.parseDouble(sigmaMinTextField.getText())*lengthUM/pressureUM;
-                    this.PorePR =  Double.parseDouble(porePressureTextField.getText())*lengthUM/pressureUM;
+                    this.SigmaVR = Double.parseDouble(sigmaVTextField.getText())*gradientUM;
+                    this.SigmaHR = Double.parseDouble(sigmaMaxTextField.getText())*gradientUM;
+                    this.SigmahR = Double.parseDouble(sigmaMinTextField.getText())*gradientUM;
+                    this.porePressureGradient = Double.parseDouble(porePressureTextField.getText())*gradientUM;
+                    PorePressureResult.setText(Integer.toString((int) (porePressureGradient*Integer.parseInt(depthText.getText())*lengthUM*(1/pressureUM))));
+
+                    // DeltaP
+                    this.DeltaP = Equations.deltaP(Double.parseDouble(depthText.getText())*lengthUM,mudWeightPsiFt,porePressureGradient);
+
                 }
                 //Retrieve sigma values
-                this.SigmaV = Equations.SigmaV(Double.parseDouble(DepthText.getText())*lengthUM,SigmaVR,PorePR);
-                this.SigmaH = Equations.SigmaH(Double.parseDouble(DepthText.getText())*lengthUM,SigmaHR,PorePR);
-                this.Sigmah = Equations.Sigmah(Double.parseDouble(DepthText.getText())*lengthUM,SigmahR,PorePR);
+                this.SigmaV = Equations.SigmaV(Double.parseDouble(depthText.getText())*lengthUM,SigmaVR,PorePR);
+                this.SigmaH = Equations.SigmaH(Double.parseDouble(depthText.getText())*lengthUM,SigmaHR,PorePR);
+                this.Sigmah = Equations.Sigmah(Double.parseDouble(depthText.getText())*lengthUM,SigmahR,PorePR);
 
                 //Retrieve stress tensors SV, SH, Sh
-                this.SV = Equations.SV(SigmaV,SigmaH,Sigmah,Double.parseDouble(GammaText.getText()),Alpha);
-                this.SH = Equations.SH(SigmaV,SigmaH,Sigmah,Double.parseDouble(GammaText.getText()),Alpha);
-                this.Sh = Equations.Sh(SigmaV,SigmaH,Sigmah,Double.parseDouble(GammaText.getText()),Alpha);
+                this.SV = Equations.SV(SigmaV,SigmaH,Sigmah,Double.parseDouble(gammaText.getText()),Alpha);
+                this.SH = Equations.SH(SigmaV,SigmaH,Sigmah,Double.parseDouble(gammaText.getText()),Alpha);
+                this.Sh = Equations.Sh(SigmaV,SigmaH,Sigmah,Double.parseDouble(gammaText.getText()),Alpha);
 
                 //Retrieve Tho values ThoXY, ThoXZ, ThoYZ
-                this.ThoXY = Equations.ThoXY(SigmaH,Sigmah,Alpha,Double.parseDouble(GammaText.getText()));
-                this.ThoXZ = Equations.ThoXZ(SigmaV,SigmaH,Sigmah,Alpha,Double.parseDouble(GammaText.getText()));
-                this.ThoYZ = Equations.ThoYZ(SigmaH,Sigmah,Alpha,Double.parseDouble(GammaText.getText()));
+                this.ThoXY = Equations.ThoXY(SigmaH,Sigmah,Alpha,Double.parseDouble(gammaText.getText()));
+                this.ThoXZ = Equations.ThoXZ(SigmaV,SigmaH,Sigmah,Alpha,Double.parseDouble(gammaText.getText()));
+                this.ThoYZ = Equations.ThoYZ(SigmaH,Sigmah,Alpha,Double.parseDouble(gammaText.getText()));
 
-                // DeltaP
-                this.DeltaP = Equations.deltaP(Double.parseDouble(DepthText.getText())*lengthUM,mudWeightPsiFt,PorePR);
 
                 // Retrieve SigmaR
                 this.SigmaR = Equations.sigmaR(DeltaP);
@@ -466,7 +787,7 @@ public class mainWindow extends JFrame {
 
 
                 // Retrieve SigmaZ
-                this.SigmaZ = Equations.SigmaZ(SV,Double.parseDouble(PoissonText.getText()),Sh,SH,ThoXY);
+                this.SigmaZ = Equations.SigmaZ(SV,Double.parseDouble(poissonText.getText()),Sh,SH,ThoXY);
 
                 // Retrieve Tho theta values ThoThetaZ,ThoRTheta,ThoRZ
                 this.ThoThetaZ = Equations.ThoThetaZ(ThoXZ,ThoYZ);
@@ -476,25 +797,30 @@ public class mainWindow extends JFrame {
                 // Retrieve principal effective stress values
 
                 this.Sigma1 = Equations.Sigma1(SigTheta,SigmaZ,ThoThetaZ);
-                this.Sigma2 = Equations.Sigma2(SigTheta,SigmaZ,ThoThetaZ);
+                double[] sigma1Array = Equations.Sigma1Array(SigTheta,SigmaZ,ThoThetaZ);
+                this.Sigma2 = Equations.Sigma2(SigTheta,SigmaZ,ThoThetaZ,Equations.Sigma1MaxTheta(sigma1Array,this.Sigma1));
                 this.Sigma3 = Equations.Sigma3(SigmaR);
 
-                //Find the initial cohesion value
-                double sigThetaTest = this.SigmaH+this.Sigmah-2*(this.SigmaH-this.Sigmah)*Math.cos(Math.toRadians(2*0))-this.DeltaP;
 
-                cohesionInitial = Math.sqrt(1+.6*.6)*Math.sqrt(((sigThetaTest-this.SigmaR)/2)*((sigThetaTest-this.SigmaR)/2)-ThoRTheta)-0.6*((sigThetaTest+this.SigmaR)/2);
 
                 // Determine if tensile failure
+                // conditionals if the automatic or manual tensile radiobuttons are selected
+                if(tensileManualRadioButton.isSelected()) {
 
-                this.failType = Equations.tensileFailureCondition(Sigma1,Double.parseDouble(TensileText.getText()));
-
-                //phi if tensile failure occurs
-/*
-                if (failType == "Failure"){
-
-                    this.phi = Equations.calculatePhi(ThoThetaZ,SigTheta,SigmaZ);
+                    this.failType = Equations.tensileFailureCondition(Sigma2, Double.parseDouble(tensileText.getText())*(1/pressureUM));
+                    tensileStrength = (int) (Double.parseDouble(tensileText.getText())*(1/pressureUM));
+                    tensileStrengthLabel.setText(Integer.toString(tensileStrength));
                 }
-*/
+                else if(tensileAutomaticRadioButton.isSelected()){
+
+                    //find compressive strength
+                    compressiveStrength = Equations.compressionStrengthInitial(this.Sigma1,this.Sigma3,GSICombo.getSelectedItem().toString(),JointCombo.getSelectedItem().toString(),LithologyCombo.getSelectedItem().toString())*(1/pressureUM);
+                    tensileStrength = (int) compressiveStrength/10; //tensile strength is estimated as 1/10th of the compressive strength of the rock
+                    tensileStrengthLabel.setText(Integer.toString(tensileStrength));
+                    this.failType = Equations.tensileFailureCondition(Sigma2,compressiveStrength/10);
+
+                }
+
                 //Determine if shear failure
                 double sigThetaMax;
                 double[] sortedSigTheta = SigTheta.clone();
@@ -514,11 +840,12 @@ public class mainWindow extends JFrame {
                 //Retrieve second set parameters
 
                 SecondSetEquations secondEquations = new SecondSetEquations();
-                this.secondInstability = secondEquations.secondSetValues(FaultConductCombo.getSelectedItem().toString(),JointCombo.getSelectedItem().toString(),DeformationCombo.getSelectedItem().toString(),BeddingCombo.getSelectedItem().toString(),Double.parseDouble(BetaText.getText()),"Instability");
-                this.secondLossOfCirculation = secondEquations.secondSetValues(FaultConductCombo.getSelectedItem().toString(),JointCombo.getSelectedItem().toString(),DeformationCombo.getSelectedItem().toString(),BeddingCombo.getSelectedItem().toString(),Double.parseDouble(BetaText.getText()),"LossOfCirculation");
-                this.secondWellControl = secondEquations.secondSetValues(FaultConductCombo.getSelectedItem().toString(),JointCombo.getSelectedItem().toString(),DeformationCombo.getSelectedItem().toString(),BeddingCombo.getSelectedItem().toString(),Double.parseDouble(BetaText.getText()),"WellControl");
-                this.secondLongTermIntegrity = secondEquations.secondSetValues(FaultConductCombo.getSelectedItem().toString(),JointCombo.getSelectedItem().toString(),DeformationCombo.getSelectedItem().toString(),BeddingCombo.getSelectedItem().toString(),Double.parseDouble(BetaText.getText()),"LongTermIntegrity");
-                this.secondROP = secondEquations.secondSetValues(FaultConductCombo.getSelectedItem().toString(),JointCombo.getSelectedItem().toString(),DeformationCombo.getSelectedItem().toString(),BeddingCombo.getSelectedItem().toString(),Double.parseDouble(BetaText.getText()),"ROP");
+
+                this.secondInstability = secondEquations.secondSetValues(FaultConductCombo.getSelectedItem().toString(),JointCombo.getSelectedItem().toString(),BeddingCombo.getSelectedItem().toString(),Double.parseDouble(BetaText.getText()),"Instability");
+                this.secondLossOfCirculation = secondEquations.secondSetValues(FaultConductCombo.getSelectedItem().toString(),JointCombo.getSelectedItem().toString(),BeddingCombo.getSelectedItem().toString(),Double.parseDouble(BetaText.getText()),"LossOfCirculation");
+                this.secondWellControl = secondEquations.secondSetValues(FaultConductCombo.getSelectedItem().toString(),JointCombo.getSelectedItem().toString(),BeddingCombo.getSelectedItem().toString(),Double.parseDouble(BetaText.getText()),"WellControl");
+                this.secondLongTermIntegrity = secondEquations.secondSetValues(FaultConductCombo.getSelectedItem().toString(),JointCombo.getSelectedItem().toString(),BeddingCombo.getSelectedItem().toString(),Double.parseDouble(BetaText.getText()),"LongTermIntegrity");
+                this.secondROP = secondEquations.secondSetValues(FaultConductCombo.getSelectedItem().toString(),JointCombo.getSelectedItem().toString(),BeddingCombo.getSelectedItem().toString(),Double.parseDouble(BetaText.getText()),"ROP");
 
                 //Retrieve third set parameters
 
@@ -559,7 +886,7 @@ public class mainWindow extends JFrame {
 
                 //Calculate and build stress polygon dataset and Mohr dataset
                StressPolygonDataset polyDataset = new StressPolygonDataset();
-                XYSeriesCollection polygonCollection = polyDataset.stressPolygonDataset(this.SigmaV,this.PorePR,Double.parseDouble(DepthText.getText()));
+                XYSeriesCollection polygonCollection = polyDataset.stressPolygonDataset(this.SigmaV,this.PorePR,Double.parseDouble(depthText.getText()));
 
                 MohrDataset mohrDataset = new MohrDataset();
                 XYSeriesCollection mohrCollection = mohrDataset.mohrDatasetBuild(this.Sigma3,this.Sigma2,this.Sigma1,cohesionInitial);
@@ -590,21 +917,16 @@ public class mainWindow extends JFrame {
 
 
                 //populate textlabels with value results
-                PorePressureResult.setText(Integer.toString((int) (PorePR*Integer.parseInt(DepthText.getText())*lengthUM*(1/pressureUM))));
-                SigmaVResult.setText(Integer.toString((int) (SigmaV*(1/pressureUM))));
-                SigmaHResult.setText(Integer.toString((int) (SigmaH*(1/pressureUM))));
-                SigmahResult.setText(Integer.toString((int) (Sigmah*(1/pressureUM))));
+                double porePressureCombination = PorePR*Integer.parseInt(depthText.getText())*lengthUM;
+
+                SigmaVResult.setText(Integer.toString((int) ((SigmaV+porePressureCombination)*(1/pressureUM))));
+                SigmaHResult.setText(Integer.toString((int) ((SigmaH+porePressureCombination)*(1/pressureUM))));
+                SigmahResult.setText(Integer.toString((int) ((Sigmah+porePressureCombination)*(1/pressureUM))));
                 Principle1Result.setText(Integer.toString((int) (Sigma1*(1/pressureUM))));
                 Principle2Result.setText(Integer.toString((int) (Sigma2*(1/pressureUM))));
                 Principle3Result.setText(Integer.toString((int) (Sigma3*(1/pressureUM))));
                 TensileFailResult.setText(failType);
                 ShearFailResult.setText(shearType);
-                InstabilityRating.setText(Integer.toString((int) sumInstability));
-                LostCirculationRating.setText(Integer.toString((int) sumLossOfCirculation));
-                WellControlRating.setText(Integer.toString((int) sumWellControl));
-                LongTermIntegrityRating.setText(Integer.toString((int) sumLongTermIntegrity));
-                ROPRating.setText(Integer.toString((int) sumROP));
-
 
                 //set the stability rating criteria (output under well rating drilling output tab)
                 StabilityConditions sc = new StabilityConditions();
@@ -630,6 +952,7 @@ public class mainWindow extends JFrame {
                 } catch (BadLocationException ble) {
                     System.err.println("Couldn't insert initial text into text pane.");
                 }
+                }
             }
         });
 
@@ -644,71 +967,33 @@ public class mainWindow extends JFrame {
             }
         });
 
-
+        GSIDialog GD = new GSIDialog();
 
         GSITableButton.addMouseListener(new java.awt.event.MouseAdapter(){
-            GSIDialog GD = new GSIDialog();
+
             public void mouseEntered(java.awt.event.MouseEvent evt) {
 
+                    GD.setContentPane(GD.contentPane);
+                    GD.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                    GD.pack();
+                    GD.setLocationRelativeTo(AlphaImageLabel);
+                    GD.setVisible(true);
+                    GD.setTitle("GSI Selection Table");
 
-                GD.setContentPane(GD.contentPane);
-                GD.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-                GD.pack();
-                GD.setLocation(GSITableButton.getX()*2+50,100);
-                GD.setVisible(true);
-                GD.setTitle("GSI Selection Table");
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
 
-                GD.onCancel();
+            GD.onCancel();
             }
         });
+
 
 
         clearButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //reset everything back to default
-                DepthText.setText("");
-                MudWeightText.setText("");
-                CohesionText.setText("");
-                GammaText.setText("");
-                Alpha1Text.setText("");
-                Alpha2Text.setText("");
-                TensileText.setText("");
-                PoissonText.setText("");
-                BetaText.setText("");
-                PorePressureResult.setText("");
-                SigmaVResult.setText("");
-                SigmaHResult.setText("");
-                SigmahResult.setText("");
-                Principle1Result.setText("");
-                Principle2Result.setText("");
-                Principle3Result.setText("");
-                TensileFailResult.setText("");
-                ShearFailResult.setText("");
-                ratingTextPane.setText("");
-                InstabilityRating.setText("");
-                LostCirculationRating.setText("");
-                WellControlRating.setText("");
-                LongTermIntegrityRating.setText("");
-                ROPRating.setText("");
-                InstableConditionResult.setText("");
-                LostCirculationConditionResult.setText("");
-                WellControlConditionResult.setText("");
-                LongTermIntegrityConditionResult.setText("");
-                ROPConditionResult.setText("");
 
-                //remove original graphs and reset buttonCount
-                try{
-                    tabbedPane1.remove(3);
-                    tabbedPane1.remove(2);
-                    buttonCount = true;
-                }
-                catch (Exception e2){
-
-                }
-
+            resetTool();
 
             }
         });
@@ -724,7 +1009,6 @@ public class mainWindow extends JFrame {
         mainWindow.this.setContentPane(this.MainPanel);
         mainWindow.this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainWindow.this.pack();
-        mainWindow.this.setMinimumSize(mainWindow.this.getSize()); //prevents shrinking the JFrame past the original default set from MainPanel size in GUI builder
         mainWindow.this.setLocationRelativeTo(null);
         mainWindow.this.setVisible(true);
 
