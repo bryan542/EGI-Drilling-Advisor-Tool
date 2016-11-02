@@ -21,12 +21,11 @@ import org.jfree.data.xy.XYSeriesCollection;
  */
 public class mainWindow extends JFrame {
 
-
     private JTabbedPane tabbedPane1;
     private JPanel DrilOutPanel2;
     private JPanel InputPanel1;
     private JPanel WellControlRatingConditionResult;
-    public JPanel MainPanel;
+    private JPanel MainPanel;
     private JPanel betaImagePanel;
     private JPanel secondInputsPanel;
     private JPanel JPanelTest;
@@ -127,6 +126,7 @@ public class mainWindow extends JFrame {
     private JRadioButton stressManualInputRadioButton;
     private JRadioButton tensileAutomaticRadioButton;
     private JRadioButton tensileManualRadioButton;
+
     private JTextField principal1TextFieldResult;
     private JTextField principal2TextFieldResult;
     private JTextField principal3TextFieldResult;
@@ -140,7 +140,15 @@ public class mainWindow extends JFrame {
     private static double pressureUM =1;
     private static double lengthUM =1;
     private static double gradientUM = 1;
-    private boolean buttonCount = true;
+    private static boolean buttonCount = true;
+
+    public JLabel getTensileFailResult() {
+        return TensileFailResult;
+    }
+
+    public JLabel getShearFailResult() {
+        return ShearFailResult;
+    }
 
     public JLabel getDepthLabel() {
         return depthLabel;
@@ -297,6 +305,37 @@ public class mainWindow extends JFrame {
     public JTextField getJointDipTextField() {
         return jointDipTextField;
     }
+    public JTextField getPrincipal1TextFieldResult() {
+        return principal1TextFieldResult;
+    }
+
+    public JTextField getPrincipal2TextFieldResult() {
+        return principal2TextFieldResult;
+    }
+
+    public JTextField getPrincipal3TextFieldResult() {
+        return principal3TextFieldResult;
+    }
+
+    public JTextField getPorePressureTextFieldResult() {
+        return porePressureTextFieldResult;
+    }
+
+    public JTextField getTensileStrengthTextFieldResult() {
+        return tensileStrengthTextFieldResult;
+    }
+
+    public JTextField getSigmaVTextFieldResult() {
+        return sigmaVTextFieldResult;
+    }
+
+    public JTextField getSigmaMaxTextFieldResult() {
+        return sigmaMaxTextFieldResult;
+    }
+
+    public JTextField getSigmaMinTextFieldResult() {
+        return sigmaMinTextFieldResult;
+    }
 
     public JRadioButton getStressAutomaticRadioButton() {
         return stressAutomaticRadioButton;
@@ -313,7 +352,6 @@ public class mainWindow extends JFrame {
     public JRadioButton getTensileManualRadioButton() {
         return tensileManualRadioButton;
     }
-
 
     public void setTensileStrengthOutputLabel(String text) {
         this.tensileStrengthOutputLabel.setText(text);
@@ -416,47 +454,9 @@ public class mainWindow extends JFrame {
     //reset everything back to default
     public void resetTool() {
 
-        depthText.setText("");
-        mudWeightText.setText("");
-        cohesionText.setText("");
-        gammaText.setText("");
-        alpha1Text.setText("");
-        alpha2Text.setText("");
-        tensileText.setText("");
-        poissonText.setText("");
-        porePressureTextFieldResult.setText("");
-        sigmaVTextFieldResult.setText("");
-        sigmaMaxTextFieldResult.setText("");
-        sigmaMinTextFieldResult.setText("");
-        principal1TextFieldResult.setText("");
-        principal2TextFieldResult.setText("");
-        principal3TextFieldResult.setText("");
-        TensileFailResult.setText("");
-        ShearFailResult.setText("");
-        ratingTextPane.setText("");
-        InstableConditionResult.setText("");
-        LostCirculationConditionResult.setText("");
-        WellControlConditionResult.setText("");
-        LongTermIntegrityConditionResult.setText("");
-        ROPConditionResult.setText("");
-        sigmaVTextField.setText("");
-        sigmaMaxTextField.setText("");
-        sigmaMinTextField.setText("");
-        porePressureTextField.setText("");
-        tensileStrengthTextFieldResult.setText("");
-        beddingPlaneStrikeTextField.setText("");
-        beddingPlaneDipTextField.setText("");
-        faultConductivityStrikeTextField.setText("");
-        faultConductivityDipTextField.setText("");
-        jointStrikeTextField.setText("");
-        jointDipTextField.setText("");
-        sigmaVStrikeTextField.setText("");
-        sigmaVDipTextField.setText("");
-        sigmaMaxStrikeTextField.setText("");
-        sigmaMaxDipTextField.setText("");
-        sigmaMinStrikeTextField.setText("");
-        sigmaMinDipTextField.setText("");
-
+        //resetTool() clears all of the JTextFields and JLabels in the program
+        ClearResetValues cv = new ClearResetValues();
+        cv.resetTool(mainWindow.this);
 
         //remove original graphs and reset buttonCount
         try{
@@ -467,6 +467,8 @@ public class mainWindow extends JFrame {
         catch (Exception e2){
 
         }
+
+        ratingTextPane.setText("");
     }
 
     public mainWindow() {

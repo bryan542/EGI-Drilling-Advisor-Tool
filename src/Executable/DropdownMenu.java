@@ -20,7 +20,7 @@ public class DropdownMenu  {
         //build file menu
 
         JMenuBar menubar = new JMenuBar();
-
+        JMenuItem exportPDF = new JMenuItem("Export Report");
         //build file JMenu and JMenuItems
         JMenu file = new JMenu("File");
         JMenuItem open = new JMenuItem("Open");
@@ -30,6 +30,7 @@ public class DropdownMenu  {
         file.add(open);
         file.add(save);
         file.add(projectSettings);
+        file.add(exportPDF);
         file.add(exit);
         open.setPreferredSize(new Dimension(100,20));
 
@@ -43,6 +44,18 @@ public class DropdownMenu  {
         JMenuItem domAnalLaunch = new JMenuItem("Launch DomAnal Tool");
         DomAnal.add(domAnalLaunch);
 
+
+        //disable export report initially until calculate button is ran
+        exportPDF.setEnabled(false);
+        //Execute exportPDF from PDFTest class
+        exportPDF.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                PDFTest pt = new PDFTest();
+                pt.getSaveLocation();
+            }
+        });
 
         //build help menu
         JMenu help = new JMenu("Help");
