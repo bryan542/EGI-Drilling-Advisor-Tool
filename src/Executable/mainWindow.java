@@ -53,15 +53,9 @@ public class mainWindow extends JFrame {
     private JTextField sigmaMaxTextField;
     private JTextField sigmaMinTextField;
     private JTextField porePressureTextField;
-    private JTextField sigmaVStrikeTextField;
-    private JTextField sigmaMaxStrikeTextField;
-    private JTextField sigmaMinStrikeTextField;
     private JTextField beddingPlaneStrikeTextField;
     private JTextField faultConductivityStrikeTextField;
     private JTextField jointStrikeTextField;
-    private JTextField sigmaVDipTextField;
-    private JTextField sigmaMaxDipTextField;
-    private JTextField sigmaMinDipTextField;
     private JTextField beddingPlaneDipTextField;
     private JTextField faultConductivityDipTextField;
     private JTextField jointDipTextField;
@@ -258,17 +252,6 @@ public class mainWindow extends JFrame {
         return porePressureTextField;
     }
 
-    public JTextField getSigmaVStrikeTextField() {
-        return sigmaVStrikeTextField;
-    }
-
-    public JTextField getSigmaMaxStrikeTextField() {
-        return sigmaMaxStrikeTextField;
-    }
-
-    public JTextField getSigmaMinStrikeTextField() {
-        return sigmaMinStrikeTextField;
-    }
 
     public JTextField getBeddingPlaneStrikeTextField() {
         return beddingPlaneStrikeTextField;
@@ -280,18 +263,6 @@ public class mainWindow extends JFrame {
 
     public JTextField getJointStrikeTextField() {
         return jointStrikeTextField;
-    }
-
-    public JTextField getSigmaVDipTextField() {
-        return sigmaVDipTextField;
-    }
-
-    public JTextField getSigmaMaxDipTextField() {
-        return sigmaMaxDipTextField;
-    }
-
-    public JTextField getSigmaMinDipTextField() {
-        return sigmaMinDipTextField;
     }
 
     public JTextField getBeddingPlaneDipTextField() {

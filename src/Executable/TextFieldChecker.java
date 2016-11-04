@@ -48,9 +48,6 @@ public class TextFieldChecker {
         obj2.add(mw.getGammaText());
         obj2.add(mw.getAlpha1Text());
         obj2.add(mw.getAlpha2Text());
-        obj2.add(mw.getSigmaVStrikeTextField());
-        obj2.add(mw.getSigmaMaxStrikeTextField());
-        obj2.add(mw.getSigmaMinStrikeTextField());
         obj2.add(mw.getBeddingPlaneStrikeTextField());
         obj2.add(mw.getFaultConductivityStrikeTextField());
         obj2.add(mw.getJointStrikeTextField());
@@ -58,24 +55,15 @@ public class TextFieldChecker {
         obj22.add(mw.getGammaLabel());
         obj22.add(mw.getAlpha1Label());
         obj22.add(mw.getAlpha2Label());
-        obj22.add(mw.getInputSigmaVLabel());
-        obj22.add(mw.getInputSigmaMaxLabel());
-        obj22.add(mw.getInputSigmaMinLabel());
         obj22.add(mw.getBeddingPlaneConductivityLabel());
         obj22.add(mw.getFaultConductivityLabel());
         obj22.add(mw.getJointLabel());
 
         //obj3 and obj33 are dip conditions where 0<angle<90
-        obj3.add(mw.getSigmaVDipTextField());
-        obj3.add(mw.getSigmaMaxDipTextField());
-        obj3.add(mw.getSigmaMinDipTextField());
         obj3.add(mw.getBeddingPlaneDipTextField());
         obj3.add(mw.getFaultConductivityDipTextField());
         obj3.add(mw.getJointDipTextField());
 
-        obj33.add(mw.getInputSigmaVLabel());
-        obj33.add(mw.getInputSigmaMaxLabel());
-        obj33.add(mw.getInputSigmaMinLabel());
         obj33.add(mw.getBeddingPlaneConductivityLabel());
         obj33.add(mw.getFaultConductivityLabel());
         obj33.add(mw.getJointLabel());

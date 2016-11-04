@@ -7,11 +7,16 @@ import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDType0Font;
 import org.apache.pdfbox.pdmodel.font.PDType1CFont;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
+import org.apache.pdfbox.pdmodel.graphics.PDXObject;
+import org.apache.pdfbox.pdmodel.graphics.image.LosslessFactory;
 import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 import org.jfree.io.FileUtilities;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 
 /**
@@ -39,15 +44,15 @@ public class PDFTest {
             PDPage page = new PDPage();
             doc.addPage(page);
 
-            // createFromFile is the easiest way with an image file
-            // if you already have the image in a BufferedImage,
-            // call LosslessFactory.createFromImage() instead
-            PDImageXObject pdImage = PDImageXObject.createFromFile(imagePath, doc);
+            //use for inserting images
+            BufferedImage bimage = ImageIO.read(new File("src/Executable/EGI.png"));
+            PDImageXObject ximage = LosslessFactory.createFromImage(doc, bimage);
+
 
             PDPageContentStream contents = new PDPageContentStream(doc, page);
 
             // draw the image at full size at (x=20, y=20)
-            contents.drawImage(pdImage, 20, 20);
+            contents.drawImage(ximage, 20, 20);
 
             // to draw the image at half size at (x=20, y=20) use
             // contents.drawImage(pdImage, 20, 20, pdImage.getWidth() / 2, pdImage.getHeight() / 2);
@@ -95,10 +100,16 @@ public class PDFTest {
             }
 
             String filename = file.toString();
-            filename = filename.replaceAll(".pdf", "");
-            filename = filename + ".pdf";
+            if (filename.endsWith(".pdf")) {
 
-            String image = "F:\\EGI Drilling Advisor Tool\\src\\Executable\\EGI.png";
+            }
+            else{
+
+                filename = filename + ".pdf";
+            }
+
+
+            String image = "EGI.png";
 
 
             //Checks to see if file pathname already exists and gives override option
