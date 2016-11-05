@@ -39,20 +39,25 @@ public class PDFTest {
             System.exit(1);
         }
 
-        PDDocument doc = new PDDocument();
+        PDDocument doc = PDDocument.load(new File(".\\src\\Executable\\Drawing1 Layout1 test 2.pdf"));
         try {
-            PDPage page = new PDPage();
-            doc.addPage(page);
-
-            //use for inserting images
-            BufferedImage bimage = ImageIO.read(new File("src/Executable/EGI.png"));
-            PDImageXObject ximage = LosslessFactory.createFromImage(doc, bimage);
+            PDPage page = doc.getPage(0);
+            PDPageContentStream contents = new PDPageContentStream(doc, page,true,true);
 
 
-            PDPageContentStream contents = new PDPageContentStream(doc, page);
+            //use for inserting images  // draw the image at full size at (x=20, y=20)
+            
+            //BufferedImage bimage = ImageIO.read(new File("src/Executable/EGITestTemplate.png"));
+            //PDImageXObject ximage = LosslessFactory.createFromImage(doc, bimage);
 
-            // draw the image at full size at (x=20, y=20)
-            contents.drawImage(ximage, 20, 20);
+
+            //contents.drawImage(ximage, 0, 0);
+
+            contents.beginText();
+            contents.newLineAtOffset(0,0);
+            contents.setFont(PDType1Font.TIMES_ROMAN, 12);
+            contents.showText("This is your test text that should work in PDFBox 2.0");
+            contents.endText();
 
             // to draw the image at half size at (x=20, y=20) use
             // contents.drawImage(pdImage, 20, 20, pdImage.getWidth() / 2, pdImage.getHeight() / 2);
