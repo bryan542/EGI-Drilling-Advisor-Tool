@@ -1,23 +1,26 @@
 package Executable;
 
 import org.apache.pdfbox.cos.ICOSVisitor;
+import org.apache.pdfbox.io.IOUtils;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.common.PDRectangle;
 import org.apache.pdfbox.pdmodel.font.PDType0Font;
 import org.apache.pdfbox.pdmodel.font.PDType1CFont;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.apache.pdfbox.pdmodel.graphics.PDXObject;
 import org.apache.pdfbox.pdmodel.graphics.image.LosslessFactory;
 import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
+import org.bouncycastle.util.test.Test;
 import org.jfree.io.FileUtilities;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
+import java.net.URL;
 
 /**
  * Created by bryan on 10/25/2016.
@@ -39,19 +42,32 @@ public class PDFTest {
             System.exit(1);
         }
 
-        PDDocument doc = PDDocument.load(new File(".\\src\\Executable\\Drawing1 Layout1 test 2.pdf"));
+
+
+        URL url = getClass().getResource("Drawing1Layout1test2.pdf");
+        InputStream input = getClass().getResourceAsStream("Drawing1Layout1test2.pdf");
+        String stringInput = url.getPath();
+        PDDocument doc = PDDocument.load(new File(stringInput));
+
         try {
             PDPage page = doc.getPage(0);
+            doc.addPage(page);
             PDPageContentStream contents = new PDPageContentStream(doc, page,true,true);
 
 
+            /*
+            URL url = this.getClass().getResource("EGI.png");
+            Image img = ImageIO.read(url);
+
+            BufferedImage bufferedImage = new BufferedImage(img.getWidth(null), img.getHeight(null),
+                    BufferedImage.TYPE_INT_RGB);
+            */
+
+
             //use for inserting images  // draw the image at full size at (x=20, y=20)
-            
-            //BufferedImage bimage = ImageIO.read(new File("src/Executable/EGITestTemplate.png"));
-            //PDImageXObject ximage = LosslessFactory.createFromImage(doc, bimage);
-
-
-            //contents.drawImage(ximage, 0, 0);
+            BufferedImage bimage = ImageIO.read(getClass().getResource("EGI.png"));
+            PDImageXObject ximage = LosslessFactory.createFromImage(doc, bimage);
+            contents.drawImage(ximage, 0, 0);
 
             contents.beginText();
             contents.newLineAtOffset(0,0);
