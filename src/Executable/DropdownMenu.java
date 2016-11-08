@@ -1,10 +1,13 @@
 package Executable;
 
+import org.apache.pdfbox.pdmodel.PDDocument;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
@@ -97,10 +100,12 @@ public class DropdownMenu  {
                 //filepath finder class
                 RootTest helpTest = new RootTest();
                 //find filepath for the help library
-                String helpFilePath = helpTest.Execute("EGI User Manual.chm");
+                //gets the bite filepath of the pdf template
+                InputStream inputStream = PDFCreator.class.getResourceAsStream("EGI User Manual.chm");
+
                 //executes the .chm file
                 try {
-                    Runtime.getRuntime().exec("hh.exe "+helpFilePath);
+                    Runtime.getRuntime().exec("hh.exe "+inputStream);
                 } catch (IOException e1) {
                     e1.printStackTrace();
                 }
