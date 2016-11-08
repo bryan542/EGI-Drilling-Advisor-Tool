@@ -13,6 +13,7 @@ import java.awt.event.*;
 import java.net.URL;
 import java.util.Arrays;
 
+import com.thehowtotutorial.splashscreen.JSplash;
 import org.jfree.data.xy.XYSeriesCollection;
 
 
@@ -444,13 +445,30 @@ public class mainWindow extends JFrame {
 
     public mainWindow() {
 
+        getDepthText().setText("5000");
+        getMudWeightText().setText("9");
+        getCohesionText().setText("500");
+        getGammaText().setText("50");
+        getAlpha1Text().setText("50");
+        getAlpha2Text().setText("50");
+        getBeddingPlaneStrikeTextField().setText("50");
+        getFaultConductivityStrikeTextField().setText("50");
+        getJointStrikeTextField().setText("50");
+        getBeddingPlaneDipTextField().setText("50");
+        getFaultConductivityDipTextField().setText("50");
+        getJointDipTextField().setText("50");
+        getPoissonText().setText(".3");
+
+
+
         //Does not let you resize the window
         mainWindow.this.setResizable(false);
 
         //sets EGI image icon
-        URL url = mainWindow.class.getResource("EGI.png");
-        ImageIcon bg = new ImageIcon(url);
-        this.setIconImage(bg.getImage());
+        URL EGIURL = mainWindow.class.getResource("EGI.png");
+        ImageIcon EGIImageIcon = new ImageIcon(EGIURL);
+        Image EGIImage = EGIImageIcon.getImage();
+        mainWindow.this.setIconImage(EGIImage);
 
         //set tool title
         this.setTitle("EGI Drilling Advisory Tool");
@@ -943,8 +961,8 @@ public class mainWindow extends JFrame {
         exportReportButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                PDFTest pt = new PDFTest();
-                pt.getSaveLocation();
+                PDFCreator pt = new PDFCreator();
+                pt.getSaveLocation(mainWindow.this);
 
 
             }
@@ -991,7 +1009,50 @@ public class mainWindow extends JFrame {
         mainWindow.this.setVisible(true);
 
     }
+
+    //Builds the EGI splash screen
+    public void buildSplashScreen(){
+
+
+        URL splashURL = mainWindow.class.getResource("SplashImage.png");
+        ImageIcon splashImage = new ImageIcon(splashURL);
+        //Image URL, progres bool, message bool, percent bool, version string, setlocation, textcolor, progress text color
+        JSplash splash = new JSplash(splashURL, true, false, true, "Beta Version: 12",null,Color.WHITE,Color.GREEN );
+
+        splash.splashOn();
+        splash.setProgress(25);
+        try {
+            Thread.sleep(750);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        splash.setProgress(50);
+        try {
+            Thread.sleep(750);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        splash.setProgress(75);
+        try {
+            Thread.sleep(750);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        splash.setProgress(100);
+        try {
+            Thread.sleep(750);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        splash.splashOff();
+
+
+    }
+
     public static void main(String[] args) {
+
+        mainWindow mw = new mainWindow();
+        mw.buildSplashScreen();
 
         //sets the look and feel
         try {

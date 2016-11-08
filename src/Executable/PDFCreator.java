@@ -1,85 +1,78 @@
 package Executable;
 
-import org.apache.pdfbox.cos.ICOSVisitor;
-import org.apache.pdfbox.io.IOUtils;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.common.PDRectangle;
-import org.apache.pdfbox.pdmodel.font.PDType0Font;
-import org.apache.pdfbox.pdmodel.font.PDType1CFont;
+import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
-import org.apache.pdfbox.pdmodel.graphics.PDXObject;
 import org.apache.pdfbox.pdmodel.graphics.image.LosslessFactory;
 import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
-import org.bouncycastle.util.test.Test;
-import org.jfree.io.FileUtilities;
+import org.apache.pdfbox.util.Matrix;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 import java.io.*;
-import java.net.URL;
+import java.net.URISyntaxException;
 
 /**
  * Created by bryan on 10/25/2016.
  */
-public class PDFTest {
+public class PDFCreator {
 
-    PDFTest() {
+    PDFCreator() {
 
     }
 
     //Used to create an image
-    public void imageCreator(String pathImage, String savePDFPath) throws IOException {
+    public void imageCreator(String pathImage, String savePDFPath,mainWindow mw) throws IOException, URISyntaxException {
 
         String imagePath = pathImage;
         String pdfPath = savePDFPath;
+        File fileTest = new File(pdfPath);
+        String fileTitle = fileTest.getName();
 
+        //Removes the .pdf extension when placed in the PDF title
+        if (fileTitle.endsWith(".pdf")){
+
+            fileTitle = fileTitle.replace(".pdf"," ");
+        }
         if (!pdfPath.endsWith(".pdf")) {
             System.err.println("Last argument must be the destination .pdf file");
             System.exit(1);
         }
 
-
-
-        URL url = getClass().getResource("Drawing1Layout1test2.pdf");
-        InputStream input = getClass().getResourceAsStream("Drawing1Layout1test2.pdf");
-        String stringInput = url.getPath();
-        PDDocument doc = PDDocument.load(new File(stringInput));
+        //gets the bite filepath of the pdf template
+        InputStream inputStream = PDFCreator.class.getResourceAsStream("test2.pdf");
+        PDDocument doc = PDDocument.load(inputStream);
 
         try {
             PDPage page = doc.getPage(0);
-            doc.addPage(page);
             PDPageContentStream contents = new PDPageContentStream(doc, page,true,true);
 
 
-            /*
-            URL url = this.getClass().getResource("EGI.png");
-            Image img = ImageIO.read(url);
+            contents.setNonStrokingColor(Color.BLACK);
 
-            BufferedImage bufferedImage = new BufferedImage(img.getWidth(null), img.getHeight(null),
-                    BufferedImage.TYPE_INT_RGB);
-            */
-
-
-            //use for inserting images  // draw the image at full size at (x=20, y=20)
+            //Retrieve EGI imagepath and set in the file
             BufferedImage bimage = ImageIO.read(getClass().getResource("EGI.png"));
             PDImageXObject ximage = LosslessFactory.createFromImage(doc, bimage);
-            contents.drawImage(ximage, 0, 0);
+            contents.drawImage(ximage, 10, 701);
 
+            //Adds the filepath Title in the PDF document first page
             contents.beginText();
-            contents.newLineAtOffset(0,0);
+            contents.newLineAtOffset(157,608);
             contents.setFont(PDType1Font.TIMES_ROMAN, 12);
-            contents.showText("This is your test text that should work in PDFBox 2.0");
+            contents.showText(mw.getDepthText().getText());
             contents.endText();
 
-            // to draw the image at half size at (x=20, y=20) use
-            // contents.drawImage(pdImage, 20, 20, pdImage.getWidth() / 2, pdImage.getHeight() / 2);
-
-
-
+           //Sets the title centered near the top of the document.
+            String title = "File: " + fileTitle;
+            int fontSize = 16;
+            Point2D.Float center = new Point2D.Float(0, 370); //sets the title position offset
+            addCenteredText(title,PDType1Font.TIMES_BOLD,fontSize,contents,page,center);
 
             contents.close();
             doc.save(pdfPath);
@@ -89,8 +82,37 @@ public class PDFTest {
 
     }
 
+    //Text center method
+    void addCenteredText(String text, PDFont font, int fontSize, PDPageContentStream content, PDPage page, Point2D.Float offset) throws IOException {
+        content.setFont(font, fontSize);
+        content.beginText();
+
+
+        Point2D.Float pageCenter = getCenter(page);
+
+        // We use the text's width to place it at the center of the page
+        float stringWidth = font.getStringWidth(text) * fontSize / 1000F;
+
+            float textX = pageCenter.x - stringWidth / 2F + offset.x;
+            float textY = pageCenter.y + offset.y;
+            content.setTextMatrix(Matrix.getTranslateInstance(textX, textY));
+
+        content.showText(text);
+        content.endText();
+    }
+
+    //Finds the center of the PDF page in float type Point2D
+    Point2D.Float getCenter(PDPage page) {
+        PDRectangle pageSize = page.getMediaBox();
+
+        float pageWidth = pageSize.getWidth();
+        float pageHeight = pageSize.getHeight();
+
+        return new Point2D.Float(pageWidth / 2F, pageHeight / 2F);
+    }
+
     //Opens a save panel from filechoose and allows us to set the pdf save pathname
-    public void getSaveLocation() {
+    public void getSaveLocation(mainWindow mw) {
 
         File file = null;
         JFileChooser chooser =null;
@@ -142,7 +164,7 @@ public class PDFTest {
                 if(a == JOptionPane.YES_OPTION){
 
                     try {
-                        imageCreator(image, filename);
+                        imageCreator(image, filename, mw);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -150,7 +172,7 @@ public class PDFTest {
                 }
                 else if (a == JOptionPane.NO_OPTION){
 
-                    getSaveLocation();
+                    getSaveLocation(mw);
                 }
 
 
@@ -158,7 +180,7 @@ public class PDFTest {
             else{
 
                 try {
-                    imageCreator(image, filename);
+                    imageCreator(image, filename, mw);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

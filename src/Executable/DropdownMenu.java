@@ -47,13 +47,13 @@ public class DropdownMenu  {
 
         //disable export report initially until calculate button is ran
         exportPDF.setEnabled(false);
-        //Execute exportPDF from PDFTest class
+        //Execute exportPDF from PDFCreator class
         exportPDF.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                PDFTest pt = new PDFTest();
-                pt.getSaveLocation();
+                PDFCreator pt = new PDFCreator();
+                pt.getSaveLocation(mw);
             }
         });
 

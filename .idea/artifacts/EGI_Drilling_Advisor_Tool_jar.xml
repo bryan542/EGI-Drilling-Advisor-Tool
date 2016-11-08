@@ -18,6 +18,7 @@
       <element id="extracted-dir" path="$USER_HOME$/Desktop/jfreechart-1.0.19/lib/orsoncharts-1.4-eval-nofx.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$USER_HOME$/Desktop/jfreechart-1.0.19/lib/jfreechart-1.0.19-experimental.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$USER_HOME$/Desktop/pdfbox-app-2.0.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Desktop/JSplashScreen.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>

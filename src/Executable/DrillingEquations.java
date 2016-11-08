@@ -616,8 +616,9 @@ public class DrillingEquations {
     public double compressionStrengthInitial(double sigma1, double sigma3,String GSIValue, String jointValue, String lithology){
 
         double compressionStrength=-1;
+        double[] mIndexArray = {15,7,10,7.5,3.5,5,0.3,0.14,0.2,0.15,.04,.05};
         double mIndex =-1;
-        double calibrationFactor = -1;
+        double[] calibrationFactor = {1,.66,.33,.1};
         double b;
         double c = sigma3*sigma3-sigma1*sigma1;
 
@@ -627,33 +628,30 @@ public class DrillingEquations {
 
                 if (jointValue =="Unknown/None"){
 
-                    mIndex = 15;
-                    calibrationFactor = 1;
-                    mIndex = mIndex*calibrationFactor;
+                    mIndex = mIndexArray[0];
+
+                    mIndex = mIndex*calibrationFactor[0];
                     b = mIndex*sigma3;
                     c = sigma3*sigma3-sigma1*sigma1;
                     compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
                 }
                 else if (jointValue =="Low"){
-                    mIndex = 15;
-                    calibrationFactor = .8;
-                    mIndex = mIndex*calibrationFactor;
+                    mIndex = mIndexArray[0];
+                    mIndex = mIndex*calibrationFactor[1];
                     b = mIndex*sigma3;
                     compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
                 }
                 else if (jointValue =="Medium"){
-                    mIndex = 15;
-                    calibrationFactor = .66;
-                    mIndex = mIndex*calibrationFactor;
+                    mIndex = mIndexArray[0];
+                    mIndex = mIndex*calibrationFactor[2];
                     b = mIndex*sigma3;
 
 
                     compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
                 }
                 else{
-                    mIndex = 15;
-                    calibrationFactor = .5;
-                    mIndex = mIndex*calibrationFactor;
+                    mIndex = mIndexArray[0];
+                    mIndex = mIndex*calibrationFactor[3];
                     b = mIndex*sigma3;
                     compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
                 }
@@ -662,30 +660,28 @@ public class DrillingEquations {
             else if (lithology =="Limestone" || lithology == "Dolomite"){
                 if (jointValue =="Unknown/None"){
 
-                    mIndex = 7;
-                    calibrationFactor = 1;
-                    mIndex = mIndex*calibrationFactor;
+                    mIndex = mIndexArray[1];
+
+                    mIndex = mIndex*calibrationFactor[0];
                     b = mIndex*sigma3;
                     compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
                 }
                 else if (jointValue =="Low"){
-                    mIndex = 7;
-                    calibrationFactor = .8;
-                    mIndex = mIndex*calibrationFactor;
+                    mIndex = mIndexArray[1];
+                    mIndex = mIndex*calibrationFactor[1];
                     b = mIndex*sigma3;
                     compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
                 }
                 else if (jointValue =="Medium"){
-                    mIndex = 7;
-                    calibrationFactor = .66;
-                    mIndex = mIndex*calibrationFactor;
+                    mIndex = mIndexArray[1];
+
+                    mIndex = mIndex*calibrationFactor[2];
                     b = mIndex*sigma3;
                     compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
                 }
                 else{
-                    mIndex = 7;
-                    calibrationFactor = .5;
-                    mIndex = mIndex*calibrationFactor;
+                    mIndex = mIndexArray[1];
+                    mIndex = mIndex*calibrationFactor[3];
                     b = mIndex*sigma3;
                     compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
                 }
@@ -693,30 +689,29 @@ public class DrillingEquations {
             else if (lithology =="Shale" || lithology =="Siltstone"){
                 if (jointValue =="Unknown/None"){
 
-                    mIndex = 10;
-                    calibrationFactor = 1;
-                    mIndex = mIndex*calibrationFactor;
+                    mIndex = mIndexArray[2];
+                    mIndex = mIndex*calibrationFactor[0];
                     b = mIndex*sigma3;
                     compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
                 }
                 else if (jointValue =="Low"){
-                    mIndex = 10;
-                    calibrationFactor = .8;
-                    mIndex = mIndex*calibrationFactor;
+
+                    mIndex = mIndexArray[2];
+                    mIndex = mIndex*calibrationFactor[1];
                     b = mIndex*sigma3;
                     compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
                 }
                 else if (jointValue =="Medium"){
-                    mIndex = 10;
-                    calibrationFactor = .66;
-                    mIndex = mIndex*calibrationFactor;
+
+                    mIndex = mIndexArray[2];
+                    mIndex = mIndex*calibrationFactor[2];
                     b = mIndex*sigma3;
                     compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
                 }
                 else{
-                    mIndex = 10;
-                    calibrationFactor = .5;
-                    mIndex = mIndex*calibrationFactor;
+
+                    mIndex = mIndexArray[2];
+                    mIndex = mIndex*calibrationFactor[3];
                     b = mIndex*sigma3;
                     compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
                 }
@@ -733,30 +728,29 @@ public class DrillingEquations {
 
                 if (jointValue =="Unknown/None"){
 
-                    mIndex = 7.5;
-                    calibrationFactor = 1;
-                    mIndex = mIndex*calibrationFactor;
+                    mIndex = mIndexArray[3];
+                    mIndex = mIndex*calibrationFactor[0];
                     b = mIndex*sigma3;
                     compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
                 }
                 else if (jointValue =="Low"){
-                    mIndex = 7.5;
-                    calibrationFactor = .8;
-                    mIndex = mIndex*calibrationFactor;
+
+                    mIndex = mIndexArray[3];
+                    mIndex = mIndex*calibrationFactor[1];
                     b = mIndex*sigma3;
                     compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
                 }
                 else if (jointValue =="Medium"){
-                    mIndex = 7.5;
-                    calibrationFactor = .66;
-                    mIndex = mIndex*calibrationFactor;
+
+                    mIndex = mIndexArray[3];
+                    mIndex = mIndex*calibrationFactor[2];
                     b = mIndex*sigma3;
                     compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
                 }
                 else{
-                    mIndex = 7.5;
-                    calibrationFactor = .5;
-                    mIndex = mIndex*calibrationFactor;
+
+                    mIndex = mIndexArray[3];
+                    mIndex = mIndex*calibrationFactor[3];
                     b = mIndex*sigma3;
                     compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
                 }
@@ -765,30 +759,29 @@ public class DrillingEquations {
             else if (lithology =="Limestone" || lithology == "Dolomite"){
                 if (jointValue =="Unknown/None"){
 
-                    mIndex = 3.5;
-                    calibrationFactor = 1;
-                    mIndex = mIndex*calibrationFactor;
+                    mIndex = mIndexArray[4];
+                    mIndex = mIndex*calibrationFactor[0];
                     b = mIndex*sigma3;
                     compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
                 }
                 else if (jointValue =="Low"){
-                    mIndex = 3.5;
-                    calibrationFactor = .8;
-                    mIndex = mIndex*calibrationFactor;
+
+                    mIndex = mIndexArray[4];
+                    mIndex = mIndex*calibrationFactor[1];
                     b = mIndex*sigma3;
                     compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
                 }
                 else if (jointValue =="Medium"){
-                    mIndex = 3.5;
-                    calibrationFactor = .66;
-                    mIndex = mIndex*calibrationFactor;
+
+                    mIndex = mIndexArray[4];
+                    mIndex = mIndex*calibrationFactor[2];
                     b = mIndex*sigma3;
                     compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
                 }
                 else{
-                    mIndex = 3.5;
-                    calibrationFactor = .5;
-                    mIndex = mIndex*calibrationFactor;
+
+                    mIndex = mIndexArray[4];
+                    mIndex = mIndex*calibrationFactor[3];
                     b = mIndex*sigma3;
                     compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
                 }
@@ -797,30 +790,29 @@ public class DrillingEquations {
 
                 if (jointValue =="Unknown/None"){
 
-                    mIndex = 5;
-                    calibrationFactor = 1;
-                    mIndex = mIndex*calibrationFactor;
+                    mIndex = mIndexArray[5];
+                    mIndex = mIndex*calibrationFactor[0];
                     b = mIndex*sigma3;
                     compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
                 }
                 else if (jointValue =="Low"){
-                    mIndex = 5;
-                    calibrationFactor = .8;
-                    mIndex = mIndex*calibrationFactor;
+
+                    mIndex = mIndexArray[5];
+                    mIndex = mIndex*calibrationFactor[1];
                     b = mIndex*sigma3;
                     compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
                 }
                 else if (jointValue =="Medium"){
-                    mIndex = 5;
-                    calibrationFactor = .66;
-                    mIndex = mIndex*calibrationFactor;
+
+                    mIndex = mIndexArray[5];
+                    mIndex = mIndex*calibrationFactor[2];
                     b = mIndex*sigma3;
                     compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
                 }
                 else{
-                    mIndex = 5;
-                    calibrationFactor = .5;
-                    mIndex = mIndex*calibrationFactor;
+
+                    mIndex = mIndexArray[5];
+                    mIndex = mIndex*calibrationFactor[3];
                     b = mIndex*sigma3;
                     compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
                 }
@@ -836,30 +828,29 @@ public class DrillingEquations {
 
                 if (jointValue =="Unknown/None"){
 
-                    mIndex = 0.3;
-                    calibrationFactor = 1;
-                    mIndex = mIndex*calibrationFactor;
+                    mIndex = mIndexArray[6];
+                    mIndex = mIndex*calibrationFactor[0];
                     b = mIndex*sigma3;
                     compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
                 }
                 else if (jointValue =="Low"){
-                    mIndex = 0.3;
-                    calibrationFactor = .8;
-                    mIndex = mIndex*calibrationFactor;
+
+                    mIndex = mIndexArray[6];
+                    mIndex = mIndex*calibrationFactor[1];
                     b = mIndex*sigma3;
                     compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
                 }
                 else if (jointValue =="Medium"){
-                    mIndex = 0.3;
-                    calibrationFactor = .66;
-                    mIndex = mIndex*calibrationFactor;
+
+                    mIndex = mIndexArray[6];
+                    mIndex = mIndex*calibrationFactor[2];
                     b = mIndex*sigma3;
                     compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
                 }
                 else{
-                    mIndex = 0.3;
-                    calibrationFactor = .5;
-                    mIndex = mIndex*calibrationFactor;
+
+                    mIndex = mIndexArray[6];
+                    mIndex = mIndex*calibrationFactor[3];
                     b = mIndex*sigma3;
                     compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
                 }
@@ -869,30 +860,29 @@ public class DrillingEquations {
 
                 if (jointValue =="Unknown/None"){
 
-                    mIndex = 0.14;
-                    calibrationFactor = 1;
-                    mIndex = mIndex*calibrationFactor;
+                    mIndex = mIndexArray[7];
+                    mIndex = mIndex*calibrationFactor[0];
                     b = mIndex*sigma3;
                     compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
                 }
                 else if (jointValue =="Low"){
-                    mIndex = 0.14;
-                    calibrationFactor = .8;
-                    mIndex = mIndex*calibrationFactor;
+
+                    mIndex = mIndexArray[7];
+                    mIndex = mIndex*calibrationFactor[1];
                     b = mIndex*sigma3;
                     compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
                 }
                 else if (jointValue =="Medium"){
-                    mIndex = 0.14;
-                    calibrationFactor = .66;
-                    mIndex = mIndex*calibrationFactor;
+
+                    mIndex = mIndexArray[7];
+                    mIndex = mIndex*calibrationFactor[2];
                     b = mIndex*sigma3;
                     compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
                 }
                 else{
-                    mIndex = 0.14;
-                    calibrationFactor = .5;
-                    mIndex = mIndex*calibrationFactor;
+
+                    mIndex = mIndexArray[7];
+                    mIndex = mIndex*calibrationFactor[3];
                     b = mIndex*sigma3;
                     compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
                 }
@@ -900,30 +890,29 @@ public class DrillingEquations {
             else if (lithology =="Shale" || lithology =="Siltstone"){
                 if (jointValue =="Unknown/None"){
 
-                    mIndex = 0.2;
-                    calibrationFactor = 1;
-                    mIndex = mIndex*calibrationFactor;
+                    mIndex = mIndexArray[8];
+                    mIndex = mIndex*calibrationFactor[0];
                     b = mIndex*sigma3;
                     compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
                 }
                 else if (jointValue =="Low"){
-                    mIndex = 0.2;
-                    calibrationFactor = .8;
-                    mIndex = mIndex*calibrationFactor;
+
+                    mIndex = mIndexArray[8];
+                    mIndex = mIndex*calibrationFactor[1];
                     b = mIndex*sigma3;
                     compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
                 }
                 else if (jointValue =="Medium"){
-                    mIndex = 0.2;
-                    calibrationFactor = .66;
-                    mIndex = mIndex*calibrationFactor;
+
+                    mIndex = mIndexArray[8];
+                    mIndex = mIndex*calibrationFactor[2];
                     b = mIndex*sigma3;
                     compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
                 }
                 else{
-                    mIndex = 0.2;
-                    calibrationFactor = .5;
-                    mIndex = mIndex*calibrationFactor;
+
+                    mIndex = mIndexArray[8];
+                    mIndex = mIndex*calibrationFactor[3];
                     b = mIndex*sigma3;
                     compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
                 }
@@ -940,30 +929,29 @@ public class DrillingEquations {
 
                 if (jointValue =="Unknown/None"){
 
-                    mIndex = .15;
-                    calibrationFactor = 1;
-                    mIndex = mIndex*calibrationFactor;
+                    mIndex = mIndexArray[9];
+                    mIndex = mIndex*calibrationFactor[0];
                     b = mIndex*sigma3;
                     compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
                 }
                 else if (jointValue =="Low"){
-                    mIndex = .15;
-                    calibrationFactor = .8;
-                    mIndex = mIndex*calibrationFactor;
+
+                    mIndex = mIndexArray[9];
+                    mIndex = mIndex*calibrationFactor[1];
                     b = mIndex*sigma3;
                     compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
                 }
                 else if (jointValue =="Medium"){
-                    mIndex = .15;
-                    calibrationFactor = .66;
-                    mIndex = mIndex*calibrationFactor;
+
+                    mIndex = mIndexArray[9];
+                    mIndex = mIndex*calibrationFactor[2];
                     b = mIndex*sigma3;
                     compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
                 }
                 else{
-                    mIndex = .15;
-                    calibrationFactor = .5;
-                    mIndex = mIndex*calibrationFactor;
+
+                    mIndex = mIndexArray[9];
+                    mIndex = mIndex*calibrationFactor[3];
                     b = mIndex*sigma3;
                     compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
                 }
@@ -973,30 +961,29 @@ public class DrillingEquations {
 
                 if (jointValue =="Unknown/None"){
 
-                    mIndex = 0.04;
-                    calibrationFactor = 1;
-                    mIndex = mIndex*calibrationFactor;
+                    mIndex = mIndexArray[10];
+                    mIndex = mIndex*calibrationFactor[0];
                     b = mIndex*sigma3;
                     compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
                 }
                 else if (jointValue =="Low"){
-                    mIndex = 0.04;
-                    calibrationFactor = .8;
-                    mIndex = mIndex*calibrationFactor;
+
+                    mIndex = mIndexArray[10];
+                    mIndex = mIndex*calibrationFactor[1];
                     b = mIndex*sigma3;
                     compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
                 }
                 else if (jointValue =="Medium"){
-                    mIndex = 0.04;
-                    calibrationFactor = .66;
-                    mIndex = mIndex*calibrationFactor;
+
+                    mIndex = mIndexArray[10];
+                    mIndex = mIndex*calibrationFactor[2];
                     b = mIndex*sigma3;
                     compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
                 }
                 else{
-                    mIndex = 0.04;
-                    calibrationFactor = .5;
-                    mIndex = mIndex*calibrationFactor;
+
+                    mIndex = mIndexArray[10];
+                    mIndex = mIndex*calibrationFactor[3];
                     b = mIndex*sigma3;
                     compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
                 }
@@ -1004,30 +991,29 @@ public class DrillingEquations {
             else if (lithology =="Shale" || lithology =="Siltstone"){
                 if (jointValue =="Unknown/None"){
 
-                    mIndex = 0.05;
-                    calibrationFactor = 1;
-                    mIndex = mIndex*calibrationFactor;
+                    mIndex = mIndexArray[11];
+                    mIndex = mIndex*calibrationFactor[0];
                     b = mIndex*sigma3;
                     compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
                 }
                 else if (jointValue =="Low"){
-                    mIndex = 0.05;
-                    calibrationFactor = .8;
-                    mIndex = mIndex*calibrationFactor;
+
+                    mIndex = mIndexArray[11];
+                    mIndex = mIndex*calibrationFactor[1];
                     b = mIndex*sigma3;
                     compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
                 }
                 else if (jointValue =="Medium"){
-                    mIndex = 0.05;
-                    calibrationFactor = .66;
-                    mIndex = mIndex*calibrationFactor;
+
+                    mIndex = mIndexArray[11];
+                    mIndex = mIndex*calibrationFactor[2];
                     b = mIndex*sigma3;
                     compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
                 }
                 else{
-                    mIndex = 0.05;
-                    calibrationFactor = .5;
-                    mIndex = mIndex*calibrationFactor;
+
+                    mIndex = mIndexArray[11];
+                    mIndex = mIndex*calibrationFactor[3];
                     b = mIndex*sigma3;
                     compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
                 }
