@@ -9,11 +9,52 @@ public class SecondSetEquations {
 
 
     //Find betaAngle
+    public double betaAngle(int strikeDirection,int thetaMaxAzimuth, int dipDirection,int gamma, double phi){
 
-    public double betaAngle(int maxStressStrike,int inputStrike){
-int betaAngle=-1;
-return betaAngle;
+        int betaAngle=-1;
+        int betaAzimuth = -1;
+        int betaDip = -1;
+        int sigma1Dip = -1;
+
+        //sigma1Dip is the difference between phi and gamme. Phi is calculated in the drillingEquations class.
+        //thetaMaxAzimuth comes from the theta angle that gives the max value of sigma1. Found in sigma1MaxTheta method in drillingEquations class
+        betaAzimuth = Math.abs(strikeDirection-thetaMaxAzimuth);
+
+        phi = Math.round(phi);
+        sigma1Dip = Math.abs((int) phi - gamma);
+        betaDip = Math.abs(dipDirection - sigma1Dip);
+
+        //If statements that makes sure our betaAzimuth falls into the 0-90 degree range
+        if(betaAzimuth <= 90){
+
+        }
+        else if (90 < betaAzimuth && betaAzimuth <= 270){
+
+            betaAzimuth = Math.abs(180-betaAzimuth);
+        }
+        else if (270< betaAzimuth && betaAzimuth < 360){
+
+            betaAzimuth = Math.abs(360-betaAzimuth);
+        }
+
+        //If statement that will return a betaAngle range inbetween 30-75 if betadip or betaAzimuth is within that range
+        if(30 <= betaAzimuth && betaAzimuth <= 75){
+
+            betaAngle = betaAzimuth;
+            return betaAngle;
+        }
+        else if (30 <= betaDip && betaDip<= 75){
+            betaAngle = betaDip;
+            return betaAngle;
+        }
+        else {
+
+            betaAngle = betaAzimuth;
+            return betaAngle;
+        }
+
     }
+
     //Faults range calculations
     public static double fault(String conductivity, double beta,String chooseParam) {
 
@@ -269,7 +310,7 @@ return betaAngle;
 
     //Find Instability,LossOfCirculation, WellControl, LongTermIntegrity, and ROP values
 
-    public static double secondSetValues(String faultParam, String jointParam,String unconformityParam,double betaParam,String chooseParam) {
+    public static double secondSetValues(String faultParam, String jointParam,String unconformityParam,double betaFaultParam, double betaJointParam, double betaUnconformityParam,String chooseParam) {
         double valueAverage;
         double value1=0;
         double value2=0;
@@ -282,7 +323,7 @@ return betaAngle;
 
             if (i == 1) {
 
-                value1 = fault(faultParam, betaParam, chooseParam);
+                value1 = fault(faultParam, betaFaultParam, chooseParam);
                 if (value1 != 0) {
 
                     count = count + 1;
@@ -290,7 +331,7 @@ return betaAngle;
 
             } else if (i == 2) {
 
-                value2 = joint(jointParam, betaParam, chooseParam);
+                value2 = joint(jointParam, betaJointParam, chooseParam);
                 if (value2 != 0) {
 
                     count = count + 1;
@@ -298,7 +339,7 @@ return betaAngle;
 
             }  else {
 
-                value3 = unconformity(unconformityParam, betaParam, chooseParam);
+                value3 = unconformity(unconformityParam, betaUnconformityParam, chooseParam);
 
                 if (value3 != 0) {
 

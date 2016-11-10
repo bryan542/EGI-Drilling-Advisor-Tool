@@ -97,10 +97,7 @@ public class DropdownMenu  {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                //filepath finder class
-                RootTest helpTest = new RootTest();
-                //find filepath for the help library
-                //gets the bite filepath of the pdf template
+                //gets the bite filepath of the .chm file
                 InputStream inputStream = PDFCreator.class.getResourceAsStream("EGI User Manual.chm");
 
                 //executes the .chm file

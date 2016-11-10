@@ -40,7 +40,6 @@ public class mainWindow extends JFrame {
     private JComboBox LithologyCombo;
     private JComboBox PermCombo;
     private JComboBox GSICombo;
-
     private JTextField BetaText;
     private JTextField alpha1Text;
     private JTextField gammaText;
@@ -781,9 +780,9 @@ public class mainWindow extends JFrame {
                 this.SH = Equations.SH(SigmaV,SigmaH,Sigmah,Double.parseDouble(gammaText.getText()),Alpha);
                 this.Sh = Equations.Sh(SigmaV,SigmaH,Sigmah,Double.parseDouble(gammaText.getText()),Alpha);
 
-                //Retrieve Tho values ThoXY, ThoXZ, ThoYZ
-                this.ThoXY = Equations.ThoXY(SigmaH,Sigmah,Alpha,Double.parseDouble(gammaText.getText()));
-                this.ThoXZ = Equations.ThoXZ(SigmaV,SigmaH,Sigmah,Alpha,Double.parseDouble(gammaText.getText()));
+                //Retrieve Tho values thoXY, thoXZ, ThoYZ
+                this.ThoXY = Equations.thoXY(SigmaH,Sigmah,Alpha,Double.parseDouble(gammaText.getText()));
+                this.ThoXZ = Equations.thoXZ(SigmaV,SigmaH,Sigmah,Alpha,Double.parseDouble(gammaText.getText()));
                 this.ThoYZ = Equations.ThoYZ(SigmaH,Sigmah,Alpha,Double.parseDouble(gammaText.getText()));
 
                 // Retrieve SigmaR
@@ -792,20 +791,20 @@ public class mainWindow extends JFrame {
                 // Retrieve SigmaTheta and the input angle that give the maximum SigTheta
                 this.SigTheta = Equations.sigmaTheta(SH,Sh,ThoXY,DeltaP);
 
-                // Retrieve SigmaZ
-                this.SigmaZ = Equations.SigmaZ(SV,Double.parseDouble(poissonText.getText()),Sh,SH,ThoXY);
+                // Retrieve sigmaZ
+                this.SigmaZ = Equations.sigmaZ(SV,Double.parseDouble(poissonText.getText()),Sh,SH,ThoXY);
 
-                // Retrieve Tho theta values ThoThetaZ,ThoRTheta,ThoRZ
-                this.ThoThetaZ = Equations.ThoThetaZ(ThoXZ,ThoYZ);
-                this.ThoRTheta = Equations.ThoRTheta();
-                this.ThoRZ = Equations.ThoRZ();
+                // Retrieve Tho theta values thoThetaZ,thoRTheta,thoRZ
+                this.ThoThetaZ = Equations.thoThetaZ(ThoXZ,ThoYZ);
+                this.ThoRTheta = Equations.thoRTheta();
+                this.ThoRZ = Equations.thoRZ();
 
                 // Retrieve principal effective stress values
 
-                this.Sigma1 = Equations.Sigma1(SigTheta,SigmaZ,ThoThetaZ);
+                this.Sigma1 = Equations.sigma1(SigTheta,SigmaZ,ThoThetaZ);
                 double[] sigma1Array = Equations.Sigma1Array(SigTheta,SigmaZ,ThoThetaZ);
-                this.Sigma2 = Equations.Sigma2(SigTheta,SigmaZ,ThoThetaZ,Equations.Sigma1MaxTheta(sigma1Array,this.Sigma1));
-                this.Sigma3 = Equations.Sigma3(SigmaR);
+                this.Sigma2 = Equations.sigma2(SigTheta,SigmaZ,ThoThetaZ,Equations.sigma1MaxTheta(sigma1Array,this.Sigma1));
+                this.Sigma3 = Equations.sigma3(SigmaR);
 
                 // Determine if tensile failure
                 // conditionals if the automatic or manual tensile radiobuttons are selected
@@ -844,12 +843,24 @@ public class mainWindow extends JFrame {
                 //Retrieve second set parameters
 
                 SecondSetEquations secondEquations = new SecondSetEquations();
-                double betaPlaceHolder = 50;
-                this.secondInstability = secondEquations.secondSetValues(FaultConductCombo.getSelectedItem().toString(),JointCombo.getSelectedItem().toString(),BeddingCombo.getSelectedItem().toString(),betaPlaceHolder,"Instability");
-                this.secondLossOfCirculation = secondEquations.secondSetValues(FaultConductCombo.getSelectedItem().toString(),JointCombo.getSelectedItem().toString(),BeddingCombo.getSelectedItem().toString(),betaPlaceHolder,"LossOfCirculation");
-                this.secondWellControl = secondEquations.secondSetValues(FaultConductCombo.getSelectedItem().toString(),JointCombo.getSelectedItem().toString(),BeddingCombo.getSelectedItem().toString(),betaPlaceHolder,"WellControl");
-                this.secondLongTermIntegrity = secondEquations.secondSetValues(FaultConductCombo.getSelectedItem().toString(),JointCombo.getSelectedItem().toString(),BeddingCombo.getSelectedItem().toString(),betaPlaceHolder,"LongTermIntegrity");
-                this.secondROP = secondEquations.secondSetValues(FaultConductCombo.getSelectedItem().toString(),JointCombo.getSelectedItem().toString(),BeddingCombo.getSelectedItem().toString(),betaPlaceHolder,"ROP");
+                double betaFaultParam = -1;
+                double betaJointParam = -1;
+                double betaUnconformityParam = -1;
+                double phi = -1;
+
+                //find the phi value at the angle that gives the maximum sigma1 value
+                phi = Equations.phi(SigTheta,SigmaZ,ThoThetaZ,Equations.sigma1MaxTheta(sigma1Array,this.Sigma1)) ;
+
+                //find unique beta value for each second set type
+                betaFaultParam = secondEquations.betaAngle(Integer.parseInt(faultConductivityStrikeTextField.getText()), Equations.sigma1MaxTheta(sigma1Array,this.Sigma1), Integer.parseInt(faultConductivityDipTextField.getText()),Integer.parseInt(gammaText.getText()), phi );
+                betaJointParam = secondEquations.betaAngle(Integer.parseInt(jointStrikeTextField.getText()), Equations.sigma1MaxTheta(sigma1Array,this.Sigma1), Integer.parseInt(jointDipTextField.getText()),Integer.parseInt(gammaText.getText()), phi );
+                betaUnconformityParam = secondEquations.betaAngle(Integer.parseInt(beddingPlaneStrikeTextField.getText()), Equations.sigma1MaxTheta(sigma1Array,this.Sigma1), Integer.parseInt(beddingPlaneDipTextField.getText()),Integer.parseInt(gammaText.getText()), phi );
+
+                this.secondInstability = secondEquations.secondSetValues(FaultConductCombo.getSelectedItem().toString(),JointCombo.getSelectedItem().toString(),BeddingCombo.getSelectedItem().toString(),betaFaultParam,betaJointParam,betaUnconformityParam,"Instability");
+                this.secondLossOfCirculation = secondEquations.secondSetValues(FaultConductCombo.getSelectedItem().toString(),JointCombo.getSelectedItem().toString(),BeddingCombo.getSelectedItem().toString(),betaFaultParam,betaJointParam,betaUnconformityParam,"LossOfCirculation");
+                this.secondWellControl = secondEquations.secondSetValues(FaultConductCombo.getSelectedItem().toString(),JointCombo.getSelectedItem().toString(),BeddingCombo.getSelectedItem().toString(),betaFaultParam,betaJointParam,betaUnconformityParam,"WellControl");
+                this.secondLongTermIntegrity = secondEquations.secondSetValues(FaultConductCombo.getSelectedItem().toString(),JointCombo.getSelectedItem().toString(),BeddingCombo.getSelectedItem().toString(),betaFaultParam,betaJointParam,betaUnconformityParam,"LongTermIntegrity");
+                this.secondROP = secondEquations.secondSetValues(FaultConductCombo.getSelectedItem().toString(),JointCombo.getSelectedItem().toString(),BeddingCombo.getSelectedItem().toString(),betaFaultParam,betaJointParam,betaUnconformityParam,"ROP");
 
                 //Retrieve third set parameters
 
