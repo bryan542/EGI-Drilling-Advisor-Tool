@@ -1028,7 +1028,7 @@ public class mainWindow extends JFrame {
         URL splashURL = mainWindow.class.getResource("SplashImage.png");
         ImageIcon splashImage = new ImageIcon(splashURL);
         //Image URL, progres bool, message bool, percent bool, version string, setlocation, textcolor, progress text color
-        JSplash splash = new JSplash(splashURL, true, false, true, "Beta Version: 12",null,Color.WHITE,Color.GREEN );
+        JSplash splash = new JSplash(splashURL, true, false, true, "Beta Version: 13",null,Color.WHITE,Color.GREEN );
 
         splash.splashOn();
         splash.setProgress(25);
