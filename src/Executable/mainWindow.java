@@ -2,22 +2,17 @@ package Executable;
 
 
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyledDocument;
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.net.URL;
 import java.util.Arrays;
 
 import com.thehowtotutorial.splashscreen.JSplash;
-import jdk.internal.util.xml.impl.Input;
 import org.jfree.data.xy.XYSeriesCollection;
 
 
@@ -31,8 +26,6 @@ public class mainWindow extends JFrame {
     private JPanel InputPanel1;
     private JPanel WellControlRatingConditionResult;
     private JPanel MainPanel;
-    private JPanel betaImagePanel;
-    private JPanel secondInputsPanel;
     private JPanel JPanelTest;
     private JPanel PicturePanel;
 
@@ -44,6 +37,7 @@ public class mainWindow extends JFrame {
     private JComboBox LithologyCombo;
     private JComboBox PermCombo;
     private JComboBox GSICombo;
+
     private JTextField BetaText;
     private JTextField alpha1Text;
     private JTextField gammaText;
@@ -112,6 +106,8 @@ public class mainWindow extends JFrame {
     private JLabel tensileStrengthOutputLabel;
     private JLabel cohesionOutputLabel;
     private JLabel backgroundImageTest;
+    private JLabel cohesionInputLabel;
+    private JLabel cohesionTitleLabel;
 
     private JTextPane ratingTextPane;
 
@@ -121,10 +117,11 @@ public class mainWindow extends JFrame {
     private JButton GSITableButton;
 
     private JRadioButton stressAutomaticRadioButton;
-
     private JRadioButton stressManualInputRadioButton;
     private JRadioButton tensileAutomaticRadioButton;
     private JRadioButton tensileManualRadioButton;
+    private JRadioButton cohesionAutomaticButton;
+    private JRadioButton cohesionManualButton;
 
     private JTextField principal1TextFieldResult;
     private JTextField principal2TextFieldResult;
@@ -135,17 +132,19 @@ public class mainWindow extends JFrame {
     private JTextField sigmaMaxTextFieldResult;
     private JTextField sigmaMinTextFieldResult;
     private JTextField cohesionOutputTextField;
-    private JLabel cohesionTitleLabel;
-    private JRadioButton cohesionAutomaticButton;
-    private JRadioButton cohesionManualButton;
-    private JLabel cohesionInputLabel;
-
+    private JPanel secondInputsPanel;
+    private JPanel unconformityJPanel;
+    private JPanel GSILocationSetter;
 
     private static double densityUM = 1;
     private static double pressureUM =1;
     private static double lengthUM =1;
     private static double gradientUM = 1;
     private static boolean buttonCount = true;
+
+    public JComboBox getPoreCombo() {
+        return PoreCombo;
+    }
 
     public JLabel getTensileFailResult() {
         return TensileFailResult;
@@ -703,7 +702,7 @@ public class mainWindow extends JFrame {
                 tensileText.setEnabled(true);
             }
         });
-
+        /*
         //Add alpha and beta images to input panel and resize
         ImageIcon AlphaIcon = new ImageIcon(getClass().getResource(("DrillingGUIPicture.png")));
         ImageResize Test1 = new ImageResize();
@@ -716,7 +715,7 @@ public class mainWindow extends JFrame {
         BetaImageLabel.setIcon(BetaIcon);
         Border b2 = new LineBorder(Color.BLACK, 2);
         BetaImageLabel.setBorder(b2);
-
+*/
 
 
 
@@ -988,9 +987,8 @@ public class mainWindow extends JFrame {
 
                 //buttonCount is a true/false condition to check if the graph panes are added/removed
                 if (buttonCount == true) {
-                    GraphOutputPanel polygonGraphOutput = new GraphOutputPanel(polygonCollection);
+                    GraphOutputPanel polygonGraphOutput = new GraphOutputPanel(polygonCollection, mainWindow.this);
                     tabbedPane1.addTab("Stress Polygon", null, polygonGraphOutput, null);
-
 
                     MohrFailureGraph MohrGraphOutput = new MohrFailureGraph(mohrCollection);
                     tabbedPane1.addTab("Mohr-Coulomb Failure",null,MohrGraphOutput,null);
@@ -1002,7 +1000,7 @@ public class mainWindow extends JFrame {
                     tabbedPane1.remove(3);
                     tabbedPane1.remove(2);
 
-                    GraphOutputPanel graphOutput = new GraphOutputPanel(polygonCollection);
+                    GraphOutputPanel graphOutput = new GraphOutputPanel(polygonCollection, mainWindow.this);
                     tabbedPane1.addTab("Stress Polygon", null, graphOutput, null);
 
                     MohrFailureGraph MohrGraphOutput = new MohrFailureGraph(mohrCollection);
@@ -1069,7 +1067,7 @@ public class mainWindow extends JFrame {
                     GD.setContentPane(GD.contentPane);
                     GD.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
                     GD.pack();
-                    GD.setLocationRelativeTo(AlphaImageLabel);
+                    GD.setLocationRelativeTo(GSILocationSetter);
                     GD.setVisible(true);
                     GD.setTitle("GSI Selection Table");
 
@@ -1145,7 +1143,7 @@ public class mainWindow extends JFrame {
     public static void main(String[] args) {
 
         mainWindow mw = new mainWindow();
-        mw.buildSplashScreen();
+        //mw.buildSplashScreen();
 
         //sets the look and feel
         try {
