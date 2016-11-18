@@ -66,7 +66,6 @@ public class MohrDataset {
         XYSeriesCollection dataset = new XYSeriesCollection();
         dataset.addSeries((Sigma2MohrLine));
         dataset.addSeries((Sigma3MohrLine));
-
         dataset.addSeries(CohesionLine);
 
         return dataset;

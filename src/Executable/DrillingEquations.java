@@ -726,4 +726,14 @@ public class DrillingEquations {
         compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
         return compressionStrength;
     }
+
+    public double cohesionStrength(double compressiveStrength){
+
+        double cohesion = -1;
+        double angle = 30;
+        cohesion = Math.abs(compressiveStrength)*(1-Math.sin(Math.toRadians(angle)))/(2*Math.cos(Math.toRadians(angle)));
+
+        return cohesion;
+    }
 }
+

@@ -15,12 +15,14 @@ public class StressPolygonDataset {
         double SHMaxDiagnolMin;
         double SHMaxDiagnolMax;
 
-        ShMin = (SigmaV/3.1)+PorePR*depth;
-        SHMax = SigmaV*3.1-PorePR*depth;
+        double coeffFriction = (Math.sqrt(.6*.6+1)+.6)* (Math.sqrt(.6*.6+1)+.6);
+        ShMin = ((SigmaV-PorePR)*depth/coeffFriction)+PorePR*depth;
+        SHMax = coeffFriction*(SigmaV-PorePR)*depth+PorePR*depth;
 
 
-        SHMaxDiagnolMin = (SHMax+depth*PorePR)/3.1+depth*PorePR;
-        SHMaxDiagnolMax = SigmaV+PorePR*depth;
+        SHMaxDiagnolMin = (SigmaV/coeffFriction-PorePR/coeffFriction+PorePR)*depth;
+        SHMaxDiagnolMax = (SigmaV*coeffFriction-PorePR*coeffFriction+PorePR)*depth;
+
 
         final XYSeries SVLine = new XYSeries("SigmaV Line");
         SVLine.add(0.0,0.0);
@@ -29,33 +31,46 @@ public class StressPolygonDataset {
         SVLine.add(SHMax*1.1,SHMax*1.1);
 
         final XYSeries SigmaMinSeries = new XYSeries("Normal Fault Boundary");
+
         SigmaMinSeries.add(ShMin,ShMin);
-        SigmaMinSeries.add(ShMin,SHMaxDiagnolMax);
-
-        final XYSeries SigmaMaxDiagnolSeries = new XYSeries("Strike-Slip Boundary");
-
-        SigmaMaxDiagnolSeries.add(ShMin,SHMaxDiagnolMax);
-        SigmaMaxDiagnolSeries.add(SHMaxDiagnolMin,SHMax);
+        SigmaMinSeries.add(ShMin,SigmaV*depth);
 
         final XYSeries SigmaMaxnSeries = new XYSeries("Reverse Fault Boundary");
-        SigmaMaxnSeries.add(SHMaxDiagnolMax,SHMax);
+
+        SigmaMaxnSeries.add(SigmaV*depth,SHMax);
         SigmaMaxnSeries.add(SHMax,SHMax);
 
-        final XYSeries DiagnolHorizontal = new XYSeries("Boundary 1");
-        DiagnolHorizontal.add(ShMin,SHMaxDiagnolMax);
-        DiagnolHorizontal.add(SHMaxDiagnolMin,SHMaxDiagnolMax);
+        final XYSeries SigmaMaxDiagnolSeriesHorizontal = new XYSeries("Strike-Slip Boundary2");
 
-        final XYSeries DiagnolVertical = new XYSeries("Boundary 2");
-        DiagnolVertical.add(SHMaxDiagnolMin,SHMaxDiagnolMax);
-        DiagnolVertical.add(SHMaxDiagnolMin,SHMax);
+        SigmaMaxDiagnolSeriesHorizontal.add(ShMin,SigmaV*depth);
+        SigmaMaxDiagnolSeriesHorizontal.add(SigmaV*depth,SigmaV*depth);
+
+
+        final XYSeries SigmaMaxDiagnolSeriesVertical = new XYSeries("Reverse Faulting Boundary");
+
+        SigmaMaxDiagnolSeriesVertical.add(SigmaV*depth,SigmaV*depth);
+        SigmaMaxDiagnolSeriesVertical.add(SigmaV*depth,SHMax);
+
+        final XYSeries SigmaMaxDiagnolSeries1 = new XYSeries("Strike-Slip Diagonal Boundary");
+
+        SigmaMaxDiagnolSeries1.add(ShMin,SigmaV*depth);
+        SigmaMaxDiagnolSeries1.add(SigmaV*depth,SHMax);
+
+
+
+
+
 
         XYSeriesCollection dataset = new XYSeriesCollection();
         dataset.addSeries((SVLine));
         dataset.addSeries((SigmaMinSeries));
-        dataset.addSeries((SigmaMaxDiagnolSeries));
+        dataset.addSeries(SigmaMaxDiagnolSeries1);
+        dataset.addSeries((SigmaMaxDiagnolSeriesVertical));
+        dataset.addSeries((SigmaMaxDiagnolSeriesHorizontal));
+
+
         dataset.addSeries((SigmaMaxnSeries));
-        dataset.addSeries(DiagnolHorizontal);
-        dataset.addSeries(DiagnolVertical);
+
 
         return dataset;
     }

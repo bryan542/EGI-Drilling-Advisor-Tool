@@ -21,7 +21,6 @@ public class ClearResetValues {
         //add all of the Jtextfields to obj
         obj.add(mw.getDepthText());
         obj.add(mw.getMudWeightText());
-        obj.add(mw.getCohesionText());
         obj.add(mw.getSigmaVTextField());
         obj.add(mw.getSigmaMaxTextField());
         obj.add(mw.getSigmaMinTextField());
@@ -45,6 +44,7 @@ public class ClearResetValues {
         obj.add(mw.getSigmaVTextFieldResult());
         obj.add(mw.getSigmaMaxTextFieldResult());
         obj.add(mw.getSigmaMinTextFieldResult());
+        obj.add(mw.getCohesionOutputTextField());
 
         //add all of the JLabels to obj2
         obj2.add(mw.getTensileFailResult());

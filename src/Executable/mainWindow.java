@@ -2,6 +2,7 @@ package Executable;
 
 
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
@@ -10,10 +11,13 @@ import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyledDocument;
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.net.URL;
 import java.util.Arrays;
 
 import com.thehowtotutorial.splashscreen.JSplash;
+import jdk.internal.util.xml.impl.Input;
 import org.jfree.data.xy.XYSeriesCollection;
 
 
@@ -83,7 +87,6 @@ public class mainWindow extends JFrame {
     private JLabel BetaImageLabel;
     private JLabel depthLabel;
     private JLabel mudWeightLabel;
-    private JLabel cohesionLabel;
     private JLabel gammaLabel;
     private JLabel alpha1Label;
     private JLabel alpha2Label;
@@ -107,6 +110,8 @@ public class mainWindow extends JFrame {
     private JLabel tensileStrengthLabel;
     private JLabel inputTensileStrengthLabel;
     private JLabel tensileStrengthOutputLabel;
+    private JLabel cohesionOutputLabel;
+    private JLabel backgroundImageTest;
 
     private JTextPane ratingTextPane;
 
@@ -129,6 +134,12 @@ public class mainWindow extends JFrame {
     private JTextField sigmaVTextFieldResult;
     private JTextField sigmaMaxTextFieldResult;
     private JTextField sigmaMinTextFieldResult;
+    private JTextField cohesionOutputTextField;
+    private JLabel cohesionTitleLabel;
+    private JRadioButton cohesionAutomaticButton;
+    private JRadioButton cohesionManualButton;
+    private JLabel cohesionInputLabel;
+
 
     private static double densityUM = 1;
     private static double pressureUM =1;
@@ -152,8 +163,12 @@ public class mainWindow extends JFrame {
         return mudWeightLabel;
     }
 
-    public JLabel getCohesionLabel() {
-        return cohesionLabel;
+    public JLabel getCohesionInputLabel() {
+        return cohesionInputLabel;
+    }
+
+    public JLabel getCohesionTitleLabel() {
+        return cohesionTitleLabel;
     }
 
     public JLabel getGammaLabel() {
@@ -308,6 +323,10 @@ public class mainWindow extends JFrame {
         return sigmaMinTextFieldResult;
     }
 
+    public JTextField getCohesionOutputTextField() {
+        return cohesionOutputTextField;
+    }
+
     public JRadioButton getStressAutomaticRadioButton() {
         return stressAutomaticRadioButton;
     }
@@ -340,8 +359,16 @@ public class mainWindow extends JFrame {
         this.mudWeightLabel.setText(text);
     }
 
-    public void setCohesionLabel(String text) {
-        this.cohesionLabel.setText(text);
+    public void setCohesionTitleLabel(String text) {
+        this.cohesionTitleLabel.setText(text);
+    }
+
+    public void setCohesionInputLabel(String text) {
+        this.cohesionInputLabel.setText(text);
+    }
+
+    public void setCohesionOutputLabel(String text) {
+        this.cohesionOutputLabel.setText(text);
     }
 
     public void setTensileLabel(String text) {
@@ -444,6 +471,8 @@ public class mainWindow extends JFrame {
 
     public mainWindow() {
 
+
+
         getDepthText().setText("5000");
         getMudWeightText().setText("9");
         getCohesionText().setText("500");
@@ -527,6 +556,7 @@ public class mainWindow extends JFrame {
         sigmaVTextFieldResult.setEditable(false);
         porePressureTextFieldResult.setEditable(false);
         tensileStrengthTextFieldResult.setEditable(false);
+        cohesionOutputTextField.setEditable(false);
 
         //set textfield allignment to horizontal
         principal1TextFieldResult.setHorizontalAlignment(SwingConstants.CENTER);
@@ -537,6 +567,7 @@ public class mainWindow extends JFrame {
         sigmaVTextFieldResult.setHorizontalAlignment(SwingConstants.CENTER);
         porePressureTextFieldResult.setHorizontalAlignment(SwingConstants.CENTER);
         tensileStrengthTextFieldResult.setHorizontalAlignment(SwingConstants.CENTER);
+        cohesionOutputTextField.setHorizontalAlignment(SwingConstants.CENTER);
 
         //Assemble stress gradient buttongroup
         ButtonGroup stressBg = new ButtonGroup();
@@ -545,6 +576,8 @@ public class mainWindow extends JFrame {
 
         //set the automatic button as the default
         stressAutomaticRadioButton.setSelected(true);
+
+
 
         //set launch conditional parameters. Kinda redundant, but acts as a failsafe too.
         if(stressAutomaticRadioButton.isSelected()){
@@ -610,6 +643,37 @@ public class mainWindow extends JFrame {
             }
         });
 
+        //Assemble cohesion buttongroup
+        ButtonGroup cohesionBg = new ButtonGroup();
+        cohesionBg.add(cohesionAutomaticButton);
+        cohesionBg.add(cohesionManualButton);
+
+        cohesionAutomaticButton.setSelected(true);
+
+        //set cohesion buttongroup launch parameters
+        if(cohesionAutomaticButton.isSelected()){
+
+            cohesionText.setEnabled(false);
+        }
+        else{
+
+            cohesionText.setEnabled(true);
+        }
+
+        cohesionAutomaticButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cohesionText.setEnabled(false);
+            }
+        });
+        cohesionManualButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cohesionText.setEnabled(true);
+            }
+        });
+
+
         //Assemble tensile button group
         ButtonGroup tensileBG = new ButtonGroup();
         tensileBG.add(tensileAutomaticRadioButton);
@@ -652,6 +716,9 @@ public class mainWindow extends JFrame {
         BetaImageLabel.setIcon(BetaIcon);
         Border b2 = new LineBorder(Color.BLACK, 2);
         BetaImageLabel.setBorder(b2);
+
+
+
 
         calculateButton.addActionListener(new ActionListener() {
             private boolean checkResult;
@@ -899,9 +966,22 @@ public class mainWindow extends JFrame {
                 sumLongTermIntegrity = this.firstLongTermIntegrity+this.secondLongTermIntegrity+this.thirdLongTermIntegrity+this.fourthLongTermIntegrity+this.fifthLongTermIntegrity;
                 sumROP = this.firstROP+this.secondROP+this.thirdROP+this.fourthROP+this.fifthROP;
 
+                //find cohesionInitial value
+
+                if(cohesionManualButton.isSelected()){
+
+                    cohesionInitial = Double.parseDouble(cohesionText.getText());
+                }
+                else{
+                    cohesionInitial = Equations.cohesionStrength(compressiveStrength);
+                }
+
                 //Calculate and build stress polygon dataset and Mohr dataset
-               StressPolygonDataset polyDataset = new StressPolygonDataset();
-                XYSeriesCollection polygonCollection = polyDataset.stressPolygonDataset(this.SigmaV,this.PorePR,Double.parseDouble(depthText.getText()));
+                StressPolygonDataset polyDataset = new StressPolygonDataset();
+
+                double[] principalStressHolder = {this.SigmaVR,this.SigmaHR,this.SigmahR};
+                Arrays.sort(principalStressHolder);
+                XYSeriesCollection polygonCollection = polyDataset.stressPolygonDataset(principalStressHolder[2],this.PorePR,Double.parseDouble(depthText.getText()));
 
                 MohrDataset mohrDataset = new MohrDataset();
                 XYSeriesCollection mohrCollection = mohrDataset.mohrDatasetBuild(this.Sigma3,this.Sigma2,this.Sigma1,cohesionInitial);
@@ -939,6 +1019,7 @@ public class mainWindow extends JFrame {
                 principal1TextFieldResult.setText(Integer.toString((int) (Sigma1*(1/pressureUM))));
                 principal2TextFieldResult.setText(Integer.toString((int) (Sigma2*(1/pressureUM))));
                 principal3TextFieldResult.setText(Integer.toString((int) (Sigma3*(1/pressureUM))));
+                cohesionOutputTextField.setText(Integer.toString((int) (cohesionInitial*(1/pressureUM))));
                 TensileFailResult.setText(failType);
                 ShearFailResult.setText(shearType);
 
@@ -1008,6 +1089,8 @@ public class mainWindow extends JFrame {
             }
         });
 
+
+
     }
 
     //initializer method that builds the frame
@@ -1018,7 +1101,6 @@ public class mainWindow extends JFrame {
         mainWindow.this.pack();
         mainWindow.this.setLocationRelativeTo(null);
         mainWindow.this.setVisible(true);
-
     }
 
     //Builds the EGI splash screen
@@ -1033,25 +1115,25 @@ public class mainWindow extends JFrame {
         splash.splashOn();
         splash.setProgress(25);
         try {
-            Thread.sleep(750);
+            Thread.sleep(650);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         splash.setProgress(50);
         try {
-            Thread.sleep(750);
+            Thread.sleep(650);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         splash.setProgress(75);
         try {
-            Thread.sleep(750);
+            Thread.sleep(650);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         splash.setProgress(100);
         try {
-            Thread.sleep(750);
+            Thread.sleep(650);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

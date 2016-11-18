@@ -140,6 +140,7 @@ public class SettingDialog extends JDialog{
             String inputStressGradients = "Stress Gradients ";
 
 
+
             @Override
             public void actionPerformed(ActionEvent e) {
 
@@ -156,7 +157,9 @@ public class SettingDialog extends JDialog{
                         String gradient = "(psi/ft)";
                         mw.setDepthLabel(depth+length);
                         mw.setMudWeightLabel(mudweight+density);
-                        mw.setCohesionLabel(cohesion+pressure);
+                        mw.setCohesionInputLabel(cohesion+pressure);
+                        mw.setCohesionTitleLabel(cohesion+pressure);
+                        mw.setCohesionOutputLabel(cohesion+pressure);
                         mw.setTensileLabel(tensileStrength+pressure);
                         mw.setInputTensileStrengthLabel(tensileStrength+pressure);
                         mw.setTensileStrengthOutputLabel(tensileStrength+pressure);
@@ -187,7 +190,9 @@ public class SettingDialog extends JDialog{
                         String gradient = "(Pa/m)";
                         mw.setDepthLabel(depth+length);
                         mw.setMudWeightLabel(mudweight+density);
-                        mw.setCohesionLabel(cohesion+pressure);
+                        mw.setCohesionInputLabel(cohesion+pressure);
+                        mw.setCohesionTitleLabel(cohesion+pressure);
+                        mw.setCohesionOutputLabel(cohesion+pressure);
                         mw.setTensileLabel(tensileStrength+pressure);
                         mw.setInputTensileStrengthLabel(tensileStrength+pressure);
                         mw.setTensileStrengthOutputLabel(tensileStrength+pressure);
@@ -233,7 +238,9 @@ public class SettingDialog extends JDialog{
                         pressureChange =1;
                         String pressure = "(psi)";
 
-                        mw.setCohesionLabel(cohesion+pressure);
+                        mw.setCohesionInputLabel(cohesion+pressure);
+                        mw.setCohesionTitleLabel(cohesion+pressure);
+                        mw.setCohesionOutputLabel(cohesion+pressure);
                         mw.setTensileLabel(tensileStrength+pressure);
                         mw.setInputTensileStrengthLabel(tensileStrength+pressure);
                         mw.setTensileStrengthOutputLabel(tensileStrength+pressure);
@@ -251,7 +258,9 @@ public class SettingDialog extends JDialog{
                         pressureChange =0.145038;
                         String pressure = "(kPa)";
 
-                        mw.setCohesionLabel(cohesion+pressure);
+                        mw.setCohesionInputLabel(cohesion+pressure);
+                        mw.setCohesionTitleLabel(cohesion+pressure);
+                        mw.setCohesionOutputLabel(cohesion+pressure);
                         mw.setTensileLabel(tensileStrength+pressure);
                         mw.setInputTensileStrengthLabel(tensileStrength+pressure);
                         mw.setTensileStrengthOutputLabel(tensileStrength+pressure);

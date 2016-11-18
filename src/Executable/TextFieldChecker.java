@@ -37,7 +37,7 @@ public class TextFieldChecker {
 
         obj11.add(mw.getDepthLabel());
         obj11.add(mw.getMudWeightLabel());
-        obj11.add(mw.getCohesionLabel());
+        obj11.add(mw.getCohesionInputLabel());
         obj11.add(mw.getInputSigmaVLabel());
         obj11.add(mw.getInputSigmaMaxLabel());
         obj11.add(mw.getInputSigmaMinLabel());
