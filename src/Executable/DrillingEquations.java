@@ -417,7 +417,7 @@ public class DrillingEquations {
 
         sortedSigma1 = Sigma1.clone();
 
-        // Sort the array from smallest to highest //
+        // Sort the array from smallest to highest ///
         Arrays.sort(sortedSigma1);
 
         //Find highest sigTheta value
