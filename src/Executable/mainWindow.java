@@ -1143,7 +1143,7 @@ public class mainWindow extends JFrame {
     public static void main(String[] args) {
 
         mainWindow mw = new mainWindow();
-        //mw.buildSplashScreen();
+        mw.buildSplashScreen();
 
         //sets the look and feel
         try {
