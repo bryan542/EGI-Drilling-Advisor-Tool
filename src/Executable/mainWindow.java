@@ -1105,7 +1105,7 @@ public class mainWindow extends JFrame {
     public void buildSplashScreen(){
 
 
-        URL splashURL = mainWindow.class.getResource("SplashImage.png");
+        URL splashURL = mainWindow.class.getResource("tech EGI Splash Image.png");
         ImageIcon splashImage = new ImageIcon(splashURL);
         //Image URL, progres bool, message bool, percent bool, version string, setlocation, textcolor, progress text color
         JSplash splash = new JSplash(splashURL, true, false, true, "Beta Version: 13",null,Color.WHITE,Color.GREEN );
@@ -1143,7 +1143,7 @@ public class mainWindow extends JFrame {
     public static void main(String[] args) {
 
         mainWindow mw = new mainWindow();
-      //  mw.buildSplashScreen();
+        mw.buildSplashScreen();
 
         //sets the look and feel
         try {
