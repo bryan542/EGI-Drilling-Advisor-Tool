@@ -1113,25 +1113,25 @@ public class mainWindow extends JFrame {
         splash.splashOn();
         splash.setProgress(25);
         try {
-            Thread.sleep(650);
+            Thread.sleep(600);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         splash.setProgress(50);
         try {
-            Thread.sleep(650);
+            Thread.sleep(600);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         splash.setProgress(75);
         try {
-            Thread.sleep(650);
+            Thread.sleep(600);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         splash.setProgress(100);
         try {
-            Thread.sleep(650);
+            Thread.sleep(600);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -1143,7 +1143,7 @@ public class mainWindow extends JFrame {
     public static void main(String[] args) {
 
         mainWindow mw = new mainWindow();
-        mw.buildSplashScreen();
+      //  mw.buildSplashScreen();
 
         //sets the look and feel
         try {

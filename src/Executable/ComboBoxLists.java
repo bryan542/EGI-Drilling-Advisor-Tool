@@ -12,7 +12,7 @@ public class ComboBoxLists {
     private String[] beddingUnconformity = {"Highly Conductive","Medium Conductive","Low Conductive","Unknown/None"};
     private String[] lithology = {"Shale","Salt","Sandstone","Siltstone","Limestone","Dolomite"};
     private String[] GSI = {"0-35","35-55","55-75","75-100"};
-    private String[] permeability = {"High(D)","Medium(mD)","Low(μD)"};
+    private String[] permeability = {"High (Darcy)","Medium (mD)","Low (μD)"};
 
 
     public void FaultType(){
