@@ -1,7 +1,5 @@
 package Executable;
 
-import org.apache.pdfbox.pdmodel.PDDocument;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -10,15 +8,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 
-import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
-
 /**
  * Created by bryan on 10/11/2016.
  */
 public class DropdownMenu  {
 
 
-    public void buildMenuBar(SettingDialog sf, mainWindow mw){
+    public void buildMenuBar(mainWindow mw){
 
         //build file menu
 
@@ -40,7 +36,7 @@ public class DropdownMenu  {
         //build DomAnal and DomAnal JMenuItems
         JMenu DomAnal = new JMenu("DomAnal");
         //set DomAnal Image icon
-        URL url = mainWindow.class.getResource("DomAnal Image.png");
+        URL url = mainWindow.class.getResource("/Images/DomAnal Image.png");
         ImageIcon bg = new ImageIcon(url);
         DomAnal.setIcon(bg);
         //DomAnal JMenuItems
@@ -67,10 +63,22 @@ public class DropdownMenu  {
         help.add(about);
         help.add(helpCenter);
         about.setPreferredSize(new Dimension(100,20));
+
         //add menu's to menubar
         menubar.add(file);
         menubar.add(help);
         menubar.add(DomAnal);
+
+        about.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+
+                AboutDialog ad = new AboutDialog(mw.getVersionNumber());
+                ad.initialize();
+
+
+            }
+        });
+
 
         domAnalLaunch.addActionListener(new ActionListener() {
             @Override
@@ -141,23 +149,9 @@ public class DropdownMenu  {
 
             public void actionPerformed(ActionEvent e) {
 
-                sf.setContentPane(sf.projectPanel);
-                sf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-                sf.pack();
-                sf.setLocationRelativeTo(null);
-                sf.setVisible(true);
+                SettingDialog sf = new SettingDialog(mw);
+                sf.initialize();
 
-                sf.setTitle("Project Settings");
-                //pack frame, set location on monitor, and set visible
-
-
-
-/*SettingsDialog settings = new SettingsDialog(frame,true,frame.DepthLabel);
-
-                settings.setLocationRelativeTo(null);
-                settings.setVisible(true);
-                frame.pack();
-*/
             }
         });
         mw.setJMenuBar(menubar);

@@ -13,7 +13,7 @@ import static sun.misc.PostVMInitHook.run;
 public class SettingDialog extends JDialog{
 
 
-    public JPanel projectPanel;
+    private JPanel projectPanel;
     private JTabbedPane projectUnits;
     private JRadioButton generalRadio;
     private JRadioButton oilFieldUnitsRadioButton;
@@ -43,7 +43,7 @@ public class SettingDialog extends JDialog{
 
 
     //Set Image Icon
-    URL url = mainWindow.class.getResource("EGI.png");
+    URL url = mainWindow.class.getResource("/Images/EGI.png");
     ImageIcon bg = new ImageIcon(url);
     this.setIconImage(bg.getImage());
 
@@ -317,7 +317,15 @@ public class SettingDialog extends JDialog{
 
     }
 
+    public void initialize(){
 
+        setContentPane(projectPanel);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        pack();
+        setLocationRelativeTo(null);
+        setVisible(true);
+        setTitle("Project Settings");
+    }
 
 }
 

@@ -142,6 +142,14 @@ public class mainWindow extends JFrame {
     private static double gradientUM = 1;
     private static boolean buttonCount = true;
 
+    //gets the latest version number
+
+    public String getVersionNumber(){
+
+        String versionNumber = "14";
+        return versionNumber;
+    }
+
     public JComboBox getPoreCombo() {
         return PoreCombo;
     }
@@ -266,7 +274,6 @@ public class mainWindow extends JFrame {
         return porePressureTextField;
     }
 
-
     public JTextField getBeddingPlaneStrikeTextField() {
         return beddingPlaneStrikeTextField;
     }
@@ -290,6 +297,7 @@ public class mainWindow extends JFrame {
     public JTextField getJointDipTextField() {
         return jointDipTextField;
     }
+
     public JTextField getPrincipal1TextFieldResult() {
         return principal1TextFieldResult;
     }
@@ -492,16 +500,16 @@ public class mainWindow extends JFrame {
         mainWindow.this.setResizable(false);
 
         //sets EGI image icon
-        URL EGIURL = mainWindow.class.getResource("EGI.png");
+        URL EGIURL = mainWindow.class.getResource("/Images/EGI.png");
         ImageIcon EGIImageIcon = new ImageIcon(EGIURL);
         Image EGIImage = EGIImageIcon.getImage();
         mainWindow.this.setIconImage(EGIImage);
 
         //set tool title
         this.setTitle("EGI Drilling Advisory Tool");
-        SettingDialog sf = new SettingDialog(mainWindow.this);
+
         DropdownMenu menu = new DropdownMenu();
-        menu.buildMenuBar(sf,mainWindow.this);
+        menu.buildMenuBar(mainWindow.this);
 
         //ratingTextPane UI settings in drilling input tab
         ratingTextPane.setBorder(new LineBorder(Color.black,1));
@@ -1074,7 +1082,7 @@ public class mainWindow extends JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
 
-            GD.onCancel();
+            GD.dispose();
             }
         });
 
@@ -1105,10 +1113,11 @@ public class mainWindow extends JFrame {
     public void buildSplashScreen(){
 
 
-        URL splashURL = mainWindow.class.getResource("tech EGI Splash Image.png");
+        URL splashURL = mainWindow.class.getResource("/Images/tech EGI Splash Image.png");
         ImageIcon splashImage = new ImageIcon(splashURL);
         //Image URL, progres bool, message bool, percent bool, version string, setlocation, textcolor, progress text color
-        JSplash splash = new JSplash(splashURL, true, false, true, "Beta Version: 13",null,Color.WHITE,Color.GREEN );
+        String verisonNumber = "14";
+        JSplash splash = new JSplash(splashURL, true, false, true, "Beta Version: " + getVersionNumber() ,null,Color.WHITE,Color.GREEN );
 
         splash.splashOn();
         splash.setProgress(25);
