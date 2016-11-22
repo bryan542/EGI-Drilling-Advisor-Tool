@@ -3,9 +3,13 @@ package Executable;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
+import java.net.JarURLConnection;
 import java.net.URL;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.jar.Attributes;
+import java.util.jar.Manifest;
 
 public class AboutDialog extends JDialog {
     private JPanel contentPane;
@@ -22,9 +26,11 @@ public class AboutDialog extends JDialog {
         URL urlEGIAbout = mainWindow.class.getResource("/Images/About EGI Image.png");
         ImageIcon bgEGIAbout = new ImageIcon(urlEGIAbout);
         ImageResize Test1 = new ImageResize();
-        bgEGIAbout =Test1.getScaledImage(bgEGIAbout,450,125);
+        bgEGIAbout =Test1.getScaledImage(bgEGIAbout,450,115);
         EGIAboutIconLabel.setIcon(bgEGIAbout);
         EGIAboutIconLabel.setBorder(BorderFactory.createLineBorder(Color.black));
+
+        //closes the JDialog panel
         OKButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -33,19 +39,16 @@ public class AboutDialog extends JDialog {
             }
         });
 
+        //grabs the version number defined in mainWindow class
         versionLabel.setText("Version: "+versionNumber);
 
-        Date date = new Date();
-        Calendar cal = Calendar.getInstance();
-        int year = cal.get(Calendar.YEAR);
-        int month = cal.get(Calendar.MONTH);
-        int day = cal.get(Calendar.DAY_OF_MONTH);
-        String createdDate = Integer.toString(year)+"."+Integer.toString(month)+"."+Integer.toString(day);
-
+        //sets the created date of this verison. Need to manually update this
+        String createdDate = "11.21.2016";
         createdLabel.setText("Created: "+createdDate);
 
 
     }
+
 
 
     public void initialize(){
@@ -55,7 +58,6 @@ public class AboutDialog extends JDialog {
         pack();
         setLocationRelativeTo(null);
         setVisible(true);
-        setTitle("EGI Exploration Tool");
 
     }
 }

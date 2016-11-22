@@ -75,7 +75,6 @@ public class DropdownMenu  {
                 AboutDialog ad = new AboutDialog(mw.getVersionNumber());
                 ad.initialize();
 
-
             }
         });
 

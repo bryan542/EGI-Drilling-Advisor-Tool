@@ -57,7 +57,7 @@ public class PDFCreator {
             contents.setNonStrokingColor(Color.BLACK);
 
             //Retrieve EGI imagepath and set in the file
-            BufferedImage bimage = ImageIO.read(getClass().getResource("EGI.png"));
+            BufferedImage bimage = ImageIO.read(getClass().getResource("/Images/EGI.png"));
             PDImageXObject ximage = LosslessFactory.createFromImage(doc, bimage);
             contents.drawImage(ximage, 10, 701);
 
