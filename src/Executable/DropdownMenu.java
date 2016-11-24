@@ -2,11 +2,15 @@ package Executable;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.Reader;
+import java.util.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.ArrayList;
 
 /**
  * Created by bryan on 10/11/2016.
@@ -123,9 +127,9 @@ public class DropdownMenu  {
             public void actionPerformed(ActionEvent e) {
 
                 try{
-                    SaveFileData sd = new SaveFileData();
-                    String filename = sd.getSaveLocation(mw);
-                    sd.writeCSVFile(mw,filename);
+                    SaveFileData sdSave = new SaveFileData();
+                    String filename = sdSave.getSaveLocation(mw);
+                    sdSave.writeCSVFile(mw,filename);
                 }
                 catch (Exception ex2){
 
@@ -137,21 +141,14 @@ public class DropdownMenu  {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                JFileChooser fc = null;
-
-                LookAndFeel previousLF = UIManager.getLookAndFeel();
+                SaveFileData sdLoad = new SaveFileData();
+                String filename = sdLoad.getLoadLocation(mw);
                 try {
-                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-                    fc = new JFileChooser();
-                    UIManager.setLookAndFeel(previousLF);
-                } catch (IllegalAccessException | UnsupportedLookAndFeelException | InstantiationException | ClassNotFoundException er) {}
+                    Reader read = null;
+                    read = sdLoad.readCSV(filename);
 
-                fc.setCurrentDirectory(new java.io.File("C:/"));
-                fc.setDialogTitle("Choose Dataset to Open");
-                fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
-                if (fc.showOpenDialog(open)==JFileChooser.APPROVE_OPTION){
-
-                    System.out.println(fc.getSelectedFile().getAbsoluteFile());
+                } catch (Exception e1) {
+                    e1.printStackTrace();
                 }
             }
         });

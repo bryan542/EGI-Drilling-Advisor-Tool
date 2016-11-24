@@ -1,15 +1,20 @@
 package Executable;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
 import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVPrinter;
+import org.apache.commons.csv.CSVRecord;
+import org.jfree.data.general.Series;
 
 import javax.swing.*;
-
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 
 public class SaveFileData {
@@ -90,24 +95,24 @@ public class SaveFileData {
         saveListValues.add(mw.getBeddingPlaneDipTextField().getText());
 
         saveListNames.add("Bedding Plane Conductivity");
-        saveListNames.add("Strike");
-        saveListNames.add("Dip");
+        saveListNames.add("Bedding Strike");
+        saveListNames.add("Bedding Dip");
 
         saveListValues.add(mw.getFaultConductCombo().getSelectedItem());
         saveListValues.add(mw.getFaultConductivityStrikeTextField().getText());
         saveListValues.add(mw.getFaultConductivityDipTextField().getText());
 
         saveListNames.add("Fault Conductivity");
-        saveListNames.add("Strike");
-        saveListNames.add("Dip");
+        saveListNames.add("Fault Strike");
+        saveListNames.add("Fault Dip");
 
         saveListValues.add(mw.getJointCombo().getSelectedItem());
         saveListValues.add(mw.getJointStrikeTextField().getText());
         saveListValues.add(mw.getJointDipTextField().getText());
 
         saveListNames.add("Natural Fractures");
-        saveListNames.add("Strike");
-        saveListNames.add("Dip");
+        saveListNames.add("NF Strike");
+        saveListNames.add("NF Dip");
 
         //builds the file header for the csv file from the saveListNames arraylist
         Object[] FILE_HEADER = new Object[saveListNames.size()];
@@ -181,7 +186,9 @@ public class SaveFileData {
         chooser.setCurrentDirectory(new java.io.File("C:/"));
         chooser.setDialogTitle("Choose Save Location");
 
-        chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("PDF & CSV Files", "pdf","csv");
+        chooser.setFileFilter(filter);
+
         int result = chooser.showSaveDialog(null);
 
         try {
@@ -231,4 +238,67 @@ public class SaveFileData {
         return filename;
     }
 
+
+    public String getLoadLocation(mainWindow mw) {
+
+        File file = null;
+        String filename = null;
+        JFileChooser chooser =null;
+
+        //this portion is for setting the windows look and feel for the save pane and preventing
+        //the other panels' look and feel from changing
+        LookAndFeel previousLF = UIManager.getLookAndFeel();
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            chooser = new JFileChooser();
+            UIManager.setLookAndFeel(previousLF);
+        } catch (IllegalAccessException | UnsupportedLookAndFeelException | InstantiationException | ClassNotFoundException e) {}
+
+
+        //choose the start user path
+        chooser.setCurrentDirectory(new java.io.File("C:/"));
+        chooser.setDialogTitle("Choose File to Load");
+
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("CSV Files", "csv");
+        chooser.setFileFilter(filter);
+
+        int result = chooser.showOpenDialog(null);
+
+        try {
+            if (result == chooser.APPROVE_OPTION) {
+                file = chooser.getSelectedFile();
+
+            } else {
+                file = null;
+            }
+
+            filename = file.toString();
+
+        }
+        catch(Exception er){}
+
+        return filename;
+    }
+
+    public static Reader readCSV(String csvFilePath) {
+
+        Reader in = null;
+
+        try {
+            in = new FileReader(csvFilePath);
+            Iterable<CSVRecord> records = CSVFormat.EXCEL.withHeader().parse(in);
+
+            for (CSVRecord record : records) {
+                String columnOne = record.get("Depth (ft)");
+                String columnTwo = record.get("Mud Weight ECD (ppg)");
+                String columnTwwo = record.get("Mud Weight ECD (ppg)");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+       return in;
+    }
+   
 }
