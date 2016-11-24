@@ -150,8 +150,39 @@ public class mainWindow extends JFrame {
         return versionNumber;
     }
 
+
+    public JComboBox getFaultConductCombo() {
+        return FaultConductCombo;
+    }
+
+    public JComboBox getBeddingCombo() {
+        return BeddingCombo;
+    }
+
+    public JComboBox getJointCombo() {
+        return JointCombo;
+    }
+
+
+    public JComboBox getLithologyCombo() {
+        return LithologyCombo;
+    }
+
+    public JComboBox getPermCombo() {
+        return PermCombo;
+    }
+
+    public JComboBox getGSICombo() {
+        return GSICombo;
+    }
+
+
     public JComboBox getPoreCombo() {
         return PoreCombo;
+    }
+
+    public JComboBox getFaultTypeCombo() {
+        return FaultTypeCombo;
     }
 
     public JLabel getTensileFailResult() {
@@ -334,6 +365,11 @@ public class mainWindow extends JFrame {
         return cohesionOutputTextField;
     }
 
+    public JRadioButton getCohesionAutomaticButton() {
+        return cohesionAutomaticButton;
+    }
+
+
     public JRadioButton getStressAutomaticRadioButton() {
         return stressAutomaticRadioButton;
     }
@@ -506,7 +542,7 @@ public class mainWindow extends JFrame {
         mainWindow.this.setIconImage(EGIImage);
 
         //set tool title
-        this.setTitle("EGI Drilling Advisory Tool");
+        this.setTitle("EGI Exploration Tool");
 
         DropdownMenu menu = new DropdownMenu();
         menu.buildMenuBar(mainWindow.this);
@@ -1037,6 +1073,7 @@ public class mainWindow extends JFrame {
                 sc.sumWellControlCriteria(sumWellControl,mainWindow.this);
                 sc.sumLongTermIntegrityCriteria(sumLongTermIntegrity,mainWindow.this);
                 sc.sumROPCriteria(sumROP,mainWindow.this);
+
 
 
                 //generate rating textpane report

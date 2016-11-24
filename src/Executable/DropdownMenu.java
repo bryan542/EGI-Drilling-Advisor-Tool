@@ -118,9 +118,21 @@ public class DropdownMenu  {
 
         });
 
-        //Work on this later. Use JFileChooser to open and import
-        // saved files(later implimentation too). Will make the save document a
-        //tab delimited file
+        save.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                try{
+                    SaveFileData sd = new SaveFileData();
+                    String filename = sd.getSaveLocation(mw);
+                    sd.writeCSVFile(mw,filename);
+                }
+                catch (Exception ex2){
+
+                }
+
+            }
+        });
         open.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
