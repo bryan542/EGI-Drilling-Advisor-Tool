@@ -39,8 +39,11 @@ public class SettingDialog extends JDialog{
         pressureChange =1;
         lengthChange =1;
         gradientChange = 1;
-
-
+        String settingButton = mw.getProjectSettingButton();
+        String settingType = mw.getProjectSettingType();
+        String customDensityType = mw.getProjectCustomDensityType();
+        String customPressureType = mw.getProjectCustomPressureType();
+        String customLengthType = mw.getProjectCustomLengthType();
 
     //Set Image Icon
     URL url = mainWindow.class.getResource("/Images/EGI.png");
@@ -70,13 +73,49 @@ public class SettingDialog extends JDialog{
     ButtonGroup customGeneralBg = new ButtonGroup();
     customGeneralBg.add(generalRadio);
     customGeneralBg.add(customRadio);
-    generalRadio.setSelected(true);
 
 
     ButtonGroup standardMetricBg =  new ButtonGroup();
     standardMetricBg.add(oilFieldUnitsRadioButton);
     standardMetricBg.add(SIUnitsRadioButton);
-    oilFieldUnitsRadioButton.setSelected(true);
+
+
+    // this if/else statement makes reloads the project settings if the user comes back to it.
+    // Also, this will be used to save/load the project setting data properly
+        if(settingButton == "General"){
+            generalRadio.setSelected(true);
+
+            if(settingType == "Oil Field Units"){
+                oilFieldUnitsRadioButton.setSelected(true);
+            }
+            else if(settingType == "SI Units"){
+                SIUnitsRadioButton.setSelected(true);
+            }
+        }
+        else{
+            customRadio.setSelected(true);
+
+            if(customDensityType == "ppg"){
+                comboBox1.setSelectedItem("ppg");
+            }
+            else if(customDensityType =="g/cc"){
+                comboBox1.setSelectedItem("g/cc");
+            }
+
+            if(customPressureType == "psi"){
+                comboBox2.setSelectedItem("psi");
+            }
+            else if(customPressureType =="Pa"){
+                comboBox2.setSelectedItem("Pa");
+            }
+            if(customLengthType == "ft"){
+                comboBox3.setSelectedItem("ft");
+            }
+            else if(customLengthType =="m"){
+                comboBox3.setSelectedItem("m");
+            }
+
+        }
 
     //buttongroup action/listener setup
     if(generalRadio.isSelected()){
@@ -100,14 +139,11 @@ public class SettingDialog extends JDialog{
         @Override
         public void actionPerformed(ActionEvent e) {
 
-
-
                 comboBox1.setEnabled(false);
                 comboBox2.setEnabled(false);
                 comboBox3.setEnabled(false);
                 oilFieldUnitsRadioButton.setEnabled(true);
                 SIUnitsRadioButton.setEnabled(true);
-
 
         }
     });
@@ -146,6 +182,8 @@ public class SettingDialog extends JDialog{
 
                 if(generalRadio.isSelected()){
 
+                   mw.setProjectSettingButton("General");
+
                     if(oilFieldUnitsRadioButton.isSelected() && oilFieldUnitsRadioButton.isEnabled()){
                         densityChange = 1;
                         pressureChange =1;
@@ -175,7 +213,7 @@ public class SettingDialog extends JDialog{
                         mw.setPressureUM(pressureChange);
                         mw.setLengthUM(lengthChange);
                         mw.setGradientUM(gradientChange);
-
+                        mw.setProjectSettingType("Oil Field Units");
 
                     }
                     else if(SIUnitsRadioButton.isSelected() && SIUnitsRadioButton.isEnabled()){
@@ -208,6 +246,7 @@ public class SettingDialog extends JDialog{
                         mw.setPressureUM(pressureChange);
                         mw.setLengthUM(lengthChange);
                         mw.setGradientUM(gradientChange);
+                        mw.setProjectSettingType("SI Units");
                     }
                     else{
 
@@ -215,12 +254,16 @@ public class SettingDialog extends JDialog{
                 }
 
                 else {
+
+                    mw.setProjectSettingButton("Custom");
+
                     if (comboBox1.getSelectedItem() =="ppg" && comboBox1.isEnabled()){
 
                         densityChange = 1;
                         String density = "(ppg)";
                         mw.setMudWeightLabel(mudweight+density);
                         mw.setDensityUM(densityChange);
+                        mw.setProjectCustomDensityType("ppg");
                     }
                     else if(comboBox1.getSelectedItem() =="g/cc" && comboBox1.isEnabled()){
 
@@ -228,6 +271,7 @@ public class SettingDialog extends JDialog{
                         String density = "(g/cc)";
                         mw.setMudWeightLabel(mudweight+density);
                         mw.setDensityUM(densityChange);
+                        mw.setProjectCustomDensityType("g/cc");
                     }
                     else{
 
@@ -252,6 +296,8 @@ public class SettingDialog extends JDialog{
                         mw.setPrincipalSigma2Label(principal2+pressure);
                         mw.setPrincipalSigma3Label(principal3+pressure);
                         mw.setPressureUM(pressureChange);
+                        mw.setProjectCustomPressureType("psi");
+
                     }
                     else if(comboBox2.getSelectedItem() =="Pa" && comboBox2.isEnabled()){
 
@@ -272,6 +318,7 @@ public class SettingDialog extends JDialog{
                         mw.setPrincipalSigma2Label(principal2+pressure);
                         mw.setPrincipalSigma3Label(principal3+pressure);
                         mw.setPressureUM(pressureChange);
+                        mw.setProjectCustomPressureType("Pa");
                     }
                     else{
 
@@ -283,6 +330,7 @@ public class SettingDialog extends JDialog{
                         String length = "(ft)";
                         mw.setDepthLabel(depth+length);
                         mw.setLengthUM(lengthChange);
+                        mw.setProjectCustomLengthType("ft");
 
                     }
                     else if(comboBox3.getSelectedItem() =="m" && comboBox3.isEnabled()){
@@ -291,6 +339,7 @@ public class SettingDialog extends JDialog{
                         String length = "(m)";
                         mw.setDepthLabel(depth+length);
                         mw.setLengthUM(lengthChange);
+                        mw.setProjectCustomLengthType("m");
 
                     }
                     else{

@@ -38,14 +38,13 @@ public class mainWindow extends JFrame {
     private JComboBox PermCombo;
     private JComboBox GSICombo;
 
-    private JTextField BetaText;
-    private JTextField alpha1Text;
-    private JTextField gammaText;
-    private JTextField alpha2Text;
-    private JTextField mudWeightText;
-    private JTextField tensileText;
-    private JTextField poissonText;
     private JTextField depthText;
+    private JTextField mudWeightText;
+    private JTextField gammaText;
+    private JTextField alpha1Text;
+    private JTextField alpha2Text;
+    private JTextField poissonText;
+    private JTextField tensileText;
     private JTextField cohesionText;
     private JTextField sigmaVTextField;
     private JTextField sigmaMaxTextField;
@@ -136,6 +135,13 @@ public class mainWindow extends JFrame {
     private JPanel unconformityJPanel;
     private JPanel GSILocationSetter;
 
+    private static String projectSettingButton = "General";
+    private static String projectSettingType = "Oil Field Units";
+    private static String projectCustomDensityType = "ppg";
+
+
+    private static String projectCustomPressureType = "psi";
+    private static String projectCustomLengthType = "ft";
     private static double densityUM = 1;
     private static double pressureUM =1;
     private static double lengthUM =1;
@@ -150,6 +156,27 @@ public class mainWindow extends JFrame {
         return versionNumber;
     }
 
+    //getters
+
+    public static String getProjectSettingButton() {
+        return projectSettingButton;
+    }
+
+    public static String getProjectSettingType() {
+        return projectSettingType;
+    }
+
+    public static String getProjectCustomDensityType() {
+        return projectCustomDensityType;
+    }
+
+    public static String getProjectCustomPressureType() {
+        return projectCustomPressureType;
+    }
+
+    public static String getProjectCustomLengthType() {
+        return projectCustomLengthType;
+    }
 
     public JComboBox getFaultConductCombo() {
         return FaultConductCombo;
@@ -162,7 +189,6 @@ public class mainWindow extends JFrame {
     public JComboBox getJointCombo() {
         return JointCombo;
     }
-
 
     public JComboBox getLithologyCombo() {
         return LithologyCombo;
@@ -369,6 +395,9 @@ public class mainWindow extends JFrame {
         return cohesionAutomaticButton;
     }
 
+    public JRadioButton getCohesionManualButton() {
+        return cohesionManualButton;
+    }
 
     public JRadioButton getStressAutomaticRadioButton() {
         return stressAutomaticRadioButton;
@@ -384,6 +413,135 @@ public class mainWindow extends JFrame {
 
     public JRadioButton getTensileManualRadioButton() {
         return tensileManualRadioButton;
+    }
+
+    //setters
+
+    public void setPoreCombo(String text) {
+        getPoreCombo().setSelectedItem(text);
+    }
+
+    public void setFaultTypeCombo(String text) {
+        FaultTypeCombo.setSelectedItem(text);
+    }
+
+    public void setFaultConductCombo(String text) {
+        FaultConductCombo.setSelectedItem(text);
+    }
+
+    public void setBeddingCombo(String text) {
+        BeddingCombo.setSelectedItem(text);
+    }
+
+    public void setJointCombo(String text) {
+        JointCombo.setSelectedItem(text);
+    }
+
+    public void setLithologyCombo(String text) {
+        LithologyCombo.setSelectedItem(text);
+    }
+
+    public void setPermCombo(String text) {
+        PermCombo.setSelectedItem(text);
+    }
+
+    public void setGSICombo(String text) {
+        GSICombo.setSelectedItem(text);
+    }
+
+    public void setDepthText(String text) {
+        depthText.setText(text);
+    }
+
+    public void setMudWeightText(String text) {
+        mudWeightText.setText(text);
+    }
+
+    public void setGammaText(String text) {
+        gammaText.setText(text);
+    }
+
+    public void setAlpha1Text(String text) {
+        alpha1Text.setText(text);
+    }
+
+    public void setAlpha2Text(String text) {
+        alpha2Text.setText(text);
+    }
+
+    public void setPoissonText(String text) {
+        poissonText.setText(text);
+    }
+
+    public void setTensileText(String text) {
+        tensileText.setText(text);
+    }
+
+    public void setCohesionText(String text) {
+        cohesionText.setText(text);
+    }
+
+    public void setSigmaVTextField(String text) {
+        sigmaVTextField.setText(text);
+    }
+
+    public void setSigmaMaxTextField(String text) {
+        sigmaMaxTextField.setText(text);
+    }
+
+    public void setSigmaMinTextField(String text) {
+        sigmaMinTextField.setText(text);
+    }
+
+    public void setPorePressureTextField(String text) {
+        porePressureTextField.setText(text);
+    }
+
+    public void setBeddingPlaneStrikeTextField(String text) {
+        beddingPlaneStrikeTextField.setText(text);
+    }
+
+    public void setFaultConductivityStrikeTextField(String text) {
+        faultConductivityStrikeTextField.setText(text);
+    }
+
+    public void setJointStrikeTextField(String text) {
+        jointStrikeTextField.setText(text);
+    }
+
+    public void setBeddingPlaneDipTextField(String text) {
+        beddingPlaneDipTextField.setText(text);
+    }
+
+    public void setFaultConductivityDipTextField(String text) {
+        faultConductivityDipTextField.setText(text);
+    }
+
+    public void setJointDipTextField(String text) {
+        jointDipTextField.setText(text);
+    }
+
+    public static void setProjectSettingButton(String text) {
+        mainWindow.projectSettingButton = text;
+    }
+
+    public static void setProjectSettingType(String text) {
+        mainWindow.projectSettingType = text;
+    }
+
+    public static void setProjectCustomDensityType(String text) {
+        mainWindow.projectCustomDensityType = text;
+
+    }
+
+    public static void setProjectCustomPressureType(String text) {
+        mainWindow.projectCustomPressureType = text;
+
+    }
+
+    public static void setProjectCustomLengthType(String text) {
+        mainWindow.projectCustomLengthType = text;
+
     }
 
     public void setTensileStrengthOutputLabel(String text) {
@@ -545,7 +703,7 @@ public class mainWindow extends JFrame {
         this.setTitle("EGI Exploration Tool");
 
         DropdownMenu menu = new DropdownMenu();
-        menu.buildMenuBar(mainWindow.this);
+        menu.buildMenuBar(mainWindow.this,projectSettingButton,projectSettingType,projectCustomDensityType,projectCustomPressureType,projectCustomLengthType);
 
         //ratingTextPane UI settings in drilling input tab
         ratingTextPane.setBorder(new LineBorder(Color.black,1));

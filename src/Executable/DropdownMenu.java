@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class DropdownMenu  {
 
 
-    public void buildMenuBar(mainWindow mw){
+    public void buildMenuBar(mainWindow mw, String settingButton, String settingType, String customDensityType,String customPressureType,String customLengthType){
 
         //build file menu
 
@@ -145,7 +145,7 @@ public class DropdownMenu  {
                 String filename = sdLoad.getLoadLocation(mw);
                 try {
                     Reader read = null;
-                    read = sdLoad.readCSV(filename);
+                    read = sdLoad.readCSV(filename, mw);
 
                 } catch (Exception e1) {
                     e1.printStackTrace();
@@ -157,7 +157,7 @@ public class DropdownMenu  {
 
             public void actionPerformed(ActionEvent e) {
 
-                SettingDialog sf = new SettingDialog(mw);
+                SettingDialog sf = new SettingDialog(mw );
                 sf.initialize();
 
             }

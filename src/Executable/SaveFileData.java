@@ -35,21 +35,21 @@ public class SaveFileData {
         saveListValues.add(mw.getMudWeightText().getText());
         saveListValues.add(mw.getGammaText().getText());
         saveListValues.add(mw.getAlpha1Text().getText());
-        saveListValues.add(mw.getAlpha1Text().getText());
+        saveListValues.add(mw.getAlpha2Text().getText());
         saveListValues.add(mw.getPoissonText().getText());
 
         saveListNames.add(mw.getDepthLabel().getText());
         saveListNames.add(mw.getMudWeightLabel().getText());
-        saveListNames.add(mw.getGammaLabel().getText());
-        saveListNames.add(mw.getAlpha1Label().getText());
-        saveListNames.add(mw.getAlpha2Label().getText());
+        saveListNames.add("Deviation Angle Gamma");
+        saveListNames.add("Alpha 1");
+        saveListNames.add("Alpha 2");
         saveListNames.add(mw.getPoissonLabel().getText());
 
         if (mw.getStressAutomaticRadioButton().isSelected()) {
             saveListValues.add(mw.getPoreCombo().getSelectedItem());
             saveListValues.add(mw.getFaultTypeCombo().getSelectedItem());
 
-            saveListNames.add("Pore Pressure");
+            saveListNames.add("Pore Pressure Type");
             saveListNames.add("Fault Type");
         } else {
             saveListValues.add(mw.getSigmaVTextField().getText());
@@ -57,10 +57,10 @@ public class SaveFileData {
             saveListValues.add(mw.getSigmaMinTextField().getText());
             saveListValues.add(mw.getPorePressureTextField().getText());
 
-            saveListNames.add(mw.getInputSigmaVLabel().getText());
-            saveListNames.add(mw.getInputSigmaMaxLabel().getText());
-            saveListNames.add(mw.getInputSigmaMinLabel().getText());
-            saveListNames.add(mw.getInputPorePressureLabel().getText());
+            saveListNames.add("Sigma V");
+            saveListNames.add("Sigma Max");
+            saveListNames.add("Sigma Min");
+            saveListNames.add("Pore Pressure");
         }
 
         if (mw.getTensileAutomaticRadioButton().isSelected()) {
@@ -113,6 +113,19 @@ public class SaveFileData {
         saveListNames.add("Natural Fractures");
         saveListNames.add("NF Strike");
         saveListNames.add("NF Dip");
+
+        saveListValues.add(mw.getProjectSettingButton());
+        saveListValues.add(mw.getProjectSettingType());
+        saveListValues.add(mw.getProjectCustomDensityType());
+        saveListValues.add(mw.getProjectCustomPressureType());
+        saveListValues.add(mw.getProjectCustomLengthType());
+
+        saveListNames.add("Project Button");
+        saveListNames.add("Setting Type");
+        saveListNames.add("Custom Density");
+        saveListNames.add("Custom Pressure");
+        saveListNames.add("Custom Length");
+
 
         //builds the file header for the csv file from the saveListNames arraylist
         Object[] FILE_HEADER = new Object[saveListNames.size()];
@@ -280,7 +293,10 @@ public class SaveFileData {
         return filename;
     }
 
-    public static Reader readCSV(String csvFilePath) {
+    public static Reader readCSV(String csvFilePath, mainWindow mw) {
+
+        ClearResetValues cv = new ClearResetValues();
+        cv.resetTool(mw);
 
         Reader in = null;
 
@@ -289,9 +305,248 @@ public class SaveFileData {
             Iterable<CSVRecord> records = CSVFormat.EXCEL.withHeader().parse(in);
 
             for (CSVRecord record : records) {
-                String columnOne = record.get("Depth (ft)");
-                String columnTwo = record.get("Mud Weight ECD (ppg)");
-                String columnTwwo = record.get("Mud Weight ECD (ppg)");
+
+                String projectButton = record.get("Project Button");
+                String projectType = record.get("Setting Type");
+                String projectCustomDensity = record.get("Custom Density");
+                String projectCustomPressure = record.get("Custom Pressure");
+                String projectCustomLength = record.get("Custom Length");
+
+                String densityUnit = "";
+                String pressureUnit = "";
+                String lengthUnit = "";
+                String readerPressureUnits = "";
+
+                if (projectButton.equals("General")){
+
+                    mw.setProjectSettingButton("General");
+                    if(projectType.equals("Oil Field Units")){
+
+                        mw.setProjectSettingType("Oil Field Units");
+                        mw.setDensityUM(1);
+                        mw.setPressureUM(1);
+                        mw.setLengthUM(1);
+                        densityUnit = "ppg";
+                        pressureUnit = "psi";
+                        lengthUnit = "ft";
+                        mw.setDepthLabel("Depth ("+lengthUnit+")");
+                        mw.setInputStressGradientLabel("Stress Gradients ("+pressureUnit+"/"+lengthUnit+")");
+
+                    }
+                    else if (projectType.equals("SI Units")){
+
+                        mw.setProjectSettingType("SI Units");
+                        mw.setDensityUM(8.3454);
+                        mw.setPressureUM(0.145038);
+                        mw.setLengthUM(3.28084);
+                        densityUnit = "g/cc";
+                        pressureUnit = "Pa";
+                        readerPressureUnits = "kPa";
+                        lengthUnit = "m";
+                        mw.setDepthLabel("Depth ("+lengthUnit+")");
+                        mw.setInputStressGradientLabel("Stress Gradients ("+pressureUnit+"/"+lengthUnit+")");
+                    }
+                }
+                else if (projectButton.equals("Custom")){
+
+                    mw.setProjectSettingButton("Custom");
+
+                    if (projectCustomDensity.equals("ppg")){
+
+                        mw.setProjectCustomDensityType("ppg");
+                        mw.setDensityUM(1);
+                        densityUnit = "ppg";
+                    }
+                    else{
+
+                        mw.setProjectCustomDensityType("g/cc");
+                        mw.setDensityUM(8.3454);
+                        densityUnit = "g/cc";
+                    }
+
+                    if(projectCustomPressure.equals("psi")){
+
+                        mw.setProjectCustomPressureType("psi");
+                        mw.setPressureUM(1);
+                        pressureUnit = "psi";
+                    }
+                    else{
+
+                        mw.setProjectCustomPressureType("Pa");
+                        mw.setPressureUM(0.145038);
+                        pressureUnit = "Pa";
+                        readerPressureUnits = "kPa";
+
+                    }
+
+                    if(projectCustomLength.equals("ft")){
+
+                        mw.setProjectCustomLengthType("ft");
+                        mw.setLengthUM(1);
+                        lengthUnit = "ft";
+
+                    }
+                    else{
+
+                        mw.setProjectCustomLengthType("m");
+                        mw.setLengthUM(3.28084);
+                        lengthUnit = "m";
+
+                    }
+                }
+
+                mw.setDepthLabel("Depth ("+lengthUnit+")");
+                mw.setMudWeightLabel("Mud Weight ECD ("+densityUnit+")");
+
+                mw.setTensileLabel("Tensile Strength ("+pressureUnit+")");
+                mw.setCohesionInputLabel("Cohesion ("+pressureUnit+")");
+
+                //guaranteed data
+                String depth = "";
+                String density = "";
+                String deviationAngle = "";
+                String alpha1 = "";
+                String alpha2 = "";
+                String poissonRatio = "";
+                String permeability = "";
+                String lithology = "";
+                String GSI = "";
+                String beddingPlaneConductivity = "";
+                String beddingPlaneConductivityStrike = "";
+                String beddingPlaneConductivityDip = "";
+                String faultConductivity = "";
+                String faultConductivityStrike = "";
+                String faultConductivityDip = "";
+                String naturalFractures = "";
+                String naturalFracturesStrike = "";
+                String naturalFracturesDip = "";
+
+                //non-guaranteed saved data
+
+                String porePressure = "";
+                String porePressureType = "";
+                String faultType = "";
+                String sigmaV = "";
+                String sigmaMax = "";
+                String sigmaMin = "";
+                String tensileStrength= "";
+                String cohesion = "";
+
+
+                try{
+
+                }
+                catch(Exception e){};
+
+                mw.setDepthText(record.get("Depth ("+lengthUnit+")"));
+                mw.setMudWeightText(record.get("Mud Weight ECD ("+densityUnit+")"));
+                mw.setGammaText(record.get("Deviation Angle Gamma"));
+                mw.setAlpha1Text(record.get("Alpha 1"));
+                mw.setAlpha2Text(record.get("Alpha 2"));
+                mw.setPoissonText(record.get("Poisson's Ratio"));
+                mw.setPermCombo(record.get("Permeability"));
+                mw.setLithologyCombo(record.get("Lithology"));
+                mw.setGSICombo(record.get("GSI"));
+
+                mw.setBeddingCombo( record.get("Bedding Plane Conductivity"));
+                mw.setBeddingPlaneStrikeTextField(record.get("Bedding Strike"));
+                mw.setBeddingPlaneDipTextField(record.get("Bedding Dip"));
+
+                mw.setFaultConductCombo(record.get("Fault Conductivity"));
+                mw.setFaultConductivityStrikeTextField(record.get("Fault Strike"));
+                mw.setFaultConductivityDipTextField(record.get("Fault Dip"));
+
+                mw.setJointCombo(record.get("Natural Fractures"));
+                mw.setJointStrikeTextField(record.get("NF Strike"));
+                mw.setJointDipTextField(record.get("NF Dip"));
+
+                try{
+
+                    mw.setFaultTypeCombo(record.get("Fault Type"));
+
+                }
+                catch(Exception e){};
+
+                try{
+                    tensileStrength = record.get("Tensile Strength ("+readerPressureUnits+")");
+                    mw.setTensileText(record.get("Tensile Strength ("+readerPressureUnits+")"));
+
+                }
+                catch(Exception e){};
+
+                try{
+                    cohesion = record.get("Cohesion ("+readerPressureUnits+")");
+                    mw.setCohesionText(record.get("Cohesion ("+readerPressureUnits+")"));
+
+                }
+                catch(Exception e){};
+
+                try{
+                    sigmaV = record.get("Sigma V");
+                    mw.setSigmaVTextField(record.get("Sigma V"));
+
+                }
+                catch(Exception e){};
+
+                try{
+                    mw.setSigmaMaxTextField(record.get("Sigma Max"));
+
+                }
+                catch(Exception e){};
+
+                try{
+                    mw.setSigmaMinTextField(record.get("Sigma Min"));
+
+                }
+                catch(Exception e){};
+
+                try{
+                    mw.setPorePressureTextField(record.get("Pore Pressure"));
+
+                }
+                catch(Exception e){};
+
+                try{
+                    mw.setPoreCombo(record.get("Pore Pressure Type"));
+
+                }
+                catch(Exception e){};
+
+                if(sigmaV.isEmpty()){
+                    mw.getStressAutomaticRadioButton().setSelected(true);
+                    mw.getSigmaVTextField().setEnabled(false);
+                    mw.getSigmaMaxTextField().setEnabled(false);
+                    mw.getSigmaMinTextField().setEnabled(false);
+                    mw.getPorePressureTextField().setEnabled(false);
+                    mw.getPoreCombo().setEnabled(true);
+                    mw.getFaultTypeCombo().setEnabled(true);
+                }
+                else {
+                    mw.getStressManualInputRadioButton().setSelected(true);
+                    mw.getSigmaVTextField().setEnabled(true);
+                    mw.getSigmaMaxTextField().setEnabled(true);
+                    mw.getSigmaMinTextField().setEnabled(true);
+                    mw.getPorePressureTextField().setEnabled(true);
+                    mw.getPoreCombo().setEnabled(false);
+                    mw.getFaultTypeCombo().setEnabled(false);
+                }
+                if(tensileStrength.isEmpty()){
+                    mw.getTensileAutomaticRadioButton().setSelected(true);
+                    mw.getTensileText().setEnabled(false);
+                }
+                else{
+                    mw.getTensileManualRadioButton().setSelected(true);
+                    mw.getTensileText().setEnabled(true);
+                }
+                if(cohesion.isEmpty()){
+                    mw.getCohesionAutomaticButton().setSelected(true);
+                    mw.getCohesionText().setEnabled(false);
+                }
+                else{
+                    mw.getCohesionManualButton().setSelected(true);
+                    mw.getCohesionText().setEnabled(true);
+                }
+
             }
 
         } catch (Exception e) {
@@ -300,5 +555,5 @@ public class SaveFileData {
 
        return in;
     }
-   
+
 }
