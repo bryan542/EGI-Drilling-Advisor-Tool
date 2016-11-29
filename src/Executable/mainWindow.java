@@ -1182,6 +1182,7 @@ public class mainWindow extends JFrame {
 
                 double[] principalStressHolder = {this.SigmaVR,this.SigmaHR,this.SigmahR};
                 Arrays.sort(principalStressHolder);
+                //We want the 
                 XYSeriesCollection polygonCollection = polyDataset.stressPolygonDataset(principalStressHolder[2],this.PorePR,Double.parseDouble(depthText.getText()));
 
                 MohrDataset mohrDataset = new MohrDataset();
@@ -1257,7 +1258,6 @@ public class mainWindow extends JFrame {
                 PDFCreator pt = new PDFCreator();
                 pt.getSaveLocation(mainWindow.this);
 
-
             }
         });
 
@@ -1289,9 +1289,6 @@ public class mainWindow extends JFrame {
 
             }
         });
-
-
-
     }
 
     //initializer method that builds the frame
