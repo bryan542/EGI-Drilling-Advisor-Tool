@@ -3,14 +3,11 @@ package Executable;
 import javax.swing.*;
 import java.awt.*;
 import java.io.Reader;
-import java.util.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
-import java.util.ArrayList;
 
 /**
  * Created by bryan on 10/11/2016.
@@ -127,7 +124,7 @@ public class DropdownMenu  {
             public void actionPerformed(ActionEvent e) {
 
                 try{
-                    SaveFileData sdSave = new SaveFileData();
+                    SaveLoadFileData sdSave = new SaveLoadFileData();
                     String filename = sdSave.getSaveLocation(mw);
                     sdSave.writeCSVFile(mw,filename);
                 }
@@ -141,16 +138,16 @@ public class DropdownMenu  {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                SaveFileData sdLoad = new SaveFileData();
-                String filename = sdLoad.getLoadLocation(mw);
-                try {
-                    Reader read = null;
-                    read = sdLoad.readCSV(filename, mw);
+                    SaveLoadFileData sdLoad = new SaveLoadFileData();
+                    String filename = sdLoad.getLoadLocation(mw);
+                    try {
+                        Reader read = null;
+                        read = sdLoad.readCSV(filename, mw);
 
-                } catch (Exception e1) {
-                    e1.printStackTrace();
+                    } catch (Exception e1) {
+
+                    }
                 }
-            }
         });
 
         projectSettings.addActionListener(new ActionListener() {

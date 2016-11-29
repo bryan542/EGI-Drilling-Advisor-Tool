@@ -17,7 +17,7 @@ import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 
-public class SaveFileData {
+public class SaveLoadFileData {
 
     //typs of separator used to separate values in the CSV file
     private static final String NEW_LINE_SEPARATOR = "\n";
@@ -306,6 +306,7 @@ public class SaveFileData {
 
             for (CSVRecord record : records) {
 
+                // Anything to do with project setting paramaters is used to determine the units of measurement used (aka standard or SI units)
                 String projectButton = record.get("Project Button");
                 String projectType = record.get("Setting Type");
                 String projectCustomDensity = record.get("Custom Density");
@@ -323,7 +324,7 @@ public class SaveFileData {
                     if(projectType.equals("Oil Field Units")){
 
                         mw.setProjectSettingType("Oil Field Units");
-                        mw.setDensityUM(1);
+                        mw.setDensityUM(1); //sets the project setting unit conversions properly when the user invokes the calculate button in the mainWindow panel
                         mw.setPressureUM(1);
                         mw.setLengthUM(1);
                         densityUnit = "ppg";
@@ -394,13 +395,14 @@ public class SaveFileData {
 
                     }
                 }
-
+                //change the labels with the proper unit extensions (ft or m, kPa or psi, ppg or g/cc)
                 mw.setDepthLabel("Depth ("+lengthUnit+")");
                 mw.setMudWeightLabel("Mud Weight ECD ("+densityUnit+")");
 
                 mw.setTensileLabel("Tensile Strength ("+pressureUnit+")");
                 mw.setCohesionInputLabel("Cohesion ("+pressureUnit+")");
 
+                //Guaranteed data are values that will always be saved to the .CSV file
                 //guaranteed data
                 String depth = "";
                 String density = "";
@@ -421,6 +423,7 @@ public class SaveFileData {
                 String naturalFracturesStrike = "";
                 String naturalFracturesDip = "";
 
+                //Non-guaranteed saved data may not exist in the .CSV file depending on the user chosen inputs on the mainWindow JPanel
                 //non-guaranteed saved data
 
                 String porePressure = "";
@@ -431,12 +434,6 @@ public class SaveFileData {
                 String sigmaMin = "";
                 String tensileStrength= "";
                 String cohesion = "";
-
-
-                try{
-
-                }
-                catch(Exception e){};
 
                 mw.setDepthText(record.get("Depth ("+lengthUnit+")"));
                 mw.setMudWeightText(record.get("Mud Weight ECD ("+densityUnit+")"));
@@ -460,6 +457,8 @@ public class SaveFileData {
                 mw.setJointStrikeTextField(record.get("NF Strike"));
                 mw.setJointDipTextField(record.get("NF Dip"));
 
+
+                //Anything with try/catch blocks are fields not guaranteed to be in the .CSV file. This allows the mainWindow JPanel texfields to be set if a value does exist
                 try{
 
                     mw.setFaultTypeCombo(record.get("Fault Type"));
@@ -512,6 +511,7 @@ public class SaveFileData {
                 }
                 catch(Exception e){};
 
+                //enables or disables the stress gradient portion and fault type/pore combo portion
                 if(sigmaV.isEmpty()){
                     mw.getStressAutomaticRadioButton().setSelected(true);
                     mw.getSigmaVTextField().setEnabled(false);
@@ -530,6 +530,8 @@ public class SaveFileData {
                     mw.getPoreCombo().setEnabled(false);
                     mw.getFaultTypeCombo().setEnabled(false);
                 }
+
+                //enables/disables objects if a tensile strength value exists
                 if(tensileStrength.isEmpty()){
                     mw.getTensileAutomaticRadioButton().setSelected(true);
                     mw.getTensileText().setEnabled(false);
@@ -538,6 +540,8 @@ public class SaveFileData {
                     mw.getTensileManualRadioButton().setSelected(true);
                     mw.getTensileText().setEnabled(true);
                 }
+
+                //enables/disables objects if a cohesion value exists
                 if(cohesion.isEmpty()){
                     mw.getCohesionAutomaticButton().setSelected(true);
                     mw.getCohesionText().setEnabled(false);

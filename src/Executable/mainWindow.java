@@ -152,7 +152,7 @@ public class mainWindow extends JFrame {
 
     public String getVersionNumber(){
 
-        String versionNumber = "14";
+        String versionNumber = "15";
         return versionNumber;
     }
 
@@ -1311,7 +1311,6 @@ public class mainWindow extends JFrame {
         URL splashURL = mainWindow.class.getResource("/Images/tech EGI Splash Image.png");
         ImageIcon splashImage = new ImageIcon(splashURL);
         //Image URL, progres bool, message bool, percent bool, version string, setlocation, textcolor, progress text color
-        String verisonNumber = "14";
         JSplash splash = new JSplash(splashURL, true, false, true, "Beta Version: " + getVersionNumber() ,null,Color.WHITE,Color.GREEN );
 
         splash.splashOn();
