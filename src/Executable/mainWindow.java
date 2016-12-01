@@ -1182,7 +1182,7 @@ public class mainWindow extends JFrame {
 
                 double[] principalStressHolder = {this.SigmaVR,this.SigmaHR,this.SigmahR};
                 Arrays.sort(principalStressHolder);
-                //We want the 
+                //We want the
                 XYSeriesCollection polygonCollection = polyDataset.stressPolygonDataset(principalStressHolder[2],this.PorePR,Double.parseDouble(depthText.getText()));
 
                 MohrDataset mohrDataset = new MohrDataset();
