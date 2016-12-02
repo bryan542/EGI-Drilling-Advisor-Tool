@@ -348,7 +348,7 @@ public class SettingDialog extends JDialog{
                 }
 
             mw.resetTool();
-            exportPDF.setEnabled(false);
+            exportPDF.setEnabled(false); // sets the jmenuitem to disabled if we clear values
 
             }
 

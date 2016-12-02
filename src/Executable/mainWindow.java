@@ -1250,7 +1250,7 @@ public class mainWindow extends JFrame {
                 }
                 }
 
-                menu.getExportPDF().setEnabled(true);
+                menu.getExportPDF().setEnabled(true); // sets jmenuitem to enabled if the calculation is successful
             }
         });
 
@@ -1288,7 +1288,7 @@ public class mainWindow extends JFrame {
             public void actionPerformed(ActionEvent e) {
 
             resetTool();
-            menu.getExportPDF().setEnabled(false);
+            menu.getExportPDF().setEnabled(false); //disables the export option to the jmenuitem if all data is cleared
 
             }
         });
