@@ -1088,7 +1088,7 @@ public class mainWindow extends JFrame {
                     compressiveStrength = Equations.compressionStrengthInitial(this.Sigma1,this.Sigma3,GSICombo.getSelectedItem().toString(),JointCombo.getSelectedItem().toString(),LithologyCombo.getSelectedItem().toString())*(1/pressureUM);
                     tensileStrength = (int) compressiveStrength/10; //tensile strength is estimated as 1/10th of the compressive strength of the rock
                     tensileStrengthTextFieldResult.setText(Integer.toString(tensileStrength));
-                    this.failType = Equations.tensileFailureCondition(Sigma2,compressiveStrength/10);
+                    this.failType = Equations.tensileFailureCondition(Sigma2,tensileStrength);
 
                 }
 

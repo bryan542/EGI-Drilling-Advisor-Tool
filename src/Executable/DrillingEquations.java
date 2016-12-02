@@ -394,7 +394,7 @@ public class DrillingEquations {
 
         //sigma1 at all angles 0-360 degrees
         for (int i = 0; i < arrayLength; i++) {
-            Sigma1[i] = 0.5 * (sigmaTheta[i] + sigmaZ[i]) + 0.5 * Math.sqrt((sigmaTheta[i] - sigmaZ[i]) * (sigmaTheta[i] - sigmaZ[i]) + 4 * ThoThetaZ[i] * ThoThetaZ[i]);
+            Sigma1[i] = 0.5 * (sigmaTheta[i] + sigmaZ[i]) + 0.5 * Math.sqrt((sigmaZ[i]-sigmaTheta[i] ) * (sigmaZ[i]-sigmaTheta[i]) + 4 * ThoThetaZ[i] * ThoThetaZ[i]);
         }
 
         return Sigma1;
@@ -412,7 +412,7 @@ public class DrillingEquations {
 
         //sigma1 at all angles 0-360 degrees
         for (int i = 0; i < arrayLength; i++) {
-            Sigma1[i] = 0.5 * (sigmaTheta[i] + sigmaZ[i]) + 0.5 * Math.sqrt((sigmaTheta[i] - sigmaZ[i]) * (sigmaTheta[i] - sigmaZ[i]) + 4 * ThoThetaZ[i] * ThoThetaZ[i]);
+            Sigma1[i] = 0.5 * (sigmaTheta[i] + sigmaZ[i]) + 0.5 * Math.sqrt((sigmaZ[i]-sigmaTheta[i]) * (sigmaZ[i]-sigmaTheta[i]) + 4 * ThoThetaZ[i] * ThoThetaZ[i]);
         }
 
         sortedSigma1 = Sigma1.clone();
