@@ -340,8 +340,6 @@ public class DrillingEquations {
     public static double[] sigmaZ(double SV, double poisson, double Sh, double SH, double ThoXY){
 
         double sigmaZ[];
-        double highestSigmaTheta;
-
 
         sigmaZ = new double[361];
         int arrayLength = sigmaZ.length;
@@ -387,8 +385,6 @@ public class DrillingEquations {
 
         int index = -1;
         double[] Sigma1;
-        double[] sortedSigma1;
-        double sigma1Max;
         Sigma1 = new double[361];
         int arrayLength = Sigma1.length;
 
@@ -400,13 +396,13 @@ public class DrillingEquations {
         return Sigma1;
     }
 
-    //Calculate sigma1 max
+    //Calculate sigma1 min
     public static double sigma1(double[] sigmaTheta, double[] sigmaZ, double[] ThoThetaZ){
 
         int index = -1;
         double[] Sigma1;
         double[] sortedSigma1;
-        double sigma1Max;
+        double sigma1Min;
         Sigma1 = new double[361];
         int arrayLength = Sigma1.length;
 
@@ -421,13 +417,13 @@ public class DrillingEquations {
         Arrays.sort(sortedSigma1);
 
         //Find highest sigTheta value
-        sigma1Max = sortedSigma1[Sigma1.length - 1];
+        sigma1Min = sortedSigma1[0];
 
 
-        return sigma1Max;
+        return sigma1Min;
     }
 
-    public static int sigma1MaxTheta(double[] Sigma1, double sigma1Max){
+    public static int sigma1MinTheta(double[] Sigma1, double sigma1Min){
 
         int index = -1;
         int arrayLength = Sigma1.length;
@@ -436,7 +432,7 @@ public class DrillingEquations {
         //Find the angle that produced the highest sigTheta value.
         for (int i = 0;i<arrayLength;i++){
 
-            if(Sigma1[i] == sigma1Max){
+            if(Sigma1[i] == sigma1Min){
                 index = i;
                 break;
             }
@@ -462,7 +458,7 @@ public class DrillingEquations {
     public static double sigma2(double[] sigmaTheta, double[] sigmaZ, double[] ThoThetaZ, int sigmaThetaAngle){
         double Sigma2;
 
-        //sigma2 at the angle that generates the maximum sigma1 value. sigmaTheaAngle comes from the method sigma1MaxTheta
+        //sigma2 at the angle that generates the maximum sigma1 value. sigmaTheaAngle comes from the method sigma1MinTheta
             Sigma2 = 0.5 * (sigmaTheta[sigmaThetaAngle] + sigmaZ[sigmaThetaAngle]) - 0.5 * Math.sqrt((sigmaTheta[sigmaThetaAngle] - sigmaZ[sigmaThetaAngle]) * (sigmaTheta[sigmaThetaAngle] - sigmaZ[sigmaThetaAngle]) + 4 * ThoThetaZ[sigmaThetaAngle] * ThoThetaZ[sigmaThetaAngle]);
 
         return Sigma2;
@@ -482,7 +478,7 @@ public class DrillingEquations {
 
         String tensileCondition;
 
-        if (Sigma2 <= -1*tensile){
+        if (Sigma2 <= -1* tensile){
 
             tensileCondition = "Failure";
         }

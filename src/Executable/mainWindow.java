@@ -657,6 +657,7 @@ public class mainWindow extends JFrame {
         ClearResetValues cv = new ClearResetValues();
         cv.resetTool(mainWindow.this);
 
+
         //remove original graphs and reset buttonCount
         try{
             tabbedPane1.remove(3);
@@ -703,7 +704,7 @@ public class mainWindow extends JFrame {
         this.setTitle("EGI Exploration Tool");
 
         DropdownMenu menu = new DropdownMenu();
-        menu.buildMenuBar(mainWindow.this,projectSettingButton,projectSettingType,projectCustomDensityType,projectCustomPressureType,projectCustomLengthType);
+        menu.buildMenuBar(mainWindow.this);
 
         //ratingTextPane UI settings in drilling input tab
         ratingTextPane.setBorder(new LineBorder(Color.black,1));
@@ -1071,7 +1072,7 @@ public class mainWindow extends JFrame {
 
                 this.Sigma1 = Equations.sigma1(SigTheta,SigmaZ,ThoThetaZ);
                 double[] sigma1Array = Equations.Sigma1Array(SigTheta,SigmaZ,ThoThetaZ);
-                this.Sigma2 = Equations.sigma2(SigTheta,SigmaZ,ThoThetaZ,Equations.sigma1MaxTheta(sigma1Array,this.Sigma1));
+                this.Sigma2 = Equations.sigma2(SigTheta,SigmaZ,ThoThetaZ,Equations.sigma1MinTheta(sigma1Array,this.Sigma1));
                 this.Sigma3 = Equations.sigma3(SigmaR);
 
                 // Determine if tensile failure
@@ -1117,12 +1118,12 @@ public class mainWindow extends JFrame {
                 double phi = -1;
 
                 //find the phi value at the angle that gives the maximum sigma1 value
-                phi = Equations.phi(SigTheta,SigmaZ,ThoThetaZ,Equations.sigma1MaxTheta(sigma1Array,this.Sigma1)) ;
+                phi = Equations.phi(SigTheta,SigmaZ,ThoThetaZ,Equations.sigma1MinTheta(sigma1Array,this.Sigma1)) ;
 
                 //find unique beta value for each second set type
-                betaFaultParam = secondEquations.betaAngle(Integer.parseInt(faultConductivityStrikeTextField.getText()), Equations.sigma1MaxTheta(sigma1Array,this.Sigma1), Integer.parseInt(faultConductivityDipTextField.getText()),Integer.parseInt(gammaText.getText()), phi );
-                betaJointParam = secondEquations.betaAngle(Integer.parseInt(jointStrikeTextField.getText()), Equations.sigma1MaxTheta(sigma1Array,this.Sigma1), Integer.parseInt(jointDipTextField.getText()),Integer.parseInt(gammaText.getText()), phi );
-                betaUnconformityParam = secondEquations.betaAngle(Integer.parseInt(beddingPlaneStrikeTextField.getText()), Equations.sigma1MaxTheta(sigma1Array,this.Sigma1), Integer.parseInt(beddingPlaneDipTextField.getText()),Integer.parseInt(gammaText.getText()), phi );
+                betaFaultParam = secondEquations.betaAngle(Integer.parseInt(faultConductivityStrikeTextField.getText()), Equations.sigma1MinTheta(sigma1Array,this.Sigma1), Integer.parseInt(faultConductivityDipTextField.getText()),Integer.parseInt(gammaText.getText()), phi );
+                betaJointParam = secondEquations.betaAngle(Integer.parseInt(jointStrikeTextField.getText()), Equations.sigma1MinTheta(sigma1Array,this.Sigma1), Integer.parseInt(jointDipTextField.getText()),Integer.parseInt(gammaText.getText()), phi );
+                betaUnconformityParam = secondEquations.betaAngle(Integer.parseInt(beddingPlaneStrikeTextField.getText()), Equations.sigma1MinTheta(sigma1Array,this.Sigma1), Integer.parseInt(beddingPlaneDipTextField.getText()),Integer.parseInt(gammaText.getText()), phi );
 
                 this.secondInstability = secondEquations.secondSetValues(FaultConductCombo.getSelectedItem().toString(),JointCombo.getSelectedItem().toString(),BeddingCombo.getSelectedItem().toString(),betaFaultParam,betaJointParam,betaUnconformityParam,"Instability");
                 this.secondLossOfCirculation = secondEquations.secondSetValues(FaultConductCombo.getSelectedItem().toString(),JointCombo.getSelectedItem().toString(),BeddingCombo.getSelectedItem().toString(),betaFaultParam,betaJointParam,betaUnconformityParam,"LossOfCirculation");
@@ -1234,7 +1235,6 @@ public class mainWindow extends JFrame {
                 sc.sumROPCriteria(sumROP,mainWindow.this);
 
 
-
                 //generate rating textpane report
                 ReportStrings reportList = new ReportStrings();
                 String[] initSt = reportList.getInitString();
@@ -1249,6 +1249,8 @@ public class mainWindow extends JFrame {
                     System.err.println("Couldn't insert initial text into text pane.");
                 }
                 }
+
+                menu.getExportPDF().setEnabled(true);
             }
         });
 
@@ -1286,6 +1288,7 @@ public class mainWindow extends JFrame {
             public void actionPerformed(ActionEvent e) {
 
             resetTool();
+            menu.getExportPDF().setEnabled(false);
 
             }
         });

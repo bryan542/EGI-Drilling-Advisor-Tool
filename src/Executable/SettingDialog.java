@@ -31,7 +31,7 @@ public class SettingDialog extends JDialog{
     private double gradientChange;
 
 
-    public SettingDialog(mainWindow mw){
+    public SettingDialog(mainWindow mw, JMenuItem exportPDF){
 
         boolean generalCustom;
         boolean oilfieldSI;
@@ -348,6 +348,7 @@ public class SettingDialog extends JDialog{
                 }
 
             mw.resetTool();
+            exportPDF.setEnabled(false);
 
             }
 

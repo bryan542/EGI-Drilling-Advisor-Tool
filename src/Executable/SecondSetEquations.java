@@ -17,7 +17,7 @@ public class SecondSetEquations {
         int sigma1Dip = -1;
 
         //sigma1Dip is the difference between phi and gamme. Phi is calculated in the drillingEquations class.
-        //thetaMaxAzimuth comes from the theta angle that gives the max value of sigma1. Found in sigma1MaxTheta method in drillingEquations class
+        //thetaMaxAzimuth comes from the theta angle that gives the max value of sigma1. Found in sigma1MinTheta method in drillingEquations class
         betaAzimuth = Math.abs(strikeDirection-thetaMaxAzimuth);
 
         phi = Math.round(phi);

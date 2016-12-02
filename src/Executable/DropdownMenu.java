@@ -14,13 +14,18 @@ import java.net.URL;
  */
 public class DropdownMenu  {
 
+    JMenuItem exportPDF = new JMenuItem("Export Report");
 
-    public void buildMenuBar(mainWindow mw, String settingButton, String settingType, String customDensityType,String customPressureType,String customLengthType){
+    public JMenuItem getExportPDF() {
+        return exportPDF;
+    }
+
+    public void buildMenuBar(mainWindow mw){
 
         //build file menu
 
         JMenuBar menubar = new JMenuBar();
-        JMenuItem exportPDF = new JMenuItem("Export Report");
+        exportPDF = new JMenuItem("Export Report");
         //build file JMenu and JMenuItems
         JMenu file = new JMenu("File");
         JMenuItem open = new JMenuItem("Open");
@@ -154,7 +159,7 @@ public class DropdownMenu  {
 
             public void actionPerformed(ActionEvent e) {
 
-                SettingDialog sf = new SettingDialog(mw );
+                SettingDialog sf = new SettingDialog(mw,exportPDF );
                 sf.initialize();
 
             }
