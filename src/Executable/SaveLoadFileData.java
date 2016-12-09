@@ -199,7 +199,8 @@ public class SaveLoadFileData {
         chooser.setCurrentDirectory(new java.io.File("C:/"));
         chooser.setDialogTitle("Choose Save Location");
 
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("PDF & CSV Files", "pdf","csv");
+        //sets the file extensions that you can see
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("CSV File Save Path", "csv");
         chooser.setFileFilter(filter);
 
         int result = chooser.showSaveDialog(null);
@@ -295,8 +296,15 @@ public class SaveLoadFileData {
 
     public static Reader readCSV(String csvFilePath, mainWindow mw) {
 
-        ClearResetValues cv = new ClearResetValues();
-        cv.resetTool(mw);
+
+        // clears the panels if a proper path is selected. if there is no path an dthe jdialog is exited, nothing gets cleared out
+        if (csvFilePath != null || !csvFilePath.isEmpty()){
+
+            ClearResetValues cv = new ClearResetValues();
+            cv.resetTool(mw);
+        }
+
+
 
         Reader in = null;
 
@@ -403,7 +411,8 @@ public class SaveLoadFileData {
                 mw.setCohesionInputLabel("Cohesion ("+pressureUnit+")");
 
                 //Guaranteed data are values that will always be saved to the .CSV file
-                //guaranteed data
+                //guaranteed data. I know I could delete these paramaters. However, listing them here is nice for reference
+                /*
                 String depth = "";
                 String density = "";
                 String deviationAngle = "";
@@ -422,13 +431,19 @@ public class SaveLoadFileData {
                 String naturalFractures = "";
                 String naturalFracturesStrike = "";
                 String naturalFracturesDip = "";
+                */
+
 
                 //Non-guaranteed saved data may not exist in the .CSV file depending on the user chosen inputs on the mainWindow JPanel
                 //non-guaranteed saved data
-
+                /*
                 String porePressure = "";
                 String porePressureType = "";
                 String faultType = "";
+
+                */
+
+                //these non-guaranteed paramaters are used for checking if certain buttongroups are selected
                 String sigmaV = "";
                 String sigmaMax = "";
                 String sigmaMin = "";
@@ -445,7 +460,7 @@ public class SaveLoadFileData {
                 mw.setLithologyCombo(record.get("Lithology"));
                 mw.setGSICombo(record.get("GSI"));
 
-                mw.setBeddingCombo( record.get("Bedding Plane Conductivity"));
+                mw.setBeddingCombo(record.get("Bedding Plane Conductivity"));
                 mw.setBeddingPlaneStrikeTextField(record.get("Bedding Strike"));
                 mw.setBeddingPlaneDipTextField(record.get("Bedding Dip"));
 
@@ -488,12 +503,14 @@ public class SaveLoadFileData {
                 catch(Exception e){};
 
                 try{
+                    sigmaMax = record.get("Sigma Max");
                     mw.setSigmaMaxTextField(record.get("Sigma Max"));
 
                 }
                 catch(Exception e){};
 
                 try{
+                    sigmaMin = record.get("Sigma Min");
                     mw.setSigmaMinTextField(record.get("Sigma Min"));
 
                 }
@@ -512,7 +529,7 @@ public class SaveLoadFileData {
                 catch(Exception e){};
 
                 //enables or disables the stress gradient portion and fault type/pore combo portion
-                if(sigmaV.isEmpty()){
+                if(sigmaV.isEmpty() && sigmaMax.isEmpty() && sigmaMin.isEmpty()){
                     mw.getStressAutomaticRadioButton().setSelected(true);
                     mw.getSigmaVTextField().setEnabled(false);
                     mw.getSigmaMaxTextField().setEnabled(false);

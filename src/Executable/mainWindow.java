@@ -931,9 +931,9 @@ public class mainWindow extends JFrame {
             private double SigmaHR;
             private double SigmahR;
             private double PorePR;
-            private double SigmaV;
-            private double SigmaH;
-            private double Sigmah;
+            private double SigmaVGradient;
+            private double SigmaHGradient;
+            private double SigmahGradient;
             private double SV;
             private double SH;
             private double Sh;
@@ -983,15 +983,15 @@ public class mainWindow extends JFrame {
             private double sumLongTermIntegrity;
             private double sumROP;
             private double cohesionInitial;
-            private double ShMin;
-            private double SHMax;
-            private double SHMaxDiagnol;
-            private double SHMaxDiagnolMin;
-            private double SHMaxDiagnolMax;
             private double compressiveStrength;
             private int tensileStrength;
             private double porePressureGradient;
             private int betaAngle;
+            double betaFaultParam = -1;
+            double betaJointParam = -1;
+            double betaUnconformityParam = -1;
+
+
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -1024,6 +1024,16 @@ public class mainWindow extends JFrame {
                     this.PorePR = Equations.PorePressureRange(FaultTypeCombo.getSelectedItem().toString(), PoreCombo.getSelectedItem().toString());
                     porePressureTextFieldResult.setText(Integer.toString((int) (PorePR*Integer.parseInt(depthText.getText())*lengthUM*(1/pressureUM))));
 
+                    //Retrieve sigma values
+                    this.SigmaVGradient = Equations.SigmaV(Double.parseDouble(depthText.getText())*lengthUM,SigmaVR,PorePR);
+                    this.SigmaHGradient = Equations.SigmaH(Double.parseDouble(depthText.getText())*lengthUM,SigmaHR,PorePR);
+                    this.SigmahGradient = Equations.Sigmah(Double.parseDouble(depthText.getText())*lengthUM,SigmahR,PorePR);
+
+                    //Retrieve stress tensors SV, SH, Sh
+                    this.SV = Equations.SV(SigmaVGradient, SigmaHGradient, SigmahGradient,Double.parseDouble(gammaText.getText()),Alpha);
+                    this.SH = Equations.SH(SigmaVGradient, SigmaHGradient, SigmahGradient,Double.parseDouble(gammaText.getText()),Alpha);
+                    this.Sh = Equations.Sh(SigmaVGradient, SigmaHGradient, SigmahGradient,Double.parseDouble(gammaText.getText()),Alpha);
+
                     // DeltaP
                     this.DeltaP = Equations.deltaP(Double.parseDouble(depthText.getText())*lengthUM,mudWeightPsiFt,PorePR);
 
@@ -1035,24 +1045,26 @@ public class mainWindow extends JFrame {
                     this.porePressureGradient = Double.parseDouble(porePressureTextField.getText())*gradientUM;
                     porePressureTextFieldResult.setText(Integer.toString((int) (porePressureGradient*Integer.parseInt(depthText.getText())*lengthUM*(1/pressureUM))));
 
+                    //Retrieve sigma values
+                    this.SigmaVGradient = Equations.SigmaV(Double.parseDouble(depthText.getText())*lengthUM,SigmaVR,PorePR);
+                    this.SigmaHGradient = Equations.SigmaH(Double.parseDouble(depthText.getText())*lengthUM,SigmaHR,PorePR);
+                    this.SigmahGradient = Equations.Sigmah(Double.parseDouble(depthText.getText())*lengthUM,SigmahR,PorePR);
+
+                    //Retrieve stress tensors SV, SH, Sh
+                    this.SV = Equations.SV(SigmaVGradient, SigmaHGradient, SigmahGradient,Double.parseDouble(gammaText.getText()),Alpha);
+                    this.SH = Equations.SH(SigmaVGradient, SigmaHGradient, SigmahGradient,Double.parseDouble(gammaText.getText()),Alpha);
+                    this.Sh = Equations.Sh(SigmaVGradient, SigmaHGradient, SigmahGradient,Double.parseDouble(gammaText.getText()),Alpha);
+
                     // DeltaP
                     this.DeltaP = Equations.deltaP(Double.parseDouble(depthText.getText())*lengthUM,mudWeightPsiFt,porePressureGradient);
 
                 }
-                //Retrieve sigma values
-                this.SigmaV = Equations.SigmaV(Double.parseDouble(depthText.getText())*lengthUM,SigmaVR,PorePR);
-                this.SigmaH = Equations.SigmaH(Double.parseDouble(depthText.getText())*lengthUM,SigmaHR,PorePR);
-                this.Sigmah = Equations.Sigmah(Double.parseDouble(depthText.getText())*lengthUM,SigmahR,PorePR);
 
-                //Retrieve stress tensors SV, SH, Sh
-                this.SV = Equations.SV(SigmaV,SigmaH,Sigmah,Double.parseDouble(gammaText.getText()),Alpha);
-                this.SH = Equations.SH(SigmaV,SigmaH,Sigmah,Double.parseDouble(gammaText.getText()),Alpha);
-                this.Sh = Equations.Sh(SigmaV,SigmaH,Sigmah,Double.parseDouble(gammaText.getText()),Alpha);
 
                 //Retrieve Tho values thoXY, thoXZ, ThoYZ
-                this.ThoXY = Equations.thoXY(SigmaH,Sigmah,Alpha,Double.parseDouble(gammaText.getText()));
-                this.ThoXZ = Equations.thoXZ(SigmaV,SigmaH,Sigmah,Alpha,Double.parseDouble(gammaText.getText()));
-                this.ThoYZ = Equations.ThoYZ(SigmaH,Sigmah,Alpha,Double.parseDouble(gammaText.getText()));
+                this.ThoXY = Equations.thoXY(SigmaHGradient, SigmahGradient,Alpha,Double.parseDouble(gammaText.getText()));
+                this.ThoXZ = Equations.thoXZ(SigmaVGradient, SigmaHGradient, SigmahGradient,Alpha,Double.parseDouble(gammaText.getText()));
+                this.ThoYZ = Equations.ThoYZ(SigmaHGradient, SigmahGradient,Alpha,Double.parseDouble(gammaText.getText()));
 
                 // Retrieve SigmaR
                 this.SigmaR = Equations.sigmaR(DeltaP);
@@ -1072,8 +1084,12 @@ public class mainWindow extends JFrame {
 
                 this.Sigma1 = Equations.sigma1(SigTheta,SigmaZ,ThoThetaZ);
                 double[] sigma1Array = Equations.Sigma1Array(SigTheta,SigmaZ,ThoThetaZ);
-                this.Sigma2 = Equations.sigma2(SigTheta,SigmaZ,ThoThetaZ,Equations.sigma1MinTheta(sigma1Array,this.Sigma1));
+                this.Sigma2 = Equations.sigma2(SigTheta,SigmaZ,ThoThetaZ,Equations.sigma1MaxTheta(sigma1Array,this.Sigma1));
                 this.Sigma3 = Equations.sigma3(SigmaR);
+
+                //find the phi value at the angle that gives the maximum sigma1 value
+                phi = Equations.phi(SigTheta,SigmaZ,ThoThetaZ,Equations.sigma1MaxTheta(sigma1Array,this.Sigma1)) ;
+
 
                 // Determine if tensile failure
                 // conditionals if the automatic or manual tensile radiobuttons are selected
@@ -1112,18 +1128,10 @@ public class mainWindow extends JFrame {
                 //Retrieve second set parameters
 
                 SecondSetEquations secondEquations = new SecondSetEquations();
-                double betaFaultParam = -1;
-                double betaJointParam = -1;
-                double betaUnconformityParam = -1;
-                double phi = -1;
-
-                //find the phi value at the angle that gives the maximum sigma1 value
-                phi = Equations.phi(SigTheta,SigmaZ,ThoThetaZ,Equations.sigma1MinTheta(sigma1Array,this.Sigma1)) ;
-
                 //find unique beta value for each second set type
-                betaFaultParam = secondEquations.betaAngle(Integer.parseInt(faultConductivityStrikeTextField.getText()), Equations.sigma1MinTheta(sigma1Array,this.Sigma1), Integer.parseInt(faultConductivityDipTextField.getText()),Integer.parseInt(gammaText.getText()), phi );
-                betaJointParam = secondEquations.betaAngle(Integer.parseInt(jointStrikeTextField.getText()), Equations.sigma1MinTheta(sigma1Array,this.Sigma1), Integer.parseInt(jointDipTextField.getText()),Integer.parseInt(gammaText.getText()), phi );
-                betaUnconformityParam = secondEquations.betaAngle(Integer.parseInt(beddingPlaneStrikeTextField.getText()), Equations.sigma1MinTheta(sigma1Array,this.Sigma1), Integer.parseInt(beddingPlaneDipTextField.getText()),Integer.parseInt(gammaText.getText()), phi );
+                betaFaultParam = secondEquations.betaAngle(Integer.parseInt(faultConductivityStrikeTextField.getText()), Equations.sigma1MaxTheta(sigma1Array,this.Sigma1), Integer.parseInt(faultConductivityDipTextField.getText()),Integer.parseInt(gammaText.getText()), phi );
+                betaJointParam = secondEquations.betaAngle(Integer.parseInt(jointStrikeTextField.getText()), Equations.sigma1MaxTheta(sigma1Array,this.Sigma1), Integer.parseInt(jointDipTextField.getText()),Integer.parseInt(gammaText.getText()), phi );
+                betaUnconformityParam = secondEquations.betaAngle(Integer.parseInt(beddingPlaneStrikeTextField.getText()), Equations.sigma1MaxTheta(sigma1Array,this.Sigma1), Integer.parseInt(beddingPlaneDipTextField.getText()),Integer.parseInt(gammaText.getText()), phi );
 
                 this.secondInstability = secondEquations.secondSetValues(FaultConductCombo.getSelectedItem().toString(),JointCombo.getSelectedItem().toString(),BeddingCombo.getSelectedItem().toString(),betaFaultParam,betaJointParam,betaUnconformityParam,"Instability");
                 this.secondLossOfCirculation = secondEquations.secondSetValues(FaultConductCombo.getSelectedItem().toString(),JointCombo.getSelectedItem().toString(),BeddingCombo.getSelectedItem().toString(),betaFaultParam,betaJointParam,betaUnconformityParam,"LossOfCirculation");
@@ -1215,9 +1223,9 @@ public class mainWindow extends JFrame {
                 //populate textlabels with value results
                 double porePressureCombination = PorePR*Integer.parseInt(depthText.getText())*lengthUM;
 
-                sigmaVTextFieldResult.setText(Integer.toString((int) ((SigmaV+porePressureCombination)*(1/pressureUM))));
-                sigmaMaxTextFieldResult.setText(Integer.toString((int) ((SigmaH+porePressureCombination)*(1/pressureUM))));
-                sigmaMinTextFieldResult.setText(Integer.toString((int) ((Sigmah+porePressureCombination)*(1/pressureUM))));
+                sigmaVTextFieldResult.setText(Integer.toString((int) ((SigmaVGradient +porePressureCombination)*(1/pressureUM))));
+                sigmaMaxTextFieldResult.setText(Integer.toString((int) ((SigmaHGradient +porePressureCombination)*(1/pressureUM))));
+                sigmaMinTextFieldResult.setText(Integer.toString((int) ((SigmahGradient +porePressureCombination)*(1/pressureUM))));
                 principal1TextFieldResult.setText(Integer.toString((int) (Sigma1*(1/pressureUM))));
                 principal2TextFieldResult.setText(Integer.toString((int) (Sigma2*(1/pressureUM))));
                 principal3TextFieldResult.setText(Integer.toString((int) (Sigma3*(1/pressureUM))));

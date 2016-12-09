@@ -1102,7 +1102,7 @@
                                             </constraints>
                                             <properties>
                                               <font name="Candara"/>
-                                              <text value="Natural Fractures"/>
+                                              <text value="Natural Fracture Frequency"/>
                                             </properties>
                                           </component>
                                         </children>

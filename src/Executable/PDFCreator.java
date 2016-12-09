@@ -12,6 +12,7 @@ import org.apache.pdfbox.util.Matrix;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
@@ -131,7 +132,8 @@ public class PDFCreator {
         chooser.setCurrentDirectory(new java.io.File("C:/"));
         chooser.setDialogTitle("Choose Save Location");
 
-        chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Final Report PDF Path", "pdf");
+        chooser.setFileFilter(filter);
         int result = chooser.showSaveDialog(null);
 
         try {

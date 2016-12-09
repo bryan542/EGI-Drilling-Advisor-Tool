@@ -250,8 +250,7 @@ public class DrillingEquations {
         //sigmaTheta at all angles 0-360 degrees
         for (int i = 0; i < arrayLength; i++) {
 
-            sigmaTheta[i] = SH + Sh - 2 * (SH - Sh) * Math.cos(Math.toRadians(2 * i)) - 4 * ThoXY * Math.sin(Math.toRadians(2 * i)) + deltaP;
-
+            sigmaTheta[i] = SH + Sh - 2 * (SH - Sh) * Math.cos(Math.toRadians(2 * i)) - 4 * ThoXY * Math.sin(Math.toRadians(2 * i)) - deltaP;
 
         }
 
@@ -332,7 +331,7 @@ public class DrillingEquations {
         }
 
 
-        return index;
+        return index
 
     }
 */
@@ -417,13 +416,13 @@ public class DrillingEquations {
         Arrays.sort(sortedSigma1);
 
         //Find highest sigTheta value
-        sigma1Min = sortedSigma1[0];
+        sigma1Min = sortedSigma1[Sigma1.length-1];
 
 
         return sigma1Min;
     }
 
-    public static int sigma1MinTheta(double[] Sigma1, double sigma1Min){
+    public static int sigma1MaxTheta(double[] Sigma1, double sigma1Min){
 
         int index = -1;
         int arrayLength = Sigma1.length;
@@ -433,7 +432,7 @@ public class DrillingEquations {
         for (int i = 0;i<arrayLength;i++){
 
             if(Sigma1[i] == sigma1Min){
-                index = i;
+                index = i+90;
                 break;
             }
         }
@@ -458,7 +457,7 @@ public class DrillingEquations {
     public static double sigma2(double[] sigmaTheta, double[] sigmaZ, double[] ThoThetaZ, int sigmaThetaAngle){
         double Sigma2;
 
-        //sigma2 at the angle that generates the maximum sigma1 value. sigmaTheaAngle comes from the method sigma1MinTheta
+        //sigma2 at the angle that generates the maximum sigma1 value. sigmaTheaAngle comes from the method sigma1MaxTheta
             Sigma2 = 0.5 * (sigmaTheta[sigmaThetaAngle] + sigmaZ[sigmaThetaAngle]) - 0.5 * Math.sqrt((sigmaTheta[sigmaThetaAngle] - sigmaZ[sigmaThetaAngle]) * (sigmaTheta[sigmaThetaAngle] - sigmaZ[sigmaThetaAngle]) + 4 * ThoThetaZ[sigmaThetaAngle] * ThoThetaZ[sigmaThetaAngle]);
 
         return Sigma2;
