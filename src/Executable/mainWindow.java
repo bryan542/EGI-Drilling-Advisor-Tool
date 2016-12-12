@@ -1273,23 +1273,39 @@ public class mainWindow extends JFrame {
 
         GSIDialog GD = new GSIDialog();
 
+        GSITableButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                GD.setContentPane(GD.contentPane);
+                GD.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                GD.pack();
+                GD.setLocationRelativeTo(GSILocationSetter);
+                GD.setVisible(true);
+                GD.setTitle("GSI Selection Table");
+            }
+        });
+
+        /*
         GSITableButton.addMouseListener(new java.awt.event.MouseAdapter(){
 
             public void mouseEntered(java.awt.event.MouseEvent evt) {
 
-                    GD.setContentPane(GD.contentPane);
-                    GD.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-                    GD.pack();
-                    GD.setLocationRelativeTo(GSILocationSetter);
-                    GD.setVisible(true);
-                    GD.setTitle("GSI Selection Table");
+                GD.setContentPane(GD.contentPane);
+                GD.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                GD.pack();
+                GD.setLocationRelativeTo(GSILocationSetter);
+                GD.setVisible(true);
+                GD.setTitle("GSI Selection Table");
 
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
+            @Override
+            public void mouseClicked(MouseEvent e) {
 
-            GD.dispose();
+                GD.dispose();
             }
         });
+        */
 
         clearButton.addActionListener(new ActionListener() {
             @Override
