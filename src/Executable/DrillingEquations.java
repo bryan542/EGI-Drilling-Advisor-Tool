@@ -379,6 +379,8 @@ public class DrillingEquations {
         this.ThoRZ = 0;
         return this.ThoRZ;
     }
+
+
     //Calculate sigma1 all angles array
     public static double[] Sigma1Array(double[] sigmaTheta, double[] sigmaZ, double[] ThoThetaZ){
 
@@ -398,10 +400,9 @@ public class DrillingEquations {
     //Calculate sigma1 min
     public static double sigma1(double[] sigmaTheta, double[] sigmaZ, double[] ThoThetaZ){
 
-        int index = -1;
         double[] Sigma1;
         double[] sortedSigma1;
-        double sigma1Min;
+        double sigma1Max;
         Sigma1 = new double[361];
         int arrayLength = Sigma1.length;
 
@@ -416,10 +417,44 @@ public class DrillingEquations {
         Arrays.sort(sortedSigma1);
 
         //Find highest sigTheta value
-        sigma1Min = sortedSigma1[Sigma1.length-1];
+        sigma1Max = sortedSigma1[Sigma1.length-1];
 
 
-        return sigma1Min;
+        return sigma1Max;
+    }
+
+    //Calculate sigma2
+    public static double sigma2(double[] sigmaTheta, double[] sigmaZ, double[] ThoThetaZ){
+
+        double[] Sigma2;
+        double[] sortedSigma2;
+        double sigma2Min;
+        Sigma2 = new double[361];
+        int arrayLength = Sigma2.length;
+
+        for (int i = 0; i < arrayLength; i++) {
+            Sigma2[i] = 0.5 * (sigmaTheta[i] + sigmaZ[i]) - 0.5 * Math.sqrt((sigmaTheta[i] - sigmaZ[i]) * (sigmaTheta[i] - sigmaZ[i]) + 4 * ThoThetaZ[i] * ThoThetaZ[i]);
+
+        }
+
+        sortedSigma2 = Sigma2.clone();
+
+        // Sort the array from smallest to highest
+        Arrays.sort(sortedSigma2);
+
+        //Find highest sigTheta value
+        sigma2Min = sortedSigma2[0];
+
+        return sigma2Min;
+
+    }
+
+    //Calculate sigma3
+    public double sigma3(double sigmaR){
+
+        double Sigma3;
+        Sigma3 = sigmaR;
+        return Sigma3;
     }
 
     public static int sigma1MaxTheta(double[] Sigma1, double sigma1Min){
@@ -432,7 +467,7 @@ public class DrillingEquations {
         for (int i = 0;i<arrayLength;i++){
 
             if(Sigma1[i] == sigma1Min){
-                index = i+90;
+                index = i;
                 break;
             }
         }
@@ -440,6 +475,7 @@ public class DrillingEquations {
 
         return index;
     }
+
 
     //Calculate Phi value
     public static double phi(double[] sigmaTheta, double[] sigmaZ, double[] ThoThetaZ, int sigmaThetaAngle){
@@ -453,31 +489,13 @@ public class DrillingEquations {
         return phi;
     }
 
-    //Calculate sigma2
-    public static double sigma2(double[] sigmaTheta, double[] sigmaZ, double[] ThoThetaZ, int sigmaThetaAngle){
-        double Sigma2;
-
-        //sigma2 at the angle that generates the maximum sigma1 value. sigmaTheaAngle comes from the method sigma1MaxTheta
-            Sigma2 = 0.5 * (sigmaTheta[sigmaThetaAngle] + sigmaZ[sigmaThetaAngle]) - 0.5 * Math.sqrt((sigmaTheta[sigmaThetaAngle] - sigmaZ[sigmaThetaAngle]) * (sigmaTheta[sigmaThetaAngle] - sigmaZ[sigmaThetaAngle]) + 4 * ThoThetaZ[sigmaThetaAngle] * ThoThetaZ[sigmaThetaAngle]);
-
-        return Sigma2;
-    }
-
-    //Calculate sigma3
-    public double sigma3(double sigmaR){
-
-        double Sigma3;
-        Sigma3 = sigmaR;
-        return Sigma3;
-    }
-
     //Tensile fracture condition
 
     public static String tensileFailureCondition(double Sigma2, double tensile){
 
         String tensileCondition;
 
-        if (Sigma2 <= -1* tensile){
+        if (Sigma2 <=  -1*tensile){
 
             tensileCondition = "Failure";
         }
@@ -491,25 +509,83 @@ public class DrillingEquations {
 
     //Shear failure condition
 
-    public static String shearFailureCondition(double sigmaTheta, double sigmaR, double ThoRTheta){
+    public static String shearFailureCondition(double[] sigmaTheta, double sigmaR, double ThoRTheta){
 
-        String shearCondition;
+        int thetaStartRange = -1;
+        int thetaEndRange = -1;
+        int thetaStart180Range = -1;
+        int thetaEnd180Range = -1;
+        double[] a;
+        double[] b;
+        String[] shearConditionRange;
+        String shearConditionFinalReport = "";
+        shearConditionRange = new String[361];
+        a = new double[361];
+        b = new double[361];
+        double coeffFriction = .6;
 
-        double a;
-        double b;
-        double coeffFriction = 0.6;
+        int arrayLength = sigmaTheta.length;
 
-        a = Math.sqrt(((sigmaTheta-sigmaR)/2)*((sigmaTheta-sigmaR)/2)+ThoRTheta*ThoRTheta);
-        b = coeffFriction/(Math.sqrt(1+coeffFriction*coeffFriction))*(sigmaTheta+((sigmaTheta+sigmaR)/2));
 
-        if (a >= b){
-            shearCondition = "Shear failure";
+        //Find the angle that give shear or no shear failure
+        // .
+        for (int i = 0;i<arrayLength;i++){
+
+            a[i] = Math.sqrt(((sigmaTheta[i]-sigmaR)/2)*((sigmaTheta[i]-sigmaR)/2)+ThoRTheta*ThoRTheta);
+            b[i] = coeffFriction/(Math.sqrt(1+coeffFriction*coeffFriction))*(sigmaTheta[i]+((sigmaTheta[i]+sigmaR)/2));
+
+            if (a[i] >= b[i]){
+                shearConditionRange[i] = "Shear failure";
+            }
+            else {
+                shearConditionRange[i] = "No shear failure";
+            }
+
         }
-        else {
-            shearCondition = "No shear failure";
+
+        // report the theta range that shear failure occurs
+        for (int i = 0;i<arrayLength;i++){
+
+            // i+1 != 361 statement ensures no array boundary errors at the end of the array
+            if(i+1 != 361) {
+
+                if (shearConditionRange[i] == "No shear failure" && shearConditionRange[i + 1] == "Shear failure") {
+
+                    thetaStartRange = i + 1;
+
+                }
+                if (shearConditionRange[i] == "Shear failure" && shearConditionRange[i + 1] == "No shear failure" && thetaStartRange != -1) {
+
+                    thetaEndRange = i;
+                }
+                //String reporting the ranges of failure
+                if (thetaStartRange != -1 && thetaEndRange != -1) {
+
+                    thetaStart180Range = thetaStartRange + 180;
+                    thetaEnd180Range = thetaEndRange + 180;
+
+                    if (thetaStart180Range > 360){
+                        thetaStart180Range = thetaStart180Range -360;
+                    }
+                    if (thetaEnd180Range > 360){
+                        thetaEnd180Range = thetaEnd180Range -360;
+                    }
+                    shearConditionFinalReport = "Shear failure θ = " + Integer.toString(thetaStartRange) + "-" + Integer.toString(thetaEndRange) + " and " + Integer.toString(thetaStart180Range) + "-" + Integer.toString(thetaEnd180Range);
+                    break;
+                }
+            }
+            else{
+                break;
+            }
         }
 
-        return shearCondition;
+        //String reporting no failure if condition is satisfied
+        if(thetaStartRange == -1 && thetaEndRange == -1){
+
+            shearConditionFinalReport = "No shear failure";
+        }
+
+        return shearConditionFinalReport;
     }
 
     //Calculated phi value if tensile failure happens

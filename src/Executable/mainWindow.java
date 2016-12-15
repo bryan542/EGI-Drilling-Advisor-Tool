@@ -930,7 +930,7 @@ public class mainWindow extends JFrame {
             private double SigmaVR;
             private double SigmaHR;
             private double SigmahR;
-            private double PorePR;
+            private double porePressureGradient;
             private double SigmaVGradient;
             private double SigmaHGradient;
             private double SigmahGradient;
@@ -985,7 +985,6 @@ public class mainWindow extends JFrame {
             private double cohesionInitial;
             private double compressiveStrength;
             private int tensileStrength;
-            private double porePressureGradient;
             private int betaAngle;
             double betaFaultParam = -1;
             double betaJointParam = -1;
@@ -1021,13 +1020,13 @@ public class mainWindow extends JFrame {
                     this.SigmaVR = Equations.SigmaVRange(FaultTypeCombo.getSelectedItem().toString(), PoreCombo.getSelectedItem().toString());
                     this.SigmaHR = Equations.SigmaHRange(FaultTypeCombo.getSelectedItem().toString(), PoreCombo.getSelectedItem().toString());
                     this.SigmahR = Equations.SigmahRange(FaultTypeCombo.getSelectedItem().toString(), PoreCombo.getSelectedItem().toString());
-                    this.PorePR = Equations.PorePressureRange(FaultTypeCombo.getSelectedItem().toString(), PoreCombo.getSelectedItem().toString());
-                    porePressureTextFieldResult.setText(Integer.toString((int) (PorePR*Integer.parseInt(depthText.getText())*lengthUM*(1/pressureUM))));
+                    this.porePressureGradient = Equations.PorePressureRange(FaultTypeCombo.getSelectedItem().toString(), PoreCombo.getSelectedItem().toString());
+                    porePressureTextFieldResult.setText(Integer.toString((int) (porePressureGradient *Integer.parseInt(depthText.getText())*lengthUM*(1/pressureUM))));
 
                     //Retrieve sigma values
-                    this.SigmaVGradient = Equations.SigmaV(Double.parseDouble(depthText.getText())*lengthUM,SigmaVR,PorePR);
-                    this.SigmaHGradient = Equations.SigmaH(Double.parseDouble(depthText.getText())*lengthUM,SigmaHR,PorePR);
-                    this.SigmahGradient = Equations.Sigmah(Double.parseDouble(depthText.getText())*lengthUM,SigmahR,PorePR);
+                    this.SigmaVGradient = Equations.SigmaV(Double.parseDouble(depthText.getText())*lengthUM,SigmaVR, porePressureGradient);
+                    this.SigmaHGradient = Equations.SigmaH(Double.parseDouble(depthText.getText())*lengthUM,SigmaHR, porePressureGradient);
+                    this.SigmahGradient = Equations.Sigmah(Double.parseDouble(depthText.getText())*lengthUM,SigmahR, porePressureGradient);
 
                     //Retrieve stress tensors SV, SH, Sh
                     this.SV = Equations.SV(SigmaVGradient, SigmaHGradient, SigmahGradient,Double.parseDouble(gammaText.getText()),Alpha);
@@ -1035,7 +1034,7 @@ public class mainWindow extends JFrame {
                     this.Sh = Equations.Sh(SigmaVGradient, SigmaHGradient, SigmahGradient,Double.parseDouble(gammaText.getText()),Alpha);
 
                     // DeltaP
-                    this.DeltaP = Equations.deltaP(Double.parseDouble(depthText.getText())*lengthUM,mudWeightPsiFt,PorePR);
+                    this.DeltaP = Equations.deltaP(Double.parseDouble(depthText.getText())*lengthUM,mudWeightPsiFt, porePressureGradient);
 
                 }
                 else{
@@ -1046,9 +1045,9 @@ public class mainWindow extends JFrame {
                     porePressureTextFieldResult.setText(Integer.toString((int) (porePressureGradient*Integer.parseInt(depthText.getText())*lengthUM*(1/pressureUM))));
 
                     //Retrieve sigma values
-                    this.SigmaVGradient = Equations.SigmaV(Double.parseDouble(depthText.getText())*lengthUM,SigmaVR,PorePR);
-                    this.SigmaHGradient = Equations.SigmaH(Double.parseDouble(depthText.getText())*lengthUM,SigmaHR,PorePR);
-                    this.SigmahGradient = Equations.Sigmah(Double.parseDouble(depthText.getText())*lengthUM,SigmahR,PorePR);
+                    this.SigmaVGradient = Equations.SigmaV(Double.parseDouble(depthText.getText())*lengthUM,SigmaVR, porePressureGradient);
+                    this.SigmaHGradient = Equations.SigmaH(Double.parseDouble(depthText.getText())*lengthUM,SigmaHR, porePressureGradient);
+                    this.SigmahGradient = Equations.Sigmah(Double.parseDouble(depthText.getText())*lengthUM,SigmahR, porePressureGradient);
 
                     //Retrieve stress tensors SV, SH, Sh
                     this.SV = Equations.SV(SigmaVGradient, SigmaHGradient, SigmahGradient,Double.parseDouble(gammaText.getText()),Alpha);
@@ -1084,7 +1083,7 @@ public class mainWindow extends JFrame {
 
                 this.Sigma1 = Equations.sigma1(SigTheta,SigmaZ,ThoThetaZ);
                 double[] sigma1Array = Equations.Sigma1Array(SigTheta,SigmaZ,ThoThetaZ);
-                this.Sigma2 = Equations.sigma2(SigTheta,SigmaZ,ThoThetaZ,Equations.sigma1MaxTheta(sigma1Array,this.Sigma1));
+                this.Sigma2 = Equations.sigma2(SigTheta,SigmaZ,ThoThetaZ);
                 this.Sigma3 = Equations.sigma3(SigmaR);
 
                 //find the phi value at the angle that gives the maximum sigma1 value
@@ -1115,7 +1114,7 @@ public class mainWindow extends JFrame {
                 Arrays.sort(sortedSigTheta);
                 sigThetaMax = sortedSigTheta[sortedSigTheta.length-1];
 
-                this.shearType = Equations.shearFailureCondition(sigThetaMax,SigmaR,ThoRTheta);
+                this.shearType = Equations.shearFailureCondition(SigTheta,SigmaR,ThoRTheta);
 
                 //Retrieve first set parameters
 
@@ -1192,7 +1191,7 @@ public class mainWindow extends JFrame {
                 double[] principalStressHolder = {this.SigmaVR,this.SigmaHR,this.SigmahR};
                 Arrays.sort(principalStressHolder);
                 //We want the
-                XYSeriesCollection polygonCollection = polyDataset.stressPolygonDataset(principalStressHolder[2],this.PorePR,Double.parseDouble(depthText.getText()));
+                XYSeriesCollection polygonCollection = polyDataset.stressPolygonDataset(principalStressHolder[2],this.porePressureGradient,Double.parseDouble(depthText.getText()));
 
                 MohrDataset mohrDataset = new MohrDataset();
                 XYSeriesCollection mohrCollection = mohrDataset.mohrDatasetBuild(this.Sigma3,this.Sigma2,this.Sigma1,cohesionInitial);
@@ -1221,7 +1220,7 @@ public class mainWindow extends JFrame {
                 }
 
                 //populate textlabels with value results
-                double porePressureCombination = PorePR*Integer.parseInt(depthText.getText())*lengthUM;
+                double porePressureCombination = porePressureGradient *Integer.parseInt(depthText.getText())*lengthUM;
 
                 sigmaVTextFieldResult.setText(Integer.toString((int) ((SigmaVGradient +porePressureCombination)*(1/pressureUM))));
                 sigmaMaxTextFieldResult.setText(Integer.toString((int) ((SigmaHGradient +porePressureCombination)*(1/pressureUM))));
