@@ -4,6 +4,7 @@ package Executable;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.XYItemRenderer;
@@ -21,7 +22,7 @@ public class MohrFailureGraph extends JPanel {
     /**
      * Create the panel.
      */
-    public MohrFailureGraph(XYDataset dataset) {
+    public MohrFailureGraph(XYDataset dataset, double Sigma1) {
         SpringLayout springLayout = new SpringLayout();
         setLayout(springLayout);
 
@@ -57,15 +58,21 @@ public class MohrFailureGraph extends JPanel {
         XYPlot plot = lineChart.getXYPlot();
         XYItemRenderer renderer = plot.getRenderer();
 
+        NumberAxis domain = (NumberAxis) plot.getDomainAxis();
+        domain.setRange(0,Sigma1);
+        NumberAxis range = (NumberAxis) plot.getRangeAxis();
+        range.setRange(0,Sigma1);
+
+
         //Sets grid background and dashed line color
         plot.setDomainGridlinePaint(Color.BLACK);
         plot.setRangeGridlinePaint(Color.BLACK);
         plot.setBackgroundPaint(Color.WHITE);
 
         //Line Colors
-        plot.getRenderer().setSeriesPaint(0,Color.RED);
-        plot.getRenderer().setSeriesPaint(1,Color.BLUE);
-        plot.getRenderer().setSeriesPaint(2,Color.BLACK);
+
+        plot.getRenderer().setSeriesPaint(0,Color.BLUE);
+        plot.getRenderer().setSeriesPaint(1,Color.BLACK);
 
         //Thicken plot lines
         for(int i =0;i<plot.getSeriesCount();i++){

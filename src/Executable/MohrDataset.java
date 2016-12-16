@@ -22,13 +22,13 @@ public class MohrDataset {
         double diameter;
         double radius;
         double midpoint;
-
+        double coeffFriction = 0.6;
         final XYSeries CohesionLine = new XYSeries("Failure Envelope");
 
 
         for (int i = 0;i<Sigma3int;i++){
             FailurexValue = (double) i;
-            FailureyValue = 0.6*FailurexValue+cohesionInitial;
+            FailureyValue = coeffFriction*FailurexValue+cohesionInitial;
             CohesionLine.add(FailurexValue,FailureyValue);
 
         }
@@ -49,6 +49,7 @@ public class MohrDataset {
 
         }
 
+        /*
         final XYSeries Sigma2MohrLine = new XYSeries("σ2 Mohr Circle");
         for (int i=Sigma1int;i<=Sigma2int;i++){
 
@@ -62,9 +63,9 @@ public class MohrDataset {
             }
             Sigma2MohrLine.add(MohrxValue,MohryValue);
         }
-
+*/
         XYSeriesCollection dataset = new XYSeriesCollection();
-        dataset.addSeries((Sigma2MohrLine));
+       // dataset.addSeries((Sigma2MohrLine));
         dataset.addSeries((Sigma3MohrLine));
         dataset.addSeries(CohesionLine);
 

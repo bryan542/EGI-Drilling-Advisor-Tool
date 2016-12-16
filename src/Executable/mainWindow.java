@@ -1201,7 +1201,7 @@ public class mainWindow extends JFrame {
                     GraphOutputPanel polygonGraphOutput = new GraphOutputPanel(polygonCollection, mainWindow.this);
                     tabbedPane1.addTab("Stress Polygon", null, polygonGraphOutput, null);
 
-                    MohrFailureGraph MohrGraphOutput = new MohrFailureGraph(mohrCollection);
+                    MohrFailureGraph MohrGraphOutput = new MohrFailureGraph(mohrCollection, Sigma1);
                     tabbedPane1.addTab("Mohr-Coulomb Failure",null,MohrGraphOutput,null);
                     buttonCount = false;
 
@@ -1214,7 +1214,7 @@ public class mainWindow extends JFrame {
                     GraphOutputPanel graphOutput = new GraphOutputPanel(polygonCollection, mainWindow.this);
                     tabbedPane1.addTab("Stress Polygon", null, graphOutput, null);
 
-                    MohrFailureGraph MohrGraphOutput = new MohrFailureGraph(mohrCollection);
+                    MohrFailureGraph MohrGraphOutput = new MohrFailureGraph(mohrCollection, Sigma1);
                     tabbedPane1.addTab("Mohr-Coulomb Failure",null,MohrGraphOutput,null);
 
                 }

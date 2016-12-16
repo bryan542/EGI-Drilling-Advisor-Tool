@@ -801,8 +801,9 @@ public class DrillingEquations {
     public double cohesionStrength(double compressiveStrength){
 
         double cohesion = -1;
-        double angle = 30;
-        cohesion = Math.abs(compressiveStrength)*(1-Math.sin(Math.toRadians(angle)))/(2*Math.cos(Math.toRadians(angle)));
+        double coeffFriction = 0.6;
+        double q = (Math.sqrt(coeffFriction*coeffFriction+1)+coeffFriction)*2;
+        cohesion = compressiveStrength/q;
 
         return cohesion;
     }
