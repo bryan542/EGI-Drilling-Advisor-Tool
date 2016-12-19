@@ -136,6 +136,8 @@ public class mainWindow extends JFrame {
     private JPanel unconformityJPanel;
     private JPanel GSILocationSetter;
 
+    private JScrollPane scrollPane;
+
     private static String projectSettingButton = "General";
     private static String projectSettingType = "Oil Field Units";
     private static String projectCustomDensityType = "ppg";
@@ -673,7 +675,6 @@ public class mainWindow extends JFrame {
     }
 
     public mainWindow() {
-
 
 
         getDepthText().setText("5000");
@@ -1283,14 +1284,18 @@ public class mainWindow extends JFrame {
                     doc.insertString(ratingTextPane.getStyledDocument().getLength(),"Rate of Penetration",keyWord);
                     doc.insertString(ratingTextPane.getStyledDocument().getLength(),"\n\n",sim);
                     doc.insertString(ratingTextPane.getStyledDocument().getLength(),initSt[4]+"\n\n",sim);
-                        
+
                 } catch (BadLocationException ble) {
                     System.err.println("Couldn't insert initial text into text pane.");
                 }
                 }
 
                 menu.getExportPDF().setEnabled(true); // sets jmenuitem to enabled if the calculation is successful
+
+
             }
+
+
         });
 
         exportReportButton.addActionListener(new ActionListener() {
@@ -1301,6 +1306,7 @@ public class mainWindow extends JFrame {
 
             }
         });
+
 
         GSIDialog GD = new GSIDialog();
 
