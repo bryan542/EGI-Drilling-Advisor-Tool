@@ -14,10 +14,12 @@ public class StressPolygonDataset {
         double SHMax;
         double SHMaxDiagnolMin;
         double SHMaxDiagnolMax;
+        double totalSigmaV;
 
         double coeffFriction = (Math.sqrt(.6*.6+1)+.6)* (Math.sqrt(.6*.6+1)+.6);
         ShMin = ((SigmaV-PorePR)*depth/coeffFriction)+PorePR*depth;
         SHMax = coeffFriction*(SigmaV-PorePR)*depth+PorePR*depth;
+        totalSigmaV= SigmaV*depth;
 
 
         SHMaxDiagnolMin = (SigmaV/coeffFriction-PorePR/coeffFriction+PorePR)*depth;
@@ -27,6 +29,7 @@ public class StressPolygonDataset {
         final XYSeries SVLine = new XYSeries("SigmaV Line");
         SVLine.add(0.0,0.0);
         SVLine.add(ShMin,ShMin);
+        SVLine.add(totalSigmaV,totalSigmaV);
         SVLine.add(SHMax,SHMax);
         SVLine.add(SHMax*1.1,SHMax*1.1);
 

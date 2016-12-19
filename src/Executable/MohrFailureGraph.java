@@ -22,7 +22,7 @@ public class MohrFailureGraph extends JPanel {
     /**
      * Create the panel.
      */
-    public MohrFailureGraph(XYDataset dataset, double Sigma1) {
+    public MohrFailureGraph(XYDataset dataset, double Sigma1, double Sigma2) {
         SpringLayout springLayout = new SpringLayout();
         setLayout(springLayout);
 
@@ -59,7 +59,13 @@ public class MohrFailureGraph extends JPanel {
         XYItemRenderer renderer = plot.getRenderer();
 
         NumberAxis domain = (NumberAxis) plot.getDomainAxis();
-        domain.setRange(0,Sigma1);
+        if(Sigma2 < 0){
+            domain.setRange(Sigma2,Sigma1);
+        }
+        else {
+            domain.setRange(0, Sigma1);
+        }
+
         NumberAxis range = (NumberAxis) plot.getRangeAxis();
         range.setRange(0,Sigma1);
 

@@ -1456,7 +1456,7 @@
                                             </constraints>
                                             <properties>
                                               <font name="Candara"/>
-                                              <text value="Maximum σ1 (psi):"/>
+                                              <text value="σ1 (psi):"/>
                                             </properties>
                                           </component>
                                         </children>
@@ -1475,7 +1475,7 @@
                                             </constraints>
                                             <properties>
                                               <font name="Candara"/>
-                                              <text value="Intermediate σ2 (psi):"/>
+                                              <text value="σ2 (psi):"/>
                                             </properties>
                                           </component>
                                         </children>
@@ -1494,7 +1494,7 @@
                                             </constraints>
                                             <properties>
                                               <font name="Candara"/>
-                                              <text value="Minimum σ3 (psi):"/>
+                                              <text value="Radial σr (psi):"/>
                                             </properties>
                                           </component>
                                         </children>

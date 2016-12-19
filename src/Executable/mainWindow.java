@@ -6,6 +6,7 @@ import javax.swing.*;
 import javax.swing.border.LineBorder;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 import java.awt.*;
 import java.awt.event.*;
@@ -1188,20 +1189,17 @@ public class mainWindow extends JFrame {
                 //Calculate and build stress polygon dataset and Mohr dataset
                 StressPolygonDataset polyDataset = new StressPolygonDataset();
 
-                double[] principalStressHolder = {this.SigmaVR,this.SigmaHR,this.SigmahR};
-                Arrays.sort(principalStressHolder);
-                //We want the
-                XYSeriesCollection polygonCollection = polyDataset.stressPolygonDataset(principalStressHolder[2],this.porePressureGradient,Double.parseDouble(depthText.getText()));
+                XYSeriesCollection polygonCollection = polyDataset.stressPolygonDataset(this.SigmaVR,this.porePressureGradient,Double.parseDouble(depthText.getText()));
 
                 MohrDataset mohrDataset = new MohrDataset();
-                XYSeriesCollection mohrCollection = mohrDataset.mohrDatasetBuild(this.Sigma3,this.Sigma2,this.Sigma1,cohesionInitial);
+                XYSeriesCollection mohrCollection = mohrDataset.mohrDatasetBuild(this.Sigma1,this.Sigma2,this.Sigma3,cohesionInitial);
 
                 //buttonCount is a true/false condition to check if the graph panes are added/removed
                 if (buttonCount == true) {
                     GraphOutputPanel polygonGraphOutput = new GraphOutputPanel(polygonCollection, mainWindow.this);
                     tabbedPane1.addTab("Stress Polygon", null, polygonGraphOutput, null);
 
-                    MohrFailureGraph MohrGraphOutput = new MohrFailureGraph(mohrCollection, Sigma1);
+                    MohrFailureGraph MohrGraphOutput = new MohrFailureGraph(mohrCollection, Sigma1,Sigma2);
                     tabbedPane1.addTab("Mohr-Coulomb Failure",null,MohrGraphOutput,null);
                     buttonCount = false;
 
@@ -1214,7 +1212,7 @@ public class mainWindow extends JFrame {
                     GraphOutputPanel graphOutput = new GraphOutputPanel(polygonCollection, mainWindow.this);
                     tabbedPane1.addTab("Stress Polygon", null, graphOutput, null);
 
-                    MohrFailureGraph MohrGraphOutput = new MohrFailureGraph(mohrCollection, Sigma1);
+                    MohrFailureGraph MohrGraphOutput = new MohrFailureGraph(mohrCollection, Sigma1,Sigma2);
                     tabbedPane1.addTab("Mohr-Coulomb Failure",null,MohrGraphOutput,null);
 
                 }
@@ -1243,15 +1241,49 @@ public class mainWindow extends JFrame {
 
 
                 //generate rating textpane report
+
                 ReportStrings reportList = new ReportStrings();
-                String[] initSt = reportList.getInitString();
+                String[] initSt = reportList.getInitString(sumInstability,sumLossOfCirculation,sumWellControl,sumLongTermIntegrity,sumROP);
                 SimpleAttributeSet sim = new SimpleAttributeSet();
+                StyleConstants.setFontSize(sim,14);
+
+                SimpleAttributeSet keyWord = new SimpleAttributeSet();
+                StyleConstants.setFontSize(keyWord,16);
+                StyleConstants.setBold(keyWord,true);
+                StyleConstants.setUnderline(keyWord, Boolean.TRUE );
+
                 StyledDocument doc = ratingTextPane.getStyledDocument();
 
-                try {
-                    ratingTextPane.setText(""); // Resets the pane
-                    doc.insertString(ratingTextPane.getStyledDocument().getLength(),initSt[1],sim);
+                    sumInstability = this.firstInstability+this.secondInstability+this.thirdInstability+this.fourthInstability+this.fifthInstability;
+                    sumLossOfCirculation = this.firstLossOfCirculation+this.secondLossOfCirculation+this.thirdLossOfCirculation+this.fourthLossOfCirculation+this.fifthLossOfCirculation;
+                    sumWellControl = this.firstWellControl+this.secondWellControl+this.thirdWellControl+this.fourthWellControl+this.fifthWellControl;
+                    sumLongTermIntegrity = this.firstLongTermIntegrity+this.secondLongTermIntegrity+this.thirdLongTermIntegrity+this.fourthLongTermIntegrity+this.fifthLongTermIntegrity;
+                    sumROP = this.firstROP+this.secondROP+this.thirdROP+this.fourthROP+this.fifthROP;
 
+
+                    try {
+                    ratingTextPane.setText(""); // Resets the pane
+
+                    doc.insertString(ratingTextPane.getStyledDocument().getLength(),"Well Instability",keyWord);
+                    doc.insertString(ratingTextPane.getStyledDocument().getLength(),"\n\n",sim);
+                    doc.insertString(ratingTextPane.getStyledDocument().getLength(),initSt[0]+ "\n\n",sim);
+
+                    doc.insertString(ratingTextPane.getStyledDocument().getLength(),"Loss of Circulation",keyWord);
+                    doc.insertString(ratingTextPane.getStyledDocument().getLength(),"\n\n",sim);
+                    doc.insertString(ratingTextPane.getStyledDocument().getLength(),initSt[1]+"\n\n",sim);
+
+                    doc.insertString(ratingTextPane.getStyledDocument().getLength(),"Well Control",keyWord);
+                    doc.insertString(ratingTextPane.getStyledDocument().getLength(),"\n\n",sim);
+                    doc.insertString(ratingTextPane.getStyledDocument().getLength(),initSt[2]+"\n\n",sim);
+
+                    doc.insertString(ratingTextPane.getStyledDocument().getLength(),"Long Term Integrity",keyWord);
+                    doc.insertString(ratingTextPane.getStyledDocument().getLength(),"\n\n",sim);
+                    doc.insertString(ratingTextPane.getStyledDocument().getLength(),initSt[3]+"\n\n",sim);
+
+                    doc.insertString(ratingTextPane.getStyledDocument().getLength(),"Rate of Penetration",keyWord);
+                    doc.insertString(ratingTextPane.getStyledDocument().getLength(),"\n\n",sim);
+                    doc.insertString(ratingTextPane.getStyledDocument().getLength(),initSt[4]+"\n\n",sim);
+                        
                 } catch (BadLocationException ble) {
                     System.err.println("Couldn't insert initial text into text pane.");
                 }
