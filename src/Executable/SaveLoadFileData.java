@@ -62,7 +62,14 @@ public class SaveLoadFileData {
             saveListNames.add("Sigma Min");
             saveListNames.add("Pore Pressure");
         }
+        if(mw.getCoefficientAutomaticRadioButton().isSelected()){
 
+        }
+        else{
+            saveListValues.add(mw.getCoeffFrictionText().getText());
+
+            saveListNames.add(mw.getCoeffFrictionLabel().getText());
+        }
         if (mw.getTensileAutomaticRadioButton().isSelected()) {
 
         }
@@ -448,6 +455,7 @@ public class SaveLoadFileData {
                 String sigmaMax = "";
                 String sigmaMin = "";
                 String tensileStrength= "";
+                String coeffFriction = "";
                 String cohesion = "";
 
                 mw.setDepthText(record.get("Depth ("+lengthUnit+")"));
@@ -481,6 +489,11 @@ public class SaveLoadFileData {
                 }
                 catch(Exception e){};
 
+                try{
+                    coeffFriction = record.get("Coefficient of Friction");
+                    mw.setCoeffFrictionText(record.get("Coefficient of Friction"));
+                }
+                catch(Exception e){};
                 try{
                     tensileStrength = record.get("Tensile Strength ("+readerPressureUnits+")");
                     mw.setTensileText(record.get("Tensile Strength ("+readerPressureUnits+")"));

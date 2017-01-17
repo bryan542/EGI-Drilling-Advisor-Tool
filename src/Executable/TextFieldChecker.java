@@ -187,6 +187,31 @@ public class TextFieldChecker {
             checkResult = false;
         }
 
+        if(checkResult == false){
+
+            return checkResult;
+        }
+
+        if(mw.getCoeffFrictionText().isEnabled()) {
+
+            try {
+
+                if (0 <= Double.parseDouble(mw.getCoeffFrictionText().getText()) && Double.parseDouble(mw.getCoeffFrictionText().getText()) <= 1) {
+
+                } else {
+                    JOptionPane.showMessageDialog(new JDialog(), mw.getCoeffFrictionLabel().getText() + ": Enter a value between 0-1.0.");
+                    checkResult = false;
+
+                }
+
+
+            } catch (NumberFormatException e) {
+
+                JOptionPane.showMessageDialog(new JDialog(), mw.getCoeffFrictionLabel().getText() + ":Enter a valid value between 0-1.0.");
+                checkResult = false;
+            }
+        }
+
 
         return checkResult;
     }

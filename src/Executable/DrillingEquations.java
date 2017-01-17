@@ -702,7 +702,6 @@ public class DrillingEquations {
         double compressionStrength=-1;
         double[] mIndexArray = {15, 7, 10, 7.5, 3.5 ,5, 0.3, 0.14, 0.2, 0.15, .04, .05};
         double mIndex =-1;
-        double[] calibrationFactorArray = {1, .66, .33, .1};
         double calibrationFactor = -1;
         double b;
         double c = sigma3*sigma3-sigma1*sigma1;
@@ -772,27 +771,10 @@ public class DrillingEquations {
         }
 
 
-        //Find the correct correction factor
-        if (jointValue =="Unknown/None"){
-
-            calibrationFactor = calibrationFactorArray[0];
-        }
-        else if (jointValue =="Low"){
-
-            calibrationFactor = calibrationFactorArray[1];
-        }
-        else if (jointValue =="Medium"){
-
-            calibrationFactor = calibrationFactorArray[2];
-        }
-        else if (jointValue =="High"){
-
-            calibrationFactor = calibrationFactorArray[3];
-        }
 
 
         //find the compression strength
-        mIndex = mIndex*calibrationFactor;
+        mIndex = mIndex;
         b = mIndex*sigma3;
         compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
         return compressionStrength;

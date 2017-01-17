@@ -10,7 +10,7 @@ import java.util.Arrays;
  */
 public class MohrDataset {
 
-    public XYSeriesCollection mohrDatasetBuild(double sigma1,double sigma2, double sigma3,double cohesionInitial){
+    public XYSeriesCollection mohrDatasetBuild(double sigma1,double sigma2, double sigma3,double cohesionInitial, double coeffFrictionInput){
 
         double[] stressesMaxMin = {sigma1,sigma2,sigma3};
         Arrays.sort(stressesMaxMin);
@@ -26,7 +26,7 @@ public class MohrDataset {
         double diameter;
         double radius;
         double midpoint;
-        double coeffFriction = 0.6;
+        double coeffFriction = coeffFrictionInput;
         final XYSeries CohesionLine = new XYSeries("Failure Envelope");
 
         if(Sigma2int < 0) {

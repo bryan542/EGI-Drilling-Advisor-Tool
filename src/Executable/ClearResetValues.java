@@ -45,6 +45,7 @@ public class ClearResetValues {
         obj.add(mw.getSigmaMaxTextFieldResult());
         obj.add(mw.getSigmaMinTextFieldResult());
         obj.add(mw.getCohesionOutputTextField());
+        obj.add(mw.getCoeffFrictionText());
 
         //add all of the JLabels to obj2
         obj2.add(mw.getTensileFailResult());

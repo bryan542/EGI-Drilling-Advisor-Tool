@@ -8,23 +8,28 @@ import org.jfree.data.xy.XYSeriesCollection;
  */
 public class StressPolygonDataset {
 
-    public XYSeriesCollection stressPolygonDataset(double SigmaV, double PorePR, double depth){
+    public XYSeriesCollection stressPolygonDataset(double SigmaV,double SH, double Sh, double PorePR, double depth, double coeffFriction){
 
         double ShMin;
         double SHMax;
         double SHMaxDiagnolMin;
         double SHMaxDiagnolMax;
         double totalSigmaV;
+        double xMarker = Sh;
+        double yMarker = SH;
 
-        double coeffFriction = (Math.sqrt(.6*.6+1)+.6)* (Math.sqrt(.6*.6+1)+.6);
-        ShMin = ((SigmaV-PorePR)*depth/coeffFriction)+PorePR*depth;
-        SHMax = coeffFriction*(SigmaV-PorePR)*depth+PorePR*depth;
+        double sigmaFactor = (Math.sqrt(coeffFriction*coeffFriction+1)+coeffFriction)* (Math.sqrt(coeffFriction*coeffFriction+1)+coeffFriction);
+        ShMin = ((SigmaV-PorePR)*depth/sigmaFactor)+PorePR*depth;
+        SHMax = sigmaFactor*(SigmaV-PorePR)*depth+PorePR*depth;
         totalSigmaV= SigmaV*depth;
 
 
-        SHMaxDiagnolMin = (SigmaV/coeffFriction-PorePR/coeffFriction+PorePR)*depth;
-        SHMaxDiagnolMax = (SigmaV*coeffFriction-PorePR*coeffFriction+PorePR)*depth;
+        SHMaxDiagnolMin = (SigmaV/sigmaFactor-PorePR/sigmaFactor+PorePR)*depth;
+        SHMaxDiagnolMax = (SigmaV*sigmaFactor-PorePR*sigmaFactor+PorePR)*depth;
 
+        final XYSeries marker = new XYSeries("Current Value");
+
+        marker.add(xMarker,yMarker);
 
         final XYSeries SVLine = new XYSeries("SigmaV Line");
         SVLine.add(0.0,0.0);
@@ -70,10 +75,8 @@ public class StressPolygonDataset {
         dataset.addSeries(SigmaMaxDiagnolSeries1);
         dataset.addSeries((SigmaMaxDiagnolSeriesVertical));
         dataset.addSeries((SigmaMaxDiagnolSeriesHorizontal));
-
-
         dataset.addSeries((SigmaMaxnSeries));
-
+        dataset.addSeries(marker);
 
         return dataset;
     }

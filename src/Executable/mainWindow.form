@@ -3,11 +3,11 @@
   <grid id="27dc6" binding="MainPanel" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="31" width="1058" height="993"/>
+      <xy x="20" y="31" width="1180" height="1009"/>
     </constraints>
     <properties>
       <background color="-4671304"/>
-      <preferredSize width="890" height="715"/>
+      <preferredSize width="890" height="660"/>
       <requestFocusEnabled value="false"/>
     </properties>
     <border type="none"/>
@@ -45,7 +45,7 @@
                 </properties>
                 <border type="none"/>
                 <children>
-                  <grid id="c3439" layout-manager="GridLayoutManager" row-count="3" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                  <grid id="c3439" layout-manager="GridLayoutManager" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                     <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
                       <grid row="1" column="1" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -61,34 +61,25 @@
                       <grid id="257ce" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                         <margin top="0" left="0" bottom="0" right="0"/>
                         <constraints>
-                          <grid row="0" column="0" row-span="3" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                          <grid row="0" column="0" row-span="2" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties/>
                         <border type="none" title="Drilling and Stability">
                           <font name="Candara" size="16" style="1"/>
                         </border>
                         <children>
-                          <grid id="52826" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                          <grid id="52826" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                             <margin top="0" left="0" bottom="0" right="0"/>
                             <constraints>
-                              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                              <grid row="0" column="1" row-span="2" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                             </constraints>
                             <properties/>
                             <border type="none"/>
                             <children>
-                              <grid id="edf06" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                              <grid id="c5e79" layout-manager="GridLayoutManager" row-count="3" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                                 <margin top="0" left="0" bottom="0" right="0"/>
                                 <constraints>
                                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                                </constraints>
-                                <properties/>
-                                <border type="none"/>
-                                <children/>
-                              </grid>
-                              <grid id="c5e79" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                                <margin top="0" left="0" bottom="0" right="0"/>
-                                <constraints>
-                                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties/>
                                 <border type="none"/>
@@ -96,7 +87,7 @@
                                   <grid id="51f14" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                                     <margin top="0" left="0" bottom="0" right="0"/>
                                     <constraints>
-                                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                                      <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                                     </constraints>
                                     <properties/>
                                     <border type="none"/>
@@ -175,7 +166,7 @@
                                   <grid id="35730" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                                     <margin top="0" left="0" bottom="0" right="0"/>
                                     <constraints>
-                                      <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                                      <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                                     </constraints>
                                     <properties/>
                                     <border type="none"/>
@@ -253,14 +244,93 @@
                                   </grid>
                                   <hspacer id="e9c88">
                                     <constraints>
-                                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                                     </constraints>
                                   </hspacer>
                                   <hspacer id="ed26f">
                                     <constraints>
-                                      <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                                      <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                                     </constraints>
                                   </hspacer>
+                                  <grid id="cc7b9" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                                    <margin top="0" left="0" bottom="0" right="0"/>
+                                    <constraints>
+                                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                                    </constraints>
+                                    <properties/>
+                                    <border type="none"/>
+                                    <children>
+                                      <grid id="96809" layout-manager="GridLayoutManager" row-count="3" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                                        <margin top="0" left="0" bottom="0" right="3"/>
+                                        <constraints>
+                                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                                        </constraints>
+                                        <properties/>
+                                        <border type="etched"/>
+                                        <children>
+                                          <component id="dcd26" class="javax.swing.JTextField" binding="coeffFrictionText">
+                                            <constraints>
+                                              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                                                <preferred-size width="150" height="-1"/>
+                                              </grid>
+                                            </constraints>
+                                            <properties>
+                                              <font name="Candara"/>
+                                            </properties>
+                                          </component>
+                                          <component id="80c8c" class="javax.swing.JLabel" binding="coeffFrictionLabel">
+                                            <constraints>
+                                              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                            </constraints>
+                                            <properties>
+                                              <font name="Candara"/>
+                                              <text value="Coefficient of Friction"/>
+                                            </properties>
+                                          </component>
+                                          <component id="bd169" class="javax.swing.JLabel">
+                                            <constraints>
+                                              <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                            </constraints>
+                                            <properties>
+                                              <font name="Candara"/>
+                                              <text value="Coefficient of Friction"/>
+                                              <verticalTextPosition value="3"/>
+                                            </properties>
+                                          </component>
+                                          <grid id="1b4e0" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                                            <margin top="0" left="0" bottom="0" right="0"/>
+                                            <constraints>
+                                              <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                                            </constraints>
+                                            <properties/>
+                                            <border type="none"/>
+                                            <children>
+                                              <component id="b995c" class="javax.swing.JRadioButton" binding="coefficientAutomaticRadioButton">
+                                                <constraints>
+                                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                                </constraints>
+                                                <properties>
+                                                  <font name="Candara"/>
+                                                  <text value="Automatic"/>
+                                                  <verticalTextPosition value="3"/>
+                                                </properties>
+                                              </component>
+                                              <component id="5ee3b" class="javax.swing.JRadioButton" binding="coefficientManualRadioButton">
+                                                <constraints>
+                                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                                </constraints>
+                                                <properties>
+                                                  <font name="Candara"/>
+                                                  <text value="Manual"/>
+                                                  <verticalTextPosition value="3"/>
+                                                </properties>
+                                              </component>
+                                            </children>
+                                          </grid>
+                                        </children>
+                                      </grid>
+                                    </children>
+                                  </grid>
                                 </children>
                               </grid>
                             </children>
@@ -296,7 +366,7 @@
                                     </constraints>
                                     <properties>
                                       <font name="Candara"/>
-                                      <text value="Inclination γ (Degrees)"/>
+                                      <text value="Inclination γ (degrees)"/>
                                     </properties>
                                   </component>
                                   <component id="57f8a" class="javax.swing.JLabel" binding="alpha1Label">
@@ -305,7 +375,7 @@
                                     </constraints>
                                     <properties>
                                       <font name="Candara"/>
-                                      <text value="Maximum Horizontal Stress Azimuth α1 (Degrees)"/>
+                                      <text value="Maximum Horizontal Stress Azimuth α1 (degrees)"/>
                                     </properties>
                                   </component>
                                   <component id="81eb0" class="javax.swing.JLabel" binding="alpha2Label">
@@ -314,7 +384,7 @@
                                     </constraints>
                                     <properties>
                                       <font name="Candara"/>
-                                      <text value="Borehole Azimuth α2 (Degrees)"/>
+                                      <text value="Borehole Azimuth (α2⁰)"/>
                                     </properties>
                                   </component>
                                   <component id="3fd45" class="javax.swing.JLabel" binding="poissonLabel">
@@ -458,161 +528,95 @@
                             <border type="none"/>
                             <children/>
                           </grid>
-                          <grid id="57dd8" layout-manager="GridLayoutManager" row-count="1" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                        </children>
+                      </grid>
+                      <grid id="fad3" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                        <margin top="0" left="0" bottom="0" right="0"/>
+                        <constraints>
+                          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties/>
+                        <border type="none" title="Output Graphs" title-justification="2" title-position="1">
+                          <font name="Candara" size="16" style="1"/>
+                        </border>
+                        <children>
+                          <component id="e7515" class="javax.swing.JButton" binding="stressPolygonButton" default-binding="true">
+                            <constraints>
+                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <text value="Stress Polygon"/>
+                            </properties>
+                          </component>
+                          <vspacer id="f4000">
+                            <constraints>
+                              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                          </vspacer>
+                          <component id="9ac66" class="javax.swing.JButton" binding="mohrCoulombFailureButton" default-binding="true">
+                            <constraints>
+                              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <text value="Mohr-Coulomb Failure"/>
+                            </properties>
+                          </component>
+                        </children>
+                      </grid>
+                      <grid id="2c953" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                        <margin top="0" left="0" bottom="0" right="3"/>
+                        <constraints>
+                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties/>
+                        <border type="none" title="Stress Gradients">
+                          <font name="Candara" size="16" style="1"/>
+                        </border>
+                        <children>
+                          <grid id="760d" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                             <margin top="0" left="0" bottom="0" right="0"/>
                             <constraints>
-                              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                             </constraints>
                             <properties/>
                             <border type="none"/>
                             <children>
-                              <grid id="2c953" layout-manager="GridLayoutManager" row-count="4" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                                <margin top="0" left="0" bottom="0" right="3"/>
+                              <grid id="34c40" layout-manager="GridLayoutManager" row-count="4" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                                <margin top="0" left="0" bottom="0" right="0"/>
                                 <constraints>
-                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties/>
-                                <border type="etched"/>
+                                <border type="none"/>
                                 <children>
-                                  <grid id="760d" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                                  <grid id="45e26" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                                     <margin top="0" left="0" bottom="0" right="0"/>
                                     <constraints>
-                                      <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                                     </constraints>
                                     <properties/>
                                     <border type="none"/>
                                     <children>
-                                      <grid id="34c40" layout-manager="GridLayoutManager" row-count="4" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                                        <margin top="0" left="0" bottom="0" right="0"/>
+                                      <component id="5a679" class="javax.swing.JTextField" binding="sigmaVTextField">
                                         <constraints>
-                                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                                         </constraints>
-                                        <properties/>
-                                        <border type="none"/>
-                                        <children>
-                                          <grid id="45e26" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                                            <margin top="0" left="0" bottom="0" right="0"/>
-                                            <constraints>
-                                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                                            </constraints>
-                                            <properties/>
-                                            <border type="none"/>
-                                            <children>
-                                              <component id="5a679" class="javax.swing.JTextField" binding="sigmaVTextField">
-                                                <constraints>
-                                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-                                                </constraints>
-                                                <properties>
-                                                  <font name="Candara"/>
-                                                </properties>
-                                              </component>
-                                              <component id="f72b4" class="javax.swing.JLabel" binding="inputSigmaVLabel">
-                                                <constraints>
-                                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                                                </constraints>
-                                                <properties>
-                                                  <font name="Candara"/>
-                                                  <text value="σv"/>
-                                                </properties>
-                                              </component>
-                                            </children>
-                                          </grid>
-                                          <grid id="bd7f3" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                                            <margin top="0" left="0" bottom="0" right="0"/>
-                                            <constraints>
-                                              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                                            </constraints>
-                                            <properties/>
-                                            <border type="none"/>
-                                            <children>
-                                              <component id="c864d" class="javax.swing.JTextField" binding="sigmaMaxTextField">
-                                                <constraints>
-                                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-                                                </constraints>
-                                                <properties>
-                                                  <font name="Candara"/>
-                                                </properties>
-                                              </component>
-                                              <component id="5128a" class="javax.swing.JLabel" binding="inputSigmaMaxLabel">
-                                                <constraints>
-                                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                                                </constraints>
-                                                <properties>
-                                                  <font name="Candara"/>
-                                                  <text value="σH"/>
-                                                </properties>
-                                              </component>
-                                            </children>
-                                          </grid>
-                                          <grid id="2198e" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                                            <margin top="0" left="0" bottom="0" right="0"/>
-                                            <constraints>
-                                              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                                            </constraints>
-                                            <properties/>
-                                            <border type="none"/>
-                                            <children>
-                                              <component id="2596f" class="javax.swing.JTextField" binding="sigmaMinTextField">
-                                                <constraints>
-                                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-                                                </constraints>
-                                                <properties>
-                                                  <font name="Candara"/>
-                                                </properties>
-                                              </component>
-                                              <component id="ddd34" class="javax.swing.JLabel" binding="inputSigmaMinLabel">
-                                                <constraints>
-                                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                                                </constraints>
-                                                <properties>
-                                                  <font name="Candara"/>
-                                                  <text value="σh"/>
-                                                </properties>
-                                              </component>
-                                            </children>
-                                          </grid>
-                                          <grid id="ad438" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                                            <margin top="0" left="0" bottom="0" right="0"/>
-                                            <constraints>
-                                              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                                            </constraints>
-                                            <properties/>
-                                            <border type="none"/>
-                                            <children>
-                                              <component id="78d9c" class="javax.swing.JLabel" binding="inputPorePressureLabel">
-                                                <constraints>
-                                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                                                </constraints>
-                                                <properties>
-                                                  <font name="Candara"/>
-                                                  <text value="Pp"/>
-                                                </properties>
-                                              </component>
-                                              <component id="eab8a" class="javax.swing.JTextField" binding="porePressureTextField">
-                                                <constraints>
-                                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-                                                </constraints>
-                                                <properties>
-                                                  <font name="Candara"/>
-                                                </properties>
-                                              </component>
-                                            </children>
-                                          </grid>
-                                        </children>
-                                      </grid>
+                                        <properties>
+                                          <font name="Candara"/>
+                                        </properties>
+                                      </component>
+                                      <component id="f72b4" class="javax.swing.JLabel" binding="inputSigmaVLabel">
+                                        <constraints>
+                                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                        </constraints>
+                                        <properties>
+                                          <font name="Candara"/>
+                                          <text value="σv"/>
+                                        </properties>
+                                      </component>
                                     </children>
                                   </grid>
-                                  <component id="a62d7" class="javax.swing.JLabel">
-                                    <constraints>
-                                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                                    </constraints>
-                                    <properties>
-                                      <font name="Candara"/>
-                                      <text value="Stress Gradients"/>
-                                      <verticalTextPosition value="3"/>
-                                    </properties>
-                                  </component>
-                                  <grid id="bd8e1" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                                  <grid id="bd7f3" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                                     <margin top="0" left="0" bottom="0" right="0"/>
                                     <constraints>
                                       <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -620,32 +624,26 @@
                                     <properties/>
                                     <border type="none"/>
                                     <children>
-                                      <component id="bd02d" class="javax.swing.JRadioButton" binding="stressAutomaticRadioButton">
+                                      <component id="c864d" class="javax.swing.JTextField" binding="sigmaMaxTextField">
                                         <constraints>
-                                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                                         </constraints>
                                         <properties>
-                                          <focusable value="false"/>
                                           <font name="Candara"/>
-                                          <horizontalAlignment value="0"/>
-                                          <text value="Automatic"/>
-                                          <verticalTextPosition value="3"/>
                                         </properties>
                                       </component>
-                                      <component id="f31c9" class="javax.swing.JRadioButton" binding="stressManualInputRadioButton">
+                                      <component id="5128a" class="javax.swing.JLabel" binding="inputSigmaMaxLabel">
                                         <constraints>
-                                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                                         </constraints>
                                         <properties>
                                           <font name="Candara"/>
-                                          <hideActionText value="false"/>
-                                          <text value="Manual"/>
-                                          <verticalTextPosition value="3"/>
+                                          <text value="σH"/>
                                         </properties>
                                       </component>
                                     </children>
                                   </grid>
-                                  <grid id="a4f6f" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                                  <grid id="2198e" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                                     <margin top="0" left="0" bottom="0" right="0"/>
                                     <constraints>
                                       <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -653,93 +651,110 @@
                                     <properties/>
                                     <border type="none"/>
                                     <children>
-                                      <component id="b52ab" class="javax.swing.JLabel" binding="inputStressGradientLabel">
+                                      <component id="2596f" class="javax.swing.JTextField" binding="sigmaMinTextField">
                                         <constraints>
-                                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                                         </constraints>
                                         <properties>
                                           <font name="Candara"/>
-                                          <text value="Stress Gradients (psi/ft)"/>
-                                          <verticalTextPosition value="3"/>
+                                        </properties>
+                                      </component>
+                                      <component id="ddd34" class="javax.swing.JLabel" binding="inputSigmaMinLabel">
+                                        <constraints>
+                                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                        </constraints>
+                                        <properties>
+                                          <font name="Candara"/>
+                                          <text value="σh"/>
+                                        </properties>
+                                      </component>
+                                    </children>
+                                  </grid>
+                                  <grid id="ad438" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                                    <margin top="0" left="0" bottom="0" right="0"/>
+                                    <constraints>
+                                      <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                                    </constraints>
+                                    <properties/>
+                                    <border type="none"/>
+                                    <children>
+                                      <component id="78d9c" class="javax.swing.JLabel" binding="inputPorePressureLabel">
+                                        <constraints>
+                                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                        </constraints>
+                                        <properties>
+                                          <font name="Candara"/>
+                                          <text value="Pp"/>
+                                        </properties>
+                                      </component>
+                                      <component id="eab8a" class="javax.swing.JTextField" binding="porePressureTextField">
+                                        <constraints>
+                                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                                        </constraints>
+                                        <properties>
+                                          <font name="Candara"/>
                                         </properties>
                                       </component>
                                     </children>
                                   </grid>
                                 </children>
                               </grid>
-                              <hspacer id="52ddc">
-                                <constraints>
-                                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                                </constraints>
-                              </hspacer>
-                              <hspacer id="30bd6">
-                                <constraints>
-                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                                </constraints>
-                              </hspacer>
                             </children>
                           </grid>
-                        </children>
-                      </grid>
-                      <hspacer id="16a65">
-                        <constraints>
-                          <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                      </hspacer>
-                      <grid id="62a32" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                        <margin top="0" left="0" bottom="0" right="0"/>
-                        <constraints>
-                          <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                        <properties/>
-                        <border type="none"/>
-                        <children/>
-                      </grid>
-                      <grid id="75895" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                        <margin top="0" left="0" bottom="0" right="0"/>
-                        <constraints>
-                          <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                        <properties/>
-                        <border type="none"/>
-                        <children/>
-                      </grid>
-                      <grid id="1e94b" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                        <margin top="0" left="0" bottom="0" right="0"/>
-                        <constraints>
-                          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                        <properties/>
-                        <border type="none"/>
-                        <children>
-                          <grid id="5d1d9" binding="GSILocationSetter" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                          <grid id="bd8e1" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                             <margin top="0" left="0" bottom="0" right="0"/>
                             <constraints>
                               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                             </constraints>
                             <properties/>
                             <border type="none"/>
-                            <children/>
+                            <children>
+                              <component id="bd02d" class="javax.swing.JRadioButton" binding="stressAutomaticRadioButton">
+                                <constraints>
+                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <focusable value="false"/>
+                                  <font name="Candara"/>
+                                  <horizontalAlignment value="0"/>
+                                  <text value="Automatic"/>
+                                  <verticalTextPosition value="3"/>
+                                </properties>
+                              </component>
+                              <component id="f31c9" class="javax.swing.JRadioButton" binding="stressManualInputRadioButton">
+                                <constraints>
+                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font name="Candara"/>
+                                  <hideActionText value="false"/>
+                                  <text value="Manual"/>
+                                  <verticalTextPosition value="3"/>
+                                </properties>
+                              </component>
+                            </children>
                           </grid>
-                          <grid id="a69a9" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                          <grid id="a4f6f" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                             <margin top="0" left="0" bottom="0" right="0"/>
                             <constraints>
                               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                             </constraints>
                             <properties/>
                             <border type="none"/>
-                            <children/>
+                            <children>
+                              <component id="b52ab" class="javax.swing.JLabel" binding="inputStressGradientLabel">
+                                <constraints>
+                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                </constraints>
+                                <properties>
+                                  <font name="Candara"/>
+                                  <text value="Stress Gradients (psi/ft)"/>
+                                  <verticalTextPosition value="3"/>
+                                </properties>
+                              </component>
+                            </children>
                           </grid>
                         </children>
-                      </grid>
-                      <grid id="fad3" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                        <margin top="0" left="0" bottom="0" right="0"/>
-                        <constraints>
-                          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                        <properties/>
-                        <border type="none"/>
-                        <children/>
                       </grid>
                     </children>
                   </grid>
@@ -1325,7 +1340,9 @@
                     <constraints>
                       <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                     </constraints>
-                    <properties/>
+                    <properties>
+                      <horizontalScrollBarPolicy value="32"/>
+                    </properties>
                     <border type="line">
                       <color color="-16777216"/>
                     </border>
@@ -1683,7 +1700,7 @@
                                         </constraints>
                                         <properties>
                                           <font name="Candara"/>
-                                          <text value="Vertical Stress σv (psi):"/>
+                                          <text value="Vertical Stress Sv (psi):"/>
                                         </properties>
                                       </component>
                                     </children>
@@ -1702,7 +1719,7 @@
                                         </constraints>
                                         <properties>
                                           <font name="Candara"/>
-                                          <text value="Maximum Horizontal Stress σH (psi):"/>
+                                          <text value="Maximum Horizontal Stress SH (psi):"/>
                                         </properties>
                                       </component>
                                     </children>
@@ -1721,7 +1738,7 @@
                                         </constraints>
                                         <properties>
                                           <font name="Candara"/>
-                                          <text value="Minimum Horizontal Stress σh (psi):"/>
+                                          <text value="Minimum Horizontal Stress Sh (psi):"/>
                                         </properties>
                                       </component>
                                     </children>

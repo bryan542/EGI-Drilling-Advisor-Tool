@@ -14,6 +14,7 @@ import java.net.URL;
 import java.util.Arrays;
 
 import com.thehowtotutorial.splashscreen.JSplash;
+import org.jfree.chart.ChartPanel;
 import org.jfree.data.xy.XYSeriesCollection;
 
 
@@ -108,6 +109,7 @@ public class mainWindow extends JFrame {
     private JLabel backgroundImageTest;
     private JLabel cohesionInputLabel;
     private JLabel cohesionTitleLabel;
+    private JLabel coeffFrictionLabel;
 
     private JTextPane ratingTextPane;
 
@@ -132,11 +134,19 @@ public class mainWindow extends JFrame {
     private JTextField sigmaMaxTextFieldResult;
     private JTextField sigmaMinTextFieldResult;
     private JTextField cohesionOutputTextField;
+
+    private JTextField coeffFrictionText;
+
     private JPanel secondInputsPanel;
     private JPanel unconformityJPanel;
     private JPanel GSILocationSetter;
 
     private JScrollPane scrollPane;
+    private JButton stressPolygonButton;
+    private JButton mohrCoulombFailureButton;
+
+    private JRadioButton coefficientManualRadioButton;
+    private JRadioButton coefficientAutomaticRadioButton;
 
     private static String projectSettingButton = "General";
     private static String projectSettingType = "Oil Field Units";
@@ -150,6 +160,7 @@ public class mainWindow extends JFrame {
     private static double lengthUM =1;
     private static double gradientUM = 1;
     private static boolean buttonCount = true;
+
 
     //gets the latest version number
 
@@ -318,6 +329,10 @@ public class mainWindow extends JFrame {
         return cohesionText;
     }
 
+    public JTextField getCoeffFrictionText() {
+        return coeffFrictionText;
+    }
+
     public JTextField getSigmaVTextField() {
         return sigmaVTextField;
     }
@@ -394,6 +409,10 @@ public class mainWindow extends JFrame {
         return cohesionOutputTextField;
     }
 
+    public JRadioButton getCoefficientAutomaticRadioButton() {
+        return coefficientAutomaticRadioButton;
+    }
+
     public JRadioButton getCohesionAutomaticButton() {
         return cohesionAutomaticButton;
     }
@@ -416,6 +435,10 @@ public class mainWindow extends JFrame {
 
     public JRadioButton getTensileManualRadioButton() {
         return tensileManualRadioButton;
+    }
+
+    public JLabel getCoeffFrictionLabel() {
+        return coeffFrictionLabel;
     }
 
     //setters
@@ -587,6 +610,10 @@ public class mainWindow extends JFrame {
         this.porePressureLabel.setText(text);
     }
 
+    public void setCoeffFrictionText(String input) {
+        this.coeffFrictionText.setText(input);
+    }
+
     public void setFarSigmaVLabel(String text) {
         this.farSigmaVLabel.setText(text);
     }
@@ -653,12 +680,96 @@ public class mainWindow extends JFrame {
         gradientUM = unitChange;
     }
 
+
+    XYSeriesCollection polygonCollectionfinal;
+
+    XYSeriesCollection mohrCollectionFinal;
+
+    public XYSeriesCollection getPolygonCollectionfinal() {
+        return polygonCollectionfinal;
+    }
+
+    public void setPolygonCollectionFinal(XYSeriesCollection input) {
+        this.polygonCollectionfinal = input;
+    }
+
+    public XYSeriesCollection getMohrCollectionFinal() {
+        return mohrCollectionFinal;
+    }
+
+    public void setMohrCollectionFinal(XYSeriesCollection input) {
+        this.mohrCollectionFinal = input;
+    }
+
+
+    double Sigma1Final;
+    double Sigma2Final;
+    double Sigma3Final;
+    double cohesionInitialFinal;
+    double coeffFriction;
+
+    public double getSigma1Final() {
+        return Sigma1Final;
+    }
+
+    public double getSigma2Final() {
+        return Sigma2Final;
+    }
+
+    public double getSigma3Final() {
+        return Sigma3Final;
+    }
+
+    public void setSigma1Final(double input) {
+        Sigma1Final = input;
+    }
+
+    public void setSigma2Final(double sigma2Final) {
+        Sigma2Final = sigma2Final;
+    }
+
+    public void setSigma3Final(double input) {
+        Sigma3Final = input;
+    }
+
+    public double getCohesionInitialFinal() {
+        return cohesionInitialFinal;
+    }
+
+    public void setCohesionInitialFinal(double cohesionInitialFinal) {
+        this.cohesionInitialFinal = cohesionInitialFinal;
+    }
+
+    public double getCoeffFriction() {
+        return coeffFriction;
+    }
+
+    public void setCoeffFriction(double input) {
+        this.coeffFriction = input;
+    }
+
+    MohrFailureGraph MohrGraphOutputFinal;
+
+    public MohrFailureGraph getMohrGraphOutputFinal() {
+        return MohrGraphOutputFinal;
+    }
+
+    public void setMohrGraphOutputFinal(MohrFailureGraph mohrGraphOutputFinal) {
+        MohrGraphOutputFinal = mohrGraphOutputFinal;
+    }
+
+
+
+
+
+
     //reset everything back to default
     public void resetTool() {
 
         //resetTool() clears all of the JTextFields and JLabels in the program
         ClearResetValues cv = new ClearResetValues();
         cv.resetTool(mainWindow.this);
+
 
 
         //remove original graphs and reset buttonCount
@@ -675,6 +786,8 @@ public class mainWindow extends JFrame {
     }
 
     public mainWindow() {
+
+
 
 
         getDepthText().setText("5000");
@@ -773,6 +886,8 @@ public class mainWindow extends JFrame {
         tensileStrengthTextFieldResult.setHorizontalAlignment(SwingConstants.CENTER);
         cohesionOutputTextField.setHorizontalAlignment(SwingConstants.CENTER);
 
+
+
         //Assemble stress gradient buttongroup
         ButtonGroup stressBg = new ButtonGroup();
         stressBg.add(stressAutomaticRadioButton);
@@ -780,8 +895,6 @@ public class mainWindow extends JFrame {
 
         //set the automatic button as the default
         stressAutomaticRadioButton.setSelected(true);
-
-
 
         //set launch conditional parameters. Kinda redundant, but acts as a failsafe too.
         if(stressAutomaticRadioButton.isSelected()){
@@ -846,6 +959,40 @@ public class mainWindow extends JFrame {
                 FaultTypeCombo.setEnabled(false);
             }
         });
+
+        //Assemble coefficient of friction buttongroup
+        ButtonGroup coeffBg = new ButtonGroup();
+        coeffBg.add(coefficientAutomaticRadioButton);
+        coeffBg.add(coefficientManualRadioButton);
+
+        //set coeff automatic as default
+        coefficientAutomaticRadioButton.setSelected(true);
+
+        //set launch conditional parameters. Kinda redundant, but acts as a failsafe too.
+        if(coefficientAutomaticRadioButton.isSelected()){
+            coeffFrictionText.setEnabled(false);
+        }
+        else{
+            coeffFrictionText.setEnabled(true);
+        }
+
+        //enable/disable actions when the gradient buttons are clicked.
+        coefficientAutomaticRadioButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                coeffFrictionText.setEnabled(false);
+            }
+        });
+
+        coefficientManualRadioButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                coeffFrictionText.setEnabled(true);
+            }
+        });
+
+
 
         //Assemble cohesion buttongroup
         ButtonGroup cohesionBg = new ButtonGroup();
@@ -932,10 +1079,16 @@ public class mainWindow extends JFrame {
             private double SigmaVR;
             private double SigmaHR;
             private double SigmahR;
+
             private double porePressureGradient;
             private double SigmaVGradient;
             private double SigmaHGradient;
             private double SigmahGradient;
+
+            private double Sigma1;
+            private double Sigma2;
+            private double Sigma3;
+
             private double SV;
             private double SH;
             private double Sh;
@@ -949,9 +1102,7 @@ public class mainWindow extends JFrame {
             private double[] ThoThetaZ;
             private double ThoRTheta;
             private double ThoRZ;
-            private double Sigma1;
-            private double Sigma2;
-            private double Sigma3;
+
             private String failType;
             private String shearType;
             private double firstInstability;
@@ -985,6 +1136,7 @@ public class mainWindow extends JFrame {
             private double sumLongTermIntegrity;
             private double sumROP;
             private double cohesionInitial;
+
             private double compressiveStrength;
             private int tensileStrength;
             private int betaAngle;
@@ -1084,10 +1236,12 @@ public class mainWindow extends JFrame {
                 // Retrieve principal effective stress values
 
                 this.Sigma1 = Equations.sigma1(SigTheta,SigmaZ,ThoThetaZ);
+                setSigma1Final(Sigma1);
                 double[] sigma1Array = Equations.Sigma1Array(SigTheta,SigmaZ,ThoThetaZ);
                 this.Sigma2 = Equations.sigma2(SigTheta,SigmaZ,ThoThetaZ);
+                setSigma2Final(Sigma2);
                 this.Sigma3 = Equations.sigma3(SigmaR);
-
+                setSigma3Final(Sigma3);
                 //find the phi value at the angle that gives the maximum sigma1 value
                 phi = Equations.phi(SigTheta,SigmaZ,ThoThetaZ,Equations.sigma1MaxTheta(sigma1Array,this.Sigma1)) ;
 
@@ -1182,25 +1336,58 @@ public class mainWindow extends JFrame {
                 if(cohesionManualButton.isSelected()){
 
                     cohesionInitial = Double.parseDouble(cohesionText.getText());
+                    setCohesionInitialFinal(cohesionInitial);
                 }
                 else{
                     cohesionInitial = Equations.cohesionStrength(compressiveStrength);
+                    setCohesionInitialFinal(cohesionInitial);
                 }
 
                 //Calculate and build stress polygon dataset and Mohr dataset
                 StressPolygonDataset polyDataset = new StressPolygonDataset();
 
-                XYSeriesCollection polygonCollection = polyDataset.stressPolygonDataset(this.SigmaVR,this.porePressureGradient,Double.parseDouble(depthText.getText()));
+                //populate textlabels with value results
+                double porePressureCombination = porePressureGradient *Integer.parseInt(depthText.getText())*lengthUM;
+
+                XYSeriesCollection polygonCollection = polyDataset.stressPolygonDataset(this.SigmaVR,SigmaHGradient+ porePressureCombination*(1/pressureUM),this.SigmahGradient+ porePressureCombination*(1/pressureUM),this.porePressureGradient,Double.parseDouble(depthText.getText()),getCoeffFriction());
+
+
 
                 MohrDataset mohrDataset = new MohrDataset();
-                XYSeriesCollection mohrCollection = mohrDataset.mohrDatasetBuild(this.Sigma1,this.Sigma2,this.Sigma3,cohesionInitial);
+
+                setCoeffFriction(0.6);
+                XYSeriesCollection mohrCollection = mohrDataset.mohrDatasetBuild(this.Sigma1,this.Sigma2,this.Sigma3,cohesionInitial,getCoeffFriction());
+
+                if (coefficientAutomaticRadioButton.isSelected()){
+
+                    setCoeffFriction(0.6);
+
+                    polygonCollection = polyDataset.stressPolygonDataset(this.SigmaVR,SigmaHGradient+ porePressureCombination*(1/pressureUM),this.SigmahGradient+ porePressureCombination*(1/pressureUM),this.porePressureGradient,Double.parseDouble(depthText.getText()),getCoeffFriction());
+                    setPolygonCollectionFinal(polygonCollection);// sets a grabber for the dataset (used for the stresspolygon button in the initial input tab)
+
+                    mohrCollection = mohrDataset.mohrDatasetBuild(this.Sigma1,this.Sigma2,this.Sigma3,cohesionInitial,getCoeffFriction());
+                    setMohrCollectionFinal(mohrCollection);
+
+                }
+
+                else if (coefficientManualRadioButton.isSelected()){
+
+                    setCoeffFriction(Double.parseDouble(coeffFrictionText.getText()));
+
+                    polygonCollection = polyDataset.stressPolygonDataset(this.SigmaVR,SigmaHGradient+ porePressureCombination*(1/pressureUM),this.SigmahGradient+ porePressureCombination*(1/pressureUM),this.porePressureGradient,Double.parseDouble(depthText.getText()),getCoeffFriction());
+                    setPolygonCollectionFinal(polygonCollection);// sets a grabber for the dataset (used for the stresspolygon button in the initial input tab)
+
+                    mohrCollection = mohrDataset.mohrDatasetBuild(this.Sigma1,this.Sigma2,this.Sigma3,cohesionInitial,getCoeffFriction());
+                    setMohrCollectionFinal(mohrCollection);
+                }
 
                 //buttonCount is a true/false condition to check if the graph panes are added/removed
                 if (buttonCount == true) {
-                    GraphOutputPanel polygonGraphOutput = new GraphOutputPanel(polygonCollection, mainWindow.this);
+                    StressPolygonGraph polygonGraphOutput = new StressPolygonGraph(polygonCollection, mainWindow.this);
                     tabbedPane1.addTab("Stress Polygon", null, polygonGraphOutput, null);
 
                     MohrFailureGraph MohrGraphOutput = new MohrFailureGraph(mohrCollection, Sigma1,Sigma2);
+                    setMohrGraphOutputFinal(MohrGraphOutput);
                     tabbedPane1.addTab("Mohr-Coulomb Failure",null,MohrGraphOutput,null);
                     buttonCount = false;
 
@@ -1210,16 +1397,17 @@ public class mainWindow extends JFrame {
                     tabbedPane1.remove(3);
                     tabbedPane1.remove(2);
 
-                    GraphOutputPanel graphOutput = new GraphOutputPanel(polygonCollection, mainWindow.this);
+                    StressPolygonGraph graphOutput = new StressPolygonGraph(polygonCollection, mainWindow.this);
                     tabbedPane1.addTab("Stress Polygon", null, graphOutput, null);
 
                     MohrFailureGraph MohrGraphOutput = new MohrFailureGraph(mohrCollection, Sigma1,Sigma2);
+                    setMohrGraphOutputFinal(MohrGraphOutput);
                     tabbedPane1.addTab("Mohr-Coulomb Failure",null,MohrGraphOutput,null);
 
                 }
 
-                //populate textlabels with value results
-                double porePressureCombination = porePressureGradient *Integer.parseInt(depthText.getText())*lengthUM;
+
+
 
                 sigmaVTextFieldResult.setText(Integer.toString((int) ((SigmaVGradient +porePressureCombination)*(1/pressureUM))));
                 sigmaMaxTextFieldResult.setText(Integer.toString((int) ((SigmaHGradient +porePressureCombination)*(1/pressureUM))));
@@ -1263,38 +1451,44 @@ public class mainWindow extends JFrame {
 
 
                     try {
-                    ratingTextPane.setText(""); // Resets the pane
+                        ratingTextPane.setText(""); // Resets the pane
 
-                    doc.insertString(ratingTextPane.getStyledDocument().getLength(),"Well Instability",keyWord);
-                    doc.insertString(ratingTextPane.getStyledDocument().getLength(),"\n\n",sim);
-                    doc.insertString(ratingTextPane.getStyledDocument().getLength(),initSt[0]+ "\n\n",sim);
+                        doc.insertString(ratingTextPane.getStyledDocument().getLength(),"   ",sim);
+                        doc.insertString(ratingTextPane.getStyledDocument().getLength(),"Well Instability",keyWord);
+                        doc.insertString(ratingTextPane.getStyledDocument().getLength(),"\n\n",sim);
+                        doc.insertString(ratingTextPane.getStyledDocument().getLength(),initSt[0]+ "\n\n",sim);
 
-                    doc.insertString(ratingTextPane.getStyledDocument().getLength(),"Loss of Circulation",keyWord);
-                    doc.insertString(ratingTextPane.getStyledDocument().getLength(),"\n\n",sim);
-                    doc.insertString(ratingTextPane.getStyledDocument().getLength(),initSt[1]+"\n\n",sim);
+                        doc.insertString(ratingTextPane.getStyledDocument().getLength(),"   ",sim);
+                        doc.insertString(ratingTextPane.getStyledDocument().getLength(),"Loss of Circulation",keyWord);
+                        doc.insertString(ratingTextPane.getStyledDocument().getLength(),"\n\n",sim);
+                        doc.insertString(ratingTextPane.getStyledDocument().getLength(),initSt[1]+"\n\n",sim);
 
-                    doc.insertString(ratingTextPane.getStyledDocument().getLength(),"Well Control",keyWord);
-                    doc.insertString(ratingTextPane.getStyledDocument().getLength(),"\n\n",sim);
-                    doc.insertString(ratingTextPane.getStyledDocument().getLength(),initSt[2]+"\n\n",sim);
+                        doc.insertString(ratingTextPane.getStyledDocument().getLength(),"  ",sim);
+                        doc.insertString(ratingTextPane.getStyledDocument().getLength(),"Well Control",keyWord);
+                        doc.insertString(ratingTextPane.getStyledDocument().getLength(),"\n\n",sim);
+                        doc.insertString(ratingTextPane.getStyledDocument().getLength(),initSt[2]+"\n\n",sim);
 
-                    doc.insertString(ratingTextPane.getStyledDocument().getLength(),"Long Term Integrity",keyWord);
-                    doc.insertString(ratingTextPane.getStyledDocument().getLength(),"\n\n",sim);
-                    doc.insertString(ratingTextPane.getStyledDocument().getLength(),initSt[3]+"\n\n",sim);
+                        doc.insertString(ratingTextPane.getStyledDocument().getLength(),"   ",sim);
+                        doc.insertString(ratingTextPane.getStyledDocument().getLength(),"Long Term Integrity",keyWord);
+                        doc.insertString(ratingTextPane.getStyledDocument().getLength(),"\n\n",sim);
+                        doc.insertString(ratingTextPane.getStyledDocument().getLength(),initSt[3]+"\n\n",sim);
 
-                    doc.insertString(ratingTextPane.getStyledDocument().getLength(),"Rate of Penetration",keyWord);
-                    doc.insertString(ratingTextPane.getStyledDocument().getLength(),"\n\n",sim);
-                    doc.insertString(ratingTextPane.getStyledDocument().getLength(),initSt[4]+"\n\n",sim);
+                        doc.insertString(ratingTextPane.getStyledDocument().getLength(),"   ",sim);
+                        doc.insertString(ratingTextPane.getStyledDocument().getLength(),"Rate of Penetration",keyWord);
+                        doc.insertString(ratingTextPane.getStyledDocument().getLength(),"\n\n",sim);
+                        doc.insertString(ratingTextPane.getStyledDocument().getLength(),initSt[4]+"\n\n",sim);
 
                 } catch (BadLocationException ble) {
                     System.err.println("Couldn't insert initial text into text pane.");
                 }
-                }
 
-                menu.getExportPDF().setEnabled(true); // sets jmenuitem to enabled if the calculation is successful
+                    menu.getExportPDF().setEnabled(true); // sets jmenuitem to enabled if the calculation is successful
+                    stressPolygonButton.setEnabled(true);
+                    mohrCoulombFailureButton.setEnabled(true);
+                }
 
 
             }
-
 
         });
 
@@ -1350,6 +1544,45 @@ public class mainWindow extends JFrame {
 
             resetTool();
             menu.getExportPDF().setEnabled(false); //disables the export option to the jmenuitem if all data is cleared
+            stressPolygonButton.setEnabled(false);
+            mohrCoulombFailureButton.setEnabled(false);
+            }
+        });
+        stressPolygonButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                //Calculate and build stress polygon dataset and Mohr dataset
+                StressPolygonDataset polyDataset = new StressPolygonDataset();
+
+
+                XYSeriesCollection polygonCollection = getPolygonCollectionfinal();
+
+                StressPolygonGraph polygonGraphOutput = new StressPolygonGraph(polygonCollection, mainWindow.this);
+                StressPolygonDialog sd = new StressPolygonDialog();
+
+                ChartPanel cp = polygonGraphOutput.StressPolygonGraphPanel(polygonCollection, mainWindow.this);
+                sd.initialize(cp);
+
+
+            }
+        });
+        mohrCoulombFailureButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+
+                MohrDataset mohrDataset = new MohrDataset();
+
+                XYSeriesCollection mohrCollection = mohrDataset.mohrDatasetBuild(getSigma1Final(), getSigma2Final(), getSigma3Final(), getCohesionInitialFinal(),getCoeffFriction());
+
+                MohrFailureGraph MohrGraphOutput = new MohrFailureGraph(mohrCollection, getSigma1Final(), getSigma2Final());
+
+                ChartPanel cp = MohrGraphOutput.MohrFailureGraphPanel(mohrCollection, getSigma1Final(), getSigma2Final());
+
+                MohrCoulombDialog mcd = new MohrCoulombDialog();
+                mcd.initialize(cp);
+
 
             }
         });
