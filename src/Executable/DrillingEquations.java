@@ -51,7 +51,7 @@ public class DrillingEquations {
     }
     //SH
     public static double SigmaHRange(String FaultType, String PorePressureType) {
-        double sigmaH;
+        double sigmaH = -1;
         Random rand = new Random();
 
         if (PorePressureType == "Hydrostatic") {
@@ -68,9 +68,8 @@ public class DrillingEquations {
 
                 sigmaH = 1.2 + (1.6 - 1.2) * rand.nextDouble();
             }
-
-            return sigmaH;
-        } else {
+        }
+        else if (PorePressureType == "Overpressure") {
 
             if (FaultType == "Normal") {
 
@@ -84,13 +83,28 @@ public class DrillingEquations {
 
                 sigmaH = 1.2 + (1.9 - 1.2) * rand.nextDouble();
             }
-
-            return sigmaH;
         }
+        else if (PorePressureType == "Underpressure") {
+
+            if (FaultType == "Normal") {
+
+                sigmaH = .58 + (.889 - .58) * rand.nextDouble();
+
+            } else if (FaultType == "Strike-slip") {
+
+                sigmaH = .883 + (1.188 - .883) * rand.nextDouble();
+
+            } else {
+
+                sigmaH = 1.03 + (1.588 - 1.03) * rand.nextDouble();
+            }
+        }
+
+        return sigmaH;
     }
     //Sh
     public static double SigmahRange(String FaultType, String PorePressureType) {
-        double sigmah;
+        double sigmah =-1;
         Random rand = new Random();
 
         if (PorePressureType == "Hydrostatic") {
@@ -108,8 +122,8 @@ public class DrillingEquations {
                 sigmah = 1.1 + (1.2 - 1.1) * rand.nextDouble();
             }
 
-            return sigmah;
-        } else {
+        }
+        else if (PorePressureType == "Overpressure") {
 
             if (FaultType == "Normal") {
 
@@ -123,28 +137,44 @@ public class DrillingEquations {
 
                 sigmah = 1 + (1.2 - 1) * rand.nextDouble();
             }
-
-            return sigmah;
         }
+        else if (PorePressureType == "Underpressure") {
+
+            if (FaultType == "Normal") {
+
+                sigmah = .483 + (.758 - .483) * rand.nextDouble();
+
+            } else if (FaultType == "Strike-slip") {
+
+                sigmah = .483 + (.788 - .483) * rand.nextDouble();
+
+            } else {
+
+                sigmah = .883 + (1.38 - .883) * rand.nextDouble();
+            }
+        }
+        return sigmah;
     }
 
     public static double PorePressureRange(String FaultType, String PorePressureType){
 
-        double porePR;
+        double porePR = -1;
         Random rand = new Random();
 
         if (PorePressureType == "Hydrostatic") {
 
                 porePR = .43 + (.45 - .43) * rand.nextDouble();
-
-            return porePR;
         }
-        else {
+        else if (PorePressureType == "Overpressure") {
 
                 porePR = .465 + (.9 - .465) * rand.nextDouble();
-
-            return porePR;
         }
+        else if (PorePressureType == "Underpressure") {
+
+            porePR = .2 + (.432 - .2) * rand.nextDouble();
+        }
+
+        return porePR;
     }
     // Sigma Values sigV, sigH, sigh
 
@@ -600,11 +630,11 @@ public class DrillingEquations {
     // Retrieves the classification for the first set of parameters. String choosePara is where you define which parameter you want back (aka instability, loss of circ, ROP, ect)
     public static double firstSetParameters(String failType, String pressureType, String faultType, String chooseParam){
 
-        double instability;
-        double lossOfCirc;
-        double wellControl;
-        double longTermIntegrity;
-        double ROP;
+        double instability = -1;
+        double lossOfCirc = -1;
+        double wellControl= -1;
+        double longTermIntegrity= -1;
+        double ROP= -1;
         Random rand = new Random();
 
         if(failType == "Failure"){
@@ -644,7 +674,7 @@ public class DrillingEquations {
                     ROP = 30 + (35-30)*rand.nextDouble();
                 }
             }
-            else{
+            else if (pressureType == "Hydrostatic"){
 
                 if(faultType == "Normal"){
 
@@ -672,6 +702,35 @@ public class DrillingEquations {
                     ROP = 15 + (20-15)*rand.nextDouble();
                 }
             }
+            else if (pressureType == "Under pressure"){
+
+                if(faultType == "Normal"){
+
+                    instability = 10 + (15-10)*rand.nextDouble();
+                    lossOfCirc = 10 + (15-10)*rand.nextDouble();
+                    wellControl= 10 + (15-10)*rand.nextDouble();
+                    longTermIntegrity= 10 + (15-10)*rand.nextDouble();
+                    ROP = 10 + (15-10)*rand.nextDouble();
+                }
+                else if(faultType == "Reverse") {
+
+                    instability = 20 + (25-20)*rand.nextDouble();
+                    lossOfCirc = 20 + (25-20)*rand.nextDouble();
+                    wellControl= 20 + (25-20)*rand.nextDouble();
+                    longTermIntegrity= 20 + (25-20)*rand.nextDouble();
+                    ROP = 20 + (25-20)*rand.nextDouble();
+                }
+
+                else {
+
+                    instability = 15 + (20-15)*rand.nextDouble();
+                    lossOfCirc = 15 + (20-15)*rand.nextDouble();
+                    wellControl= 15 + (20-15)*rand.nextDouble();
+                    longTermIntegrity= 15 + (20-15)*rand.nextDouble();
+                    ROP = 15 + (20-15)*rand.nextDouble();
+                }
+            }
+
         }
 
         if (chooseParam == "Instability"){
