@@ -4,20 +4,21 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.net.URL;
 
-public class GSIDialog extends JDialog {
+public class RockDamageDialog extends JDialog {
     private JPanel contentPane;
-    private JLabel GSILabel;
-    private JPanel GSIMainPanel;
+    private JPanel rockDamageMainPanel;
+    private JLabel rockDamageLabel;
+    private JButton buttonOK;
+    private JButton buttonCancel;
 
-
-    public GSIDialog() {
+    public RockDamageDialog() {
 
         setResizable(false); //removes the corner imageicon
 
         //Set GSI Image on the GSI Button
-        URL urlGSI = mainWindow.class.getResource("/Images/GSIImage.png");
+        URL urlGSI = mainWindow.class.getResource("/Images/Rock Damage Table.png");
         ImageIcon bgGSI = new ImageIcon(urlGSI);
-        GSILabel.setIcon(bgGSI);
+        rockDamageLabel.setIcon(bgGSI);
 
     }
 

@@ -147,6 +147,8 @@ public class mainWindow extends JFrame {
 
     private JRadioButton coefficientManualRadioButton;
     private JRadioButton coefficientAutomaticRadioButton;
+    private JTextField rockDamageTextField;
+    private JButton rockDamageButton;
 
     private static String projectSettingButton = "General";
     private static String projectSettingType = "Oil Field Units";
@@ -1508,7 +1510,7 @@ public class mainWindow extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                GD.setContentPane(GD.contentPane);
+                GD.setContentPane(GD.getContentPane());
                 GD.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
                 GD.pack();
                 GD.setLocationRelativeTo(GSILocationSetter);
@@ -1584,6 +1586,21 @@ public class mainWindow extends JFrame {
                 mcd.initialize(cp);
 
 
+            }
+        });
+
+        RockDamageDialog RD = new RockDamageDialog();
+        rockDamageButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+
+                RD.setContentPane(RD.getContentPane());
+                RD.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                RD.pack();
+                RD.setLocationRelativeTo(GSILocationSetter);
+                RD.setVisible(true);
+                RD.setTitle("Rock Damage Selection Table");
             }
         });
     }
@@ -1662,5 +1679,6 @@ public class mainWindow extends JFrame {
             }
         });
     }
+
 
 }
