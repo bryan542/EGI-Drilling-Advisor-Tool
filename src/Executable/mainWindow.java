@@ -805,7 +805,7 @@ public class mainWindow extends JFrame {
         getFaultConductivityDipTextField().setText("50");
         getJointDipTextField().setText("50");
         getPoissonText().setText(".3");
-
+        rockDamageTextField.setText(".2");
 
 
         //Does not let you resize the window
@@ -1244,9 +1244,14 @@ public class mainWindow extends JFrame {
                 setSigma2Final(Sigma2);
                 this.Sigma3 = Equations.sigma3(SigmaR);
                 setSigma3Final(Sigma3);
+
+                /*
                 //find the phi value at the angle that gives the maximum sigma1 value
                 phi = Equations.phi(SigTheta,SigmaZ,ThoThetaZ,Equations.sigma1MaxTheta(sigma1Array,this.Sigma1)) ;
+                */
 
+                //populate textlabels with value results
+                double porePressureCombination = porePressureGradient *Integer.parseInt(depthText.getText())*lengthUM;
 
                 // Determine if tensile failure
                 // conditionals if the automatic or manual tensile radiobuttons are selected
@@ -1259,12 +1264,13 @@ public class mainWindow extends JFrame {
                 else if(tensileAutomaticRadioButton.isSelected()){
 
                     //find compressive strength
-                    compressiveStrength = Equations.compressionStrengthInitial(this.Sigma1,this.Sigma3,GSICombo.getSelectedItem().toString(),JointCombo.getSelectedItem().toString(),LithologyCombo.getSelectedItem().toString())*(1/pressureUM);
-                    tensileStrength = (int) compressiveStrength/10; //tensile strength is estimated as 1/10th of the compressive strength of the rock
+                    compressiveStrength = Equations.rockPropertyGSISolver(this.Sigma1,this.Sigma3,GSICombo.getSelectedItem().toString(),LithologyCombo.getSelectedItem().toString(),Double.parseDouble(rockDamageTextField.getText()),SigmaVGradient +porePressureCombination*(1/pressureUM),"Compressive Strength");
+                    tensileStrength = -1*(int) Equations.rockPropertyGSISolver(this.Sigma1,this.Sigma3,GSICombo.getSelectedItem().toString(),LithologyCombo.getSelectedItem().toString(),Double.parseDouble(rockDamageTextField.getText()),SigmaVGradient +porePressureCombination*(1/pressureUM),"Tensile Strength");
                     tensileStrengthTextFieldResult.setText(Integer.toString(tensileStrength));
                     this.failType = Equations.tensileFailureCondition(Sigma2,tensileStrength);
 
                 }
+
 
                 //Determine if shear failure
                 double sigThetaMax;
@@ -1272,7 +1278,16 @@ public class mainWindow extends JFrame {
                 Arrays.sort(sortedSigTheta);
                 sigThetaMax = sortedSigTheta[sortedSigTheta.length-1];
 
-                this.shearType = Equations.shearFailureCondition(SigTheta,SigmaR,ThoRTheta);
+                if(coefficientManualRadioButton.isSelected()){
+
+                    this.shearType = Equations.shearFailureCondition(SigTheta,SigmaR,ThoRTheta,Double.parseDouble(coeffFrictionText.getText()));
+                }
+                else if (coefficientAutomaticRadioButton.isSelected()){
+
+                    double coeffFrictionTest = Equations.rockPropertyGSISolver(this.Sigma1,this.Sigma3,GSICombo.getSelectedItem().toString(),LithologyCombo.getSelectedItem().toString(),Double.parseDouble(rockDamageTextField.getText()),SigmaVGradient +porePressureCombination*(1/pressureUM),"CoeffFriction");
+                    this.shearType = Equations.shearFailureCondition(SigTheta,SigmaR,ThoRTheta,coeffFrictionTest);
+                }
+
 
                 //Retrieve first set parameters
 
@@ -1341,28 +1356,26 @@ public class mainWindow extends JFrame {
                     setCohesionInitialFinal(cohesionInitial);
                 }
                 else{
-                    cohesionInitial = Equations.cohesionStrength(compressiveStrength);
+                    cohesionInitial = Equations.rockPropertyGSISolver(this.Sigma1,this.Sigma3,GSICombo.getSelectedItem().toString(),LithologyCombo.getSelectedItem().toString(),Double.parseDouble(rockDamageTextField.getText()),SigmaVGradient +porePressureCombination*(1/pressureUM),"Cohesion");
                     setCohesionInitialFinal(cohesionInitial);
                 }
 
                 //Calculate and build stress polygon dataset and Mohr dataset
                 StressPolygonDataset polyDataset = new StressPolygonDataset();
 
-                //populate textlabels with value results
-                double porePressureCombination = porePressureGradient *Integer.parseInt(depthText.getText())*lengthUM;
-
                 XYSeriesCollection polygonCollection = polyDataset.stressPolygonDataset(this.SigmaVR,SigmaHGradient+ porePressureCombination*(1/pressureUM),this.SigmahGradient+ porePressureCombination*(1/pressureUM),this.porePressureGradient,Double.parseDouble(depthText.getText()),getCoeffFriction());
 
-
-
                 MohrDataset mohrDataset = new MohrDataset();
+
+
 
                 setCoeffFriction(0.6);
                 XYSeriesCollection mohrCollection = mohrDataset.mohrDatasetBuild(this.Sigma1,this.Sigma2,this.Sigma3,cohesionInitial,getCoeffFriction());
 
                 if (coefficientAutomaticRadioButton.isSelected()){
 
-                    setCoeffFriction(0.6);
+                    setCoeffFriction(Equations.rockPropertyGSISolver(this.Sigma1,this.Sigma3,GSICombo.getSelectedItem().toString(),LithologyCombo.getSelectedItem().toString(),Double.parseDouble(rockDamageTextField.getText()),SigmaVGradient +porePressureCombination*(1/pressureUM),"CoeffFriction"));
+
 
                     polygonCollection = polyDataset.stressPolygonDataset(this.SigmaVR,SigmaHGradient+ porePressureCombination*(1/pressureUM),this.SigmahGradient+ porePressureCombination*(1/pressureUM),this.porePressureGradient,Double.parseDouble(depthText.getText()),getCoeffFriction());
                     setPolygonCollectionFinal(polygonCollection);// sets a grabber for the dataset (used for the stresspolygon button in the initial input tab)

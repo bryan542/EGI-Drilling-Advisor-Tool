@@ -506,7 +506,7 @@ public class DrillingEquations {
         return index;
     }
 
-
+/*
     //Calculate Phi value
     public static double phi(double[] sigmaTheta, double[] sigmaZ, double[] ThoThetaZ, int sigmaThetaAngle){
         double phi = -1;
@@ -518,14 +518,14 @@ public class DrillingEquations {
 
         return phi;
     }
-
+*/
     //Tensile fracture condition
 
     public static String tensileFailureCondition(double Sigma2, double tensile){
 
         String tensileCondition;
 
-        if (Sigma2 <=  -1*tensile){
+        if (Sigma2 <= tensile){
 
             tensileCondition = "Failure";
         }
@@ -539,7 +539,7 @@ public class DrillingEquations {
 
     //Shear failure condition
 
-    public static String shearFailureCondition(double[] sigmaTheta, double sigmaR, double ThoRTheta){
+    public static String shearFailureCondition(double[] sigmaTheta, double sigmaR, double ThoRTheta, double coefficientFrictionInput){
 
         int thetaStartRange = -1;
         int thetaEndRange = -1;
@@ -552,7 +552,7 @@ public class DrillingEquations {
         shearConditionRange = new String[361];
         a = new double[361];
         b = new double[361];
-        double coeffFriction = .6;
+        double coeffFriction = coefficientFrictionInput;
 
         int arrayLength = sigmaTheta.length;
 
@@ -755,7 +755,7 @@ public class DrillingEquations {
         }
     }
 
-
+/*
     public double compressionStrengthInitial(double sigma1, double sigma3,String GSIValue, String jointValue, String lithology){
 
         double compressionStrength=-1;
@@ -838,7 +838,8 @@ public class DrillingEquations {
         compressionStrength = -1*b*sigma3+Math.sqrt(b*b-4*c)/2;
         return compressionStrength;
     }
-
+*/
+/*
     public double cohesionStrength(double compressiveStrength){
 
         double cohesion = -1;
@@ -847,6 +848,113 @@ public class DrillingEquations {
         cohesion = compressiveStrength/q;
 
         return cohesion;
+    }
+*/
+    public double rockPropertyGSISolver(double sig1, double sig3, String GSIString, String Lithology, double D, double verticalStress, String returnParam) {
+
+        double guess = 1;
+        double result = -1;
+        double GSI = -1;
+        double mb = -1;
+        double mi = -1;
+        double s = -1;
+        double a = -1;
+        double compressiveStrengthIntact = -1;
+        double compressiveStrength = -1;
+        double tensileStrength = -1;
+        double cohesion = -1;
+        double sigma3Max = -1;
+        double angleOfFriction = -1;
+        double shearStrength = -1;
+
+
+        //retrieve GSI value
+        if (GSIString == "0-35" ){
+
+            GSI = 17.5;
+        }
+        else if (GSIString == "35-55"){
+
+            GSI = 45;
+        }
+        else if (GSIString == "55-75"){
+
+            GSI = 65;
+        }
+        else if (GSIString == "75-100"){
+
+            GSI= 92.5;
+        }
+
+        //Retrieve mi value from lithology
+        if (Lithology == "Shale" ){
+
+            mi = 6;
+        }
+        else if (Lithology == "Salt"){
+
+            mi = 12;
+        }
+        else if (Lithology == "Sandstone"){
+
+            mi = 17;
+        }
+        else if (Lithology == "Siltstone"){
+
+            mi = 17;
+        }
+        else if (Lithology == "Limestone"){
+
+            mi = 10;
+        }
+        else if (Lithology == "Dolomite"){
+
+            mi = 9;
+        }
+
+        mb = mi * Math.exp((GSI - 100) / (28 - 14 * D));
+        s = Math.exp((GSI - 100) / (9 - 3 * D));
+        a = .5 + (.16667) * Math.exp(-1 * GSI / 15) - Math.exp(-6.66667);
+
+        //compressive strength of intact rock. S = 1 for intact rock
+        compressiveStrengthIntact = (Math.sqrt(4 * (sig3 - sig1) * (sig3 - sig1) * 1 + sig3 * sig3 * mb * mb) - sig3 * mb) / (2 * 1);
+
+        compressiveStrength = compressiveStrengthIntact * Math.pow(s, a);
+        tensileStrength = (-s * compressiveStrengthIntact / mb);
+
+        double sigCM = (compressiveStrengthIntact * (mb + 4 * s - a * (mb - 8 * s)) * Math.pow((mb / 4 + s), a - 1)) / (2 * (1 - a) * (2 + a));
+        sigma3Max = 0.47 * Math.pow((sigCM / verticalStress), -0.94) * sigCM;
+        double sigma3n = sigma3Max / compressiveStrengthIntact;
+        cohesion = (compressiveStrengthIntact * ((1 + 2 * a) * s + (1 - a) * mb * sigma3n) * Math.pow((s + mb * sigma3n), a - 1)) / ((1 + a) * (2 + a) * Math.sqrt(1 + (6 * a * mb * Math.pow(s + mb * sigma3n, a - 1)) / ((1 + a) * (2 + a))));
+
+        angleOfFriction = Math.toDegrees(Math.asin((6 * a * mb * Math.pow(s + mb * sigma3n, a - 1)) / (2 * (1 + a) * (2 + a) + 6 * a * mb * Math.pow(s + mb * sigma3n, a - 1))));
+
+        double sig1Sig3Derivative = 1 + a * mb * Math.pow(mb * sig3 / compressiveStrengthIntact + s, a - 1);
+        double normalStress = (sig1 + sig3) / 2 - (sig1 - sig3) / 2 * ((sig1Sig3Derivative - 1) / (sig1Sig3Derivative + 1));
+
+        shearStrength = cohesion + normalStress * Math.tan(Math.toRadians(angleOfFriction));
+
+
+        if(returnParam == "Tensile Strength"){
+
+            return tensileStrength;
+        }
+        else if (returnParam == "Cohesion"){
+
+            return cohesion;
+        }
+        else if (returnParam == "Compressive Strength"){
+
+            return compressiveStrength;
+        }
+        else if (returnParam == "CoeffFriction"){
+
+            return Math.tan(Math.toRadians(angleOfFriction));
+        }
+        else {
+
+            return shearStrength;
+        }
     }
 }
 
