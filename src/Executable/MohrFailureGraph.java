@@ -22,14 +22,25 @@ public class MohrFailureGraph extends JPanel {
     /**
      * Create the panel.
      */
-    public MohrFailureGraph(XYDataset dataset, double Sigma1, double Sigma2) {
+    public MohrFailureGraph(XYDataset dataset, double Sigma1, double Sigma2, String pressureType, mainWindow mw) {
         SpringLayout springLayout = new SpringLayout();
         setLayout(springLayout);
 
+        String xAxisLabel = "";
+        String yAxisLabel = "";
+        if(pressureType == "psi"){
+            xAxisLabel = "σn (psi)";
+            yAxisLabel = "τ (psi)";
+        }
+        else if (pressureType == "Pa" || pressureType == "kPa"){
+            xAxisLabel = "σn (kPa)";
+            yAxisLabel = "τ (kPa)";
+        }
+
         JFreeChart lineChart = ChartFactory.createXYLineChart(
                 "Mohr-Coulomb Failure Graph",      // chart title
-                "σn (psi)",                      // x axis label
-                "τ (psi)",            // y axis label
+                xAxisLabel,                      // x axis label
+                yAxisLabel,            // y axis label
                 dataset,                  // data
                 PlotOrientation.VERTICAL,
                 true,                     // include legend
@@ -59,15 +70,28 @@ public class MohrFailureGraph extends JPanel {
         XYItemRenderer renderer = plot.getRenderer();
 
         NumberAxis domain = (NumberAxis) plot.getDomainAxis();
+        NumberAxis range = (NumberAxis) plot.getRangeAxis();
+
         if(Sigma2 < 0){
             domain.setRange(Sigma2,Sigma1);
+            range.setRange(0, Sigma1-Sigma2 );
         }
         else {
             domain.setRange(0, Sigma1);
+            range.setRange(0, Sigma1 );
         }
 
-        NumberAxis range = (NumberAxis) plot.getRangeAxis();
-        range.setRange(0,Sigma1);
+
+
+        /*
+        int rangeMaxInterval = (int) Sigma1-1;
+        double rangeMaxDouble = (double) mw.getMohrCollectionFinal().getY(1,rangeMaxInterval);
+        int rangeMaxInt = (int) rangeMaxDouble;
+        */
+
+
+
+
 
 
         //Sets grid background and dashed line color
@@ -91,14 +115,26 @@ public class MohrFailureGraph extends JPanel {
 
     }
 
-    public ChartPanel MohrFailureGraphPanel(XYDataset dataset, double Sigma1, double Sigma2) {
+    public ChartPanel MohrFailureGraphPanel(XYDataset dataset, double Sigma1, double Sigma2, String pressureType) {
         SpringLayout springLayout = new SpringLayout();
         setLayout(springLayout);
+        String xAxisLabel = "";
+        String yAxisLabel = "";
+        if(pressureType == "psi"){
+            xAxisLabel = "σn (psi)";
+            yAxisLabel = "τ (psi)";
+        }
+        else if (pressureType == "Pa" || pressureType == "kPa"){
+            xAxisLabel = "σn (kPa)";
+            yAxisLabel = "τ (kPa)";
+        }
+
+
 
         JFreeChart lineChart = ChartFactory.createXYLineChart(
                 "Mohr-Coulomb Failure Graph",      // chart title
-                "σn (psi)",                      // x axis label
-                "τ (psi)",            // y axis label
+                xAxisLabel,                      // x axis label
+                yAxisLabel,            // y axis label
                 dataset,                  // data
                 PlotOrientation.VERTICAL,
                 true,                     // include legend

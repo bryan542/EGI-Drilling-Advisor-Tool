@@ -212,6 +212,52 @@ public class TextFieldChecker {
             }
         }
 
+        if(checkResult == false) {
+
+            return checkResult;
+        }
+
+        //Rock Damage textfield check. This text input has unique conditions and doesn't need to be in an ArrayList.
+        try {
+
+            if (0 <= Double.parseDouble(mw.getRockDamageTextField().getText()) && Double.parseDouble(mw.getRockDamageTextField().getText()) <= 1.0) {
+
+            } else {
+
+                JOptionPane.showMessageDialog(new JDialog(), mw.getRockDamageLabel().getText() + ": Enter a value between 0-1.0.");
+                checkResult = false;
+            }
+
+
+        } catch (NumberFormatException e) {
+
+            JOptionPane.showMessageDialog(new JDialog(), mw.getRockDamageLabel().getText() + ":Enter a valid value between 0-1.0.");
+            checkResult = false;
+        }
+
+        if(checkResult == false) {
+
+            return checkResult;
+        }
+
+        //GSI textfield check. This text input has unique conditions and doesn't need to be in an ArrayList.
+        try {
+
+            if (0 <= Double.parseDouble(mw.getGSITextField().getText()) && Double.parseDouble(mw.getGSITextField().getText()) <= 100) {
+
+            } else {
+
+                JOptionPane.showMessageDialog(new JDialog(), mw.getGSILabel().getText() + ": Enter a value between 0-100.");
+                checkResult = false;
+            }
+
+
+        } catch (NumberFormatException e) {
+
+            JOptionPane.showMessageDialog(new JDialog(), mw.getGSILabel().getText() + ":Enter a valid value between 0-100.");
+            checkResult = false;
+        }
+
 
         return checkResult;
     }

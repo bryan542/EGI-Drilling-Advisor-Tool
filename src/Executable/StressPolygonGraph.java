@@ -35,14 +35,24 @@ public class StressPolygonGraph extends JPanel {
     /**
      * Create the panel.
      */
-    public  StressPolygonGraph(XYDataset dataset, mainWindow mw) {
+    public  StressPolygonGraph(XYDataset dataset, mainWindow mw, String pressureType) {
         SpringLayout springLayout = new SpringLayout();
         setLayout(springLayout);
+        String xAxisLabel = "";
+        String yAxisLabel = "";
+        if(pressureType == "psi"){
+            xAxisLabel = "Sh Min (psi)";
+            yAxisLabel = "SH Max (psi)";
+        }
+        else if (pressureType == "Pa" || pressureType == "kPa"){
+            xAxisLabel = "Sh Min (kPa)";
+            yAxisLabel = "SH Max (kPa)";
+        }
 
         JFreeChart lineChart = ChartFactory.createXYLineChart(
                 "Stress Polygon Graph",      // chart title
-                "Sh Min (psi)",                      // x axis label
-                "SH Max (psi)",            // y axis label
+                xAxisLabel,                      // x axis label
+                yAxisLabel,            // y axis label
                 dataset,                  // data
                 PlotOrientation.VERTICAL,
                 true,                     // include legend
@@ -121,14 +131,24 @@ public class StressPolygonGraph extends JPanel {
 
 
     }
-    public  ChartPanel StressPolygonGraphPanel(XYDataset dataset, mainWindow mw) {
+    public  ChartPanel StressPolygonGraphPanel(XYDataset dataset, mainWindow mw, String pressureType) {
         SpringLayout springLayout = new SpringLayout();
         setLayout(springLayout);
+        String xAxisLabel = "";
+        String yAxisLabel = "";
+        if(pressureType == "psi"){
+            xAxisLabel = "Sh Min (psi)";
+            yAxisLabel = "SH Max (psi)";
+        }
+        else if (pressureType == "Pa" || pressureType == "kPa"){
+            xAxisLabel = "Sh Min (kPa)";
+            yAxisLabel = "SH Max (kPa)";
+        }
 
         JFreeChart lineChart = ChartFactory.createXYLineChart(
                 "Stress Polygon Graph",      // chart title
-                "Sh Min (psi)",                      // x axis label
-                "SH Max (psi)",            // y axis label
+                xAxisLabel,                      // x axis label
+                yAxisLabel,            // y axis label
                 dataset,                  // data
                 PlotOrientation.VERTICAL,
                 true,                     // include legend

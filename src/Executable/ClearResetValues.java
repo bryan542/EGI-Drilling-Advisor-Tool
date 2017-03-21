@@ -29,6 +29,7 @@ public class ClearResetValues {
         obj.add(mw.getGammaText());
         obj.add(mw.getAlpha1Text());
         obj.add(mw.getAlpha2Text());
+        obj.add(mw.getGSITextField());
         obj.add(mw.getBeddingPlaneStrikeTextField());
         obj.add(mw.getFaultConductivityStrikeTextField());
         obj.add(mw.getJointStrikeTextField());
@@ -41,11 +42,14 @@ public class ClearResetValues {
         obj.add(mw.getPrincipal3TextFieldResult());
         obj.add(mw.getPorePressureTextFieldResult());
         obj.add(mw.getTensileStrengthTextFieldResult());
+        obj.add(mw.getUCSIntactOutputTextField());
+        obj.add(mw.getUCSDamagedOutputTextField());
         obj.add(mw.getSigmaVTextFieldResult());
         obj.add(mw.getSigmaMaxTextFieldResult());
         obj.add(mw.getSigmaMinTextFieldResult());
         obj.add(mw.getCohesionOutputTextField());
         obj.add(mw.getCoeffFrictionText());
+        obj.add(mw.getRockDamageTextField());
 
         //add all of the JLabels to obj2
         obj2.add(mw.getTensileFailResult());

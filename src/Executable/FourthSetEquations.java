@@ -19,9 +19,10 @@ public class FourthSetEquations {
         double wellControl;
         double longTermIntegrity;
         double ROP;
+        double GSIValue = Double.parseDouble(GSI);
         Random rand = new Random();
 
-        if (GSI == "75-100") {
+        if (GSIValue > 75 && GSIValue <= 100) {
 
             instability = 0 + (2-0)*rand.nextDouble();
             lossOfCirc = 0;
@@ -29,7 +30,7 @@ public class FourthSetEquations {
             longTermIntegrity= 0 + (2-0)*rand.nextDouble();
             ROP = 3 + (7-3)*rand.nextDouble();
         }
-        else if (GSI == "55-75"){
+        else if (GSIValue > 55 && GSIValue <= 75){
 
             instability = 2 + (6-2)*rand.nextDouble();
             lossOfCirc = 1;
@@ -37,7 +38,7 @@ public class FourthSetEquations {
             longTermIntegrity= 2 + (5-2)*rand.nextDouble();
             ROP = 0 + (3-0)*rand.nextDouble();
         }
-        else if (GSI == "35-55"){
+        else if (GSIValue > 35 && GSIValue <= 55){
 
             instability = 6 + (9-6)*rand.nextDouble();
             lossOfCirc = 3;

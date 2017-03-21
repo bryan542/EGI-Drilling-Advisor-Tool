@@ -37,6 +37,7 @@ public class SaveLoadFileData {
         saveListValues.add(mw.getAlpha1Text().getText());
         saveListValues.add(mw.getAlpha2Text().getText());
         saveListValues.add(mw.getPoissonText().getText());
+        saveListValues.add(mw.getRockDamageTextField().getText());
 
         saveListNames.add(mw.getDepthLabel().getText());
         saveListNames.add(mw.getMudWeightLabel().getText());
@@ -44,6 +45,7 @@ public class SaveLoadFileData {
         saveListNames.add("Alpha 1");
         saveListNames.add("Alpha 2");
         saveListNames.add(mw.getPoissonLabel().getText());
+        saveListNames.add(mw.getRockDamageLabel().getText());
 
         if (mw.getStressAutomaticRadioButton().isSelected()) {
             saveListValues.add(mw.getPoreCombo().getSelectedItem());
@@ -91,7 +93,7 @@ public class SaveLoadFileData {
 
         saveListValues.add(mw.getPermCombo().getSelectedItem());
         saveListValues.add(mw.getLithologyCombo().getSelectedItem());
-        saveListValues.add(mw.getGSICombo().getSelectedItem());
+        saveListValues.add(mw.getGSITextField().getText());
 
         saveListNames.add("Permeability");
         saveListNames.add("Lithology");
@@ -132,6 +134,7 @@ public class SaveLoadFileData {
         saveListNames.add("Custom Density");
         saveListNames.add("Custom Pressure");
         saveListNames.add("Custom Length");
+        saveListNames.add("Custom Graient");
 
 
         //builds the file header for the csv file from the saveListNames arraylist
@@ -342,6 +345,11 @@ public class SaveLoadFileData {
                         mw.setDensityUM(1); //sets the project setting unit conversions properly when the user invokes the calculate button in the mainWindow panel
                         mw.setPressureUM(1);
                         mw.setLengthUM(1);
+                        mw.setGradientUM(1);
+                        mw.setProjectSettingType("Oil Field Units");
+                        mw.setProjectCustomPressureType("psi");
+                        mw.setProjectCustomDensityType("(ppg)");
+                        mw.setProjectCustomLengthType("(ft)");
                         densityUnit = "ppg";
                         pressureUnit = "psi";
                         lengthUnit = "ft";
@@ -355,6 +363,11 @@ public class SaveLoadFileData {
                         mw.setDensityUM(8.3454);
                         mw.setPressureUM(0.145038);
                         mw.setLengthUM(3.28084);
+                        mw.setGradientUM(4.4208e-5);
+                        mw.setProjectSettingType("SI Units");
+                        mw.setProjectCustomPressureType("kPa");
+                        mw.setProjectCustomDensityType("(g/cc)");
+                        mw.setProjectCustomLengthType("(m)");
                         densityUnit = "g/cc";
                         pressureUnit = "Pa";
                         readerPressureUnits = "kPa";
@@ -466,7 +479,8 @@ public class SaveLoadFileData {
                 mw.setPoissonText(record.get("Poisson's Ratio"));
                 mw.setPermCombo(record.get("Permeability"));
                 mw.setLithologyCombo(record.get("Lithology"));
-                mw.setGSICombo(record.get("GSI"));
+                mw.setGSITextField(record.get("GSI"));
+                mw.setRockDamageTextField(record.get("Rock Damage"));
 
                 mw.setBeddingCombo(record.get("Bedding Plane Conductivity"));
                 mw.setBeddingPlaneStrikeTextField(record.get("Bedding Strike"));

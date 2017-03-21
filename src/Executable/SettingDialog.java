@@ -174,7 +174,8 @@ public class SettingDialog extends JDialog{
             String principal2 = "Principal Stress at the Wellbore σ2 ";
             String principal3 = "Principal Stress at the Wellbore σ3 ";
             String inputStressGradients = "Stress Gradients ";
-
+            String UCSIntact = "UCS Intact ";
+            String UCSDamaged = "UCS Damaged ";
 
 
             @Override
@@ -198,6 +199,8 @@ public class SettingDialog extends JDialog{
                         mw.setCohesionInputLabel(cohesion+pressure);
                         mw.setCohesionTitleLabel(cohesion+pressure);
                         mw.setCohesionOutputLabel(cohesion+pressure);
+                        mw.setUCSIntactOutputLabel(UCSIntact + pressure);
+                        mw.setUCSDamagedOutputLabel(UCSDamaged + pressure);
                         mw.setTensileLabel(tensileStrength+pressure);
                         mw.setInputTensileStrengthLabel(tensileStrength+pressure);
                         mw.setTensileStrengthOutputLabel(tensileStrength+pressure);
@@ -214,7 +217,9 @@ public class SettingDialog extends JDialog{
                         mw.setLengthUM(lengthChange);
                         mw.setGradientUM(gradientChange);
                         mw.setProjectSettingType("Oil Field Units");
-
+                        mw.setProjectCustomPressureType("psi");
+                        mw.setProjectCustomDensityType(density);
+                        mw.setProjectCustomLengthType(length);
                     }
                     else if(SIUnitsRadioButton.isSelected() && SIUnitsRadioButton.isEnabled()){
 
@@ -231,6 +236,8 @@ public class SettingDialog extends JDialog{
                         mw.setCohesionInputLabel(cohesion+pressure);
                         mw.setCohesionTitleLabel(cohesion+pressure);
                         mw.setCohesionOutputLabel(cohesion+pressure);
+                        mw.setUCSIntactOutputLabel(UCSIntact + pressure);
+                        mw.setUCSDamagedOutputLabel(UCSDamaged + pressure);
                         mw.setTensileLabel(tensileStrength+pressure);
                         mw.setInputTensileStrengthLabel(tensileStrength+pressure);
                         mw.setTensileStrengthOutputLabel(tensileStrength+pressure);
@@ -247,6 +254,9 @@ public class SettingDialog extends JDialog{
                         mw.setLengthUM(lengthChange);
                         mw.setGradientUM(gradientChange);
                         mw.setProjectSettingType("SI Units");
+                        mw.setProjectCustomPressureType("kPa");
+                        mw.setProjectCustomDensityType(density);
+                        mw.setProjectCustomLengthType(length);
                     }
                     else{
 
@@ -264,6 +274,8 @@ public class SettingDialog extends JDialog{
                         mw.setMudWeightLabel(mudweight+density);
                         mw.setDensityUM(densityChange);
                         mw.setProjectCustomDensityType("ppg");
+
+
                     }
                     else if(comboBox1.getSelectedItem() =="g/cc" && comboBox1.isEnabled()){
 
@@ -272,6 +284,7 @@ public class SettingDialog extends JDialog{
                         mw.setMudWeightLabel(mudweight+density);
                         mw.setDensityUM(densityChange);
                         mw.setProjectCustomDensityType("g/cc");
+
                     }
                     else{
 
@@ -285,6 +298,8 @@ public class SettingDialog extends JDialog{
                         mw.setCohesionInputLabel(cohesion+pressure);
                         mw.setCohesionTitleLabel(cohesion+pressure);
                         mw.setCohesionOutputLabel(cohesion+pressure);
+                        mw.setUCSIntactOutputLabel(UCSIntact + pressure);
+                        mw.setUCSDamagedOutputLabel(UCSDamaged + pressure);
                         mw.setTensileLabel(tensileStrength+pressure);
                         mw.setInputTensileStrengthLabel(tensileStrength+pressure);
                         mw.setTensileStrengthOutputLabel(tensileStrength+pressure);
@@ -298,6 +313,7 @@ public class SettingDialog extends JDialog{
                         mw.setPressureUM(pressureChange);
                         mw.setProjectCustomPressureType("psi");
 
+
                     }
                     else if(comboBox2.getSelectedItem() =="Pa" && comboBox2.isEnabled()){
 
@@ -307,6 +323,8 @@ public class SettingDialog extends JDialog{
                         mw.setCohesionInputLabel(cohesion+pressure);
                         mw.setCohesionTitleLabel(cohesion+pressure);
                         mw.setCohesionOutputLabel(cohesion+pressure);
+                        mw.setUCSIntactOutputLabel(UCSIntact + pressure);
+                        mw.setUCSDamagedOutputLabel(UCSDamaged + pressure);
                         mw.setTensileLabel(tensileStrength+pressure);
                         mw.setInputTensileStrengthLabel(tensileStrength+pressure);
                         mw.setTensileStrengthOutputLabel(tensileStrength+pressure);
@@ -318,7 +336,8 @@ public class SettingDialog extends JDialog{
                         mw.setPrincipalSigma2Label(principal2+pressure);
                         mw.setPrincipalSigma3Label(principal3+pressure);
                         mw.setPressureUM(pressureChange);
-                        mw.setProjectCustomPressureType("Pa");
+                        mw.setProjectCustomPressureType("kPa");
+
                     }
                     else{
 

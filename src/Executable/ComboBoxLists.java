@@ -11,7 +11,6 @@ public class ComboBoxLists {
     private String[] joint = {"High","Medium","Low","Unknown/None"};
     private String[] beddingUnconformity = {"Highly Conductive","Medium Conductive","Low Conductive","Unknown/None"};
     private String[] lithology = {"Shale","Salt","Sandstone","Siltstone","Limestone","Dolomite"};
-    private String[] GSI = {"0-35","35-55","55-75","75-100"};
     private String[] permeability = {"Low (μD)","Medium (mD)","High (Darcy)"};
 
 
@@ -42,10 +41,6 @@ public class ComboBoxLists {
     public String[] GetLithology(){
 
         return this.lithology;
-    }
-    public String[] GetGSI(){
-
-        return this.GSI;
     }
     public String[] GetPermeability(){
 

@@ -1,5 +1,7 @@
 package Executable;
 
+import org.jfree.data.xy.XYSeries;
+
 import java.util.Arrays;
 import java.util.Random;
 
@@ -222,7 +224,7 @@ public class DrillingEquations {
     }
 
 
-    // Shear Stress Components thoXY, thoXZ, ThoYZ
+    // Shear Stress Components thoXY, thoXZ, thoYZ
 
     //thoXY
     public static double thoXY(double sigH, double sigh, double alpha, double gamma){
@@ -244,8 +246,8 @@ public class DrillingEquations {
         return ThoXZ;
     }
 
-    //ThoYZ
-    public static double ThoYZ(double sigH, double sigh, double alpha, double gamma){
+    //thoYZ
+    public static double thoYZ(double sigH, double sigh, double alpha, double gamma){
 
         double ThoYZ;
 
@@ -537,18 +539,15 @@ public class DrillingEquations {
         return tensileCondition;
     }
 
+/*
     //Shear failure condition
 
-    public static String shearFailureCondition(double[] sigmaTheta, double sigmaR, double ThoRTheta, double coefficientFrictionInput){
+    public static String shearFailureCondition(XYSeries MohrLine, XYSeries failureCircle){
 
-        int thetaStartRange = -1;
-        int thetaEndRange = -1;
-        int thetaStart180Range = -1;
-        int thetaEnd180Range = -1;
-        double[] a;
-        double[] b;
-        String[] shearConditionRange;
+
         String shearConditionFinalReport = "";
+
+
         shearConditionRange = new String[361];
         a = new double[361];
         b = new double[361];
@@ -617,6 +616,7 @@ public class DrillingEquations {
 
         return shearConditionFinalReport;
     }
+*/
 
     //Calculated phi value if tensile failure happens
 
@@ -850,11 +850,10 @@ public class DrillingEquations {
         return cohesion;
     }
 */
-    public double rockPropertyGSISolver(double sig1, double sig3, String GSIString, String Lithology, double D, double verticalStress, String returnParam) {
+    public double rockPropertyGSISolver(double sig1,double sig2, double sig3, String GSIString, String Lithology, double D, double verticalStress, String returnParam) {
 
         double guess = 1;
         double result = -1;
-        double GSI = -1;
         double mb = -1;
         double mi = -1;
         double s = -1;
@@ -866,25 +865,14 @@ public class DrillingEquations {
         double sigma3Max = -1;
         double angleOfFriction = -1;
         double shearStrength = -1;
+        double GSI = Double.parseDouble(GSIString);
 
+        double[] stressesMaxMin = {sig1,sig2,sig3};
+        Arrays.sort(stressesMaxMin);
+        sig1 =  stressesMaxMin[2];
+        sig2 = stressesMaxMin[1];
+        sig3 = stressesMaxMin[0];
 
-        //retrieve GSI value
-        if (GSIString == "0-35" ){
-
-            GSI = 17.5;
-        }
-        else if (GSIString == "35-55"){
-
-            GSI = 45;
-        }
-        else if (GSIString == "55-75"){
-
-            GSI = 65;
-        }
-        else if (GSIString == "75-100"){
-
-            GSI= 92.5;
-        }
 
         //Retrieve mi value from lithology
         if (Lithology == "Shale" ){
@@ -947,10 +935,16 @@ public class DrillingEquations {
 
             return compressiveStrength;
         }
+
+        else if (returnParam == "Compressive Strength Intact"){
+
+            return compressiveStrengthIntact;
+        }
         else if (returnParam == "CoeffFriction"){
 
             return Math.tan(Math.toRadians(angleOfFriction));
         }
+
         else {
 
             return shearStrength;
