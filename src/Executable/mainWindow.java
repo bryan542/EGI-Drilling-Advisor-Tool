@@ -841,6 +841,7 @@ public class mainWindow extends JFrame {
         //remove original graphs and reset buttonCount
         try{
 
+            tabbedPane1.remove(5);
             tabbedPane1.remove(4);
             tabbedPane1.remove(3);
             tabbedPane1.remove(2);
@@ -1210,22 +1211,35 @@ public class mainWindow extends JFrame {
             double betaUnconformityParam = -1;
 
 
-            double depth = Double.parseDouble(depthText.getText())*lengthUM;
-            double gamma = Double.parseDouble(gammaText.getText());
-            double alpha1 = Double.parseDouble(alpha1Text.getText());
-            double alpha2 = Double.parseDouble(alpha2Text.getText());
-            double poissons = Double.parseDouble(poissonText.getText());
-            double rockDamage = Double.parseDouble(rockDamageTextField.getText());
-            String GSI = GSITextField.getText();
-            String lithology = LithologyCombo.getSelectedItem().toString();
-            String permeability = PermCombo.getSelectedItem().toString();
-            String faultConductivity = FaultConductCombo.getSelectedItem().toString();
-            String jointFrequency = JointCombo.getSelectedItem().toString();
-            String beddingConductivity = BeddingCombo.getSelectedItem().toString();
+            double depth = -1;
+            double gamma = -1;
+            double alpha1 = -1;
+            double alpha2 = -1;
+            double poissons = -1;
+            double rockDamage = -1;
+            String GSI = "";
+            String lithology = "";
+            String permeability = "";
+            String faultConductivity = "";
+            String jointFrequency = "";
+            String beddingConductivity = "";
 
 
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                depth = Double.parseDouble(depthText.getText())*lengthUM;
+                gamma = Double.parseDouble(gammaText.getText());
+                alpha1 = Double.parseDouble(alpha1Text.getText());
+                alpha2 = Double.parseDouble(alpha2Text.getText());
+                poissons = Double.parseDouble(poissonText.getText());
+                rockDamage = Double.parseDouble(rockDamageTextField.getText());
+                GSI = GSITextField.getText();
+                lithology = LithologyCombo.getSelectedItem().toString();
+                permeability = PermCombo.getSelectedItem().toString();
+                faultConductivity = FaultConductCombo.getSelectedItem().toString();
+                jointFrequency = JointCombo.getSelectedItem().toString();
+                beddingConductivity = BeddingCombo.getSelectedItem().toString();
 
                 //checks all the input values and makes sure they are valid inputs
                 TextFieldChecker tfc = new TextFieldChecker();
@@ -1424,9 +1438,9 @@ public class mainWindow extends JFrame {
 
                 //Build Default catagory dataset
 
-                MultiVariateSolutions multiSolutions = new MultiVariateSolutions()  ;
-                DefaultCategoryDataset multivariateDataset = multiSolutions.principalStresses(SigmaVGradient,SigmahGradient,depth,mudWeightPsiFt,Alpha,gamma,DeltaP,poissons,gradientUM,porePressureGradient,lengthUM,GSI,lithology,rockDamage,SigmaVGradient+porePressureCombination);
-
+                FailureRatioSolutions multiSolutions = new FailureRatioSolutions()  ;
+                DefaultCategoryDataset multivariateShearDataset = multiSolutions.principalStresses(SigmaVGradient,SigmahGradient,SigmaHGradient,depth,mudWeightPsiFt,Alpha,gamma,DeltaP,poissons,gradientUM,porePressureGradient,lengthUM,GSI,lithology,rockDamage,SigmaVGradient+porePressureCombination, "Shear Failure Ratio");
+                DefaultCategoryDataset multivariateTensileDataset = multiSolutions.principalStresses(SigmaVGradient,SigmahGradient,SigmaHGradient,depth,mudWeightPsiFt,Alpha,gamma,DeltaP,poissons,gradientUM,porePressureGradient,lengthUM,GSI,lithology,rockDamage,SigmaVGradient+porePressureCombination, "Tensile Failure Ratio");
 
                 //Calculate and build stress polygon dataset and Mohr dataset
                 StressPolygonDataset polyDataset = new StressPolygonDataset();
@@ -1453,7 +1467,8 @@ public class mainWindow extends JFrame {
 
                     setMohrCollectionFinal(mohrCollection);
 
-                    multivariateDataset = multiSolutions.principalStresses(SigmaVGradient,SigmahGradient,depth,mudWeightPsiFt,Alpha,gamma,DeltaP,poissons,gradientUM,porePressureGradient,lengthUM,GSI,lithology,rockDamage,SigmaVGradient+porePressureCombination);
+                    multivariateShearDataset = multiSolutions.principalStresses(SigmaVGradient,SigmahGradient,SigmaHGradient,depth,mudWeightPsiFt,Alpha,gamma,DeltaP,poissons,gradientUM,porePressureGradient,lengthUM,GSI,lithology,rockDamage,SigmaVGradient+porePressureCombination, "Shear Failure Ratio");
+                    multivariateTensileDataset = multiSolutions.principalStresses(SigmaVGradient,SigmahGradient,SigmaHGradient,depth,mudWeightPsiFt,Alpha,gamma,DeltaP,poissons,gradientUM,porePressureGradient,lengthUM,GSI,lithology,rockDamage,SigmaVGradient+porePressureCombination, "Tensile Failure Ratio");
 
 
                 }
@@ -1469,7 +1484,9 @@ public class mainWindow extends JFrame {
                     mohrCollection = mohrDataset.mohrDatasetBuild(this.Sigma1*(1/pressureUM),this.Sigma2*(1/pressureUM),this.Sigma3*(1/pressureUM),cohesionInitial*(1/pressureUM),getCoeffFriction(),mainWindow.this);
                     setMohrCollectionFinal(mohrCollection);
 
-                    multivariateDataset = multiSolutions.principalStresses(SigmaVGradient*(1/pressureUM),SigmahGradient*(1/pressureUM),depth,mudWeightPsiFt,Alpha,gamma,DeltaP,poissons,gradientUM,porePressureGradient,lengthUM,GSI,lithology,rockDamage,(SigmaVGradient+porePressureCombination)*(1/pressureUM));
+                    multivariateShearDataset = multiSolutions.principalStresses(SigmaVGradient*(1/pressureUM),SigmahGradient*(1/pressureUM),SigmaHGradient*(1/pressureUM),depth,mudWeightPsiFt,Alpha,gamma,DeltaP,poissons,gradientUM,porePressureGradient,lengthUM,GSI,lithology,rockDamage,(SigmaVGradient+porePressureCombination)*(1/pressureUM), "Shear Failure Ratio");
+
+                    multivariateTensileDataset = multiSolutions.principalStresses(SigmaVGradient,SigmahGradient,SigmaHGradient,depth,mudWeightPsiFt,Alpha,gamma,DeltaP,poissons,gradientUM,porePressureGradient,lengthUM,GSI,lithology,rockDamage,SigmaVGradient+porePressureCombination, "Tensile Failure Ratio");
 
                 }
 
@@ -1498,14 +1515,18 @@ public class mainWindow extends JFrame {
                     setMohrGraphOutputFinal(MohrGraphOutput);
                     tabbedPane1.addTab("Mohr-Coulomb Failure",null,MohrGraphOutput,null);
 
-                    MultivariateSolutionsGraph multiGraph = new MultivariateSolutionsGraph(multivariateDataset,mainWindow.this,projectCustomPressureType);
-                    tabbedPane1.addTab("Fracture Ratio", null,multiGraph,null);
+                    ShearFailureRatioBarGraph shearFailureBarGraph = new ShearFailureRatioBarGraph(multivariateShearDataset,mainWindow.this,projectCustomPressureType);
+                    tabbedPane1.addTab("Shear Fracture Ratio", null,shearFailureBarGraph,null);
+
+                    TensileFailureRatioBarGraph tensileFailureBarGraph = new TensileFailureRatioBarGraph(multivariateTensileDataset,mainWindow.this,projectCustomPressureType);
+                    tabbedPane1.addTab("Tensile Fracture Ratio", null,tensileFailureBarGraph,null);
 
                     buttonCount = false;
 
                 }
                 else if (buttonCount == false){
 
+                    tabbedPane1.remove(5);
                     tabbedPane1.remove(4);
                     tabbedPane1.remove(3);
                     tabbedPane1.remove(2);
@@ -1517,8 +1538,11 @@ public class mainWindow extends JFrame {
                     setMohrGraphOutputFinal(MohrGraphOutput);
                     tabbedPane1.addTab("Mohr-Coulomb Failure",null,MohrGraphOutput,null);
 
-                    MultivariateSolutionsGraph multiGraph = new MultivariateSolutionsGraph(multivariateDataset,mainWindow.this,projectCustomPressureType);
-                    tabbedPane1.addTab("Fracture Ratio", null,multiGraph,null);
+                    ShearFailureRatioBarGraph multiGraph = new ShearFailureRatioBarGraph(multivariateShearDataset,mainWindow.this,projectCustomPressureType);
+                    tabbedPane1.addTab("Shear Fracture Ratio", null,multiGraph,null);
+
+                    TensileFailureRatioBarGraph tensileFailureBarGraph = new TensileFailureRatioBarGraph(multivariateTensileDataset,mainWindow.this,projectCustomPressureType);
+                    tabbedPane1.addTab("Tensile Fracture Ratio", null,tensileFailureBarGraph,null);
 
                 }
 
@@ -1709,7 +1733,7 @@ public class mainWindow extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                MultiVariateSolutions multiSolutions = new MultiVariateSolutions();
+                FailureRatioSolutions multiSolutions = new FailureRatioSolutions();
 
             }
         });

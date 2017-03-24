@@ -9,12 +9,12 @@ import java.util.Arrays;
 /**
  * Created by bryan on 3/9/2017.
  */
-public class MultiVariateSolutions extends DrillingEquations {
+public class FailureRatioSolutions extends DrillingEquations {
 
     // This method find solutions for a wide range of sigmaH values. First the principal stress solutions for each value of sigmaH. Then, rock property GSI array solutions are added.
     // Following, the mohr and failure line are built for each principal stress and rock property solution. Finally, the failure criteria does a ratio comparrison between the mohr circle
     // and the failure line. Failure occurs if the ratio is above 1 and is stable below 1. The higher the value above 1 the higher the magnitude and likelyhood of failure.
-    public DefaultCategoryDataset principalStresses(double sigmaVGradient, double sigmahGradient, double depth, double mudweight, double alpha, double gamma, double deltaP, double poisson, double gradientUM, double porePressureGradient, double lengthUM,String GSI,String Lithology, double D, double verticalStress){
+    public DefaultCategoryDataset principalStresses(double sigmaVGradient, double sigmahGradient,double sigmaHGradientInitial, double depth, double mudweight, double alpha, double gamma, double deltaP, double poisson, double gradientUM, double porePressureGradient, double lengthUM,String GSI,String Lithology, double D, double verticalStress, String returnParam){
 
         double gradientIndex = -1;
         double sigmaHGradient = -1;
@@ -51,23 +51,73 @@ public class MultiVariateSolutions extends DrillingEquations {
         int failurexInitial = -1;
         double incrimentRange = -1;
         //Construct the dataset
-        DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+        DefaultCategoryDataset shearDCD = new DefaultCategoryDataset();
+        DefaultCategoryDataset tensileDCD = new DefaultCategoryDataset();
 
         //Makes sure sigmaH cannot be less than sigmah and greater than sigmaV gradient. That wouldn't make sense.
-        double initialGradientRange = sigmahGradient/depth+porePressureGradient;
-        double finalGradientRange = sigmaVGradient/depth+porePressureGradient;
+        double sigmahGradientRange = sigmahGradient/depth+porePressureGradient;
+        double sigmaVGradientRange = sigmaVGradient/depth+porePressureGradient;
+        double sigmaHGradientRange = sigmaHGradientInitial/depth + porePressureGradient;
+        double initialRange = -1;
+        double finalRange = -1;
         // sets the amount of bars on the ratio graph. reduce or increase the number amount to change the amount reported on the graph
 
         if(gradientChange ==1){
 
-            incrimentRange = (finalGradientRange-initialGradientRange)/18;
+            incrimentRange = (sigmaVGradientRange-sigmahGradientRange)/18;
+            initialRange = sigmahGradientRange;
+            finalRange = sigmaVGradientRange;
+
+            // sets a proper range if
+            if (sigmaHGradientRange > sigmaVGradientRange && sigmaVGradientRange < sigmahGradientRange && sigmahGradientRange > sigmaHGradientRange){
+
+                incrimentRange = (sigmahGradientRange-sigmaVGradientRange)/18;
+                initialRange = sigmaVGradientRange;
+                finalRange = sigmahGradientRange;
+
+            }
+            else if (sigmaHGradientRange > sigmaVGradientRange && sigmaVGradientRange < sigmahGradientRange && sigmahGradientRange < sigmaHGradientRange ){
+
+                incrimentRange = (sigmaHGradientRange-sigmaVGradientRange)/18;
+                initialRange = sigmaVGradientRange;
+                finalRange = sigmaHGradientRange;
+            }
+            else if (sigmaHGradientRange > sigmaVGradientRange && sigmaVGradientRange > sigmahGradientRange && sigmahGradientRange < sigmaHGradientRange ){
+
+                incrimentRange = (sigmaHGradientRange-sigmahGradientRange)/18;
+                initialRange = sigmahGradientRange;
+                finalRange = sigmaHGradientRange;
+            }
         }
         else{
-            incrimentRange = (finalGradientRange-initialGradientRange)/10;
+            incrimentRange = (sigmaVGradientRange-sigmahGradientRange)/10;
+
+            initialRange = sigmahGradientRange;
+            finalRange = sigmaVGradientRange;
+
+            if (sigmaHGradientRange > sigmaVGradientRange && sigmaVGradientRange < sigmahGradientRange && sigmahGradientRange > sigmaHGradientRange){
+
+                incrimentRange = (sigmahGradientRange-sigmaVGradientRange)/10;
+                initialRange = sigmaVGradientRange;
+                finalRange = sigmahGradientRange;
+
+            }
+            else if (sigmaHGradientRange > sigmaVGradientRange && sigmaVGradientRange < sigmahGradientRange && sigmahGradientRange < sigmaHGradientRange ){
+
+                incrimentRange = (sigmaHGradientRange-sigmaVGradientRange)/18;
+                initialRange = sigmaVGradientRange;
+                finalRange = sigmaHGradientRange;
+            }
+            else if (sigmaHGradientRange > sigmaVGradientRange && sigmaVGradientRange > sigmahGradientRange && sigmahGradientRange < sigmaHGradientRange ){
+
+                incrimentRange = (sigmaHGradientRange-sigmahGradientRange)/18;
+                initialRange = sigmahGradientRange;
+                finalRange = sigmaHGradientRange;
+            }
         }
 
 
-        for (double i = initialGradientRange;i< finalGradientRange;i += incrimentRange){
+        for (double i = initialRange;i< finalRange;i += incrimentRange){
 
 
 
@@ -102,13 +152,16 @@ public class MultiVariateSolutions extends DrillingEquations {
 
             XYSeries cohesionLine = new XYSeries("Failure Envelope");
             XYSeries Sigma3MohrLine = new XYSeries("σ3 Mohr Circle");
-            double failureRatio = -1;
+
+            double shearFailureRatio = -1;
+            double tensileFailureRatio = -1;
 
             int sigma1Int = (int) sigma1;
             int sigma2Int = (int) sigma2;
             int sigma3Int = (int) sigma3;
 
-
+            //Build the tensile failure ratio
+            tensileFailureRatio = sigma2/tensileStrength;
             //build the failure line
             for(int j = 0; j <sigma1Int;j++){
 
@@ -164,23 +217,20 @@ public class MultiVariateSolutions extends DrillingEquations {
             }
 
 
-
-
-
             //failure criteria check between mohr and failure curve. failurexInitial is the element offset to start comparing the value analysis between the 2 curves
             for (int j = 0;j<=Sigma3MohrLine.getItemCount()-mohrxInitial-2;j++){
 
                 //fills the element in the first array
                 if (j == 0){
 
-                    failureRatio = Sigma3MohrLine.getDataItem(j+mohrxInitial).getY().doubleValue()/cohesionLine.getDataItem(j+failurexInitial).getY().doubleValue();
+                    shearFailureRatio = Sigma3MohrLine.getDataItem(j+mohrxInitial).getY().doubleValue()/cohesionLine.getDataItem(j+failurexInitial).getY().doubleValue();
                 }
                 else{
 
                     //We are looking for the highest failure ratio. This loop does a sorter check for the highest value and returns it to the array
-                    if(Sigma3MohrLine.getDataItem(j+mohrxInitial).getY().doubleValue()/cohesionLine.getDataItem(j+failurexInitial).getY().doubleValue() > failureRatio){
+                    if(Sigma3MohrLine.getDataItem(j+mohrxInitial).getY().doubleValue()/cohesionLine.getDataItem(j+failurexInitial).getY().doubleValue() > shearFailureRatio){
 
-                        failureRatio = Sigma3MohrLine.getDataItem(j+mohrxInitial).getY().doubleValue()/cohesionLine.getDataItem(j+failurexInitial).getY().doubleValue();
+                        shearFailureRatio = Sigma3MohrLine.getDataItem(j+mohrxInitial).getY().doubleValue()/cohesionLine.getDataItem(j+failurexInitial).getY().doubleValue();
                     }
                 }
             }
@@ -192,31 +242,30 @@ public class MultiVariateSolutions extends DrillingEquations {
             //Populates the dataset
             if(gradientChange == 1){
 
-                dcd.addValue(failureRatio,"Sigma H Max Range (psi/ft)", Double.toString(gradientIndex));
+                shearDCD.addValue(shearFailureRatio,"Sigma H Max Range (psi/ft)", Double.toString(gradientIndex));
+                tensileDCD.addValue(tensileFailureRatio,"Sigma H Max Range (psi/ft)",Double.toString(gradientIndex));
             }
             else{
 
                 //rounds to kPa/m to 2 decimal places
                 gradientIndex = Math.round((gradientIndex/(gradientUM*1000))*100);
                 gradientIndex = gradientIndex/100;
-                dcd.addValue(failureRatio,"Sigma H Max Range (kPa/m)", Double.toString(gradientIndex));
+                shearDCD.addValue(shearFailureRatio,"Sigma H Max Range (kPa/m)", Double.toString(gradientIndex));
+                tensileDCD.addValue(tensileFailureRatio,"Sigma H Max Range (kPa/m)",Double.toString(gradientIndex));
             }
-
 
 
         }
 
+        if (returnParam == "Shear Failure Ratio"){
 
-        return dcd;
+            return shearDCD;
+        }
+        else  {
 
-    }
-
-
-    public static void main(String[] args) {
-        MultiVariateSolutions ms = new MultiVariateSolutions();
-        DefaultCategoryDataset failureRatio = ms.principalStresses(2335,1334,5000,.433,0,50,172,.3,1,.433,1,"80","Shale",.3,4500);
-
-
+            return tensileDCD;
+        }
 
     }
+
 }

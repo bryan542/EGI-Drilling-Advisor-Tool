@@ -3,28 +3,28 @@ package Executable;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.NumberAxis;
+import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
-import org.jfree.chart.plot.XYPlot;
-import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
+import org.jfree.chart.plot.ValueMarker;
 import org.jfree.chart.title.LegendTitle;
 import org.jfree.data.category.DefaultCategoryDataset;
-import org.jfree.data.xy.XYDataset;
-import org.jfree.util.ShapeUtilities;
+
 
 import javax.swing.*;
 import java.awt.*;
 
 /**
- * Created by bryan on 3/10/2017.
+ * Created by bryan on 3/22/2017.
  */
-public class MultivariateSolutionsGraph extends JPanel {
+public class TensileFailureRatioBarGraph extends JPanel {
 
     private ChartPanel chartPanel;
 
     /**
      * Create the panel.
      */
-    public  MultivariateSolutionsGraph(DefaultCategoryDataset dataset, mainWindow mw, String gradientType) {
+    public TensileFailureRatioBarGraph(DefaultCategoryDataset dataset, mainWindow mw, String gradientType) {
         SpringLayout springLayout = new SpringLayout();
         setLayout(springLayout);
         String xAxisLabel = "";
@@ -37,7 +37,7 @@ public class MultivariateSolutionsGraph extends JPanel {
         }
 
         JFreeChart barChart = ChartFactory.createBarChart(
-                "Multivariate Failure Ratio",      // chart title
+                "Tensile Failure Ratio",      // chart title
                 xAxisLabel,                      // x axis label
                 yAxisLabel,            // y axis label
                 dataset,                  // data
@@ -66,6 +66,19 @@ public class MultivariateSolutionsGraph extends JPanel {
         LegendTitle legend = barChart.getLegend();
         legend.setMargin(5,5,10,5);
 
+        CategoryPlot plot = barChart.getCategoryPlot();
+
+        //This builds the dashed lines
+        final BasicStroke dashedStroke = new BasicStroke(
+                2.0f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND,
+                1.0f, new float[] {6.0f, 6.0f}, 0.0f);
+
+        //This valuemarker sets the horizontal line in the shear graph at the failure line, 1.0
+        ValueMarker VM = new ValueMarker(1.0);
+        VM.setOutlinePaint(Color.black);
+        VM.setPaint(Color.black);
+        VM.setStroke(dashedStroke);
+        plot.addRangeMarker(VM);
 
         add( chartPanel );
 
@@ -84,7 +97,7 @@ public class MultivariateSolutionsGraph extends JPanel {
         }
 
         JFreeChart barChart = ChartFactory.createBarChart(
-                "Multivariate Failure Ratio",      // chart title
+                "Tensile Failure Ratio",      // chart title
                 xAxisLabel,                      // x axis label
                 yAxisLabel,            // y axis label
                 dataset,                  // data
@@ -113,6 +126,19 @@ public class MultivariateSolutionsGraph extends JPanel {
         LegendTitle legend = barChart.getLegend();
         legend.setMargin(5,5,10,5);
 
+        CategoryPlot plot = barChart.getCategoryPlot();
+
+        //This builds the dashed lines
+        final BasicStroke dashedStroke = new BasicStroke(
+                2.0f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND,
+                1.0f, new float[] {6.0f, 6.0f}, 0.0f);
+
+        //This valuemarker sets the horizontal line in the shear graph at the failure line, 1.0
+        ValueMarker VM = new ValueMarker(1.0);
+        VM.setOutlinePaint(Color.black);
+        VM.setPaint(Color.black);
+        VM.setStroke(dashedStroke);
+        plot.addRangeMarker(VM);
 
 
         add( chartPanel );
@@ -120,5 +146,6 @@ public class MultivariateSolutionsGraph extends JPanel {
         return chartPanel;
 
     }
+
 
 }
