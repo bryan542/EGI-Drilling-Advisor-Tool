@@ -1,6 +1,5 @@
 package Executable;
 
-
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -8,37 +7,40 @@ import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.XYItemRenderer;
+import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
 import org.jfree.chart.title.LegendTitle;
 import org.jfree.data.xy.XYDataset;
+import org.jfree.util.ShapeUtilities;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class MohrFailureGraph extends JPanel {
-
+/**
+ * Created by Bryan on 4/11/2017.
+ */
+public class FormationPressureGraph extends JPanel {
 
     private ChartPanel chartPanel;
 
     /**
      * Create the panel.
      */
-    public MohrFailureGraph(XYDataset dataset, double Sigma1, double Sigma3, String pressureType, mainWindow mw) {
+    public  FormationPressureGraph(XYDataset dataset, mainWindow mw, String pressureType) {
         SpringLayout springLayout = new SpringLayout();
         setLayout(springLayout);
-
         String xAxisLabel = "";
         String yAxisLabel = "";
         if(pressureType == "psi"){
-            xAxisLabel = "σn (psi)";
-            yAxisLabel = "τ (psi)";
+            xAxisLabel = "Mudweight Pressure (psi)";
+            yAxisLabel = "Pore Pressure (psi)";
         }
         else if (pressureType == "Pa" || pressureType == "kPa"){
-            xAxisLabel = "σn (kPa)";
-            yAxisLabel = "τ (kPa)";
+            xAxisLabel = "Mudweight Pressure (kPa)";
+            yAxisLabel = "Pore Pressure (kPa)";
         }
 
         JFreeChart lineChart = ChartFactory.createXYLineChart(
-                "Mohr-Coulomb Failure Graph",      // chart title
+                "Pressure Regime Graph",      // chart title
                 xAxisLabel,                      // x axis label
                 yAxisLabel,            // y axis label
                 dataset,                  // data
@@ -47,6 +49,7 @@ public class MohrFailureGraph extends JPanel {
                 true,                     // tooltips
                 false                     // urls
         );
+
         chartPanel = new ChartPanel(lineChart);
         springLayout.putConstraint(SpringLayout.WEST, chartPanel, 150, SpringLayout.WEST, this);
         springLayout.putConstraint(SpringLayout.EAST, chartPanel, -90, SpringLayout.EAST, this); // centers the plot
@@ -66,73 +69,60 @@ public class MohrFailureGraph extends JPanel {
         legend.setMargin(5,5,10,5);
 
         //Setup chart UI
-        XYPlot plot = lineChart.getXYPlot();
-        XYItemRenderer renderer = plot.getRenderer();
-
-        NumberAxis domain = (NumberAxis) plot.getDomainAxis();
-        NumberAxis range = (NumberAxis) plot.getRangeAxis();
-
-        if(Sigma3 < 0){
-            domain.setRange(Sigma3,Sigma1);
-            range.setRange(0, Sigma1-Sigma3 );
-        }
-        else {
-            domain.setRange(0, Sigma1);
-            range.setRange(0, Sigma1 );
-        }
-
-
-
-        /*
-        int rangeMaxInterval = (int) Sigma1-1;
-        double rangeMaxDouble = (double) mw.getMohrCollectionFinal().getY(1,rangeMaxInterval);
-        int rangeMaxInt = (int) rangeMaxDouble;
-        */
-
-
-
-
-
+        XYPlot plot = (XYPlot) lineChart.getXYPlot();
 
         //Sets grid background and dashed line color
         plot.setDomainGridlinePaint(Color.BLACK);
         plot.setRangeGridlinePaint(Color.BLACK);
         plot.setBackgroundPaint(Color.WHITE);
 
+        // Adds the plot marker
+        XYLineAndShapeRenderer dotRenderer = new XYLineAndShapeRenderer();
+
+
         //Line Colors
+        plot.getRenderer().setSeriesPaint(0,Color.black);
+        plot.getRenderer().setSeriesPaint(1,Color.green);
+        plot.getRenderer().setSeriesPaint(2,Color.blue);
+        plot.getRenderer().setSeriesPaint(3,Color.magenta);
+        plot.getRenderer().setSeriesPaint(4,Color.red);
 
-        plot.getRenderer().setSeriesPaint(0,Color.BLUE);
-        plot.getRenderer().setSeriesPaint(1,Color.BLACK);
+        //This builds the dashed lines
+        final BasicStroke dashedStroke = new BasicStroke(
+                2.0f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND,
+                1.0f, new float[] {6.0f, 6.0f}, 0.0f);
 
-        //Thicken plot lines
-        for(int i =0;i<plot.getSeriesCount();i++){
+        //set the lines that are dashed
+        plot.getRenderer().setSeriesStroke(1,dashedStroke);
+        plot.getRenderer().setSeriesStroke(2,dashedStroke);
+        plot.getRenderer().setSeriesStroke(3,dashedStroke);
+        plot.getRenderer().setSeriesStroke(4,dashedStroke);
 
-            plot.getRenderer().setSeriesStroke(i,new BasicStroke(2));
-        }
+
+        //Thicken plot line of the actual mudweight value
+        plot.getRenderer().setSeriesStroke(0,new BasicStroke(3));
+
 
         add( chartPanel );
 
 
     }
-
-    public ChartPanel MohrFailureGraphPanel(XYDataset dataset, double Sigma1, double Sigma2, String pressureType) {
+    public  ChartPanel FormationPressureGraphPanel(XYDataset dataset, mainWindow mw, String pressureType) {
         SpringLayout springLayout = new SpringLayout();
         setLayout(springLayout);
         String xAxisLabel = "";
         String yAxisLabel = "";
         if(pressureType == "psi"){
-            xAxisLabel = "σn (psi)";
-            yAxisLabel = "τ (psi)";
+            xAxisLabel = "Mudweight Pressure (psi)";
+            yAxisLabel = "Pore Pressure (psi)";
         }
         else if (pressureType == "Pa" || pressureType == "kPa"){
-            xAxisLabel = "σn (kPa)";
-            yAxisLabel = "τ (kPa)";
+            xAxisLabel = "Mudweight Pressure (kPa)";
+            yAxisLabel = "Pore Pressure (kPa)";
         }
 
-
-
         JFreeChart lineChart = ChartFactory.createXYLineChart(
-                "Mohr-Coulomb Failure Graph",      // chart title
+                "Pressure Regime Graph",      // chart title
                 xAxisLabel,                      // x axis label
                 yAxisLabel,            // y axis label
                 dataset,                  // data
@@ -141,6 +131,7 @@ public class MohrFailureGraph extends JPanel {
                 true,                     // tooltips
                 false                     // urls
         );
+
         chartPanel = new ChartPanel(lineChart);
         springLayout.putConstraint(SpringLayout.WEST, chartPanel, 150, SpringLayout.WEST, this);
         springLayout.putConstraint(SpringLayout.EAST, chartPanel, -90, SpringLayout.EAST, this); // centers the plot
@@ -160,39 +151,43 @@ public class MohrFailureGraph extends JPanel {
         legend.setMargin(5,5,10,5);
 
         //Setup chart UI
-        XYPlot plot = lineChart.getXYPlot();
-        XYItemRenderer renderer = plot.getRenderer();
-
-        NumberAxis domain = (NumberAxis) plot.getDomainAxis();
-        if(Sigma2 < 0){
-            domain.setRange(Sigma2,Sigma1);
-        }
-        else {
-            domain.setRange(0, Sigma1);
-        }
-
-        NumberAxis range = (NumberAxis) plot.getRangeAxis();
-        range.setRange(0,Sigma1);
-
+        XYPlot plot = (XYPlot) lineChart.getXYPlot();
 
         //Sets grid background and dashed line color
         plot.setDomainGridlinePaint(Color.BLACK);
         plot.setRangeGridlinePaint(Color.BLACK);
         plot.setBackgroundPaint(Color.WHITE);
 
+        // Adds the plot marker
+        XYLineAndShapeRenderer dotRenderer = new XYLineAndShapeRenderer();
+
+
         //Line Colors
+        plot.getRenderer().setSeriesPaint(0,Color.black);
+        plot.getRenderer().setSeriesPaint(1,Color.green);
+        plot.getRenderer().setSeriesPaint(2,Color.blue);
+        plot.getRenderer().setSeriesPaint(3,Color.MAGENTA);
+        plot.getRenderer().setSeriesPaint(4,Color.red);
 
-        plot.getRenderer().setSeriesPaint(0,Color.BLUE);
-        plot.getRenderer().setSeriesPaint(1,Color.BLACK);
+        //This builds the dashed lines
+        final BasicStroke dashedStroke = new BasicStroke(
+                2.0f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND,
+                1.0f, new float[] {6.0f, 6.0f}, 0.0f);
 
-        //Thicken plot lines
-        for(int i =0;i<plot.getSeriesCount();i++){
+        //set the lines that are dashed
+        plot.getRenderer().setSeriesStroke(1,dashedStroke);
+        plot.getRenderer().setSeriesStroke(2,dashedStroke);
+        plot.getRenderer().setSeriesStroke(3,dashedStroke);
+        plot.getRenderer().setSeriesStroke(4,dashedStroke);
 
-            plot.getRenderer().setSeriesStroke(i,new BasicStroke(2));
-        }
+
+
+        //Thicken plot line of the actual mudweight value
+        plot.getRenderer().setSeriesStroke(0,new BasicStroke(3));
 
         add( chartPanel );
 
         return chartPanel;
+
     }
 }

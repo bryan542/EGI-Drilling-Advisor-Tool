@@ -3,7 +3,6 @@ package Executable;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.xy.XYSeries;
 
-
 import java.util.Arrays;
 
 /**
@@ -18,17 +17,18 @@ public class FailureRatioSolutions extends DrillingEquations {
 
         double gradientIndex = -1;
         double sigmaHGradient = -1;
-        double SV = -1;
-        double SH = -1;
-        double Sh = -1;
+        double sigZ = -1;
+        double sigX = -1;
+        double sigY = -1;
+        double failureAngle = -1;
         double thoXY = -1;
         double thoXZ = -1;
         double thoYZ = -1;
         double DeltaP = -1;
         double sigmaR = -1;
-        double[] sigmaTheta;
-        double[] sigmaZ;
-        double[] thoThetaZ;
+        double sigmaTheta;
+        double sigmaZ;
+        double thoThetaZ;
         double gradientChange = 1/gradientUM;
         double incriment = .01;
 
@@ -39,6 +39,8 @@ public class FailureRatioSolutions extends DrillingEquations {
         double sigma2;
         double sigma3;
 
+        double criticalFailureAngle = -1;
+        double criticalFailurePressure = -1;
         double MohryValue = -1;
         double MohrxValue = -1;
         double FailureyValue = -1;
@@ -54,21 +56,27 @@ public class FailureRatioSolutions extends DrillingEquations {
         DefaultCategoryDataset shearDCD = new DefaultCategoryDataset();
         DefaultCategoryDataset tensileDCD = new DefaultCategoryDataset();
 
+        //total mudweight
+        double mudweightTotal = mudweight*depth;
+        //pore pressure
+        double porePressureCombination = porePressureGradient*depth;
+
         //Makes sure sigmaH cannot be less than sigmah and greater than sigmaV gradient. That wouldn't make sense.
-        double sigmahGradientRange = sigmahGradient/depth+porePressureGradient;
-        double sigmaVGradientRange = sigmaVGradient/depth+porePressureGradient;
-        double sigmaHGradientRange = sigmaHGradientInitial/depth + porePressureGradient;
+        double sigmahGradientRange = sigmahGradient/depth;
+        double sigmaVGradientRange = sigmaVGradient/depth;
+        double sigmaHGradientRange = sigmaHGradientInitial/depth;
         double initialRange = -1;
         double finalRange = -1;
-        // sets the amount of bars on the ratio graph. reduce or increase the number amount to change the amount reported on the graph
 
+        // sets the amount of bars on the ratio graph. reduce or increase the number amount to change the amount reported on the graph
+        //metric units
         if(gradientChange ==1){
 
             incrimentRange = (sigmaVGradientRange-sigmahGradientRange)/18;
             initialRange = sigmahGradientRange;
             finalRange = sigmaVGradientRange;
 
-            // sets a proper range if
+            // sets a proper range if strike-slip or reverse fault behavior gradients are input
             if (sigmaHGradientRange > sigmaVGradientRange && sigmaVGradientRange < sigmahGradientRange && sigmahGradientRange > sigmaHGradientRange){
 
                 incrimentRange = (sigmahGradientRange-sigmaVGradientRange)/18;
@@ -83,18 +91,22 @@ public class FailureRatioSolutions extends DrillingEquations {
                 finalRange = sigmaHGradientRange;
             }
             else if (sigmaHGradientRange > sigmaVGradientRange && sigmaVGradientRange > sigmahGradientRange && sigmahGradientRange < sigmaHGradientRange ){
-
+                //strike-slip gradient range
                 incrimentRange = (sigmaHGradientRange-sigmahGradientRange)/18;
                 initialRange = sigmahGradientRange;
                 finalRange = sigmaHGradientRange;
             }
         }
+        //SI units
         else{
-            incrimentRange = (sigmaVGradientRange-sigmahGradientRange)/10;
 
+            //normal fault gradient range
+            incrimentRange = (sigmaVGradientRange-sigmahGradientRange)/10;
             initialRange = sigmahGradientRange;
             finalRange = sigmaVGradientRange;
 
+
+            // sets a proper range if strike-slip or reverse fault behavior gradients are input
             if (sigmaHGradientRange > sigmaVGradientRange && sigmaVGradientRange < sigmahGradientRange && sigmahGradientRange > sigmaHGradientRange){
 
                 incrimentRange = (sigmahGradientRange-sigmaVGradientRange)/10;
@@ -109,7 +121,7 @@ public class FailureRatioSolutions extends DrillingEquations {
                 finalRange = sigmaHGradientRange;
             }
             else if (sigmaHGradientRange > sigmaVGradientRange && sigmaVGradientRange > sigmahGradientRange && sigmahGradientRange < sigmaHGradientRange ){
-
+                //strike-slip gradient range
                 incrimentRange = (sigmaHGradientRange-sigmahGradientRange)/18;
                 initialRange = sigmahGradientRange;
                 finalRange = sigmaHGradientRange;
@@ -119,36 +131,70 @@ public class FailureRatioSolutions extends DrillingEquations {
 
         for (double i = initialRange;i< finalRange;i += incrimentRange){
 
-
-
             gradientIndex = Math.round((i)*100);
             gradientIndex = gradientIndex/100;
 
 
             sigmaHGradient = DrillingEquations.SigmaH(depth,i, porePressureGradient);
-            SV = DrillingEquations.SV(sigmaVGradient,sigmaHGradient,sigmahGradient,gamma,alpha);
-            SH = DrillingEquations.SH(sigmaVGradient,sigmaHGradient,sigmahGradient,gamma,alpha);
-            Sh = DrillingEquations.Sh(sigmaVGradient,sigmaHGradient,sigmahGradient,gamma,alpha);
+            sigZ = DrillingEquations.sigZ(sigmaVGradient,sigmaHGradient,sigmahGradient,gamma,alpha);
+            sigX = DrillingEquations.sigX(sigmaVGradient,sigmaHGradient,sigmahGradient,gamma,alpha);
+            sigY = DrillingEquations.sigY(sigmaHGradient,sigmahGradient, alpha);
             deltaP = DrillingEquations.deltaP(depth,mudweight,porePressureGradient);
             thoXY = DrillingEquations.thoXY(sigmaHGradient,sigmahGradient,alpha,gamma);
             thoXZ = DrillingEquations.thoXZ(sigmaVGradient,sigmaHGradient,sigmahGradient,alpha,gamma);
             thoYZ = DrillingEquations.thoYZ(sigmaHGradient,sigmahGradient,alpha,gamma);
-            sigmaR = DrillingEquations.sigmaR(deltaP);
-            sigmaTheta = DrillingEquations.sigmaTheta(SH,Sh,thoXY,deltaP);
-            sigmaZ = DrillingEquations.sigmaZ(SV,poisson,Sh,SH,thoXY);
-            thoThetaZ = DrillingEquations.thoThetaZ(thoXZ,thoYZ);
+            sigmaR = DrillingEquations.sigmaR(depth*mudweight);
+            failureAngle = DrillingEquations.failureAngle(thoXY,sigX,sigY);
+            sigmaTheta = DrillingEquations.sigmaTheta(sigX,sigY,thoXY,failureAngle,depth*mudweight);
+            sigmaZ = DrillingEquations.sigmaZ(sigZ,poisson,sigY,sigX,thoXY,failureAngle);
+            thoThetaZ = DrillingEquations.thoThetaZ(thoXZ,thoYZ,failureAngle);
             sigma1 = DrillingEquations.sigma1(sigmaTheta,sigmaZ,thoThetaZ);
             sigma2 = DrillingEquations.sigma2(sigmaTheta,sigmaZ,thoThetaZ);
             sigma3 = sigmaR;
 
+            // if is the collapsed cast, else is the fracture case
+            if (mudweight>porePressureGradient){
+                double place1 = sigma1;
+                double place2 = sigma2;
+                double place3 = sigma3;
 
-            double compressiveStrengthIntact = rockPropertyGSISolver(sigma1,sigma2,sigma3,GSI,Lithology,D,verticalStress,"Compressive Strength Intact");
-            double compressiveStrength = rockPropertyGSISolver(sigma1,sigma2,sigma3,GSI,Lithology,D,verticalStress,"Compressive Strength");
-            double tensileStrength = -1*rockPropertyGSISolver(sigma1,sigma2,sigma3,GSI,Lithology,D,verticalStress,"Tensile Strength");
-            double cohesion = rockPropertyGSISolver(sigma1,sigma2,sigma3,GSI,Lithology,D,verticalStress,"Cohesion");
-            double  coeffFriction = rockPropertyGSISolver(sigma1,sigma2,sigma3,GSI,Lithology,D,verticalStress,"CoeffFriction");
-            double  shearStrength = rockPropertyGSISolver(sigma1,sigma2,sigma3,GSI,Lithology,D,verticalStress,"Shear Strength");
+                sigma1 =place1;
+                sigma2 =place2;
+                sigma3 =place3;
+            }
+            else{
 
+                double place1 = sigma1;
+                double place2 = sigma2;
+                double place3 = sigma3;
+
+                sigma1 =place3;
+                sigma2 =place2;
+                sigma3 =place1;
+
+            }
+
+            //the GSI calculator uses effective principal stresses
+            double[] sortedPrincipalStresses = {sigma1,sigma2,sigma3};
+            Arrays.sort(sortedPrincipalStresses);
+            double[] sortedEffectiveStresses = {sortedPrincipalStresses[0]-porePressureCombination,sortedPrincipalStresses[1]-porePressureCombination,sortedPrincipalStresses[2]-porePressureCombination};
+
+
+            double compressiveStrengthIntact = rockPropertyGSISolver(sortedEffectiveStresses[2],sortedEffectiveStresses[1],sortedEffectiveStresses[0],GSI,Lithology,D,verticalStress,"Compressive Strength Intact");
+            double compressiveStrength = rockPropertyGSISolver(sortedEffectiveStresses[2],sortedEffectiveStresses[1],sortedEffectiveStresses[0],GSI,Lithology,D,verticalStress,"Compressive Strength");
+            double tensileStrength = -1*rockPropertyGSISolver(sortedEffectiveStresses[2],sortedEffectiveStresses[1],sortedEffectiveStresses[0],GSI,Lithology,D,verticalStress,"Tensile Strength");
+            double cohesion = rockPropertyGSISolver(sortedEffectiveStresses[2],sortedEffectiveStresses[1],sortedEffectiveStresses[0],GSI,Lithology,D,verticalStress,"Cohesion");
+            double coeffFriction = rockPropertyGSISolver(sortedEffectiveStresses[2],sortedEffectiveStresses[1],sortedEffectiveStresses[0],GSI,Lithology,D,verticalStress,"CoeffFriction");
+            double shearStrength = rockPropertyGSISolver(sortedEffectiveStresses[2],sortedEffectiveStresses[1],sortedEffectiveStresses[0],GSI,Lithology,D,verticalStress,"Shear Strength");
+
+            // test
+            double failureTest = -1;
+            double tensileinitialtest = cohesion+(sortedEffectiveStresses[2]+sortedEffectiveStresses[0])/2*coeffFriction;
+            double tensileMaxTest = (sortedEffectiveStresses[2]-sortedEffectiveStresses[0])/2;
+            failureTest = tensileMaxTest/tensileinitialtest;
+            //Find the critical failure pressure
+
+            criticalFailurePressure = DrillingEquations.criticalFailurePressure(sigX,sigY,sigmaZ,thoXY,thoThetaZ,porePressureGradient*depth,tensileStrength,failureAngle,gamma);
 
             XYSeries cohesionLine = new XYSeries("Failure Envelope");
             XYSeries Sigma3MohrLine = new XYSeries("σ3 Mohr Circle");
@@ -156,12 +202,16 @@ public class FailureRatioSolutions extends DrillingEquations {
             double shearFailureRatio = -1;
             double tensileFailureRatio = -1;
 
-            int sigma1Int = (int) sigma1;
-            int sigma2Int = (int) sigma2;
-            int sigma3Int = (int) sigma3;
-
+            double[] principalArray = {sigma1-porePressureCombination,sigma2-porePressureCombination,sigma3-porePressureCombination};
+            Arrays.sort(principalArray);
+            int sigma1Int = (int) (principalArray[2]);
+            int sigma2Int = (int) (principalArray[1]);
+            int sigma3Int = (int) (principalArray[0]);
+            sigma1=principalArray[2];
+            sigma2=principalArray[1];
+            sigma3=principalArray[0];
             //Build the tensile failure ratio
-            tensileFailureRatio = sigma2/tensileStrength;
+            tensileFailureRatio = mudweightTotal/criticalFailurePressure;
             //build the failure line
             for(int j = 0; j <sigma1Int;j++){
 
@@ -172,11 +222,11 @@ public class FailureRatioSolutions extends DrillingEquations {
 
 
             // build the mohr circle
-            for (int j=sigma2Int;j<=sigma1Int;j++){
+            for (int j=sigma3Int;j<=sigma1Int;j++){
 
-                diameter = sigma1-sigma2;
+                diameter = sigma1-sigma3;
                 radius = diameter/2;
-                midpoint = radius+sigma2;
+                midpoint = radius+sigma3;
                 MohrxValue = (double) j;
                 MohryValue = Math.sqrt(Math.pow(radius,2)-Math.pow(MohrxValue-midpoint,2));
 

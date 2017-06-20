@@ -2,12 +2,16 @@ package Executable;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 import java.io.Reader;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.file.Paths;
 
 /**
  * Created by bryan on 10/11/2016.
@@ -70,11 +74,18 @@ public class DropdownMenu  {
         help.add(helpCenter);
         about.setPreferredSize(new Dimension(100,20));
 
+        //build hydraulic fracture selection
+        JMenu hydraulicAnalysis = new JMenu("Hydraulic Fracture Analysis");
+        JMenuItem hydraulicAnalysisLaunch = new JMenuItem("Launch Analysis");
+        hydraulicAnalysis.add(hydraulicAnalysisLaunch);
+
         //add menu's to menubar
         menubar.add(file);
         menubar.add(help);
         menubar.add(DomAnal);
+        menubar.add(hydraulicAnalysis);
 
+        //Launches the about JDialog
         about.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
@@ -84,7 +95,18 @@ public class DropdownMenu  {
             }
         });
 
+        //Launches Hydraulic Fracture Analysis Dialog
+        hydraulicAnalysisLaunch.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
 
+                HydraulicFractureAnalysisDialog HFA = new HydraulicFractureAnalysisDialog();
+                HFA.initialize();
+            }
+        });
+
+
+        //launches domAnal
         domAnalLaunch.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -111,17 +133,22 @@ public class DropdownMenu  {
             public void actionPerformed(ActionEvent e) {
 
                 //gets the bite filepath of the .chm file
-                InputStream inputStream = PDFCreator.class.getResourceAsStream("EGI User Manual.chm");
+                URL url = mainWindow.class.getResource("EGIHelpManual.chm");
 
-                //executes the .chm file
                 try {
-                    Runtime.getRuntime().exec("hh.exe "+inputStream);
-                } catch (IOException e1) {
+                    URI uri = url.toURI();
+                    File file = new File(uri);
+
+                    try {
+                        //Opens the .chm file
+                        Runtime.getRuntime().exec("hh.exe "+file);
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+                } catch (URISyntaxException e1) {
                     e1.printStackTrace();
                 }
             }
-
-
         });
 
         save.addActionListener(new ActionListener() {

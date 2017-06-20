@@ -1,0 +1,634 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<youngmodulus>
+  <modulus modulusvalue="7E6+">
+    <fluidsystem fluidvalue="Fluid System">
+      <slickwaterfluid slickvalue="SlickWater">0.8</slickwaterfluid>
+      <hybridfluid hybridvalue="Hybrid">0</hybridfluid>
+      <crosslinkedfluid linkedvalue="Cross-Linked">0</crosslinkedfluid>
+      <foamfluid foamvalue="Foam">0</foamfluid>
+    </fluidsystem>
+    <fluidvolume volumevalue="Fluid Volume">
+      <high highvalue="High">1</high>
+      <moderate modvalue="Moderate">0.5</moderate>
+      <low lowvalue="Low">0</low>
+    </fluidvolume>
+    <fluidloss lossvalue="Fluid Loss">
+      <high highvalue="High">1</high>
+      <moderate modvalue="Moderate">0</moderate>
+      <low lowvalue="Low">0</low>
+    </fluidloss>
+    <treatmentrate ratevalue="Treatment Rate">
+      <low lowvalue="Low">1</low>
+      <moderate modvalue="Moderate">0.5</moderate>
+      <high highvalue="High">0.5</high>
+    </treatmentrate>
+    <rampupstrategy rampvalue="Ramp Up Strategy">
+      <slow slowvalue="Slow">0</slow>
+      <moderate modvalue="Moderate">0.5</moderate>
+      <fast fastvalue="Fast">1</fast>
+    </rampupstrategy>
+    <fracturepressure fracpressurevalue="Fracturing Pressure">
+      <high highvalue="High">1</high>
+      <moderate modvalue="Moderate">0</moderate>
+      <low lowvalue="Low">0</low>
+    </fracturepressure>
+    <proppantconcentration propconcentractionvalue="Proppant Concentration">
+      <high highvalue="High">1</high>
+      <moderate modvalue="Moderate">1</moderate>
+      <low lowvalue="Low">0</low>
+    </proppantconcentration>
+    <proppantsize propsizevalue="Proppant Size">
+      <hundredfollowed2040 hundredfollowed2040value="100, 40/70 followed by 20/40">1</hundredfollowed2040>
+      <hybrid hybridvalue="Hybrid">0</hybrid>
+      <twenty40 twenty40value="20/40">0</twenty40>
+    </proppantsize>
+    <proppantdensity propdensityvalue="Proppant Density">
+      <low lowvalue="Low">1</low>
+      <moderate modvalue="Moderate">0.5</moderate>
+      <normal normalvalue="Normal">0</normal>
+    </proppantdensity>
+    <proppantvolume propvolumevalue="Proppant Volume">
+      <high highvalue="High">0.5</high>
+      <moderate modvalue="Moderate">0.8</moderate>
+      <low lowvalue="Low">1</low>
+    </proppantvolume>
+    <proppedsurfacearea propsurfaceareavalue="Propped Surface Area">
+      <high highvalue="High">0.5</high>
+      <moderate modvalue="Moderate">0</moderate>
+      <low lowvalue="Low">0</low>
+    </proppedsurfacearea>
+    <perforationclustersperstage perfclustervalue="Perforation Clusters Per Stage">
+      <fourormore fourormorevalue="4+">0.5</fourormore>
+      <three threevalue="3">0</three>
+      <two twovalue="3">0</two>
+    </perforationclustersperstage>
+    <fracturegeometry fracgeometryvalue="Fracture Geometry">
+      <complex complexvalue="Comples">1</complex>
+      <moderatetocomplex modtocomplexvalue="Moderate/Complex">0</moderatetocomplex>
+      <planar planarvalue="Planar">0</planar>
+      <planarorshearing planarorshearingvalue="Planar or Shearing">0</planarorshearing>
+    </fracturegeometry>
+    <propagationresistance propresistancevalue="Propagation Resistance and Process Zone">
+      <bigger biggervalue="Bigger">0.1</bigger>
+      <big bigvalue="Big">0</big>
+      <moderate modvalue="Moderate">0</moderate>
+      <small smallvalue="Small">0</small>
+    </propagationresistance>
+    <fractureheight fracheightvalue="Fracture Height">
+      <high highvalue="High">1</high>
+      <moderate modvalue="Moderate">0.5</moderate>
+      <implied impliedvalue="Implied">0</implied>
+    </fractureheight>
+    <fracturelength fraclengthvalue="Fracture Length">
+      <short shortvalue="Short">0</short>
+      <moderate modvalue="Moderate">0</moderate>
+      <long longvalue="Long">0</long>
+    </fracturelength>
+    <eur eurvalue="EUR">
+      <high highvalue="High">0</high>
+      <moderate modvalue="Moderate">0</moderate>
+      <low lowvalue="Low">0</low>
+    </eur>
+  </modulus>
+
+  <modulus modulusvalue="6E6-7E6">
+    <fluidsystem fluidvalue="Fluid System">
+      <slickwaterfluid slickvalue="SlickWater">0.8</slickwaterfluid>
+      <hybridfluid hybridvalue="Hybrid">0</hybridfluid>
+      <crosslinkedfluid linkedvalue="Cross-Linked">0</crosslinkedfluid>
+      <foamfluid foamvalue="Foam">0</foamfluid>
+    </fluidsystem>
+    <fluidvolume volumevalue="Fluid Volume">
+      <high highvalue="High">1</high>
+      <moderate modvalue="Moderate">0.5</moderate>
+      <low lowvalue="Low">0</low>
+    </fluidvolume>
+    <fluidloss lossvalue="Fluid Loss">
+      <high highvalue="High">1</high>
+      <moderate modvalue="Moderate">0.5</moderate>
+      <low lowvalue="Low">0</low>
+    </fluidloss>
+    <treatmentrate ratevalue="Treatment Rate">
+      <low lowvalue="Low">1</low>
+      <moderate modvalue="Moderate">0.6</moderate>
+      <high highvalue="High">0.5</high>
+    </treatmentrate>
+    <rampupstrategy rampvalue="Ramp Up Strategy">
+      <slow slowvalue="Slow">0</slow>
+      <moderate modvalue="Moderate">0.8</moderate>
+      <fast fastvalue="Fast">1</fast>
+    </rampupstrategy>
+    <fracturepressure fracpressurevalue="Fracturing Pressure">
+      <high highvalue="High">1</high>
+      <moderate modvalue="Moderate">0</moderate>
+      <low lowvalue="Low">0</low>
+    </fracturepressure>
+    <proppantconcentration propconcentractionvalue="Proppant Concentration">
+      <high highvalue="High">1</high>
+      <moderate modvalue="Moderate">1</moderate>
+      <low lowvalue="Low">0</low>
+    </proppantconcentration>
+    <proppantsize propsizevalue="Proppant Size">
+      <hundredfollowed2040 hundredfollowed2040value="100, 40/70 followed by 20/40">1</hundredfollowed2040>
+      <hybrid hybridvalue="Hybrid">0</hybrid>
+      <twenty40 twenty40value="20/40">0</twenty40>
+    </proppantsize>
+    <proppantdensity propdensityvalue="Proppant Density">
+      <low lowvalue="Low">1</low>
+      <moderate modvalue="Moderate">0.8</moderate>
+      <normal normalvalue="Normal">0</normal>
+    </proppantdensity>
+    <proppantvolume propvolumevalue="Proppant Volume">
+      <high highvalue="High">0.5</high>
+      <moderate modvalue="Moderate">0.8</moderate>
+      <low lowvalue="Low">1</low>
+    </proppantvolume>
+    <proppedsurfacearea propsurfaceareavalue="Propped Surface Area">
+      <high highvalue="High">0.5</high>
+      <moderate modvalue="Moderate">0</moderate>
+      <low lowvalue="Low">0</low>
+    </proppedsurfacearea>
+    <perforationclustersperstage perfclustervalue="Perforation Clusters Per Stage">
+      <fourormore fourormorevalue="4+">0.5</fourormore>
+      <three threevalue="3">0</three>
+      <two twovalue="3">0</two>
+    </perforationclustersperstage>
+    <fracturegeometry fracgeometryvalue="Fracture Geometry">
+      <complex complexvalue="Comples">1</complex>
+      <moderatetocomplex modtocomplexvalue="Moderate/Complex">1</moderatetocomplex>
+      <planar planarvalue="Planar">0</planar>
+      <planarorshearing planarorshearingvalue="Planar or Shearing">0</planarorshearing>
+    </fracturegeometry>
+    <propagationresistance propresistancevalue="Propagation Resistance and Process Zone">
+      <bigger biggervalue="Bigger">0</bigger>
+      <big bigvalue="Big">0.3</big>
+      <moderate modvalue="Moderate">0</moderate>
+      <small smallvalue="Small">0</small>
+    </propagationresistance>
+    <fractureheight fracheightvalue="Fracture Height">
+      <high highvalue="High">0.8</high>
+      <moderate modvalue="Moderate">0.5</moderate>
+      <implied impliedvalue="Implied">0</implied>
+    </fractureheight>
+    <fracturelength fraclengthvalue="Fracture Length">
+      <short shortvalue="Short">0</short>
+      <moderate modvalue="Moderate">0.2</moderate>
+      <long longvalue="Long">0</long>
+    </fracturelength>
+    <eur eurvalue="EUR">
+      <high highvalue="High">0</high>
+      <moderate modvalue="Moderate">0</moderate>
+      <low lowvalue="Low">0</low>
+    </eur>
+  </modulus>
+  <modulus modulusvalue="5E6-6E6">
+    <fluidsystem fluidvalue="Fluid System">
+      <slickwaterfluid slickvalue="SlickWater">0.7</slickwaterfluid>
+      <hybridfluid hybridvalue="Hybrid">0.5</hybridfluid>
+      <crosslinkedfluid linkedvalue="Cross-Linked">0</crosslinkedfluid>
+      <foamfluid foamvalue="Foam">0</foamfluid>
+    </fluidsystem>
+    <fluidvolume volumevalue="Fluid Volume">
+      <high highvalue="High">0</high>
+      <moderate modvalue="Moderate">0.75</moderate>
+      <low lowvalue="Low">0</low>
+    </fluidvolume>
+    <fluidloss lossvalue="Fluid Loss">
+      <high highvalue="High">0.8</high>
+      <moderate modvalue="Moderate">1</moderate>
+      <low lowvalue="Low">0.5</low>
+    </fluidloss>
+    <treatmentrate ratevalue="Treatment Rate">
+      <low lowvalue="Low">0.9</low>
+      <moderate modvalue="Moderate">0.7</moderate>
+      <high highvalue="High">0.6</high>
+    </treatmentrate>
+    <rampupstrategy rampvalue="Ramp Up Strategy">
+      <slow slowvalue="Slow">0.5</slow>
+      <moderate modvalue="Moderate">1</moderate>
+      <fast fastvalue="Fast">0.7</fast>
+    </rampupstrategy>
+    <fracturepressure fracpressurevalue="Fracturing Pressure">
+      <high highvalue="High">0</high>
+      <moderate modvalue="Moderate">0.75</moderate>
+      <low lowvalue="Low">0</low>
+    </fracturepressure>
+    <proppantconcentration propconcentractionvalue="Proppant Concentration">
+      <high highvalue="High">0.7</high>
+      <moderate modvalue="Moderate">0.8</moderate>
+      <low lowvalue="Low">0.5</low>
+    </proppantconcentration>
+    <proppantsize propsizevalue="Proppant Size">
+      <hundredfollowed2040 hundredfollowed2040value="100, 40/70 followed by 20/40">0</hundredfollowed2040>
+      <hybrid hybridvalue="Hybrid">0.75</hybrid>
+      <twenty40 twenty40value="20/40">0</twenty40>
+    </proppantsize>
+    <proppantdensity propdensityvalue="Proppant Density">
+      <low lowvalue="Low">0.5</low>
+      <moderate modvalue="Moderate">0.75</moderate>
+      <normal normalvalue="Normal">0</normal>
+    </proppantdensity>
+    <proppantvolume propvolumevalue="Proppant Volume">
+      <high highvalue="High">0.75</high>
+      <moderate modvalue="Moderate">0.75</moderate>
+      <low lowvalue="Low">7</low>
+    </proppantvolume>
+    <proppedsurfacearea propsurfaceareavalue="Propped Surface Area">
+      <high highvalue="High">0</high>
+      <moderate modvalue="Moderate">0.75</moderate>
+      <low lowvalue="Low">0</low>
+    </proppedsurfacearea>
+    <perforationclustersperstage perfclustervalue="Perforation Clusters Per Stage">
+      <fourormore fourormorevalue="4+">0</fourormore>
+      <three threevalue="3">0.5</three>
+      <two twovalue="3">0</two>
+    </perforationclustersperstage>
+    <fracturegeometry fracgeometryvalue="Fracture Geometry">
+      <complex complexvalue="Comples">0.75</complex>
+      <moderatetocomplex modtocomplexvalue="Moderate/Complex">0.75</moderatetocomplex>
+      <planar planarvalue="Planar">0.5</planar>
+      <planarorshearing planarorshearingvalue="Planar or Shearing">0.5</planarorshearing>
+    </fracturegeometry>
+    <propagationresistance propresistancevalue="Propagation Resistance and Process Zone">
+      <bigger biggervalue="Bigger">0</bigger>
+      <big bigvalue="Big">0</big>
+      <moderate modvalue="Moderate">0.5</moderate>
+      <small smallvalue="Small">0</small>
+    </propagationresistance>
+    <fractureheight fracheightvalue="Fracture Height">
+      <high highvalue="High">0.7</high>
+      <moderate modvalue="Moderate">0.8</moderate>
+      <implied impliedvalue="Implied">0</implied>
+    </fractureheight>
+    <fracturelength fraclengthvalue="Fracture Length">
+      <short shortvalue="Short">0.5</short>
+      <moderate modvalue="Moderate">0.4</moderate>
+      <long longvalue="Long">0</long>
+    </fracturelength>
+    <eur eurvalue="EUR">
+      <high highvalue="High">0</high>
+      <moderate modvalue="Moderate">0</moderate>
+      <low lowvalue="Low">0</low>
+    </eur>
+  </modulus>
+  <modulus modulusvalue="4E6-5E6">
+    <fluidsystem fluidvalue="Fluid System">
+      <slickwaterfluid slickvalue="SlickWater">0.5</slickwaterfluid>
+      <hybridfluid hybridvalue="Hybrid">0.6</hybridfluid>
+      <crosslinkedfluid linkedvalue="Cross-Linked">0.5</crosslinkedfluid>
+      <foamfluid foamvalue="Foam">0.5</foamfluid>
+    </fluidsystem>
+    <fluidvolume volumevalue="Fluid Volume">
+      <high highvalue="High">0</high>
+      <moderate modvalue="Moderate">0.75</moderate>
+      <low lowvalue="Low">0</low>
+    </fluidvolume>
+    <fluidloss lossvalue="Fluid Loss">
+      <high highvalue="High">0.7</high>
+      <moderate modvalue="Moderate">1</moderate>
+      <low lowvalue="Low">0.8</low>
+    </fluidloss>
+    <treatmentrate ratevalue="Treatment Rate">
+      <low lowvalue="Low">0.7</low>
+      <moderate modvalue="Moderate">0.8</moderate>
+      <high highvalue="High">0.7</high>
+    </treatmentrate>
+    <rampupstrategy rampvalue="Ramp Up Strategy">
+      <slow slowvalue="Slow">0.8</slow>
+      <moderate modvalue="Moderate">0.9</moderate>
+      <fast fastvalue="Fast">0.5</fast>
+    </rampupstrategy>
+    <fracturepressure fracpressurevalue="Fracturing Pressure">
+      <high highvalue="High">0</high>
+      <moderate modvalue="Moderate">0.75</moderate>
+      <low lowvalue="Low">0</low>
+    </fracturepressure>
+    <proppantconcentration propconcentractionvalue="Proppant Concentration">
+      <high highvalue="High">0.5</high>
+      <moderate modvalue="Moderate">0.75</moderate>
+      <low lowvalue="Low">0.75</low>
+    </proppantconcentration>
+    <proppantsize propsizevalue="Proppant Size">
+      <hundredfollowed2040 hundredfollowed2040value="100, 40/70 followed by 20/40">0</hundredfollowed2040>
+      <hybrid hybridvalue="Hybrid">0.5</hybrid>
+      <twenty40 twenty40value="20/40">0</twenty40>
+    </proppantsize>
+    <proppantdensity propdensityvalue="Proppant Density">
+      <low lowvalue="Low">0</low>
+      <moderate modvalue="Moderate">0.75</moderate>
+      <normal normalvalue="Normal">0</normal>
+    </proppantdensity>
+    <proppantvolume propvolumevalue="Proppant Volume">
+      <high highvalue="High">0.75</high>
+      <moderate modvalue="Moderate">0.5</moderate>
+      <low lowvalue="Low">0.7</low>
+    </proppantvolume>
+    <proppedsurfacearea propsurfaceareavalue="Propped Surface Area">
+      <high highvalue="High">0</high>
+      <moderate modvalue="Moderate">0.5</moderate>
+      <low lowvalue="Low">0</low>
+    </proppedsurfacearea>
+    <perforationclustersperstage perfclustervalue="Perforation Clusters Per Stage">
+      <fourormore fourormorevalue="4+">0</fourormore>
+      <three threevalue="3">0.5</three>
+      <two twovalue="3">0</two>
+    </perforationclustersperstage>
+    <fracturegeometry fracgeometryvalue="Fracture Geometry">
+      <complex complexvalue="Comples">0.5</complex>
+      <moderatetocomplex modtocomplexvalue="Moderate/Complex">0.75</moderatetocomplex>
+      <planar planarvalue="Planar">0.75</planar>
+      <planarorshearing planarorshearingvalue="Planar or Shearing">0.5</planarorshearing>
+    </fracturegeometry>
+    <propagationresistance propresistancevalue="Propagation Resistance and Process Zone">
+      <bigger biggervalue="Bigger">0</bigger>
+      <big bigvalue="Big">0</big>
+      <moderate modvalue="Moderate">0.6</moderate>
+      <small smallvalue="Small">0</small>
+    </propagationresistance>
+    <fractureheight fracheightvalue="Fracture Height">
+      <high highvalue="High">0.5</high>
+      <moderate modvalue="Moderate">1</moderate>
+      <implied impliedvalue="Implied">0</implied>
+    </fractureheight>
+    <fracturelength fraclengthvalue="Fracture Length">
+      <short shortvalue="Short">0.7</short>
+      <moderate modvalue="Moderate">0.5</moderate>
+      <long longvalue="Long">0</long>
+    </fracturelength>
+    <eur eurvalue="EUR">
+      <high highvalue="High">0</high>
+      <moderate modvalue="Moderate">0</moderate>
+      <low lowvalue="Low">0</low>
+    </eur>
+  </modulus>
+  <modulus modulusvalue="3E6-4E6">
+    <fluidsystem fluidvalue="Fluid System">
+      <slickwaterfluid slickvalue="SlickWater">0.4</slickwaterfluid>
+      <hybridfluid hybridvalue="Hybrid">0.7</hybridfluid>
+      <crosslinkedfluid linkedvalue="Cross-Linked">0.7</crosslinkedfluid>
+      <foamfluid foamvalue="Foam">0.7</foamfluid>
+    </fluidsystem>
+    <fluidvolume volumevalue="Fluid Volume">
+      <high highvalue="High">0</high>
+      <moderate modvalue="Moderate">1</moderate>
+      <low lowvalue="Low">1</low>
+    </fluidvolume>
+    <fluidloss lossvalue="Fluid Loss">
+      <high highvalue="High">0.5</high>
+      <moderate modvalue="Moderate">0.5</moderate>
+      <low lowvalue="Low">1</low>
+    </fluidloss>
+    <treatmentrate ratevalue="Treatment Rate">
+      <low lowvalue="Low">0.5</low>
+      <moderate modvalue="Moderate">0.7</moderate>
+      <high highvalue="High">0.8</high>
+    </treatmentrate>
+    <rampupstrategy rampvalue="Ramp Up Strategy">
+      <slow slowvalue="Slow">0.9</slow>
+      <moderate modvalue="Moderate">0.7</moderate>
+      <fast fastvalue="Fast">0.5</fast>
+    </rampupstrategy>
+    <fracturepressure fracpressurevalue="Fracturing Pressure">
+      <high highvalue="High">0</high>
+      <moderate modvalue="Moderate">0</moderate>
+      <low lowvalue="Low">0.5</low>
+    </fracturepressure>
+    <proppantconcentration propconcentractionvalue="Proppant Concentration">
+      <high highvalue="High">0</high>
+      <moderate modvalue="Moderate">0.5</moderate>
+      <low lowvalue="Low">0.8</low>
+    </proppantconcentration>
+    <proppantsize propsizevalue="Proppant Size">
+      <hundredfollowed2040 hundredfollowed2040value="100, 40/70 followed by 20/40">0</hundredfollowed2040>
+      <hybrid hybridvalue="Hybrid">0</hybrid>
+      <twenty40 twenty40value="20/40">0.75</twenty40>
+    </proppantsize>
+    <proppantdensity propdensityvalue="Proppant Density">
+      <low lowvalue="Low">0</low>
+      <moderate modvalue="Moderate">0.5</moderate>
+      <normal normalvalue="Normal">0.75</normal>
+    </proppantdensity>
+    <proppantvolume propvolumevalue="Proppant Volume">
+      <high highvalue="High">0.9</high>
+      <moderate modvalue="Moderate">0</moderate>
+      <low lowvalue="Low">0.5</low>
+    </proppantvolume>
+    <proppedsurfacearea propsurfaceareavalue="Propped Surface Area">
+      <high highvalue="High">0</high>
+      <moderate modvalue="Moderate">0</moderate>
+      <low lowvalue="Low">0.5</low>
+    </proppedsurfacearea>
+    <perforationclustersperstage perfclustervalue="Perforation Clusters Per Stage">
+      <fourormore fourormorevalue="4+">0</fourormore>
+      <three threevalue="3">0</three>
+      <two twovalue="3">0.5</two>
+    </perforationclustersperstage>
+    <fracturegeometry fracgeometryvalue="Fracture Geometry">
+      <complex complexvalue="Comples">0</complex>
+      <moderatetocomplex modtocomplexvalue="Moderate/Complex">0.5</moderatetocomplex>
+      <planar planarvalue="Planar">1</planar>
+      <planarorshearing planarorshearingvalue="Planar or Shearing">0.9</planarorshearing>
+    </fracturegeometry>
+    <propagationresistance propresistancevalue="Propagation Resistance and Process Zone">
+      <bigger biggervalue="Bigger">0</bigger>
+      <big bigvalue="Big">0</big>
+      <moderate modvalue="Moderate">0</moderate>
+      <small smallvalue="Small">0.7</small>
+    </propagationresistance>
+    <fractureheight fracheightvalue="Fracture Height">
+      <high highvalue="High">0.4</high>
+      <moderate modvalue="Moderate">0.8</moderate>
+      <implied impliedvalue="Implied">0.4</implied>
+    </fractureheight>
+    <fracturelength fraclengthvalue="Fracture Length">
+      <short shortvalue="Short">0.8</short>
+      <moderate modvalue="Moderate">0</moderate>
+      <long longvalue="Long">0.6</long>
+    </fracturelength>
+    <eur eurvalue="EUR">
+      <high highvalue="High">0</high>
+      <moderate modvalue="Moderate">0</moderate>
+      <low lowvalue="Low">0</low>
+    </eur>
+  </modulus>
+  <modulus modulusvalue="2E6-3E6">
+    <fluidsystem fluidvalue="Fluid System">
+      <slickwaterfluid slickvalue="SlickWater">0.2</slickwaterfluid>
+      <hybridfluid hybridvalue="Hybrid">0.9</hybridfluid>
+      <crosslinkedfluid linkedvalue="Cross-Linked">0.9</crosslinkedfluid>
+      <foamfluid foamvalue="Foam">0.9</foamfluid>
+    </fluidsystem>
+    <fluidvolume volumevalue="Fluid Volume">
+      <high highvalue="High">0</high>
+      <moderate modvalue="Moderate">1</moderate>
+      <low lowvalue="Low">1</low>
+    </fluidvolume>
+    <fluidloss lossvalue="Fluid Loss">
+      <high highvalue="High">0</high>
+      <moderate modvalue="Moderate">0</moderate>
+      <low lowvalue="Low">1</low>
+    </fluidloss>
+    <treatmentrate ratevalue="Treatment Rate">
+      <low lowvalue="Low">0</low>
+      <moderate modvalue="Moderate">0.5</moderate>
+      <high highvalue="High">1</high>
+    </treatmentrate>
+    <rampupstrategy rampvalue="Ramp Up Strategy">
+      <slow slowvalue="Slow">1</slow>
+      <moderate modvalue="Moderate">0.5</moderate>
+      <fast fastvalue="Fast">0.5</fast>
+    </rampupstrategy>
+    <fracturepressure fracpressurevalue="Fracturing Pressure">
+      <high highvalue="High">0</high>
+      <moderate modvalue="Moderate">0</moderate>
+      <low lowvalue="Low">0.5</low>
+    </fracturepressure>
+    <proppantconcentration propconcentractionvalue="Proppant Concentration">
+      <high highvalue="High">0</high>
+      <moderate modvalue="Moderate">0</moderate>
+      <low lowvalue="Low">0.9</low>
+    </proppantconcentration>
+    <proppantsize propsizevalue="Proppant Size">
+      <hundredfollowed2040 hundredfollowed2040value="100, 40/70 followed by 20/40">0</hundredfollowed2040>
+      <hybrid hybridvalue="Hybrid">0</hybrid>
+      <twenty40 twenty40value="20/40">0.75</twenty40>
+    </proppantsize>
+    <proppantdensity propdensityvalue="Proppant Density">
+      <low lowvalue="Low">0</low>
+      <moderate modvalue="Moderate">0</moderate>
+      <normal normalvalue="Normal">0.75</normal>
+    </proppantdensity>
+    <proppantvolume propvolumevalue="Proppant Volume">
+      <high highvalue="High">1</high>
+      <moderate modvalue="Moderate">0</moderate>
+      <low lowvalue="Low">0.5</low>
+    </proppantvolume>
+    <proppedsurfacearea propsurfaceareavalue="Propped Surface Area">
+      <high highvalue="High">0</high>
+      <moderate modvalue="Moderate">0</moderate>
+      <low lowvalue="Low">0.5</low>
+    </proppedsurfacearea>
+    <perforationclustersperstage perfclustervalue="Perforation Clusters Per Stage">
+      <fourormore fourormorevalue="4+">0</fourormore>
+      <three threevalue="3">0</three>
+      <two twovalue="3">0.5</two>
+    </perforationclustersperstage>
+    <fracturegeometry fracgeometryvalue="Fracture Geometry">
+      <complex complexvalue="Comples">0</complex>
+      <moderatetocomplex modtocomplexvalue="Moderate/Complex">0</moderatetocomplex>
+      <planar planarvalue="Planar">1</planar>
+      <planarorshearing planarorshearingvalue="Planar or Shearing">0.9</planarorshearing>
+    </fracturegeometry>
+    <propagationresistance propresistancevalue="Propagation Resistance and Process Zone">
+      <bigger biggervalue="Bigger">0</bigger>
+      <big bigvalue="Big">0</big>
+      <moderate modvalue="Moderate">0</moderate>
+      <small smallvalue="Small">0.8</small>
+    </propagationresistance>
+    <fractureheight fracheightvalue="Fracture Height">
+      <high highvalue="High">0.2</high>
+      <moderate modvalue="Moderate">0.5</moderate>
+      <implied impliedvalue="Implied">0.2</implied>
+    </fractureheight>
+    <fracturelength fraclengthvalue="Fracture Length">
+      <short shortvalue="Short">0.9</short>
+      <moderate modvalue="Moderate">0</moderate>
+      <long longvalue="Long">0.8</long>
+    </fracturelength>
+    <eur eurvalue="EUR">
+      <high highvalue="High">0</high>
+      <moderate modvalue="Moderate">0</moderate>
+      <low lowvalue="Low">0</low>
+    </eur>
+  </modulus>
+  <modulus modulusvalue="1E6-2E6">
+    <fluidsystem fluidvalue="Fluid System">
+      <slickwaterfluid slickvalue="SlickWater">0.2</slickwaterfluid>
+      <hybridfluid hybridvalue="Hybrid">0.9</hybridfluid>
+      <crosslinkedfluid linkedvalue="Cross-Linked">1</crosslinkedfluid>
+      <foamfluid foamvalue="Foam">1</foamfluid>
+    </fluidsystem>
+    <fluidvolume volumevalue="Fluid Volume">
+      <high highvalue="High">0</high>
+      <moderate modvalue="Moderate">1</moderate>
+      <low lowvalue="Low">1</low>
+    </fluidvolume>
+    <fluidloss lossvalue="Fluid Loss">
+      <high highvalue="High">0</high>
+      <moderate modvalue="Moderate">0</moderate>
+      <low lowvalue="Low">1</low>
+    </fluidloss>
+    <treatmentrate ratevalue="Treatment Rate">
+      <low lowvalue="Low">0</low>
+      <moderate modvalue="Moderate">0.5</moderate>
+      <high highvalue="High">1</high>
+    </treatmentrate>
+    <rampupstrategy rampvalue="Ramp Up Strategy">
+      <slow slowvalue="Slow">1</slow>
+      <moderate modvalue="Moderate">0.5</moderate>
+      <fast fastvalue="Fast">0.5</fast>
+    </rampupstrategy>
+    <fracturepressure fracpressurevalue="Fracturing Pressure">
+      <high highvalue="High">0</high>
+      <moderate modvalue="Moderate">0</moderate>
+      <low lowvalue="Low">0.5</low>
+    </fracturepressure>
+    <proppantconcentration propconcentractionvalue="Proppant Concentration">
+      <high highvalue="High">0</high>
+      <moderate modvalue="Moderate">0</moderate>
+      <low lowvalue="Low">1</low>
+    </proppantconcentration>
+    <proppantsize propsizevalue="Proppant Size">
+      <hundredfollowed2040 hundredfollowed2040value="100, 40/70 followed by 20/40">0</hundredfollowed2040>
+      <hybrid hybridvalue="Hybrid">0</hybrid>
+      <twenty40 twenty40value="20/40">1</twenty40>
+    </proppantsize>
+    <proppantdensity propdensityvalue="Proppant Density">
+      <low lowvalue="Low">0</low>
+      <moderate modvalue="Moderate">0</moderate>
+      <normal normalvalue="Normal">0.75</normal>
+    </proppantdensity>
+    <proppantvolume propvolumevalue="Proppant Volume">
+      <high highvalue="High">1</high>
+      <moderate modvalue="Moderate">0</moderate>
+      <low lowvalue="Low">0.5</low>
+    </proppantvolume>
+    <proppedsurfacearea propsurfaceareavalue="Propped Surface Area">
+      <high highvalue="High">0</high>
+      <moderate modvalue="Moderate">0</moderate>
+      <low lowvalue="Low">0.5</low>
+    </proppedsurfacearea>
+    <perforationclustersperstage perfclustervalue="Perforation Clusters Per Stage">
+      <fourormore fourormorevalue="4+">0</fourormore>
+      <three threevalue="3">0</three>
+      <two twovalue="" value="3">0.5</two>
+    </perforationclustersperstage>
+    <fracturegeometry fracgeometryvalue="Fracture Geometry">
+      <complex complexvalue="Comples">0</complex>
+      <moderatetocomplex modtocomplexvalue="Moderate/Complex">0</moderatetocomplex>
+      <planar planarvalue="Planar">1</planar>
+      <planarorshearing planarorshearingvalue="Planar or Shearing">1</planarorshearing>
+    </fracturegeometry>
+    <propagationresistance propresistancevalue="Propagation Resistance and Process Zone">
+      <bigger biggervalue="Bigger">0</bigger>
+      <big bigvalue="Big">0</big>
+      <moderate modvalue="Moderate">0</moderate>
+      <small smallvalue="Small">1</small>
+    </propagationresistance>
+    <fractureheight fracheightvalue="Fracture Height">
+      <high highvalue="High">0</high>
+      <moderate modvalue="Moderate">0.5</moderate>
+      <implied impliedvalue="Implied">0</implied>
+    </fractureheight>
+    <fracturelength fraclengthvalue="Fracture Length">
+      <short shortvalue="Short">1</short>
+      <moderate modvalue="Moderate">0</moderate>
+      <long longvalue="Long">1</long>
+    </fracturelength>
+    <eur eurvalue="EUR">
+      <high highvalue="High">0</high>
+      <moderate modvalue="Moderate">0</moderate>
+      <low lowvalue="Low">0</low>
+    </eur>
+  </modulus>
+</youngmodulus>

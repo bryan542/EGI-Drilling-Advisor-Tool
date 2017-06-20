@@ -12,13 +12,16 @@ public class MohrDataset {
 
     public XYSeriesCollection mohrDatasetBuild(double sigma1,double sigma2, double sigma3,double cohesionInitial, double coeffFrictionInput, mainWindow mw){
 
-        double[] stressesMaxMin = {sigma1,sigma2,sigma3};
-        Arrays.sort(stressesMaxMin);
-        int Sigma1int = (int) sigma1;
-        int Sigma2int = (int) sigma2;
-        int Sigma3int = (int) sigma3;
+        double porePressureCombination = mw.getPorePressureCombinationFinal();
+        double[] stressesMaxMinEffective = {sigma1-porePressureCombination,sigma2-porePressureCombination,sigma3-porePressureCombination};
+        Arrays.sort(stressesMaxMinEffective);
 
-
+        double sigma1mohr = stressesMaxMinEffective[2];
+        double sigma2mohr = stressesMaxMinEffective[1];
+        double sigma3mohr = stressesMaxMinEffective[0];
+        int Sigma1int = (int) stressesMaxMinEffective[2];
+        int Sigma2int = (int) stressesMaxMinEffective[1];
+        int Sigma3int = (int) stressesMaxMinEffective[0];
 
         double MohryValue = -1;
         double MohrxValue = -1;
@@ -39,9 +42,9 @@ public class MohrDataset {
         final XYSeries CohesionLine = new XYSeries("Failure Envelope");
 
         // makes sure the failure line is within the bounds of the failure circle
-        if(Sigma2int < loopRange){
+        if(Sigma3int < loopRange){
 
-            loopRange = Sigma2int;
+            loopRange = Sigma3int;
         }
 
         //Finding the failure criterion line
@@ -53,11 +56,11 @@ public class MohrDataset {
 
 
         final XYSeries Sigma3MohrLine = new XYSeries("σ3 Mohr Circle");
-        for (int i=Sigma2int;i<=Sigma1int;i++){
+        for (int i=Sigma3int;i<=Sigma1int;i++){
 
-            diameter = sigma1-sigma2;
+            diameter = sigma1mohr-sigma3mohr;
             radius = diameter/2;
-            midpoint = radius+sigma2;
+            midpoint = radius+sigma3mohr;
             MohrxValue = (double) i;
             MohryValue = Math.sqrt(Math.pow(radius,2)-Math.pow(MohrxValue-midpoint,2));
             if (Double.isNaN(MohryValue)){

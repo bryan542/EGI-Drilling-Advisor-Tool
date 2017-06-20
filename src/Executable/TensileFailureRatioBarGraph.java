@@ -33,7 +33,7 @@ public class TensileFailureRatioBarGraph extends JPanel {
             xAxisLabel = "Sigma H Max (psi/ft)";
         }
         else if (gradientType == "Pa/m" || gradientType == "kPa/m"){
-            xAxisLabel = "SH Max (kPa/m)";
+            xAxisLabel = "sigX Max (kPa/m)";
         }
 
         JFreeChart barChart = ChartFactory.createBarChart(
@@ -93,7 +93,7 @@ public class TensileFailureRatioBarGraph extends JPanel {
             xAxisLabel = "Sigma H Max (psi/ft)";
         }
         else if (gradientType == "Pa/m" || gradientType == "kPa/m"){
-            xAxisLabel = "SH Max (kPa/m)";
+            xAxisLabel = "sigX Max (kPa/m)";
         }
 
         JFreeChart barChart = ChartFactory.createBarChart(

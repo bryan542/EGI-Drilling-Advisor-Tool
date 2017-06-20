@@ -41,12 +41,12 @@ public class StressPolygonGraph extends JPanel {
         String xAxisLabel = "";
         String yAxisLabel = "";
         if(pressureType == "psi"){
-            xAxisLabel = "Sh Min (psi)";
-            yAxisLabel = "SH Max (psi)";
+            xAxisLabel = "sigY Min (psi)";
+            yAxisLabel = "sigX Max (psi)";
         }
         else if (pressureType == "Pa" || pressureType == "kPa"){
-            xAxisLabel = "Sh Min (kPa)";
-            yAxisLabel = "SH Max (kPa)";
+            xAxisLabel = "sigY Min (kPa)";
+            yAxisLabel = "sigX Max (kPa)";
         }
 
         JFreeChart lineChart = ChartFactory.createXYLineChart(
@@ -137,12 +137,12 @@ public class StressPolygonGraph extends JPanel {
         String xAxisLabel = "";
         String yAxisLabel = "";
         if(pressureType == "psi"){
-            xAxisLabel = "Sh Min (psi)";
-            yAxisLabel = "SH Max (psi)";
+            xAxisLabel = "sigY Min (psi)";
+            yAxisLabel = "sigX Max (psi)";
         }
         else if (pressureType == "Pa" || pressureType == "kPa"){
-            xAxisLabel = "Sh Min (kPa)";
-            yAxisLabel = "SH Max (kPa)";
+            xAxisLabel = "sigY Min (kPa)";
+            yAxisLabel = "sigX Max (kPa)";
         }
 
         JFreeChart lineChart = ChartFactory.createXYLineChart(

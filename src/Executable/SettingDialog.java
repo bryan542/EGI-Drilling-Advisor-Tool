@@ -176,6 +176,7 @@ public class SettingDialog extends JDialog{
             String inputStressGradients = "Stress Gradients ";
             String UCSIntact = "UCS Intact ";
             String UCSDamaged = "UCS Damaged ";
+            String criticalFail = "Critical Failure Pressure ";
 
 
             @Override
@@ -211,6 +212,7 @@ public class SettingDialog extends JDialog{
                         mw.setPrincipalSigma1Label(principal1+pressure);
                         mw.setPrincipalSigma2Label(principal2+pressure);
                         mw.setPrincipalSigma3Label(principal3+pressure);
+                        mw.setCriticalFailurePressureLabel(criticalFail+pressure);
                         mw.setInputStressGradientLabel(inputStressGradients+gradient);
                         mw.setDensityUM(densityChange);
                         mw.setPressureUM(pressureChange);
@@ -248,6 +250,7 @@ public class SettingDialog extends JDialog{
                         mw.setPrincipalSigma1Label(principal1+pressure);
                         mw.setPrincipalSigma2Label(principal2+pressure);
                         mw.setPrincipalSigma3Label(principal3+pressure);
+                        mw.setCriticalFailurePressureLabel(criticalFail+pressure);
                         mw.setInputStressGradientLabel(inputStressGradients+gradient);
                         mw.setDensityUM(densityChange);
                         mw.setPressureUM(pressureChange);
@@ -310,6 +313,7 @@ public class SettingDialog extends JDialog{
                         mw.setPrincipalSigma1Label(principal1+pressure);
                         mw.setPrincipalSigma2Label(principal2+pressure);
                         mw.setPrincipalSigma3Label(principal3+pressure);
+                        mw.setCriticalFailurePressureLabel(criticalFail+pressure);
                         mw.setPressureUM(pressureChange);
                         mw.setProjectCustomPressureType("psi");
 
@@ -335,6 +339,7 @@ public class SettingDialog extends JDialog{
                         mw.setPrincipalSigma1Label(principal1+pressure);
                         mw.setPrincipalSigma2Label(principal2+pressure);
                         mw.setPrincipalSigma3Label(principal3+pressure);
+                        mw.setCriticalFailurePressureLabel(criticalFail+pressure);
                         mw.setPressureUM(pressureChange);
                         mw.setProjectCustomPressureType("kPa");
 

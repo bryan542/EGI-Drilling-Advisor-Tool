@@ -59,6 +59,21 @@ public class mainWindow extends JFrame {
     private JTextField beddingPlaneDipTextField;
     private JTextField faultConductivityDipTextField;
     private JTextField jointDipTextField;
+    private JTextField principal1TextFieldResult;
+    private JTextField principal2TextFieldResult;
+    private JTextField principal3TextFieldResult;
+    private JTextField porePressureTextFieldResult;
+    private JTextField tensileStrengthTextFieldResult;
+    private JTextField sigmaVTextFieldResult;
+    private JTextField sigmaMaxTextFieldResult;
+    private JTextField sigmaMinTextFieldResult;
+    private JTextField cohesionOutputTextField;
+    private JTextField coeffFrictionText;
+    private JTextField rockDamageTextField;
+    private JTextField criticalFailurePressureTextField;
+    private JTextField UCSIntactOutputTextField;
+    private JTextField UCSDamagedOutputTextField;
+    private JTextField GSITextField;
 
     private JLabel AlphaImageLabel;
     private JLabel PorePressureResult;
@@ -112,6 +127,10 @@ public class mainWindow extends JFrame {
     private JLabel cohesionTitleLabel;
     private JLabel coeffFrictionLabel;
     private JLabel rockDamageLabel;
+    private JLabel UCSIntactOutputLabel;
+    private JLabel UCSDamagedOutputLabel;
+    private JLabel GSILabel;
+    private JLabel criticalFailurePressureLabel;
 
 
     private JTextPane ratingTextPane;
@@ -123,6 +142,7 @@ public class mainWindow extends JFrame {
     private JButton stressPolygonButton;
     private JButton mohrCoulombFailureButton;
     private JButton rockDamageButton;
+    private JButton multivariateFailureRatioButton;
 
     private JRadioButton stressAutomaticRadioButton;
     private JRadioButton stressManualInputRadioButton;
@@ -130,35 +150,15 @@ public class mainWindow extends JFrame {
     private JRadioButton tensileManualRadioButton;
     private JRadioButton cohesionAutomaticButton;
     private JRadioButton cohesionManualButton;
+    private JRadioButton coefficientManualRadioButton;
+    private JRadioButton coefficientAutomaticRadioButton;
 
-    private JTextField principal1TextFieldResult;
-    private JTextField principal2TextFieldResult;
-    private JTextField principal3TextFieldResult;
-    private JTextField porePressureTextFieldResult;
-    private JTextField tensileStrengthTextFieldResult;
-    private JTextField sigmaVTextFieldResult;
-    private JTextField sigmaMaxTextFieldResult;
-    private JTextField sigmaMinTextFieldResult;
-    private JTextField cohesionOutputTextField;
-    private JTextField coeffFrictionText;
-    private JTextField rockDamageTextField;
 
     private JPanel secondInputsPanel;
     private JPanel unconformityJPanel;
     private JPanel GSILocationSetter;
 
     private JScrollPane scrollPane;
-
-
-    private JRadioButton coefficientManualRadioButton;
-    private JRadioButton coefficientAutomaticRadioButton;
-    private JTextField UCSIntactOutputTextField;
-    private JTextField UCSDamagedOutputTextField;
-    private JLabel UCSIntactOutputLabel;
-    private JLabel UCSDamagedOutputLabel;
-    private JTextField GSITextField;
-    private JLabel GSILabel;
-    private JButton multivariateFailureRatioButton;
 
 
     private static String projectSettingButton = "General";
@@ -316,6 +316,10 @@ public class mainWindow extends JFrame {
 
     public JLabel getJointLabel() {
         return jointLabel;
+    }
+
+    public JTextField getCriticalFailurePressureTextField() {
+        return criticalFailurePressureTextField;
     }
 
     public JTextField getAlpha1Text() {
@@ -518,6 +522,7 @@ public class mainWindow extends JFrame {
         GSITextField.setText(text);
     }
 
+
     public void setDepthText(String text) {
         depthText.setText(text);
     }
@@ -688,6 +693,11 @@ public class mainWindow extends JFrame {
         this.principalSigma2Label.setText(text);
     }
 
+
+    public void setCriticalFailurePressureLabel(String text) {
+        this.criticalFailurePressureLabel.setText(text);
+    }
+
     public void setPrincipalSigma3Label(String text) {
         this.principalSigma3Label.setText(text);
     }
@@ -762,6 +772,7 @@ public class mainWindow extends JFrame {
     double coeffFriction;
     double sigmaVFinalGradient;
     double porePressureFinal;
+    double porePressureCombinationFinal;
 
     public double getSigma1Final() {
         return Sigma1Final;
@@ -775,6 +786,10 @@ public class mainWindow extends JFrame {
         return Sigma3Final;
     }
 
+    public double getPorePressureCombinationFinal(){
+
+        return porePressureCombinationFinal;
+    }
     public double getSigmaVFinalGradient() {
         return sigmaVFinalGradient;
     }
@@ -799,10 +814,17 @@ public class mainWindow extends JFrame {
         sigmaVFinalGradient = input;
     }
 
+    //pressure gradient
     public void setPorePressureFinal(double input) {
         porePressureFinal = input;
     }
 
+    //pressure*depth result
+    public void setPorePressureCombinationFinal(double input){
+
+
+        porePressureCombinationFinal = input;
+    }
 
     public double getCohesionInitialFinal() {
         return cohesionInitialFinal;
@@ -841,6 +863,7 @@ public class mainWindow extends JFrame {
         //remove original graphs and reset buttonCount
         try{
 
+            tabbedPane1.remove(6);
             tabbedPane1.remove(5);
             tabbedPane1.remove(4);
             tabbedPane1.remove(3);
@@ -856,12 +879,12 @@ public class mainWindow extends JFrame {
 
     public mainWindow() {
 
-        getDepthText().setText("5000");
-        getMudWeightText().setText("9");
+        getDepthText().setText("10000");
+        getMudWeightText().setText("16.0561");
         getCohesionText().setText("500");
-        getGammaText().setText("50");
-        getAlpha1Text().setText("50");
-        getAlpha2Text().setText("50");
+        getGammaText().setText("0");
+        getAlpha1Text().setText("90");
+        getAlpha2Text().setText("0");
         getBeddingPlaneStrikeTextField().setText("50");
         getFaultConductivityStrikeTextField().setText("50");
         getJointStrikeTextField().setText("50");
@@ -871,7 +894,10 @@ public class mainWindow extends JFrame {
         getPoissonText().setText(".3");
         getRockDamageTextField().setText(".3");
         getGSITextField().setText("100");
-
+        getSigmaVTextField().setText(".9");
+        getSigmaMaxTextField().setText(".8");
+        getSigmaMinTextField().setText(".6");
+        getPorePressureTextField().setText(".433");
 
         //Does not let you resize the window
         mainWindow.this.setResizable(false);
@@ -1154,17 +1180,17 @@ public class mainWindow extends JFrame {
             private double Sigma2;
             private double Sigma3;
 
-            private double SV;
-            private double SH;
-            private double Sh;
+            private double sigmaZ;
+            private double sigmaX;
+            private double sigmaY;
             private double ThoXY;
             private double ThoXZ;
             private double ThoYZ;
             private double DeltaP;
             private double SigmaR;
-            private double[] SigTheta;
-            private double[] SigmaZ;
-            private double[] ThoThetaZ;
+            private double SigTheta;
+            private double SigmaZ;
+            private double ThoThetaZ;
             private double ThoRTheta;
             private double ThoRZ;
 
@@ -1210,7 +1236,7 @@ public class mainWindow extends JFrame {
             double betaJointParam = -1;
             double betaUnconformityParam = -1;
 
-
+            double failureAngle = -1;
             double depth = -1;
             double gamma = -1;
             double alpha1 = -1;
@@ -1255,7 +1281,7 @@ public class mainWindow extends JFrame {
                 // Equations
                 DrillingEquations Equations = new DrillingEquations();
                 // Convert mudweight to psi/ft
-                mudWeightPsiFt = Double.parseDouble(mudWeightText.getText())*.05194805195*getDensityUM();
+                mudWeightPsiFt = Double.parseDouble(mudWeightText.getText())*.0529*getDensityUM();
                 //Retrieve alpha value
                 this.Alpha = Equations.Alpha(alpha1,alpha2);
 
@@ -1274,10 +1300,10 @@ public class mainWindow extends JFrame {
                     this.SigmaHGradient = Equations.SigmaH(depth,SigmaHR, porePressureGradient);
                     this.SigmahGradient = Equations.Sigmah(depth,SigmahR, porePressureGradient);
 
-                    //Retrieve stress tensors SV, SH, Sh
-                    this.SV = Equations.SV(SigmaVGradient, SigmaHGradient, SigmahGradient,gamma,Alpha);
-                    this.SH = Equations.SH(SigmaVGradient, SigmaHGradient, SigmahGradient,gamma,Alpha);
-                    this.Sh = Equations.Sh(SigmaVGradient, SigmaHGradient, SigmahGradient,gamma,Alpha);
+                    //Retrieve stress tensors sigZ, sigX, sigY
+                    this.sigmaZ = Equations.sigZ(SigmaVGradient, SigmaHGradient, SigmahGradient,gamma,Alpha);
+                    this.sigmaX = Equations.sigX(SigmaVGradient, SigmaHGradient, SigmahGradient,gamma,Alpha);
+                    this.sigmaY = Equations.sigY(SigmaHGradient, SigmahGradient, Alpha);
 
                     // DeltaP
                     this.DeltaP = Equations.deltaP(depth,mudWeightPsiFt, porePressureGradient);
@@ -1295,10 +1321,10 @@ public class mainWindow extends JFrame {
                     this.SigmaHGradient = Equations.SigmaH(depth,SigmaHR, porePressureGradient);
                     this.SigmahGradient = Equations.Sigmah(depth,SigmahR, porePressureGradient);
 
-                    //Retrieve stress tensors SV, SH, Sh
-                    this.SV = Equations.SV(SigmaVGradient, SigmaHGradient, SigmahGradient,gamma,Alpha);
-                    this.SH = Equations.SH(SigmaVGradient, SigmaHGradient, SigmahGradient,gamma,Alpha);
-                    this.Sh = Equations.Sh(SigmaVGradient, SigmaHGradient, SigmahGradient,gamma,Alpha);
+                    //Retrieve stress tensors sigZ, sigX, sigY
+                    this.sigmaX = Equations.sigX(SigmaVGradient, SigmaHGradient, SigmahGradient,gamma,Alpha);
+                    this.sigmaY = Equations.sigY(SigmaHGradient, SigmahGradient, Alpha);
+                    this.sigmaZ = Equations.sigZ(SigmaVGradient, SigmaHGradient, SigmahGradient,gamma,Alpha);
 
                     // DeltaP
                     this.DeltaP = Equations.deltaP(depth,mudWeightPsiFt,porePressureGradient);
@@ -1312,60 +1338,97 @@ public class mainWindow extends JFrame {
                 this.ThoYZ = Equations.thoYZ(SigmaHGradient, SigmahGradient,Alpha,gamma);
 
                 // Retrieve SigmaR
-                this.SigmaR = Equations.sigmaR(DeltaP);
+                this.SigmaR = Equations.sigmaR(depth*mudWeightPsiFt);
+
+                //Find the angle that failure will occur first
+                this.failureAngle = Equations.failureAngle(ThoXY,sigmaX,sigmaY);
 
                 // Retrieve SigmaTheta and the input angle that give the maximum SigTheta
-                this.SigTheta = Equations.sigmaTheta(SH,Sh,ThoXY,DeltaP);
+                this.SigTheta = Equations.sigmaTheta(sigmaX, sigmaY,ThoXY, failureAngle,depth*mudWeightPsiFt);
 
                 // Retrieve sigmaZ
-                this.SigmaZ = Equations.sigmaZ(SV,poissons,Sh,SH,ThoXY);
+                this.SigmaZ = Equations.sigmaZ(sigmaZ,poissons, sigmaY, sigmaX,ThoXY,failureAngle);
 
                 // Retrieve Tho theta values thoThetaZ,thoRTheta,thoRZ
-                this.ThoThetaZ = Equations.thoThetaZ(ThoXZ,ThoYZ);
+                this.ThoThetaZ = Equations.thoThetaZ(ThoXZ,ThoYZ,failureAngle);
                 this.ThoRTheta = Equations.thoRTheta();
                 this.ThoRZ = Equations.thoRZ();
 
                 // Retrieve principal effective stress values
+                if (mudWeightPsiFt>porePressureGradient){
 
-                this.Sigma1 = Equations.sigma1(SigTheta,SigmaZ,ThoThetaZ);
-                setSigma1Final(Sigma1);
-                double[] sigma1Array = Equations.Sigma1Array(SigTheta,SigmaZ,ThoThetaZ);
-                this.Sigma2 = Equations.sigma2(SigTheta,SigmaZ,ThoThetaZ);
-                setSigma2Final(Sigma2);
-                this.Sigma3 = Equations.sigma3(SigmaR);
-                setSigma3Final(Sigma3);
-                setPorePressureFinal(porePressureGradient);
-                setsigmaVFinalGradient(SigmaVGradient);
+                    this.Sigma1 = Equations.sigma3(SigmaR);
+                    setSigma1Final(Sigma1);
+                    this.Sigma2 = Equations.sigma2(SigTheta,SigmaZ,ThoThetaZ);
+                    setSigma2Final(Sigma2);
+                    this.Sigma3 = Equations.sigma1(SigTheta,SigmaZ,ThoThetaZ);
+                    setSigma3Final(Sigma3);
+                    setPorePressureFinal(porePressureGradient);
+                    setsigmaVFinalGradient(SigmaVGradient);
 
-                /*
-                //find the phi value at the angle that gives the maximum sigma1 value
-                phi = Equations.phi(SigTheta,SigmaZ,ThoThetaZ,Equations.sigma1MaxTheta(sigma1Array,this.Sigma1)) ;
-                */
+                }
+                else{
+
+                    this.Sigma1 = Equations.sigma2(SigTheta,SigmaZ,ThoThetaZ);
+                    setSigma1Final(Sigma1);
+                    this.Sigma2 = Equations.sigma1(SigTheta,SigmaZ,ThoThetaZ);
+                    setSigma2Final(Sigma2);
+                    this.Sigma3 = Equations.sigma3(SigmaR);
+                    setSigma3Final(Sigma3);
+                    setPorePressureFinal(porePressureGradient);
+                    setsigmaVFinalGradient(SigmaVGradient);
+                }
+
 
                 //populate textlabels with value results
                 double porePressureCombination = porePressureGradient *depth;
+                setPorePressureCombinationFinal(porePressureCombination);
+                //sorts the principal stresses from highest to lowest
+                double[] principalSortedStresses = {getSigma1Final(),getSigma2Final(),getSigma3Final()};
+                Arrays.sort(principalSortedStresses);
+
+                double[] effectiveSortedStresses = {principalSortedStresses[0]-porePressureCombination,principalSortedStresses[1]-porePressureCombination,principalSortedStresses[2]-porePressureCombination};
+
+                //Find the wellbore critical failure pressure
+                double criticalFailurePressure = -1;
 
                 // Determine if tensile failure
                 // conditionals if the automatic or manual tensile radiobuttons are selected
                 if(tensileManualRadioButton.isSelected()) {
 
-                    this.failType = Equations.tensileFailureCondition(Sigma2, Double.parseDouble(tensileText.getText())*(1/pressureUM));
                     tensileStrength = (int) (Double.parseDouble(tensileText.getText())*(1/pressureUM));
                     tensileStrengthTextFieldResult.setText(Integer.toString(tensileStrength));
+                    criticalFailurePressure = Equations.criticalFailurePressure(sigmaX,sigmaY,sigmaZ,ThoXY,ThoThetaZ,(porePressureGradient*depth*(1/pressureUM)),tensileStrength,failureAngle, gamma);
+                    this.failType = Equations.tensileFailureCondition(mudWeightPsiFt*depth, criticalFailurePressure);
+
+                    //rounds the critical pressure value
+                    criticalFailurePressure = Math.round((criticalFailurePressure)*100);
+                    criticalFailurePressure = criticalFailurePressure/100;
+
+                    criticalFailurePressureTextField.setText(Double.toString(criticalFailurePressure));
+
                 }
                 else if(tensileAutomaticRadioButton.isSelected()){
 
                     //find compressive strength
-                    compressiveStrengthIntact = Equations.rockPropertyGSISolver(this.Sigma1,this.Sigma2,this.Sigma3,GSI,lithology,rockDamage,(SigmaVGradient+porePressureCombination)*(1/pressureUM),"Compressive Strength Intact");
-                    compressiveStrength = Equations.rockPropertyGSISolver(this.Sigma1,this.Sigma2,this.Sigma3,GSI,lithology,rockDamage,(SigmaVGradient+porePressureCombination)*(1/pressureUM),"Compressive Strength");
-                    tensileStrength = -1*(int) Equations.rockPropertyGSISolver(this.Sigma1,this.Sigma2,this.Sigma3,GSI,lithology,rockDamage,(SigmaVGradient+porePressureCombination)*(1/pressureUM),"Tensile Strength");
+                    compressiveStrengthIntact = Equations.rockPropertyGSISolver(effectiveSortedStresses[2],effectiveSortedStresses[1],effectiveSortedStresses[0],GSI,lithology,rockDamage,(SigmaVGradient)*(1/pressureUM),"Compressive Strength Intact");
+                    compressiveStrength = Equations.rockPropertyGSISolver(effectiveSortedStresses[2],effectiveSortedStresses[1],effectiveSortedStresses[0],GSI,lithology,rockDamage,(SigmaVGradient)*(1/pressureUM),"Compressive Strength");
+                    tensileStrength = -1*(int) Equations.rockPropertyGSISolver(effectiveSortedStresses[2],effectiveSortedStresses[1],effectiveSortedStresses[0],GSI,lithology,rockDamage,(SigmaVGradient)*(1/pressureUM),"Tensile Strength");
                     tensileStrengthTextFieldResult.setText(Integer.toString(tensileStrength));
-                    this.failType = Equations.tensileFailureCondition(Sigma2,tensileStrength);
+                    criticalFailurePressure = Equations.criticalFailurePressure(sigmaX,sigmaY,sigmaZ,ThoXY,ThoThetaZ,(porePressureGradient*depth*(1/pressureUM)),tensileStrength,failureAngle,gamma);
+                    this.failType = Equations.tensileFailureCondition(mudWeightPsiFt*depth,criticalFailurePressure);
+
+                    //rounds the critical pressure value
+                    int criticalFailurePressureInt = (int) criticalFailurePressure;
+                    criticalFailurePressureTextField.setText(Double.toString(criticalFailurePressureInt));
 
                 }
 
-                //Retrieve first set parameters
 
+
+
+
+                //Retrieve first set parameters
                 this.firstInstability = Equations.firstSetParameters(this.failType,PoreCombo.getSelectedItem().toString(),FaultTypeCombo.getSelectedItem().toString(),"Instability");
                 this.firstLossOfCirculation = Equations.firstSetParameters(this.failType,PoreCombo.getSelectedItem().toString(),FaultTypeCombo.getSelectedItem().toString(),"LossOfCirculation");
                 this.firstWellControl = Equations.firstSetParameters(this.failType,PoreCombo.getSelectedItem().toString(),FaultTypeCombo.getSelectedItem().toString(),"WellControl");
@@ -1376,9 +1439,9 @@ public class mainWindow extends JFrame {
 
                 SecondSetEquations secondEquations = new SecondSetEquations();
                 //find unique beta value for each second set type
-                betaFaultParam = secondEquations.betaAngle(Integer.parseInt(faultConductivityStrikeTextField.getText()), Equations.sigma1MaxTheta(sigma1Array,this.Sigma1), Integer.parseInt(faultConductivityDipTextField.getText()),Integer.parseInt(gammaText.getText()), phi );
-                betaJointParam = secondEquations.betaAngle(Integer.parseInt(jointStrikeTextField.getText()), Equations.sigma1MaxTheta(sigma1Array,this.Sigma1), Integer.parseInt(jointDipTextField.getText()),Integer.parseInt(gammaText.getText()), phi );
-                betaUnconformityParam = secondEquations.betaAngle(Integer.parseInt(beddingPlaneStrikeTextField.getText()), Equations.sigma1MaxTheta(sigma1Array,this.Sigma1), Integer.parseInt(beddingPlaneDipTextField.getText()),Integer.parseInt(gammaText.getText()), phi );
+                betaFaultParam = secondEquations.betaAngle(Integer.parseInt(faultConductivityStrikeTextField.getText()), (int) failureAngle, Integer.parseInt(faultConductivityDipTextField.getText()),Integer.parseInt(gammaText.getText()), phi );
+                betaJointParam = secondEquations.betaAngle(Integer.parseInt(jointStrikeTextField.getText()), (int) failureAngle, Integer.parseInt(jointDipTextField.getText()),Integer.parseInt(gammaText.getText()), phi );
+                betaUnconformityParam = secondEquations.betaAngle(Integer.parseInt(beddingPlaneStrikeTextField.getText()), (int) failureAngle, Integer.parseInt(beddingPlaneDipTextField.getText()),Integer.parseInt(gammaText.getText()), phi );
 
                 this.secondInstability = secondEquations.secondSetValues(faultConductivity,jointFrequency,beddingConductivity,betaFaultParam,betaJointParam,betaUnconformityParam,"Instability");
                 this.secondLossOfCirculation = secondEquations.secondSetValues(faultConductivity,jointFrequency,beddingConductivity,betaFaultParam,betaJointParam,betaUnconformityParam,"LossOfCirculation");
@@ -1432,43 +1495,46 @@ public class mainWindow extends JFrame {
                     setCohesionInitialFinal(cohesionInitial*(1/pressureUM));
                 }
                 else{
-                    cohesionInitial = Equations.rockPropertyGSISolver(this.Sigma1,this.Sigma2,this.Sigma3,GSI,lithology,rockDamage,(SigmaVGradient+porePressureCombination),"Cohesion");
+                    cohesionInitial = Equations.rockPropertyGSISolver(effectiveSortedStresses[2],effectiveSortedStresses[1],effectiveSortedStresses[0],GSI,lithology,rockDamage,(SigmaVGradient),"Cohesion");
                     setCohesionInitialFinal(cohesionInitial);
                 }
 
                 //Build Default catagory dataset
 
                 FailureRatioSolutions multiSolutions = new FailureRatioSolutions()  ;
-                DefaultCategoryDataset multivariateShearDataset = multiSolutions.principalStresses(SigmaVGradient,SigmahGradient,SigmaHGradient,depth,mudWeightPsiFt,Alpha,gamma,DeltaP,poissons,gradientUM,porePressureGradient,lengthUM,GSI,lithology,rockDamage,SigmaVGradient+porePressureCombination, "Shear Failure Ratio");
-                DefaultCategoryDataset multivariateTensileDataset = multiSolutions.principalStresses(SigmaVGradient,SigmahGradient,SigmaHGradient,depth,mudWeightPsiFt,Alpha,gamma,DeltaP,poissons,gradientUM,porePressureGradient,lengthUM,GSI,lithology,rockDamage,SigmaVGradient+porePressureCombination, "Tensile Failure Ratio");
+                DefaultCategoryDataset multivariateShearDataset = multiSolutions.principalStresses(SigmaVGradient,SigmahGradient,SigmaHGradient,depth,mudWeightPsiFt,Alpha,gamma,DeltaP,poissons,gradientUM,porePressureGradient,lengthUM,GSI,lithology,rockDamage,SigmaVGradient, "Shear Failure Ratio");
+                DefaultCategoryDataset multivariateTensileDataset = multiSolutions.principalStresses(SigmaVGradient,SigmahGradient,SigmaHGradient,depth,mudWeightPsiFt,Alpha,gamma,DeltaP,poissons,gradientUM,porePressureGradient,lengthUM,GSI,lithology,rockDamage,SigmaVGradient, "Tensile Failure Ratio");
 
                 //Calculate and build stress polygon dataset and Mohr dataset
                 StressPolygonDataset polyDataset = new StressPolygonDataset();
 
-                XYSeriesCollection polygonCollection = polyDataset.stressPolygonDataset(this.SigmaVR*lengthUM*(1/pressureUM),(SigmaHGradient+ porePressureCombination)*(1/pressureUM),(this.SigmahGradient+ porePressureCombination)*(1/pressureUM),this.porePressureGradient*lengthUM*(1/pressureUM),depth*(1/lengthUM),getCoeffFriction());
-                polygonCollection.removeAllSeries();
+                XYSeriesCollection polygonCollection = new XYSeriesCollection();
                 MohrDataset mohrDataset = new MohrDataset();
 
-
+                //build pressure regime dataset
+                FormationPressureDataset formationDataset = new FormationPressureDataset();
+                XYSeriesCollection formationPressureCollection = formationDataset.formationPressureDataset(SigmaVR,SigmaHR,SigmahR,porePressureCombination,depth,mudWeightPsiFt,tensileStrength,criticalFailurePressure);
 
 
                 XYSeriesCollection mohrCollection = new XYSeriesCollection();
                 mohrCollection.removeAllSeries();
                 if (coefficientAutomaticRadioButton.isSelected()){
 
-                    setCoeffFriction(Equations.rockPropertyGSISolver(this.Sigma1,this.Sigma2,this.Sigma3,GSI,lithology,rockDamage,(SigmaVGradient+porePressureCombination),"CoeffFriction"));
+                    setCoeffFriction(Equations.rockPropertyGSISolver(effectiveSortedStresses[2],effectiveSortedStresses[1],effectiveSortedStresses[0],GSI,lithology,rockDamage,(SigmaVGradient),"CoeffFriction"));
 
 
-                    polygonCollection = polyDataset.stressPolygonDataset(this.SigmaVR*lengthUM*(1/pressureUM),(SigmaHGradient+ porePressureCombination)*(1/pressureUM),(this.SigmahGradient+ porePressureCombination)*(1/pressureUM),this.porePressureGradient*lengthUM*(1/pressureUM),depth*(1/lengthUM),getCoeffFriction());
+                    polygonCollection = polyDataset.stressPolygonDataset(this.SigmaVR*lengthUM*(1/pressureUM),(SigmaHGradient)*(1/pressureUM),(this.SigmahGradient)*(1/pressureUM),this.porePressureGradient*lengthUM*(1/pressureUM),depth*(1/lengthUM),getCoeffFriction());
 
                     setPolygonCollectionFinal(polygonCollection);// sets a grabber for the dataset (used for the stresspolygon button in the initial input tab)
 
-                    mohrCollection = mohrDataset.mohrDatasetBuild(this.Sigma1*(1/pressureUM),this.Sigma2*(1/pressureUM),this.Sigma3*(1/pressureUM),cohesionInitial*(1/pressureUM),getCoeffFriction(),mainWindow.this);
+
+
+                    mohrCollection = mohrDataset.mohrDatasetBuild(principalSortedStresses[2]*(1/pressureUM),principalSortedStresses[1]*(1/pressureUM),principalSortedStresses[0]*(1/pressureUM),cohesionInitial*(1/pressureUM),getCoeffFriction(),mainWindow.this);
 
                     setMohrCollectionFinal(mohrCollection);
 
-                    multivariateShearDataset = multiSolutions.principalStresses(SigmaVGradient,SigmahGradient,SigmaHGradient,depth,mudWeightPsiFt,Alpha,gamma,DeltaP,poissons,gradientUM,porePressureGradient,lengthUM,GSI,lithology,rockDamage,SigmaVGradient+porePressureCombination, "Shear Failure Ratio");
-                    multivariateTensileDataset = multiSolutions.principalStresses(SigmaVGradient,SigmahGradient,SigmaHGradient,depth,mudWeightPsiFt,Alpha,gamma,DeltaP,poissons,gradientUM,porePressureGradient,lengthUM,GSI,lithology,rockDamage,SigmaVGradient+porePressureCombination, "Tensile Failure Ratio");
+                    multivariateShearDataset = multiSolutions.principalStresses(SigmaVGradient,SigmahGradient,SigmaHGradient,depth,mudWeightPsiFt,Alpha,gamma,DeltaP,poissons,gradientUM,porePressureGradient,lengthUM,GSI,lithology,rockDamage,SigmaVGradient, "Shear Failure Ratio");
+                    multivariateTensileDataset = multiSolutions.principalStresses(SigmaVGradient,SigmahGradient,SigmaHGradient,depth,mudWeightPsiFt,Alpha,gamma,DeltaP,poissons,gradientUM,porePressureGradient,lengthUM,GSI,lithology,rockDamage,SigmaVGradient, "Tensile Failure Ratio");
 
 
                 }
@@ -1477,24 +1543,21 @@ public class mainWindow extends JFrame {
 
                     setCoeffFriction(Double.parseDouble(coeffFrictionText.getText()));
 
-                    polygonCollection = polyDataset.stressPolygonDataset(this.SigmaVR*lengthUM*(1/pressureUM),(SigmaHGradient+ porePressureCombination)*(1/pressureUM),(this.SigmahGradient+ porePressureCombination)*(1/pressureUM),this.porePressureGradient*lengthUM*(1/pressureUM),depth*(1/lengthUM),getCoeffFriction());
+                    polygonCollection = polyDataset.stressPolygonDataset(this.SigmaVR*lengthUM*(1/pressureUM),(SigmaHGradient)*(1/pressureUM),(this.SigmahGradient)*(1/pressureUM),this.porePressureGradient*lengthUM*(1/pressureUM),depth*(1/lengthUM),getCoeffFriction());
 
                     setPolygonCollectionFinal(polygonCollection);// sets a grabber for the dataset (used for the stresspolygon button in the initial input tab)
 
-                    mohrCollection = mohrDataset.mohrDatasetBuild(this.Sigma1*(1/pressureUM),this.Sigma2*(1/pressureUM),this.Sigma3*(1/pressureUM),cohesionInitial*(1/pressureUM),getCoeffFriction(),mainWindow.this);
+
+                    mohrCollection = mohrDataset.mohrDatasetBuild(principalSortedStresses[2]*(1/pressureUM),principalSortedStresses[1]*(1/pressureUM),principalSortedStresses[0]*(1/pressureUM),cohesionInitial*(1/pressureUM),getCoeffFriction(),mainWindow.this);
+
                     setMohrCollectionFinal(mohrCollection);
 
-                    multivariateShearDataset = multiSolutions.principalStresses(SigmaVGradient*(1/pressureUM),SigmahGradient*(1/pressureUM),SigmaHGradient*(1/pressureUM),depth,mudWeightPsiFt,Alpha,gamma,DeltaP,poissons,gradientUM,porePressureGradient,lengthUM,GSI,lithology,rockDamage,(SigmaVGradient+porePressureCombination)*(1/pressureUM), "Shear Failure Ratio");
+                    multivariateShearDataset = multiSolutions.principalStresses(SigmaVGradient*(1/pressureUM),SigmahGradient*(1/pressureUM),SigmaHGradient*(1/pressureUM),depth,mudWeightPsiFt,Alpha,gamma,DeltaP,poissons,gradientUM,porePressureGradient,lengthUM,GSI,lithology,rockDamage,(SigmaVGradient)*(1/pressureUM), "Shear Failure Ratio");
 
-                    multivariateTensileDataset = multiSolutions.principalStresses(SigmaVGradient,SigmahGradient,SigmaHGradient,depth,mudWeightPsiFt,Alpha,gamma,DeltaP,poissons,gradientUM,porePressureGradient,lengthUM,GSI,lithology,rockDamage,SigmaVGradient+porePressureCombination, "Tensile Failure Ratio");
+                    multivariateTensileDataset = multiSolutions.principalStresses(SigmaVGradient,SigmahGradient,SigmaHGradient,depth,mudWeightPsiFt,Alpha,gamma,DeltaP,poissons,gradientUM,porePressureGradient,lengthUM,GSI,lithology,rockDamage,SigmaVGradient, "Tensile Failure Ratio");
 
                 }
 
-                    //Determine if shear failure
-                    double sigThetaMax;
-                    double[] sortedSigTheta = SigTheta.clone();
-                    Arrays.sort(sortedSigTheta);
-                    sigThetaMax = sortedSigTheta[sortedSigTheta.length-1];
 
                     if(coefficientManualRadioButton.isSelected()){
 
@@ -1502,16 +1565,20 @@ public class mainWindow extends JFrame {
                     }
                     else if (coefficientAutomaticRadioButton.isSelected()){
 
-                        double coeffFrictionTest = Equations.rockPropertyGSISolver(this.Sigma1,this.Sigma2,this.Sigma3,GSI,lithology,rockDamage,(SigmaVGradient+porePressureCombination)*(1/pressureUM),"CoeffFriction");
+                        double coeffFrictionTest = Equations.rockPropertyGSISolver(getSigma1Final(),getSigma2Final(),getSigma3Final(),GSI,lithology,rockDamage,(SigmaVGradient)*(1/pressureUM),"CoeffFriction");
                         this.shearType = shearCondition;
                     }
+
 
                 //buttonCount is a true/false condition to check if the graph panes are added/removed
                 if (buttonCount == true) {
                     StressPolygonGraph polygonGraphOutput = new StressPolygonGraph(polygonCollection, mainWindow.this,projectCustomPressureType);
                     tabbedPane1.addTab("Stress Polygon", null, polygonGraphOutput, null);
 
-                    MohrFailureGraph MohrGraphOutput = new MohrFailureGraph(mohrCollection, Sigma1*(1/pressureUM),Sigma2*(1/pressureUM),projectCustomPressureType,mainWindow.this);
+                    FormationPressureGraph formationPressureGraph = new FormationPressureGraph(formationPressureCollection,mainWindow.this,projectCustomPressureType);
+                    tabbedPane1.addTab("Formation Pressure Regime",null,formationPressureGraph,null);
+
+                    MohrFailureGraph MohrGraphOutput = new MohrFailureGraph(mohrCollection, effectiveSortedStresses[2]*(1/pressureUM),effectiveSortedStresses[0]*(1/pressureUM),projectCustomPressureType,mainWindow.this);
                     setMohrGraphOutputFinal(MohrGraphOutput);
                     tabbedPane1.addTab("Mohr-Coulomb Failure",null,MohrGraphOutput,null);
 
@@ -1521,11 +1588,14 @@ public class mainWindow extends JFrame {
                     TensileFailureRatioBarGraph tensileFailureBarGraph = new TensileFailureRatioBarGraph(multivariateTensileDataset,mainWindow.this,projectCustomPressureType);
                     tabbedPane1.addTab("Tensile Fracture Ratio", null,tensileFailureBarGraph,null);
 
+
+
                     buttonCount = false;
 
                 }
                 else if (buttonCount == false){
 
+                    tabbedPane1.remove(6);
                     tabbedPane1.remove(5);
                     tabbedPane1.remove(4);
                     tabbedPane1.remove(3);
@@ -1534,7 +1604,10 @@ public class mainWindow extends JFrame {
                     StressPolygonGraph graphOutput = new StressPolygonGraph(polygonCollection, mainWindow.this,projectCustomPressureType);
                     tabbedPane1.addTab("Stress Polygon", null, graphOutput, null);
 
-                    MohrFailureGraph MohrGraphOutput = new MohrFailureGraph(mohrCollection, Sigma1*(1/pressureUM),Sigma2*(1/pressureUM),projectCustomPressureType,mainWindow.this);
+                    FormationPressureGraph formationPressureGraph = new FormationPressureGraph(formationPressureCollection,mainWindow.this,projectCustomPressureType);
+                    tabbedPane1.addTab("Formation Pressure Regime",null,formationPressureGraph,null);
+
+                    MohrFailureGraph MohrGraphOutput = new MohrFailureGraph(mohrCollection, effectiveSortedStresses[2]*(1/pressureUM),effectiveSortedStresses[0]*(1/pressureUM),projectCustomPressureType,mainWindow.this);
                     setMohrGraphOutputFinal(MohrGraphOutput);
                     tabbedPane1.addTab("Mohr-Coulomb Failure",null,MohrGraphOutput,null);
 
@@ -1552,9 +1625,9 @@ public class mainWindow extends JFrame {
                 sigmaVTextFieldResult.setText(Integer.toString((int) ((SigmaVGradient +porePressureCombination)*(1/pressureUM))));
                 sigmaMaxTextFieldResult.setText(Integer.toString((int) ((SigmaHGradient +porePressureCombination)*(1/pressureUM))));
                 sigmaMinTextFieldResult.setText(Integer.toString((int) ((SigmahGradient +porePressureCombination)*(1/pressureUM))));
-                principal1TextFieldResult.setText(Integer.toString((int) (Sigma1*(1/pressureUM))));
-                principal2TextFieldResult.setText(Integer.toString((int) (Sigma2*(1/pressureUM))));
-                principal3TextFieldResult.setText(Integer.toString((int) (Sigma3*(1/pressureUM))));
+                principal1TextFieldResult.setText(Integer.toString((int) (effectiveSortedStresses[2]*(1/pressureUM))));
+                principal2TextFieldResult.setText(Integer.toString((int) (effectiveSortedStresses[1]*(1/pressureUM))));
+                principal3TextFieldResult.setText(Integer.toString((int) (effectiveSortedStresses[0]*(1/pressureUM))));
                 cohesionOutputTextField.setText(Integer.toString((int) (cohesionInitial*(1/pressureUM))));
                 UCSIntactOutputTextField.setText(Integer.toString((int) (compressiveStrengthIntact*(1/pressureUM))));
                 UCSDamagedOutputTextField.setText(Integer.toString((int) (compressiveStrength*(1/pressureUM))));
@@ -1644,6 +1717,7 @@ public class mainWindow extends JFrame {
         });
 
 
+
         GSIDialog GD = new GSIDialog();
 
         GSITableButton.addActionListener(new ActionListener() {
@@ -1716,11 +1790,14 @@ public class mainWindow extends JFrame {
 
                 MohrDataset mohrDataset = new MohrDataset();
 
-                XYSeriesCollection mohrCollection = mohrDataset.mohrDatasetBuild(getSigma1Final()*(1/pressureUM), getSigma2Final()*(1/pressureUM), getSigma3Final()*(1/pressureUM), getCohesionInitialFinal()*(1/pressureUM),getCoeffFriction(),mainWindow.this);
+                double[] principalSorted = {getSigma1Final(),getSigma2Final(),getSigma3Final()};
+                Arrays.sort(principalSorted);
 
-                MohrFailureGraph MohrGraphOutput = new MohrFailureGraph(mohrCollection, getSigma1Final()*(1/pressureUM), getSigma2Final()*(1/pressureUM),projectCustomPressureType,mainWindow.this);
+                XYSeriesCollection mohrCollection = mohrDataset.mohrDatasetBuild(principalSorted[2]*(1/pressureUM), principalSorted[1]*(1/pressureUM), principalSorted[1]*(1/pressureUM), getCohesionInitialFinal()*(1/pressureUM),getCoeffFriction(),mainWindow.this);
 
-                ChartPanel cp = MohrGraphOutput.MohrFailureGraphPanel(mohrCollection, getSigma1Final()*(1/pressureUM), getSigma2Final()*(1/pressureUM),projectCustomPressureType);
+                MohrFailureGraph MohrGraphOutput = new MohrFailureGraph(mohrCollection, (principalSorted[2]-getPorePressureCombinationFinal())*(1/pressureUM), (principalSorted[0]-getPorePressureCombinationFinal())*(1/pressureUM),projectCustomPressureType,mainWindow.this);
+
+                ChartPanel cp = MohrGraphOutput.MohrFailureGraphPanel(mohrCollection, principalSorted[2]*(1/pressureUM), principalSorted[0]*(1/pressureUM),projectCustomPressureType);
 
                 MohrCoulombDialog mcd = new MohrCoulombDialog();
                 mcd.initialize(cp);

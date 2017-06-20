@@ -51,7 +51,7 @@ public class DrillingEquations {
         return sigmaV;
 
     }
-    //SH
+    //sigX
     public static double SigmaHRange(String FaultType, String PorePressureType) {
         double sigmaH = -1;
         Random rand = new Random();
@@ -104,7 +104,7 @@ public class DrillingEquations {
 
         return sigmaH;
     }
-    //Sh
+    //sigY
     public static double SigmahRange(String FaultType, String PorePressureType) {
         double sigmah =-1;
         Random rand = new Random();
@@ -183,44 +183,49 @@ public class DrillingEquations {
     public static double SigmaV(double depth, double SigVR, double PorePR){
 
         double SigmaV;
-        SigmaV = depth*(SigVR - PorePR);
+        SigmaV = depth*(SigVR);
         return SigmaV;
     }
 
     public static double SigmaH(double depth, double SigHR, double PorePR){
 
         double SigmaH;
-        SigmaH = depth*(SigHR - PorePR);
+        SigmaH = depth*(SigHR);
         return SigmaH;
     }
     public static double Sigmah(double depth, double SighR, double PorePR){
 
         double SigmaV;
-        SigmaV = depth*(SighR - PorePR);
+        SigmaV = depth*(SighR);
         return SigmaV;
     }
 
-    //Stress Tensors SV, SH, and Sh
+    //Stress Tensors sigZ, sigX, and sigY
+    //sigV = sigz, sigh = sigY, sigH = sigX
+    public static double sigZ(double sigv, double sigH, double sigh, double gamma, double alpha){
 
-    public static double SV(double sigv, double sigH, double sigh, double gamma, double alpha){
-
-        double SV;
-        SV = sigv*Math.cos(Math.toRadians(gamma))*Math.cos(Math.toRadians(gamma))+sigH*Math.sin(Math.toRadians(gamma))*Math.sin(Math.toRadians(gamma))*Math.cos(Math.toRadians(alpha))*Math.cos(Math.toRadians(alpha))+sigh*Math.sin(Math.toRadians(gamma))*Math.sin(Math.toRadians(gamma))*Math.sin(Math.toRadians(alpha))*Math.sin(Math.toRadians(alpha));
-        return SV;
+        double sigZ;
+        sigZ = sigv*Math.pow(Math.cos(Math.toRadians(gamma)),2)+sigH*Math.pow(Math.sin(Math.toRadians(gamma)),2)*Math.pow(Math.cos(Math.toRadians(alpha)),2)+sigh*Math.pow(Math.sin(Math.toRadians(gamma)),2)*Math.pow(Math.sin(Math.toRadians(alpha)),2);
+        return sigZ;
     }
-    //SH
-    public static double SH(double sigv, double sigH, double sigh, double gamma, double alpha){
+    //sigX
+    public static double sigX(double sigv, double sigH, double sigh, double gamma, double alpha){
 
-        double SH;
-        SH = sigv*Math.sin(Math.toRadians(gamma))*Math.sin(Math.toRadians(gamma))+sigH*Math.cos(Math.toRadians(gamma))*Math.cos(Math.toRadians(gamma))*Math.cos(Math.toRadians(alpha))*Math.cos(Math.toRadians(alpha))+sigh*Math.cos(Math.toRadians(gamma))*Math.cos(Math.toRadians(gamma))*Math.sin(Math.toRadians(alpha))*Math.sin(Math.toRadians(alpha));
-        return SH;
+        double sigX;
+        double cosAlphasq = Math.pow(Math.cos(Math.toRadians(alpha)),2);
+        double cosGammasq = Math.pow(Math.cos(Math.toRadians(gamma)),2);
+        double sinAlphasq = Math.pow(Math.sin(Math.toRadians(alpha)),2);
+        double sinGammasq = Math.pow(Math.sin(Math.toRadians(gamma)),2);
+
+        sigX = (sigH*cosAlphasq+sigh*sinAlphasq)*cosGammasq+sigv*sinGammasq;
+        return sigX;
     }
-    //Sh
-    public static double Sh(double sigv, double sigH, double sigh, double gamma, double alpha){
+    //sigY
+    public static double sigY(double sigH, double sigh, double alpha){
 
-        double Sh;
-        Sh = sigH*Math.sin(Math.toRadians(alpha))*Math.sin(Math.toRadians(alpha))+sigh*Math.cos(Math.toRadians(alpha))*Math.cos(Math.toRadians(alpha));
-        return Sh;
+        double sigY;
+        sigY = sigH*Math.pow(Math.sin(Math.toRadians(alpha)),2)+sigh*Math.pow(Math.cos(Math.toRadians(alpha)),2);
+        return sigY;
     }
 
 
@@ -265,136 +270,58 @@ public class DrillingEquations {
     }
 
     //Sigma r, radial stress
-    public static double sigmaR(double deltaP){
+    public static double sigmaR(double wellPressure){
         double sigmaR;
-        sigmaR = deltaP;
+        sigmaR = wellPressure;
         return sigmaR;
     }
-    //SigmaTheta
-    public static double[] sigmaTheta(double SH, double Sh, double ThoXY, double deltaP) {
 
-        double sigmaTheta[];
-        double highestSigmaTheta;
-        int index = -1;
-        sigmaTheta = new double[361];
-        int arrayLength = sigmaTheta.length;
+    //Failure Angle
+    public static double failureAngle(double thoxy, double sigmaX, double sigmaY ){
 
-        //sigmaTheta at all angles 0-360 degrees
-        for (int i = 0; i < arrayLength; i++) {
+        double failureAngle = -1;
 
-            sigmaTheta[i] = SH + Sh - 2 * (SH - Sh) * Math.cos(Math.toRadians(2 * i)) - 4 * ThoXY * Math.sin(Math.toRadians(2 * i)) - deltaP;
+        //Prevents NaN return statement
+        if(sigmaX -sigmaY == 0){
 
+            failureAngle = 0;
         }
+        else {
+
+            failureAngle = Math.toDegrees(Math.atan((2 * thoxy) / (sigmaX - sigmaY))) / 2;
+        }
+
+        return failureAngle;
+    }
+
+    //SigmaTheta
+    public static double sigmaTheta(double sigX, double sigY, double ThoXY,double failureAngle, double wellPressure) {
+
+        double sigmaTheta =-1;
+        sigmaTheta = sigX + sigY - 2 * (sigX - sigY) * Math.cos(Math.toRadians(2 * failureAngle)) - 4 * ThoXY * Math.sin(Math.toRadians(2 * failureAngle)) - wellPressure;
 
         return sigmaTheta;
     }
-/*
-    // Use to return the highest Sigma Theta Value
-    public static double highestSigmaTheta(double SH, double Sh, double thoXY, double deltaP) {
 
-        double sigmatheta[];
-        double sortedsigmatheta[];
-        double highestSigmaTheta;
-        int index = -1;
-        sigmatheta = new double[361];
-        int arrayLength = sigmatheta.length;
-
-        for (int i = 0; i < arrayLength; i++) {
-
-            sigmatheta[i] = SH + Sh - 2 * (SH - Sh) * Math.cos(Math.toRadians(2 * i)) - 4 * thoXY * Math.sin(Math.toRadians(2 * i)) - deltaP;
-
-        }
-
-        // Clone the original array to find the original theta value that generates the highest sigTheta
-        sortedsigmatheta = sigmatheta.clone();
-
-        // Sort the array from smallest to highest
-        Arrays.sort(sortedsigmatheta);
-
-        //Find highest sigTheta value
-        highestSigmaTheta = sortedsigmatheta[sortedsigmatheta.length - 1];
-
-        //Find the angle that produced the highest sigTheta value.
-        for (int i = 0;i<arrayLength;i++){
-
-            if(sigmatheta[i] == highestSigmaTheta){
-                index = i;
-                break;
-            }
-        }
-
-        return highestSigmaTheta;
-    }
-*/
-/*
-    //Overload the method to return the angle theta that produced the highest sigTheta value
-    public static double highestSigmaTheta(double SH, double Sh, double thoXY, double deltaP,String returnAngle) {
-
-        double sigmatheta[];
-        double sortedsigmatheta[];
-        double highestSigmaTheta;
-        //index = theta return
-        int index = -1;
-        sigmatheta = new double[361];
-        int arrayLength = sigmatheta.length;
-
-        for (int i = 0; i < arrayLength; i++) {
-
-            sigmatheta[i] = SH + Sh - 2 * (SH - Sh) * Math.cos(Math.toRadians(2 * i)) - 4 * thoXY * Math.sin(Math.toRadians(2 * i)) - deltaP;
-
-        }
-
-        // Clone the original array to find the original theta value that generates the highest sigTheta
-        sortedsigmatheta = sigmatheta.clone();
-
-        // Sort the array from smallest to highest
-        Arrays.sort(sortedsigmatheta);
-
-        //Find highest sigTheta value
-        highestSigmaTheta = sortedsigmatheta[sortedsigmatheta.length - 1];
-
-        //Find the angle that produced the highest sigTheta value.
-        for (int i = 0;i<arrayLength;i++){
-
-            if(sigmatheta[i] == highestSigmaTheta){
-                index = i;
-                break;
-            }
-        }
-
-
-        return index
-
-    }
-*/
     // Calculate thetaZ
-    public static double[] sigmaZ(double SV, double poisson, double Sh, double SH, double ThoXY){
+    public static double sigmaZ(double sigZ, double poisson, double sigY, double sigX, double ThoXY, double failureAngle){
 
-        double sigmaZ[];
+        double sigmaZ = -1;
 
-        sigmaZ = new double[361];
-        int arrayLength = sigmaZ.length;
 
-        //sigmaZ at all angles 0-360 degrees
-        for (int i = 0; i < arrayLength; i++) {
+        sigmaZ = sigZ - 2*poisson*(sigX-sigY)*Math.cos(Math.toRadians(2*failureAngle))-4*poisson*ThoXY*Math.sin(Math.toRadians(2*failureAngle));
 
-            sigmaZ[i] = SV - 2*poisson*(SH-Sh)*Math.cos(Math.toRadians(2*i))-4*ThoXY*Math.sin(Math.toRadians(2*i));
-        }
 
         return sigmaZ;
     }
 
     //Calculate thoThetaZ
-    public static double[] thoThetaZ(double ThoXZ, double ThoYZ){
+    public static double thoThetaZ(double ThoXZ, double ThoYZ, double failureAngle){
 
-        double[] ThoThetaz;
-        ThoThetaz = new double [361];
-        int arrayLength = ThoThetaz.length;
+        double ThoThetaz = -1;
 
-        //ThoThetaz at all angles 0-360 degrees
-        for (int i = 0; i < arrayLength; i++) {
-            ThoThetaz[i] = 2 * (-1 * ThoXZ * Math.sin(Math.toRadians(i)) + ThoYZ * Math.cos(Math.toRadians(i)));
-        }
+        ThoThetaz = 2 * (-1 * ThoXZ * Math.sin(Math.toRadians(failureAngle)) + ThoYZ * Math.cos(Math.toRadians(failureAngle)));
+
         return ThoThetaz;
     }
 
@@ -411,82 +338,56 @@ public class DrillingEquations {
         this.ThoRZ = 0;
         return this.ThoRZ;
     }
+    //Critical failure Pressure
+    public static double criticalFailurePressure(double sigmaX, double sigmaY,double sigmaZ,double thoXY, double thoThetaZ, double porePressure,double tensileStrength, double failureAngle, double gamma) {
 
+        double criticalPressure = -1;
 
-    //Calculate sigma1 all angles array
-    public static double[] Sigma1Array(double[] sigmaTheta, double[] sigmaZ, double[] ThoThetaZ){
+        if (gamma == 0) {
 
-        int index = -1;
-        double[] Sigma1;
-        Sigma1 = new double[361];
-        int arrayLength = Sigma1.length;
-
-        //sigma1 at all angles 0-360 degrees
-        for (int i = 0; i < arrayLength; i++) {
-            Sigma1[i] = 0.5 * (sigmaTheta[i] + sigmaZ[i]) + 0.5 * Math.sqrt((sigmaZ[i]-sigmaTheta[i] ) * (sigmaZ[i]-sigmaTheta[i]) + 4 * ThoThetaZ[i] * ThoThetaZ[i]);
+            criticalPressure = 3 * sigmaY - sigmaX - porePressure + tensileStrength;
         }
+        else if (gamma == 90) {
 
-        return Sigma1;
+            criticalPressure = 3 * sigmaX - sigmaY - porePressure + tensileStrength;
+        }
+        else {
+
+            double a = 2 * (sigmaX - sigmaY) * Math.cos(Math.toRadians(2 * failureAngle));
+            double b = 4 * thoXY * Math.sin(Math.toRadians(2 * failureAngle));
+            double c = Math.pow(thoThetaZ, 2) / (sigmaZ - porePressure);
+
+            criticalPressure = sigmaX + sigmaY - a - b - c - porePressure + tensileStrength;
+          }
+        return criticalPressure;
     }
-
     //Calculate sigma1 min
-    public static double sigma1(double[] sigmaTheta, double[] sigmaZ, double[] ThoThetaZ){
+    public static double sigma1(double sigmaTheta, double sigmaZ, double ThoThetaZ){
 
-        double[] Sigma1;
-        double[] sortedSigma1;
-        double sigma1Max;
-        Sigma1 = new double[361];
-        int arrayLength = Sigma1.length;
+        double sigma1 =-1;
 
-        //sigma1 at all angles 0-360 degrees
-        for (int i = 0; i < arrayLength; i++) {
-            Sigma1[i] = 0.5 * (sigmaTheta[i] + sigmaZ[i]) + 0.5 * Math.sqrt((sigmaZ[i]-sigmaTheta[i]) * (sigmaZ[i]-sigmaTheta[i]) + 4 * ThoThetaZ[i] * ThoThetaZ[i]);
-        }
+        sigma1 = 0.5 * (sigmaTheta + sigmaZ) - 0.5 * Math.sqrt(Math.pow(sigmaTheta-sigmaZ,2) + 4 * Math.pow(ThoThetaZ,2));
 
-        sortedSigma1 = Sigma1.clone();
-
-        // Sort the array from smallest to highest
-        Arrays.sort(sortedSigma1);
-
-        //Find highest sigTheta value
-        sigma1Max = sortedSigma1[Sigma1.length-1];
-
-
-        return sigma1Max;
+        return sigma1;
     }
 
     //Calculate sigma2
-    public static double sigma2(double[] sigmaTheta, double[] sigmaZ, double[] ThoThetaZ){
+    public static double sigma2(double sigmaTheta, double sigmaZ, double ThoThetaZ){
 
-        double[] Sigma2;
-        double[] sortedSigma2;
-        double sigma2Min;
-        Sigma2 = new double[361];
-        int arrayLength = Sigma2.length;
+        double sigma2 = -1;
 
-        for (int i = 0; i < arrayLength; i++) {
-            Sigma2[i] = 0.5 * (sigmaTheta[i] + sigmaZ[i]) - 0.5 * Math.sqrt((sigmaTheta[i] - sigmaZ[i]) * (sigmaTheta[i] - sigmaZ[i]) + 4 * ThoThetaZ[i] * ThoThetaZ[i]);
+        sigma2 = 0.5 * (sigmaTheta + sigmaZ) + 0.5 * Math.sqrt(Math.pow(sigmaTheta-sigmaZ,2) + 4 * Math.pow(ThoThetaZ,2));
 
-        }
-
-        sortedSigma2 = Sigma2.clone();
-
-        // Sort the array from smallest to highest
-        Arrays.sort(sortedSigma2);
-
-        //Find highest sigTheta value
-        sigma2Min = sortedSigma2[0];
-
-        return sigma2Min;
+        return sigma2;
 
     }
 
     //Calculate sigma3
     public double sigma3(double sigmaR){
 
-        double Sigma3;
-        Sigma3 = sigmaR;
-        return Sigma3;
+        double sigma3;
+        sigma3 = sigmaR;
+        return sigma3;
     }
 
     public static int sigma1MaxTheta(double[] Sigma1, double sigma1Min){
@@ -508,26 +409,12 @@ public class DrillingEquations {
         return index;
     }
 
-/*
-    //Calculate Phi value
-    public static double phi(double[] sigmaTheta, double[] sigmaZ, double[] ThoThetaZ, int sigmaThetaAngle){
-        double phi = -1;
-        double a = -1;
 
-        a = (2*ThoThetaZ[sigmaThetaAngle])/(sigmaTheta[sigmaThetaAngle]-sigmaZ[sigmaThetaAngle]);
-
-        phi = Math.abs(0.5 * Math.toDegrees(Math.atan(a)));
-
-        return phi;
-    }
-*/
-    //Tensile fracture condition
-
-    public static String tensileFailureCondition(double Sigma2, double tensile){
+    public static String tensileFailureCondition(double mudweight, double criticalFailurePressure){
 
         String tensileCondition;
 
-        if (Sigma2 <= tensile){
+        if (mudweight > criticalFailurePressure){
 
             tensileCondition = "Failure";
         }
@@ -905,7 +792,7 @@ public class DrillingEquations {
         a = .5 + (.16667) * Math.exp(-1 * GSI / 15) - Math.exp(-6.66667);
 
         //compressive strength of intact rock. S = 1 for intact rock
-        compressiveStrengthIntact = (Math.sqrt(4 * (sig3 - sig1) * (sig3 - sig1) * 1 + sig3 * sig3 * mb * mb) - sig3 * mb) / (2 * 1);
+        compressiveStrengthIntact = (-1*sig3+Math.sqrt(Math.pow(mb*sig3,2)+4*Math.pow(sig1-sig3,2)))/2;
 
         compressiveStrength = compressiveStrengthIntact * Math.pow(s, a);
         tensileStrength = (-s * compressiveStrengthIntact / mb);
@@ -950,5 +837,5 @@ public class DrillingEquations {
             return shearStrength;
         }
     }
-}
 
+}

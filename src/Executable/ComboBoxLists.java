@@ -1,5 +1,9 @@
 package Executable;
 
+import org.jfree.data.general.Dataset;
+
+import java.util.logging.FileHandler;
+
 /**
  * Created by Bryan on 10/4/2016.
  */
