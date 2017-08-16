@@ -53,7 +53,9 @@ public class DOMXMLParser {
 
         String modulusvalue= null;
         try {
-            File inputFile = new File(String.valueOf(getResourceAsFile(pathname)));
+
+            ResourceFilePathRetriever rfpr = new ResourceFilePathRetriever(); //inherits the class the retrieves .jar resource filepaths
+            File inputFile = new File(String.valueOf(rfpr.getResourceAsFile(pathname)));
             DocumentBuilderFactory dbFactory
                     = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -165,32 +167,7 @@ public class DOMXMLParser {
         }
     }
 
-    //Accesses the .xml files from the resource folder in the built .jar file and establish a temporary File object
-    //to reference the pathnames.
-    public static File getResourceAsFile(String resourcePath) {
-        try {
-            InputStream in = ClassLoader.getSystemClassLoader().getResourceAsStream(resourcePath);
-            if (in == null) {
-                return null;
-            }
 
-            File tempFile = File.createTempFile(String.valueOf(in.hashCode()), ".tmp");
-            tempFile.deleteOnExit();
-
-            try (FileOutputStream out = new FileOutputStream(tempFile)) {
-                //copy stream
-                byte[] buffer = new byte[1024];
-                int bytesRead;
-                while ((bytesRead = in.read(buffer)) != -1) {
-                    out.write(buffer, 0, bytesRead);
-                }
-            }
-            return tempFile;
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
     //This method retrieves the dropdown list of xml child values from the root. When the user selects a different value in the combobox
     //it will queue the parser to update the value readouts.
 
@@ -198,7 +175,9 @@ public class DOMXMLParser {
 
         ArrayList<String> comboList = new ArrayList<String>();
         try {
-            File inputFile = new File(String.valueOf(getResourceAsFile(userInputFilepath)));
+            ResourceFilePathRetriever rfpr = new ResourceFilePathRetriever();
+
+            File inputFile = new File(String.valueOf(rfpr.getResourceAsFile(userInputFilepath)));
             DocumentBuilderFactory dbFactory
                     = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -222,5 +201,6 @@ public class DOMXMLParser {
 
         return comboList;
     }
+
 
 }

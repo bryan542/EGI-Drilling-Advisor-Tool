@@ -2,11 +2,8 @@
   <artifact type="jar" name="EGI Drilling Advisor Tool:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/EGI_Drilling_Advisor_Tool_jar</output-path>
     <root id="archive" name="EGI Drilling Advisor Tool.jar">
-      <element id="directory" name="META-INF">
-        <element id="file-copy" path="D:/EGI Drilling Advisor ToolV2/src/META-INF/MANIFEST.MF" />
-      </element>
+      <element id="directory" name="META-INF" />
       <element id="module-output" name="EGI Drilling Advisor Tool" />
-      <element id="extracted-dir" path="$USER_HOME$/Desktop/jfreechart-1.0.19/lib/junit-4.11.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$USER_HOME$/Desktop/jfreechart-1.0.19/lib/jcommon-1.0.23.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$USER_HOME$/Desktop/jfreechart-1.0.19/lib/jfreechart-1.0.19.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$USER_HOME$/Desktop/pdfbox-app-2.0.3.jar" path-in-jar="/" />
@@ -14,6 +11,7 @@
       <element id="extracted-dir" path="$USER_HOME$/Desktop/commons-math3-3.6.1.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$USER_HOME$/Desktop/commons-csv-1.4/commons-csv-1.4.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$USER_HOME$/Desktop/dom4j-1.6.1/dom4j-1.6.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="C:/Program Files/jPDFWriter/jPDFWriter.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>

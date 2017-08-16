@@ -74,11 +74,11 @@
     </orderEntry>
     <orderEntry type="module-library" exported="">
       <library>
-        <CLASSES />
+        <CLASSES>
+          <root url="jar://C:/Program Files/jPDFWriter/jPDFWriter.jar!/" />
+        </CLASSES>
         <JAVADOC />
-        <SOURCES>
-          <root url="jar://E:/sax2r2.jar!/sax2.0.1/src" />
-        </SOURCES>
+        <SOURCES />
       </library>
     </orderEntry>
   </component>
