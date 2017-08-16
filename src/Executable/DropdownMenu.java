@@ -132,8 +132,8 @@ public class DropdownMenu  {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                //gets the bite filepath of the .chm file
-                URL url = mainWindow.class.getResource("EGIHelpManual.chm");
+
+                URL url = mainWindow.class.getResource("EGI User Manual.chm");
 
                 try {
                     URI uri = url.toURI();

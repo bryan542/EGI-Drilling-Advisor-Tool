@@ -778,9 +778,16 @@ public class HydraulicFractureAnalysisDialog extends JDialog {
 
         DOMXMLParser dParser = new DOMXMLParser();
 
+        // These are used to find the child elements of the main element in the xml files that are then fed into the combobox for user selection
         ArrayList<String> modulusList = new ArrayList<String>(dParser.getComboItems("modulus","modulusvalue","XMLFiles/young modulus tables.xml"));
         ArrayList<String> naturalFractureList = new ArrayList<String>(dParser.getComboItems("naturalfracturedensity","densityvalue","XMLFiles/Natural Fracture Tables.xml"));
         ArrayList<String> formationPressureList = new ArrayList<String>(dParser.getComboItems("formationpressure","formationpressurevalue","XMLFiles/Formation Pressure Table.xml"));
+
+        //Used when we find the sum/averages of the values across the tabs
+        ArrayList<JTextField[]> totalJTextFieldCollections = new ArrayList<JTextField[]>();
+        totalJTextFieldCollections.add(youngModulusTextFields);
+        totalJTextFieldCollections.add(naturalFractureTextFields);
+        totalJTextFieldCollections.add(formationPressureTextFields);
 
 
         for(int i = 0;i< modulusList.size();i++) {
@@ -796,6 +803,8 @@ public class HydraulicFractureAnalysisDialog extends JDialog {
             formationPressureComboBox.addItem(formationPressureList.get(i));
         }
 
+        // When the user chooses the combobox value for any of the teabs, the value is fed into the parser
+        // to populate the tables with the correct xml file values
         youngModulusComboBox.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -805,6 +814,7 @@ public class HydraulicFractureAnalysisDialog extends JDialog {
                 DOMXMLParser parsedValuesAssigning = new DOMXMLParser();
 
                 parsedValuesAssigning.populateValuesParser(selectedInputModulus, youngModulusTextFields, identity);
+
 
             }
         });
@@ -836,7 +846,10 @@ public class HydraulicFractureAnalysisDialog extends JDialog {
 
         buttonOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                onOK();
+                double[] averagesArray = finalHydraulicFractureSumAverages(totalJTextFieldCollections); //sums and averages all the tabbed values
+                String[] summationNames = populateReportTextField(averagesArray); // takes the sums and finds the highest value
+                FinalHydraulicReportDialog FHRD = new FinalHydraulicReportDialog(summationNames); // Passes the named value into the class to settext the jtextfields
+                FHRD.initialize(); //builds the dialog window
             }
         });
 
@@ -860,11 +873,258 @@ public class HydraulicFractureAnalysisDialog extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+
     }
 
-    private void onOK() {
-        // add your code here
-        dispose();
+    //This method finds the averages of each value across all of the hydraulic fracture tabs and returns them as an array
+    public double[] finalHydraulicFractureSumAverages(ArrayList<JTextField[]> totalTextFieldCollections){
+
+        int size = totalTextFieldCollections.size(); // used to find the length of subsection in the arrays so that it
+                                                    //dynamically divides and sorts by the right amount
+        double sumHolder = 0;
+        double[] averagesArray = new double[54];
+
+        for(int i = 0;i<totalTextFieldCollections.get(0).length;i++){
+
+            for (int j = 0;j<size;j++){
+
+                sumHolder = sumHolder+Double.parseDouble(totalTextFieldCollections.get(j)[i].getText());
+            }
+            averagesArray[i] = sumHolder/size;
+            sumHolder = 0;
+        }
+        return averagesArray;
+    }
+
+    //This method sets the textboxes for the suggested element types based on the highest reported value of the set
+    //of average values in the subgroups. (look at xml file groupings for reference)
+    //This is tedious and cumbersome. May wnat to come back and think of a smarter/more efficient approach
+    public String[] populateReportTextField(double[] sumAveragesArray){
+
+        String[] reportOutputs = new String[17];
+
+        String[] fluidNames = {"Slickwater","Hybrid","Cross-Linked","Foam","High","Moderate","Low","High","Moderate","Low","Low","Moderate","High"
+               , "Slow","Moderate","Fast","High","Moderate","Low","High","Moderate","Low","100, 40/70, 20/40 Tail-End","Hybrid","20/40",
+                "Low","Moderate","Normal","High","Moderate","Low","High","Moderate","Low","Four or More","Three","Two","Complex","Moderate to Complex","Planar","Planar or Shearing"
+        ,"Higher","High","Moderate","Small","High","Moderate","Implied","Short","Moderate","Long","High","Moderate","Low"};
+        
+
+        double fluidSystemFinalValue = 0;
+        double fluidVolumeFinalValue = 0;
+        double fluidlossFinalValue =0;
+        double treatmentRateFinalValue = 0;
+        double rampUpFinalValue = 0;
+        double fracturePressureFinalValue = 0;
+        double proppantConcentrationFinalValue = 0;
+        double proppantSizeFinalValue = 0;
+        double proppantDensityFinalValue = 0;
+        double proppantVolumeFinalValue = 0;
+        double proppedSurfaceAreaFinalValue = 0;
+        double perforationClusterFinalValue = 0;
+        double fractureGeometryFinalValue = 0;
+        double propagationResistanceFinalValue = 0;
+        double fractureHeightFinalValue = 0;
+        double fractureLengthFinalValue = 0;
+        double EURFinalValue = 0;
+
+        String fluidSystemFinalName = null;
+        String fluidVolumeFinalName = null;
+        String fluidlossFinalName =null;
+        String treatmentRateFinalName = null;
+        String rampUpFinalName = null;
+        String fracturePressureFinalName = null;
+        String proppantConcentrationFinalName = null;
+        String proppantSizeFinalName = null;
+        String proppantDensityFinalName = null;
+        String proppantVolumeFinalName = null;
+        String proppedSurfaceAreaFinalName = null;
+        String perforationClusterFinalName = null;
+        String fractureGeometryFinalName = null;
+        String propagationResistanceFinalName = null;
+        String fractureHeightFinalName = null;
+        String fractureLengthFinalName = null;
+        String EURFinalName = null;
+
+
+        //set all of the int ranges based on the known sizes of the arrays. There has to be a smarter way
+        //by accessing the sizes of the child nodes....
+        for (int i = 0;i<4;i++){
+            if(sumAveragesArray[i]>fluidSystemFinalValue){
+
+                fluidSystemFinalValue = sumAveragesArray[i];
+                fluidSystemFinalName = fluidNames[i];
+            }
+
+        }
+        for(int i = 4;i<7;i++){
+
+            if(sumAveragesArray[i]>fluidlossFinalValue){
+
+                fluidlossFinalValue = sumAveragesArray[i];
+                fluidlossFinalName = fluidNames[i];
+            }
+        }
+        for(int i = 4;i<7;i++){
+
+            if(sumAveragesArray[i]>fluidVolumeFinalValue){
+
+                fluidVolumeFinalValue = sumAveragesArray[i];
+                fluidVolumeFinalName = fluidNames[i];
+            }
+        }
+        for(int i = 7;i<10;i++){
+
+            if(sumAveragesArray[i]>fluidlossFinalValue){
+
+                fluidlossFinalValue = sumAveragesArray[i];
+                fluidlossFinalName = fluidNames[i];
+            }
+        }
+        
+        for(int i = 10;i<13;i++){
+
+            if(sumAveragesArray[i]>treatmentRateFinalValue){
+
+                treatmentRateFinalValue = sumAveragesArray[i];
+                treatmentRateFinalName = fluidNames[i];
+            }
+        }
+
+        for(int i = 13;i<16;i++){
+
+            if(sumAveragesArray[i]>rampUpFinalValue){
+
+                rampUpFinalValue = sumAveragesArray[i];
+                rampUpFinalName = fluidNames[i];
+            }
+        }
+        for(int i = 16;i<19;i++){
+
+            if(sumAveragesArray[i]>fracturePressureFinalValue){
+
+                fracturePressureFinalValue = sumAveragesArray[i];
+                fracturePressureFinalName = fluidNames[i];
+            }
+        }
+        for(int i = 19;i<22;i++){
+
+            if(sumAveragesArray[i]>proppantConcentrationFinalValue){
+
+                proppantConcentrationFinalValue = sumAveragesArray[i];
+                proppantConcentrationFinalName = fluidNames[i];
+            }
+        }
+        for(int i = 22;i<25;i++){
+
+            if(sumAveragesArray[i]>proppantSizeFinalValue){
+
+                proppantSizeFinalValue = sumAveragesArray[i];
+                proppantSizeFinalName = fluidNames[i];
+            }
+        }
+        for(int i = 25;i<28;i++){
+
+            if(sumAveragesArray[i]>proppantDensityFinalValue){
+
+                proppantDensityFinalValue = sumAveragesArray[i];
+                proppantDensityFinalName = fluidNames[i];
+            }
+        }
+        for(int i = 25;i<28;i++){
+
+            if(sumAveragesArray[i]>proppantDensityFinalValue){
+
+                proppantDensityFinalValue = sumAveragesArray[i];
+                proppantDensityFinalName = fluidNames[i];
+            }
+        }
+        for(int i = 28;i<31;i++){
+
+            if(sumAveragesArray[i]>proppantVolumeFinalValue){
+
+                proppantVolumeFinalValue = sumAveragesArray[i];
+                proppantVolumeFinalName = fluidNames[i];
+            }
+        }
+        for(int i = 31;i<34;i++){
+
+            if(sumAveragesArray[i]>proppedSurfaceAreaFinalValue){
+
+                proppedSurfaceAreaFinalValue = sumAveragesArray[i];
+                proppedSurfaceAreaFinalName = fluidNames[i];
+            }
+        }
+        for(int i = 34;i<37;i++){
+
+            if(sumAveragesArray[i]>perforationClusterFinalValue){
+
+                perforationClusterFinalValue = sumAveragesArray[i];
+                perforationClusterFinalName = fluidNames[i];
+            }
+        }
+        for(int i = 37;i<41;i++){
+
+            if(sumAveragesArray[i]>fractureGeometryFinalValue){
+
+                fractureGeometryFinalValue = sumAveragesArray[i];
+                fractureGeometryFinalName = fluidNames[i];
+            }
+        }
+        for(int i = 41;i<45;i++){
+
+            if(sumAveragesArray[i]>propagationResistanceFinalValue){
+
+                propagationResistanceFinalValue = sumAveragesArray[i];
+                propagationResistanceFinalName = fluidNames[i];
+            }
+        }
+        for(int i = 45;i<48;i++){
+
+            if(sumAveragesArray[i]>fractureHeightFinalValue){
+
+                fractureHeightFinalValue = sumAveragesArray[i];
+                fractureHeightFinalName = fluidNames[i];
+            }
+        }
+        for(int i = 48;i<51;i++){
+
+            if(sumAveragesArray[i]>fractureLengthFinalValue){
+
+                fractureLengthFinalValue = sumAveragesArray[i];
+                fractureLengthFinalName = fluidNames[i];
+            }
+        }
+
+        for(int i = 51;i<54;i++){
+
+            if(sumAveragesArray[i]>EURFinalValue){
+
+                EURFinalValue = sumAveragesArray[i];
+                EURFinalName = fluidNames[i];
+            }
+        }
+
+        //selects the highest rated value from each loop and puts it in the array that will be passed to the
+        //FinalHydraulicReportDialog class for final analysis/JTextField settings.
+        reportOutputs[0] = fluidSystemFinalName;
+        reportOutputs[1] = fluidVolumeFinalName;
+        reportOutputs[2] = fluidlossFinalName;
+        reportOutputs[3] = treatmentRateFinalName;
+        reportOutputs[4] = rampUpFinalName;
+        reportOutputs[5] = fracturePressureFinalName;
+        reportOutputs[6] = proppantConcentrationFinalName;
+        reportOutputs[7] = proppantSizeFinalName;
+        reportOutputs[8] = proppantDensityFinalName;
+        reportOutputs[9] = proppantVolumeFinalName;
+        reportOutputs[10] = proppedSurfaceAreaFinalName;
+        reportOutputs[11] = perforationClusterFinalName;
+        reportOutputs[12] = fractureGeometryFinalName;
+        reportOutputs[13] = propagationResistanceFinalName;
+        reportOutputs[14] = fractureHeightFinalName;
+        reportOutputs[15] = fractureLengthFinalName;
+        reportOutputs[16] = EURFinalName;
+        
+        return reportOutputs;
     }
 
     private void onCancel() {
