@@ -904,7 +904,7 @@ public class HydraulicFractureAnalysisDialog extends JDialog {
         String[] reportOutputs = new String[17];
 
         String[] fluidNames = {"Slickwater","Hybrid","Cross-Linked","Foam","High","Moderate","Low","High","Moderate","Low","Low","Moderate","High"
-               , "Slow","Moderate","Fast","High","Moderate","Low","High","Moderate","Low","100, 40/70, 20/40 Tail-End","Hybrid","20/40",
+               , "Slow","Moderate","Fast","High","Moderate","Low","High","Moderate","Low","100, 40/70, 20/40 Tail-in","Hybrid","20/40",
                 "Low","Moderate","Normal","High","Moderate","Low","High","Moderate","Low","Four or More","Three","Two","Complex","Moderate to Complex","Planar","Planar or Shearing"
         ,"Higher","High","Moderate","Small","High","Moderate","Implied","Short","Moderate","Long","High","Moderate","Low"};
         

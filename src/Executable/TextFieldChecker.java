@@ -2,7 +2,6 @@ package Executable;
 
 import javax.swing.*;
 import java.util.ArrayList;
-import java.util.Objects;
 
 /**
  * Created by Bryan on 10/31/2016.
@@ -57,7 +56,7 @@ public class TextFieldChecker {
         obj22.add(mw.getAlpha2Label());
         obj22.add(mw.getBeddingPlaneConductivityLabel());
         obj22.add(mw.getFaultConductivityLabel());
-        obj22.add(mw.getJointLabel());
+        obj22.add(mw.getNaturalFractureFrequencyLabel());
 
         //obj3 and obj33 are dip conditions where 0<angle<90
         obj3.add(mw.getBeddingPlaneDipTextField());
@@ -66,7 +65,7 @@ public class TextFieldChecker {
 
         obj33.add(mw.getBeddingPlaneConductivityLabel());
         obj33.add(mw.getFaultConductivityLabel());
-        obj33.add(mw.getJointLabel());
+        obj33.add(mw.getNaturalFractureFrequencyLabel());
 
         //return true of all conditions are satisfied in runInputChecker
         boolean checkResult = true;

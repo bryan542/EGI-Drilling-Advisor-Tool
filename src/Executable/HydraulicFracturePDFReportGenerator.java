@@ -88,7 +88,7 @@ public class HydraulicFracturePDFReportGenerator {
         name = name.replace(".pdf","");
 
         //makes sure the title does not extend into the logo. If it is greater than 64, we wont
-        //report the title
+        //report the titlea
        if(name.length() < 64){
 
            //draws the filename string

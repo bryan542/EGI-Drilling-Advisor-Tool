@@ -5,8 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
 
-import static sun.misc.PostVMInitHook.run;
-
 /**
  * Created by Bryan on 10/13/2016.
  */
@@ -205,7 +203,7 @@ public class SettingDialog extends JDialog{
                         mw.setTensileLabel(tensileStrength+pressure);
                         mw.setInputTensileStrengthLabel(tensileStrength+pressure);
                         mw.setTensileStrengthOutputLabel(tensileStrength+pressure);
-                        mw.setPorePressureLabel(porePressure+pressure);
+                        mw.setPorePressureOutputLabel(porePressure+pressure);
                         mw.setFarSigmaHLabel(farSigmaH+pressure);
                         mw.setFarSigmahLabel(farSigmah+pressure);
                         mw.setFarSigmaVLabel(farSigmaV+pressure);
@@ -243,7 +241,7 @@ public class SettingDialog extends JDialog{
                         mw.setTensileLabel(tensileStrength+pressure);
                         mw.setInputTensileStrengthLabel(tensileStrength+pressure);
                         mw.setTensileStrengthOutputLabel(tensileStrength+pressure);
-                        mw.setPorePressureLabel(porePressure+pressure);
+                        mw.setPorePressureOutputLabel(porePressure+pressure);
                         mw.setFarSigmaHLabel(farSigmaH+pressure);
                         mw.setFarSigmahLabel(farSigmah+pressure);
                         mw.setFarSigmaVLabel(farSigmaV+pressure);
@@ -306,7 +304,7 @@ public class SettingDialog extends JDialog{
                         mw.setTensileLabel(tensileStrength+pressure);
                         mw.setInputTensileStrengthLabel(tensileStrength+pressure);
                         mw.setTensileStrengthOutputLabel(tensileStrength+pressure);
-                        mw.setPorePressureLabel(porePressure+pressure);
+                        mw.setPorePressureOutputLabel(porePressure+pressure);
                         mw.setFarSigmaHLabel(farSigmaH+pressure);
                         mw.setFarSigmahLabel(farSigmah+pressure);
                         mw.setFarSigmaVLabel(farSigmaV+pressure);
@@ -332,7 +330,7 @@ public class SettingDialog extends JDialog{
                         mw.setTensileLabel(tensileStrength+pressure);
                         mw.setInputTensileStrengthLabel(tensileStrength+pressure);
                         mw.setTensileStrengthOutputLabel(tensileStrength+pressure);
-                        mw.setPorePressureLabel(porePressure+pressure);
+                        mw.setPorePressureOutputLabel(porePressure+pressure);
                         mw.setFarSigmaHLabel(farSigmaH+pressure);
                         mw.setFarSigmahLabel(farSigmah+pressure);
                         mw.setFarSigmaVLabel(farSigmaV+pressure);

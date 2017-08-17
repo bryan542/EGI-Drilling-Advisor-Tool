@@ -11,6 +11,7 @@ import javax.swing.text.StyledDocument;
 import java.awt.*;
 import java.awt.event.*;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import com.thehowtotutorial.splashscreen.JSplash;
@@ -34,11 +35,11 @@ public class mainWindow extends JFrame {
 
     private JComboBox PoreCombo;
     private JComboBox FaultTypeCombo;
-    private JComboBox FaultConductCombo;
-    private JComboBox BeddingCombo;
-    private JComboBox JointCombo;
-    private JComboBox LithologyCombo;
-    private JComboBox PermCombo;
+    private JComboBox faultConductCombo;
+    private JComboBox beddingCombo;
+    private JComboBox naturalFractureCombo;
+    private JComboBox lithologyCombo;
+    private JComboBox permCombo;
     private JComboBox GSICombo;
 
     private JTextField depthText;
@@ -109,9 +110,9 @@ public class mainWindow extends JFrame {
     private JLabel inputSigmaVLabel;
     private JLabel beddingPlaneConductivityLabel;
     private JLabel faultConductivityLabel;
-    private JLabel jointLabel;
+    private JLabel naturalFractureFrequencyLabel;
     private JLabel inputStressGradientLabel;
-    private JLabel porePressureLabel;
+    private JLabel porePressureOutputLabel;
     private JLabel farSigmaVLabel;
     private JLabel farSigmaHLabel;
     private JLabel farSigmahLabel;
@@ -159,6 +160,13 @@ public class mainWindow extends JFrame {
     private JPanel GSILocationSetter;
 
     private JScrollPane scrollPane;
+    private JLabel faultTypeLabel;
+    private JLabel porePressureTypeLabel;
+    private JLabel lithologyLabel;
+    private JLabel permeabilityLabel;
+    private JLabel tensileFailureOutputLabel;
+    private JLabel shearFailureOutputLabel;
+    private JPanel criticalFailureOutputLabel;
 
 
     private static String projectSettingButton = "General";
@@ -218,23 +226,23 @@ public class mainWindow extends JFrame {
     }
 
     public JComboBox getFaultConductCombo() {
-        return FaultConductCombo;
+        return faultConductCombo;
     }
 
     public JComboBox getBeddingCombo() {
-        return BeddingCombo;
+        return beddingCombo;
     }
 
-    public JComboBox getJointCombo() {
-        return JointCombo;
+    public JComboBox getNaturalFractureCombo() {
+        return naturalFractureCombo;
     }
 
     public JComboBox getLithologyCombo() {
-        return LithologyCombo;
+        return lithologyCombo;
     }
 
     public JComboBox getPermCombo() {
-        return PermCombo;
+        return permCombo;
     }
 
 
@@ -314,8 +322,8 @@ public class mainWindow extends JFrame {
         return faultConductivityLabel;
     }
 
-    public JLabel getJointLabel() {
-        return jointLabel;
+    public JLabel getNaturalFractureFrequencyLabel() {
+        return naturalFractureFrequencyLabel;
     }
 
     public JTextField getCriticalFailurePressureTextField() {
@@ -498,23 +506,23 @@ public class mainWindow extends JFrame {
     }
 
     public void setFaultConductCombo(String text) {
-        FaultConductCombo.setSelectedItem(text);
+        faultConductCombo.setSelectedItem(text);
     }
 
     public void setBeddingCombo(String text) {
-        BeddingCombo.setSelectedItem(text);
+        beddingCombo.setSelectedItem(text);
     }
 
-    public void setJointCombo(String text) {
-        JointCombo.setSelectedItem(text);
+    public void setNaturalFractureCombo(String text) {
+        naturalFractureCombo.setSelectedItem(text);
     }
 
     public void setLithologyCombo(String text) {
-        LithologyCombo.setSelectedItem(text);
+        lithologyCombo.setSelectedItem(text);
     }
 
     public void setPermCombo(String text) {
-        PermCombo.setSelectedItem(text);
+        permCombo.setSelectedItem(text);
     }
 
     public void setGSITextField(String text){
@@ -665,8 +673,8 @@ public class mainWindow extends JFrame {
         this.inputStressGradientLabel.setText(text);
     }
 
-    public void setPorePressureLabel(String text) {
-        this.porePressureLabel.setText(text);
+    public void setPorePressureOutputLabel(String text) {
+        this.porePressureOutputLabel.setText(text);
     }
 
     public void setCoeffFrictionText(String input) {
@@ -899,6 +907,17 @@ public class mainWindow extends JFrame {
         getSigmaMinTextField().setText(".6");
         getPorePressureTextField().setText(".433");
 
+        //pdf generated arrays that will be used
+        ArrayList<String> drillingInputsLabelArray = new ArrayList();
+        ArrayList<String> drillingInputsValueArray = new ArrayList();
+        ArrayList<String> rockInputsLabelArray = new ArrayList();
+        ArrayList<String> rockInputsValueArray = new ArrayList();
+        ArrayList<String> discontinuitiesInputsLabelArray = new ArrayList<>();
+        ArrayList<String> discontinuitiesInputsValueArray = new ArrayList<>();
+        ArrayList<String> geomechanicalOutputsLabelArray = new ArrayList<>();
+        ArrayList<String> geomechanicalOutputsValueArray = new ArrayList<>();
+
+
         //Does not let you resize the window
         mainWindow.this.setResizable(false);
 
@@ -938,20 +957,20 @@ public class mainWindow extends JFrame {
             PoreCombo.addItem(PorePressureList[i]);
         }
         for  (int i =0; i< FaultConductivityList.length;i++) {
-            FaultConductCombo.addItem(FaultConductivityList[i]);
+            faultConductCombo.addItem(FaultConductivityList[i]);
         }
         for  (int i =0; i< JointList.length;i++) {
-            JointCombo.addItem(JointList[i]);
+            naturalFractureCombo.addItem(JointList[i]);
         }
         for  (int i =0; i< BeddingUnconformityList.length;i++) {
-            BeddingCombo.addItem(BeddingUnconformityList[i]);
+            beddingCombo.addItem(BeddingUnconformityList[i]);
         }
         for  (int i =0; i< LithologyList.length;i++) {
-            LithologyCombo.addItem(LithologyList[i]);
+            lithologyCombo.addItem(LithologyList[i]);
         }
 
         for  (int i =0; i< PermeabilityList.length;i++) {
-        PermCombo.addItem(PermeabilityList[i]);
+        permCombo.addItem(PermeabilityList[i]);
         }
 
         //set textfields to non-editable
@@ -1261,11 +1280,11 @@ public class mainWindow extends JFrame {
                 poissons = Double.parseDouble(poissonText.getText());
                 rockDamage = Double.parseDouble(rockDamageTextField.getText());
                 GSI = GSITextField.getText();
-                lithology = LithologyCombo.getSelectedItem().toString();
-                permeability = PermCombo.getSelectedItem().toString();
-                faultConductivity = FaultConductCombo.getSelectedItem().toString();
-                jointFrequency = JointCombo.getSelectedItem().toString();
-                beddingConductivity = BeddingCombo.getSelectedItem().toString();
+                lithology = lithologyCombo.getSelectedItem().toString();
+                permeability = permCombo.getSelectedItem().toString();
+                faultConductivity = faultConductCombo.getSelectedItem().toString();
+                jointFrequency = naturalFractureCombo.getSelectedItem().toString();
+                beddingConductivity = beddingCombo.getSelectedItem().toString();
 
                 //checks all the input values and makes sure they are valid inputs
                 TextFieldChecker tfc = new TextFieldChecker();
@@ -1644,6 +1663,138 @@ public class mainWindow extends JFrame {
                 sc.sumROPCriteria(sumROP,mainWindow.this);
 
 
+                //Grab all of the values to be put in the pdf report
+
+
+                    //drilling labels
+
+                    drillingInputsLabelArray.add(depthLabel.getText());
+                    drillingInputsLabelArray.add(mudWeightLabel.getText());
+                    drillingInputsLabelArray.add(gammaLabel.getText());
+                    drillingInputsLabelArray.add(alpha1Label.getText());
+                    drillingInputsLabelArray.add(alpha2Label.getText());
+                    drillingInputsLabelArray.add(poissonLabel.getText());
+
+                    if(PoreCombo.isEnabled()){
+                        drillingInputsLabelArray.add(porePressureTypeLabel.getText());
+                    }
+                    if(FaultTypeCombo.isEnabled()){
+                        drillingInputsLabelArray.add(faultTypeLabel.getText());
+                    }
+                    if(coefficientManualRadioButton.isSelected()){
+
+                        drillingInputsLabelArray.add(coeffFrictionLabel.getText());
+                    }
+                    if(tensileManualRadioButton.isSelected()){
+
+                        drillingInputsLabelArray.add(tensileLabel.getText());
+                    }
+                    if(cohesionManualButton.isSelected()){
+
+                        drillingInputsLabelArray.add(cohesionInputLabel.getText());
+                    }
+
+                    drillingInputsLabelArray.add(inputSigmaVLabel.getText());
+                    drillingInputsLabelArray.add(inputSigmaMaxLabel.getText());
+                    drillingInputsLabelArray.add(inputSigmaMinLabel.getText());
+                    drillingInputsLabelArray.add(inputPorePressureLabel.getText());
+
+                    //drilling values
+
+                    drillingInputsValueArray.add(depthText.getText());
+                    drillingInputsValueArray.add(mudWeightText.getText());
+                    drillingInputsValueArray.add(gammaText.getText());
+                    drillingInputsValueArray.add(alpha1Text.getText());
+                    drillingInputsValueArray.add(alpha2Text.getText());
+                    drillingInputsValueArray.add(poissonText.getText());
+
+                    if(PoreCombo.isEnabled()){
+
+                        drillingInputsValueArray.add(PoreCombo.getSelectedItem().toString());
+                    }
+                    if(FaultTypeCombo.isEnabled()){
+                        drillingInputsValueArray.add(getFaultTypeCombo().getSelectedItem().toString());
+                    }
+                    if(coefficientManualRadioButton.isSelected()){
+
+                        drillingInputsValueArray.add(coeffFrictionText.getText());
+                    }
+                    if(tensileManualRadioButton.isSelected()){
+
+                        drillingInputsValueArray.add(tensileText.getText());
+                    }
+                    if(cohesionManualButton.isSelected()){
+
+                        drillingInputsValueArray.add(cohesionText.getText());
+                    }
+
+                    drillingInputsValueArray.add(Double.toString(SigmaVR));
+                    drillingInputsValueArray.add(Double.toString(SigmaHR));
+                    drillingInputsValueArray.add(Double.toString(SigmahR));
+                    drillingInputsValueArray.add(Double.toString(porePressureGradient));
+
+
+                    //Rock labels
+
+                    rockInputsLabelArray.add(lithologyLabel.getText());
+                    rockInputsLabelArray.add(permeabilityLabel.getText());
+                    rockInputsLabelArray.add(GSILabel.getText());
+                    rockInputsLabelArray.add(rockDamageLabel.getText());
+
+                    //Rock Values
+
+                    rockInputsValueArray.add(lithologyCombo.getSelectedItem().toString());
+                    rockInputsValueArray.add(permCombo.getSelectedItem().toString());
+                    rockInputsValueArray.add(GSITextField.getText());
+                    rockInputsValueArray.add(rockDamageTextField.getText());
+
+
+                    //Discontinuities Labels
+
+                    discontinuitiesInputsLabelArray.add(beddingPlaneConductivityLabel.getText());
+                    discontinuitiesInputsLabelArray.add(faultConductivityLabel.getText());
+                    discontinuitiesInputsLabelArray.add(naturalFractureFrequencyLabel.getText());
+
+                    //Discontinuities Values
+
+                    discontinuitiesInputsValueArray.add(beddingCombo.getSelectedItem().toString());
+                    discontinuitiesInputsValueArray.add(faultConductCombo.getSelectedItem().toString());
+                    discontinuitiesInputsValueArray.add(naturalFractureCombo.getSelectedItem().toString());
+
+                    //Geomechanical outputs Labels
+
+                    geomechanicalOutputsLabelArray.add(tensileFailureOutputLabel.getText());
+                    geomechanicalOutputsLabelArray.add(shearFailureOutputLabel.getText());
+                    geomechanicalOutputsLabelArray.add(porePressureOutputLabel.getText());
+                    geomechanicalOutputsLabelArray.add(tensileStrengthOutputLabel.getText());
+                    geomechanicalOutputsLabelArray.add(cohesionOutputLabel.getText());
+                    geomechanicalOutputsLabelArray.add(UCSIntactOutputLabel.getText());
+                    geomechanicalOutputsLabelArray.add(UCSDamagedOutputLabel.getText());
+                    geomechanicalOutputsLabelArray.add(criticalFailurePressureLabel.getText());
+                    geomechanicalOutputsLabelArray.add(farSigmaVLabel.getText());
+                    geomechanicalOutputsLabelArray.add(farSigmaHLabel.getText());
+                    geomechanicalOutputsLabelArray.add(farSigmahLabel.getText());
+                    geomechanicalOutputsLabelArray.add(principalSigma1Label.getText());
+                    geomechanicalOutputsLabelArray.add(principalSigma2Label.getText());
+                    geomechanicalOutputsLabelArray.add(principalSigma3Label.getText());
+
+                    //Geomechanical outputs Values
+
+                    geomechanicalOutputsValueArray.add(getTensileFailResult().getText());
+                    geomechanicalOutputsValueArray.add(getShearFailResult().getText());
+                    geomechanicalOutputsValueArray.add(porePressureTextFieldResult.getText());
+                    geomechanicalOutputsValueArray.add(tensileStrengthTextFieldResult.getText());
+                    geomechanicalOutputsValueArray.add(cohesionOutputTextField.getText());
+                    geomechanicalOutputsValueArray.add(UCSIntactOutputTextField.getText());
+                    geomechanicalOutputsValueArray.add(UCSDamagedOutputTextField.getText());
+                    geomechanicalOutputsValueArray.add(criticalFailurePressureTextField.getText());
+                    geomechanicalOutputsValueArray.add(sigmaVTextFieldResult.getText());
+                    geomechanicalOutputsValueArray.add(sigmaMaxTextFieldResult.getText());
+                    geomechanicalOutputsValueArray.add(sigmaMinTextFieldResult.getText());
+                    geomechanicalOutputsValueArray.add(principal1TextFieldResult.getText());
+                    geomechanicalOutputsValueArray.add(principal2TextFieldResult.getText());
+                    geomechanicalOutputsValueArray.add(principal3TextFieldResult.getText());
+
                 //generate rating textpane report
 
                 ReportStrings reportList = new ReportStrings();
@@ -1710,8 +1861,8 @@ public class mainWindow extends JFrame {
         exportReportButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                PDFCreator pt = new PDFCreator();
-                pt.getSaveLocation(mainWindow.this);
+                DrillingRatingReportPDF drr = new DrillingRatingReportPDF(drillingInputsLabelArray ,drillingInputsValueArray,rockInputsLabelArray,rockInputsValueArray,discontinuitiesInputsLabelArray,
+                        discontinuitiesInputsValueArray,geomechanicalOutputsLabelArray,geomechanicalOutputsValueArray);
 
             }
         });
@@ -1828,6 +1979,7 @@ public class mainWindow extends JFrame {
                 RD.setTitle("Rock Damage Selection Table");
             }
         });
+
     }
 
     //initializer method that builds the frame

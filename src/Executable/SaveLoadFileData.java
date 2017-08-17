@@ -1,17 +1,12 @@
 package Executable;
 
 import java.io.*;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.commons.csv.CSVFormat;
-import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVPrinter;
 import org.apache.commons.csv.CSVRecord;
-import org.jfree.data.general.Series;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -115,7 +110,7 @@ public class SaveLoadFileData {
         saveListNames.add("Fault Strike");
         saveListNames.add("Fault Dip");
 
-        saveListValues.add(mw.getJointCombo().getSelectedItem());
+        saveListValues.add(mw.getNaturalFractureCombo().getSelectedItem());
         saveListValues.add(mw.getJointStrikeTextField().getText());
         saveListValues.add(mw.getJointDipTextField().getText());
 
@@ -490,7 +485,7 @@ public class SaveLoadFileData {
                 mw.setFaultConductivityStrikeTextField(record.get("Fault Strike"));
                 mw.setFaultConductivityDipTextField(record.get("Fault Dip"));
 
-                mw.setJointCombo(record.get("Natural Fractures"));
+                mw.setNaturalFractureCombo(record.get("Natural Fractures"));
                 mw.setJointStrikeTextField(record.get("NF Strike"));
                 mw.setJointDipTextField(record.get("NF Dip"));
 
