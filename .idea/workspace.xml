@@ -7,10 +7,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9399ab71-a3e5-41cd-80f0-b6fdb9b63e05" name="Default" comment="only 1 succesfully file path found used">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/jPDFWriter.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/EGI_Drilling_Advisor_Tool_jar.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/EGI_Drilling_Advisor_Tool_jar.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EGI Drilling Advisor Tool.iml" afterPath="$PROJECT_DIR$/EGI Drilling Advisor Tool.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Executable/DOMXMLParser.java" afterPath="$PROJECT_DIR$/src/Executable/DOMXMLParser.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Images/Nexen Logo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Executable/DrillingRatingReportPDF.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Executable/HydraulicFracturePDFReportGenerator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Executable/FinalHydraulicReportDialog.form" afterPath="$PROJECT_DIR$/src/Executable/FinalHydraulicReportDialog.form" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Executable/FinalHydraulicReportDialog.java" afterPath="$PROJECT_DIR$/src/Executable/FinalHydraulicReportDialog.java" />
     </list>
     <ignored path="EGI Drilling Advisor Tool.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -63,28 +65,11 @@
       <file leaf-file-name="mainWindow.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Executable/mainWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="16337">
+            <state relative-caret-position="0">
               <caret line="1277" column="17" lean-forward="false" selection-start-line="1277" selection-start-column="17" selection-end-line="1277" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EGI.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Images/EGI.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TextFieldChecker.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Executable/TextFieldChecker.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2652">
-              <caret line="158" column="0" lean-forward="false" selection-start-line="158" selection-start-column="0" selection-end-line="158" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -96,159 +81,36 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DropdownMenu.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Executable/DropdownMenu.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2261">
-              <caret line="168" column="35" lean-forward="false" selection-start-line="168" selection-start-column="35" selection-end-line="168" selection-end-column="35" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#5788#5789#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SaveLoadFileData.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Executable/SaveLoadFileData.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4233">
-              <caret line="263" column="0" lean-forward="false" selection-start-line="191" selection-start-column="4" selection-end-line="263" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GSIDialog.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Executable/GSIDialog.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="19" column="32" lean-forward="false" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FinalHydraulicReportDialog.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="FinalHydraulicReportDialog.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Executable/FinalHydraulicReportDialog.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="98" column="51" lean-forward="true" selection-start-line="98" selection-start-column="51" selection-end-line="98" selection-end-column="51" />
+            <state relative-caret-position="391">
+              <caret line="224" column="34" lean-forward="true" selection-start-line="224" selection-start-column="34" selection-end-line="224" selection-end-column="34" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HydraulicFractureAnalysisDialog.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Executable/HydraulicFractureAnalysisDialog.java">
+      <file leaf-file-name="HydraulicFracturePDFReportGenerator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Executable/HydraulicFracturePDFReportGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="13566">
-              <caret line="1146" column="0" lean-forward="false" selection-start-line="1146" selection-start-column="0" selection-end-line="1146" selection-end-column="0" />
+            <state relative-caret-position="1224">
+              <caret line="90" column="26" lean-forward="false" selection-start-line="90" selection-start-column="26" selection-end-line="90" selection-end-column="26" />
               <folding>
-                <element signature="method#getFluidVolumeNaturalFractureModerateJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getFluidLossNaturalFractureModerateJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getTreatmentRateNaturalFractureLowJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getTreatmentRateNaturalFractureModerateJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getTreatmentRateNaturalFractureHighJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getFracturePressureNaturalFractureHighJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getFracturePressureNaturalFractureModerateJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getFracturePressureNaturalFractureLowJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getProppantConcentrationNaturalFractureHighJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getProppantConcentrationNaturalFractureModerateJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getProppantConcentrationNaturalFractureLowJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getProppantSizeNaturalFractureHighMeshJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getProppantSizeNaturalFractureHybridJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getProppantSizeNaturalFractureLowMeshJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getProppantDensityNaturalFractureLowJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getProppantDensityNaturalFractureModerateJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getProppantDensityNaturalFractureNormalJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getProppantVolumeNaturalFractureHighJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getProppantVolumeNaturalFractureModerateJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getProppantVolumeNaturalFractureLowJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getProppedSurfaceAreaNaturalFractureHighJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getProppedSurfaceAreaNaturalFractureModerateJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getProppedSurfaceAreaNaturalFractureLowJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getPerforationClustersNaturalFractureMoreFourJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getPerforationClustersNaturalFractureThreeJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getPerforationClustersNaturalFracturesTwoJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getFractureGeometryNaturalFractureComplexJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getFractureGeometryNaturalFractureModerateComplexJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getFractureGeometryNaturalFracturePlanarJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getFractureGeometryNaturalFracturePlanarOrShearingJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getPropagationResistanceNaturalFractureHigherJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getPropagationResistanceNaturalFractureHighJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getPropagationResistanceNaturalFractureModerateJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getPropagationResistanceNaturalFractureLowJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getFractureHeightNaturalFractureHighJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getFractureHeightNaturalFractureModerateJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getFractureHeightNaturalFractureImpliedJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getFractureLengthNaturalFractureSmallJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getFractureLengthNaturalFractureModerateJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getFractureLengthNaturalFractureLongJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getFluidVolumeFormationPressureHighJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getFluidVolumeFormationPressureModerateJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getFluidVolumeFormationPressureLowJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getFluidLossFormationPressureModerateJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getTreatmentRateFormationPressureLowJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getTreatmentRateFormationPressureModerateJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getTreatmentRateFormationPressureHighJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getRampUpFormationPressureModerateJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getFracturePressureFormationPressureHighJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getFracturePressureFormationPressureModerateJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getFracturePressureFormationPressureLowJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getProppantConcentrationFormationPressureHighJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getProppantConcentrationFormationPressureModerateJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getProppantConcentrationFormationPressureLowJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getProppantSizeFormationPressureHighMeshJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getProppantSizeFormationPressureHybridJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getProppantSizeFormationPressureLowMeshJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getProppantDensityFormationPressureLowJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getProppantDensityFormationPressureModerateJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getProppantDensityFormationPressureNormalJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getProppantVolumeFormationPressureHighJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getProppantVolumeFormationPressureModerateJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getProppantVolumeFormationPressureLowJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getProppedSurfaceAreaFormationPressureHighJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getProppedSurfaceAreaFormationPressureModerateJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getProppedSurfaceAreaFormationPressureLowJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getPerforationClustersFormationPressureMoreFourJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getPerforationClustersFormationPressureThreeJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getPerforationClustersFormationPressureTwoJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getFractureGeometryFormationPressureComplexJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getFractureGeometryFormationPressureModerateComplexJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getFractureGeometryFormationPressurePlanarJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getFractureGeometryFormationPressurePlanarOrShearingJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getPropagationResistanceFormationPressureHigherJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getPropagationResistanceFormationPressureHighJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getPropagationResistanceFormationPressureModerateJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getPropagationResistanceFormationPressureLowJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getFractureHeightFormationPressureHighJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getFractureHeightFormationPressureModerateJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getFractureHeightFormationPressureImpliedJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getFractureLengthFormationPressureSmallJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getFractureLengthFormationPressureModerateJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getFractureLengthFormationPressureLongJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getProppantConcentrationYoungsHighJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getProppantConcentrationYoungsModerateJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getProppedSurfaceAreaYoungsModerateJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getPerforationClustersYoungsMoreFourJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getFractureGeometryYoungsModerateComplexJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getFractureGeometryYoungsPlanarOrShearingJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getPropagationResistanceYoungsHigherJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getPropagationResistanceYoungsHighJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getPropagationResistanceYoungsModerateJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <element signature="method#getPropagationResistanceYoungsLowJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
-                <marker date="1498251468000" expanded="true" signature="55964:55971" ph="{...}" />
+                <element signature="method#getSaveLocation#0;class#HydraulicFracturePDFReportGenerator#0" expanded="false" />
+                <element signature="e#4530#4618#0" expanded="false" />
+                <element signature="method#resizedBufferedImage#0;class#HydraulicFracturePDFReportGenerator#0" expanded="false" />
+                <element signature="method#scale#0;class#HydraulicFracturePDFReportGenerator#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DOMXMLParser.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Executable/DOMXMLParser.java">
+      <file leaf-file-name="DrillingRatingReportPDF.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Executable/DrillingRatingReportPDF.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="935">
-              <caret line="70" column="22" lean-forward="false" selection-start-line="70" selection-start-column="20" selection-end-line="70" selection-end-column="22" />
+            <state relative-caret-position="34">
+              <caret line="2" column="38" lean-forward="true" selection-start-line="2" selection-start-column="38" selection-end-line="2" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -266,12 +128,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>propagationresistanceYoungsLow</find>
-      <find>propagationresistanceyoungslow</find>
-      <find>pro</find>
-      <find>EGI</find>
-      <find>combobo</find>
-      <find>getSlick</find>
       <find>slickwa</find>
       <find>youngs</find>
       <find>icon</find>
@@ -296,6 +152,12 @@
       <find>tab</find>
       <find>buttoncount</find>
       <find>calculate</find>
+      <find>string</find>
+      <find>first</find>
+      <find>fluidLossJ</find>
+      <find>exportreportbut</find>
+      <find>nexen</find>
+      <find>url</find>
     </findStrings>
     <replaceStrings>
       <replace>valueModulusName</replace>
@@ -331,7 +193,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Executable/RockDamageDialog.java" />
         <option value="$PROJECT_DIR$/src/Executable/FourthSetEquations.java" />
         <option value="$PROJECT_DIR$/src/Executable/TextFieldChecker.java" />
         <option value="$PROJECT_DIR$/src/Executable/MSTEST.java" />
@@ -374,14 +235,15 @@
         <option value="$PROJECT_DIR$/src/XMLFiles/Formation Pressure Table.xml" />
         <option value="$PROJECT_DIR$/src/XMLFiles/Natural Fracture Tables.xml" />
         <option value="$PROJECT_DIR$/src/Executable/ResourceFilePathRetriever.java" />
-        <option value="$PROJECT_DIR$/src/Executable/FinalHydraulicReportDialog.java" />
         <option value="$PROJECT_DIR$/src/Executable/HydraulicFractureAnalysisDialog.java" />
         <option value="$PROJECT_DIR$/src/Executable/HydraulicFractureAnalysisDialog.form" />
-        <option value="$PROJECT_DIR$/src/Executable/FinalHydraulicReportDialog.form" />
         <option value="$PROJECT_DIR$/src/Executable/DOMXMLParser.java" />
         <option value="$PROJECT_DIR$/src/Executable/mainWindow.java" />
         <option value="$PROJECT_DIR$/src/Executable/AboutDialog.form" />
         <option value="$PROJECT_DIR$/src/Executable/DropdownMenu.java" />
+        <option value="$PROJECT_DIR$/src/Executable/FinalHydraulicReportDialog.form" />
+        <option value="$PROJECT_DIR$/src/Executable/FinalHydraulicReportDialog.java" />
+        <option value="$PROJECT_DIR$/src/Executable/HydraulicFracturePDFReportGenerator.java" />
       </list>
     </option>
   </component>
@@ -389,10 +251,10 @@
     <treeState />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-33" />
-    <option name="y" value="27" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="x" value="-70" />
+    <option name="y" value="49" />
+    <option name="width" value="1932" />
+    <option name="height" value="1045" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -444,15 +306,15 @@
       </pane>
       <pane id="Scratches" />
       <pane id="AndroidView" />
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.20229885" />
-    <property name="last_opened_file_path" value="C:/Program Files/jPDFWriter/jPDFWriter.jar!/" />
+    <property name="last_opened_file_path" value="E:/UCementProgram" />
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="396" />
     <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH" value="178" />
     <property name="findjar.last.used.dir" value="$PROJECT_DIR$" />
@@ -462,24 +324,25 @@
     <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW" value="true" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
     <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
+    <property name="ignore_missing_gitignore" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\EGI Drilling Advisor Tool\src\Images" />
       <recent name="E:\EGI Drilling Advisor Tool\src\Executable" />
       <recent name="E:\EGI Drilling Advisor Tool\src\XMLFiles" />
-      <recent name="E:\EGI Drilling Advisor Tool\src\DataSets" />
-      <recent name="E:\EGI Drilling Advisor Tool\src\Images" />
-      <recent name="F:\EGI Drilling Advisor Tool\src\Images" />
+      <recent name="E:\EGI Drilling Advisor Tool\src\Executable\DataSets" />
+      <recent name="D:\EGI Drilling Advisor Tool\src\Images" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="Executable" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\EGI Drilling Advisor Tool\src\Images" />
       <recent name="E:\EGI Drilling Advisor Tool\src\Executable" />
       <recent name="E:\EGI Drilling Advisor Tool\src\XMLFiles" />
-      <recent name="E:\EGI Drilling Advisor Tool\src\Executable\DataSets" />
-      <recent name="E:\EGI Drilling Advisor Tool\src\Images" />
-      <recent name="D:\EGI Drilling Advisor Tool\src\Images" />
+      <recent name="E:\EGI Drilling Advisor Tool\src\DataSets" />
+      <recent name="F:\EGI Drilling Advisor Tool\src\Images" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -552,14 +415,14 @@
       <module name="EGI Drilling Advisor Tool" />
       <envs />
     </configuration>
-    <configuration name="UserHandler" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="HydraulicFracturePDFReportGenerator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="Executable.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="Executable.UserHandler" />
+      <option name="MAIN_CLASS_NAME" value="Executable.HydraulicFracturePDFReportGenerator" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -814,18 +677,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Application.mainWindow" />
-      <item index="1" class="java.lang.String" itemvalue="Application.UserHandler" />
-      <item index="2" class="java.lang.String" itemvalue="Application.DOMParserTest" />
-      <item index="3" class="java.lang.String" itemvalue="Application.DOMXMLParser" />
-      <item index="4" class="java.lang.String" itemvalue="Application.HydraulicFractureAnalysisDialog" />
+      <item index="1" class="java.lang.String" itemvalue="Application.DOMParserTest" />
+      <item index="2" class="java.lang.String" itemvalue="Application.DOMXMLParser" />
+      <item index="3" class="java.lang.String" itemvalue="Application.HydraulicFractureAnalysisDialog" />
+      <item index="4" class="java.lang.String" itemvalue="Application.HydraulicFracturePDFReportGenerator" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Application.mainWindow" />
-        <item index="1" class="java.lang.String" itemvalue="Application.HydraulicFractureAnalysisDialog" />
-        <item index="2" class="java.lang.String" itemvalue="Application.DOMXMLParser" />
-        <item index="3" class="java.lang.String" itemvalue="Application.DOMParserTest" />
-        <item index="4" class="java.lang.String" itemvalue="Application.UserHandler" />
+        <item index="1" class="java.lang.String" itemvalue="Application.HydraulicFracturePDFReportGenerator" />
+        <item index="2" class="java.lang.String" itemvalue="Application.HydraulicFractureAnalysisDialog" />
+        <item index="3" class="java.lang.String" itemvalue="Application.DOMXMLParser" />
+        <item index="4" class="java.lang.String" itemvalue="Application.DOMParserTest" />
       </list>
     </recent_temporary>
   </component>
@@ -1204,24 +1067,23 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32885906" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.200453" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20038351" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26366252" sideWeight="0.50852877" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0072916667" sideWeight="0.4798331" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2524377" sideWeight="0.4849624" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28763184" sideWeight="0.4849624" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3279003" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297414" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40724948" sideWeight="0.48990577" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29434323" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1988273" sideWeight="0.48990577" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24919441" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24971297" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="2414" y="202" width="451" height="455" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29218572" sideWeight="0.4914712" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29146692" sideWeight="0.4914712" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20845272" sideWeight="0.5100942" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1232,6 +1094,7 @@
       <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32930845" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0064446833" sideWeight="0.5201669" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19846596" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1329,7 +1192,7 @@
           </selected-grouping-rules>
         </breakpoints-dialog>
       </breakpoints-dialog>
-      <option name="time" value="775" />
+      <option name="time" value="781" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -1342,14 +1205,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Executable/FormationPressureGraph.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="580">
-          <caret line="84" column="57" lean-forward="false" selection-start-line="84" selection-start-column="57" selection-end-line="84" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Executable/TestSolver.java" />
     <entry file="file://$PROJECT_DIR$/src/Executable/DataSets/iris.data" />
     <entry file="file://$PROJECT_DIR$/src/Executable/iris.data" />
     <entry file="file://$PROJECT_DIR$/src/Executable/TutorialEvaluateDataset.java" />
@@ -1464,16 +1319,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Executable/HydraulicFractureAnalysisDialog.form">
-      <provider selected="true" editor-type-id="ui-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Executable/FinalHydraulicReportDialog.form">
-      <provider selected="true" editor-type-id="ui-designer">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Executable/AboutDialog.form">
       <provider selected="true" editor-type-id="ui-designer">
         <state />
@@ -1509,7 +1354,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Executable/HydraulicFractureAnalysisDialog.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="13566">
+        <state relative-caret-position="13821">
           <caret line="1146" column="0" lean-forward="false" selection-start-line="1146" selection-start-column="0" selection-end-line="1146" selection-end-column="0" />
           <folding>
             <element signature="method#getFluidVolumeNaturalFractureModerateJTextField#0;class#HydraulicFractureAnalysisDialog#0" expanded="false" />
@@ -1610,65 +1455,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Executable/GSIDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="19" column="32" lean-forward="false" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Executable/AboutDialog.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="22" column="28" lean-forward="false" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Executable/SaveLoadFileData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4233">
-          <caret line="263" column="0" lean-forward="false" selection-start-line="191" selection-start-column="4" selection-end-line="263" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Executable/DropdownMenu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2261">
-          <caret line="168" column="35" lean-forward="false" selection-start-line="168" selection-start-column="35" selection-end-line="168" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#5788#5789#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Executable/mainWindow.form">
-      <provider selected="true" editor-type-id="ui-designer">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Executable/TextFieldChecker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2652">
-          <caret line="158" column="0" lean-forward="false" selection-start-line="158" selection-start-column="0" selection-end-line="158" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Executable/mainWindow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16337">
-          <caret line="1277" column="17" lean-forward="false" selection-start-line="1277" selection-start-column="17" selection-end-line="1277" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1677,10 +1467,95 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Executable/HydraulicFractureAnalysisDialog.form">
+      <provider selected="true" editor-type-id="ui-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Executable/GSIDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="19" column="32" lean-forward="false" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Executable/SaveLoadFileData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="658">
+          <caret line="263" column="0" lean-forward="false" selection-start-line="191" selection-start-column="4" selection-end-line="263" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Executable/DropdownMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="658">
+          <caret line="168" column="35" lean-forward="false" selection-start-line="168" selection-start-column="35" selection-end-line="168" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Executable/mainWindow.form">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="ui-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Executable/TextFieldChecker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="658">
+          <caret line="158" column="0" lean-forward="false" selection-start-line="158" selection-start-column="0" selection-end-line="158" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Executable/mainWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="1277" column="17" lean-forward="false" selection-start-line="1277" selection-start-column="17" selection-end-line="1277" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Executable/FinalHydraulicReportDialog.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="98" column="51" lean-forward="true" selection-start-line="98" selection-start-column="51" selection-end-line="98" selection-end-column="51" />
+        <state relative-caret-position="391">
+          <caret line="224" column="34" lean-forward="true" selection-start-line="224" selection-start-column="34" selection-end-line="224" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Executable/FinalHydraulicReportDialog.form">
+      <provider selected="true" editor-type-id="ui-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Executable/HydraulicFracturePDFReportGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1224">
+          <caret line="90" column="26" lean-forward="false" selection-start-line="90" selection-start-column="26" selection-end-line="90" selection-end-column="26" />
+          <folding>
+            <element signature="method#getSaveLocation#0;class#HydraulicFracturePDFReportGenerator#0" expanded="false" />
+            <element signature="e#4530#4618#0" expanded="false" />
+            <element signature="method#resizedBufferedImage#0;class#HydraulicFracturePDFReportGenerator#0" expanded="false" />
+            <element signature="method#scale#0;class#HydraulicFracturePDFReportGenerator#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Executable/DrillingRatingReportPDF.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="38" lean-forward="true" selection-start-line="2" selection-start-column="38" selection-end-line="2" selection-end-column="38" />
           <folding />
         </state>
       </provider>

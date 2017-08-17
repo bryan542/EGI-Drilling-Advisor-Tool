@@ -156,7 +156,7 @@
                         <properties/>
                         <border type="none"/>
                         <children>
-                          <component id="57264" class="javax.swing.JLabel">
+                          <component id="57264" class="javax.swing.JLabel" binding="fluidSystemReportJLabel">
                             <constraints>
                               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                             </constraints>
@@ -164,7 +164,7 @@
                               <text value="Fluid System: "/>
                             </properties>
                           </component>
-                          <component id="aa2c7" class="javax.swing.JLabel">
+                          <component id="aa2c7" class="javax.swing.JLabel" binding="fluidVolumeReportJLabel">
                             <constraints>
                               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                             </constraints>
@@ -172,7 +172,7 @@
                               <text value="Fluid Volume:"/>
                             </properties>
                           </component>
-                          <component id="dfa09" class="javax.swing.JLabel">
+                          <component id="dfa09" class="javax.swing.JLabel" binding="fluidLossReportJLabel">
                             <constraints>
                               <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                             </constraints>
@@ -180,7 +180,7 @@
                               <text value="Fluid Loss:"/>
                             </properties>
                           </component>
-                          <component id="883c2" class="javax.swing.JLabel">
+                          <component id="883c2" class="javax.swing.JLabel" binding="treatmentRateReportJLabel">
                             <constraints>
                               <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                             </constraints>
@@ -188,7 +188,7 @@
                               <text value="Treatment Rate:"/>
                             </properties>
                           </component>
-                          <component id="25463" class="javax.swing.JLabel">
+                          <component id="25463" class="javax.swing.JLabel" binding="rampUpStrategyReportJLabel">
                             <constraints>
                               <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                             </constraints>
@@ -196,7 +196,7 @@
                               <text value="Ramp-Up Strategy:"/>
                             </properties>
                           </component>
-                          <component id="dae75" class="javax.swing.JLabel">
+                          <component id="dae75" class="javax.swing.JLabel" binding="fracturePressureReportJLabel">
                             <constraints>
                               <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                             </constraints>
@@ -204,7 +204,7 @@
                               <text value="Fracture Pressure:"/>
                             </properties>
                           </component>
-                          <component id="f3856" class="javax.swing.JLabel">
+                          <component id="f3856" class="javax.swing.JLabel" binding="proppantConcentrationReportJLabel">
                             <constraints>
                               <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                             </constraints>
@@ -212,7 +212,7 @@
                               <text value="Proppant Concentration:"/>
                             </properties>
                           </component>
-                          <component id="f6dc5" class="javax.swing.JLabel">
+                          <component id="f6dc5" class="javax.swing.JLabel" binding="proppantSizeReportJLabel">
                             <constraints>
                               <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                             </constraints>
@@ -232,7 +232,7 @@
                     <properties/>
                     <border type="etched"/>
                     <children>
-                      <component id="e3602" class="javax.swing.JLabel">
+                      <component id="e3602" class="javax.swing.JLabel" binding="proppantDensityReportJLabel">
                         <constraints>
                           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
@@ -250,7 +250,7 @@
                         </constraints>
                         <properties/>
                       </component>
-                      <component id="5360d" class="javax.swing.JLabel">
+                      <component id="5360d" class="javax.swing.JLabel" binding="proppantVolumeReportJLabel">
                         <constraints>
                           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
@@ -258,7 +258,7 @@
                           <text value="Proppant Volume:"/>
                         </properties>
                       </component>
-                      <component id="56273" class="javax.swing.JLabel">
+                      <component id="56273" class="javax.swing.JLabel" binding="proppedSurfaceAreaReportJLabel">
                         <constraints>
                           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
@@ -266,7 +266,7 @@
                           <text value="Propped Surface Area:"/>
                         </properties>
                       </component>
-                      <component id="b2d66" class="javax.swing.JLabel">
+                      <component id="b2d66" class="javax.swing.JLabel" binding="perfClusterReportJLabel">
                         <constraints>
                           <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
@@ -274,7 +274,7 @@
                           <text value="Perforation Clusters Per Stage:"/>
                         </properties>
                       </component>
-                      <component id="3c758" class="javax.swing.JLabel">
+                      <component id="3c758" class="javax.swing.JLabel" binding="fractureGeometryReportJLabel">
                         <constraints>
                           <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
@@ -282,7 +282,7 @@
                           <text value="Fracture Geometry:"/>
                         </properties>
                       </component>
-                      <component id="dcc9f" class="javax.swing.JLabel">
+                      <component id="dcc9f" class="javax.swing.JLabel" binding="propagationResistanceReportJLabel">
                         <constraints>
                           <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
@@ -290,7 +290,7 @@
                           <text value="Propagation Resistance:"/>
                         </properties>
                       </component>
-                      <component id="4b7b6" class="javax.swing.JLabel">
+                      <component id="4b7b6" class="javax.swing.JLabel" binding="fractureHeightReportJLabel">
                         <constraints>
                           <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
@@ -298,7 +298,7 @@
                           <text value="Fracture Height:"/>
                         </properties>
                       </component>
-                      <component id="dbe26" class="javax.swing.JLabel">
+                      <component id="dbe26" class="javax.swing.JLabel" binding="fractureLengthReportJLabel">
                         <constraints>
                           <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
@@ -306,7 +306,7 @@
                           <text value="Fracture Length:"/>
                         </properties>
                       </component>
-                      <component id="1740f" class="javax.swing.JLabel">
+                      <component id="1740f" class="javax.swing.JLabel" binding="EURReportJLabel">
                         <constraints>
                           <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
