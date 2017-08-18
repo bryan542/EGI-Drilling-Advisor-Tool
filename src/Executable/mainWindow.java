@@ -1767,6 +1767,148 @@ public class mainWindow extends JFrame {
                     TensileFailureRatioBarGraph tensileFailureBarGraph = new TensileFailureRatioBarGraph(multivariateTensileDataset,mainWindow.this,projectCustomPressureType);
                     tabbedPane1.addTab("Tensile Fracture Ratio", null,tensileFailureBarGraph,null);
 
+
+                    //clear the array holding the old data
+                    drillingInputsLabelArray.clear();
+                    drillingInputsValueArray.clear();
+                    rockInputsLabelArray.clear();
+                    rockInputsValueArray.clear();
+                    discontinuitiesInputsLabelArray.clear();
+                    discontinuitiesInputsValueArray.clear();
+                    geomechanicalOutputsLabelArray.clear();
+                    geomechanicalOutputsValueArray.clear();
+
+                    //Grab all of the values to be put in the pdf report
+
+                    //drilling labels
+
+                    drillingInputsLabelArray.add(depthLabel.getText());
+                    drillingInputsLabelArray.add(mudWeightLabel.getText());
+                    drillingInputsLabelArray.add(gammaLabel.getText());
+                    drillingInputsLabelArray.add(alpha1Label.getText());
+                    drillingInputsLabelArray.add(alpha2Label.getText());
+                    drillingInputsLabelArray.add(poissonLabel.getText());
+
+                    if(PoreCombo.isEnabled()){
+                        drillingInputsLabelArray.add(porePressureTypeLabel.getText());
+                    }
+                    if(FaultTypeCombo.isEnabled()){
+                        drillingInputsLabelArray.add(faultTypeLabel.getText());
+                    }
+                    if(coefficientManualRadioButton.isSelected()){
+
+                        drillingInputsLabelArray.add(coeffFrictionLabel.getText());
+                    }
+                    if(tensileManualRadioButton.isSelected()){
+
+                        drillingInputsLabelArray.add(tensileLabel.getText());
+                    }
+                    if(cohesionManualButton.isSelected()){
+
+                        drillingInputsLabelArray.add(cohesionInputLabel.getText());
+                    }
+
+                    drillingInputsLabelArray.add(inputSigmaVLabel.getText());
+                    drillingInputsLabelArray.add(inputSigmaMaxLabel.getText());
+                    drillingInputsLabelArray.add(inputSigmaMinLabel.getText());
+                    drillingInputsLabelArray.add(inputPorePressureLabel.getText());
+
+                    //drilling values
+
+                    drillingInputsValueArray.add(depthText.getText());
+                    drillingInputsValueArray.add(mudWeightText.getText());
+                    drillingInputsValueArray.add(gammaText.getText());
+                    drillingInputsValueArray.add(alpha1Text.getText());
+                    drillingInputsValueArray.add(alpha2Text.getText());
+                    drillingInputsValueArray.add(poissonText.getText());
+
+                    if(PoreCombo.isEnabled()){
+
+                        drillingInputsValueArray.add(PoreCombo.getSelectedItem().toString());
+                    }
+                    if(FaultTypeCombo.isEnabled()){
+                        drillingInputsValueArray.add(getFaultTypeCombo().getSelectedItem().toString());
+                    }
+                    if(coefficientManualRadioButton.isSelected()){
+
+                        drillingInputsValueArray.add(coeffFrictionText.getText());
+                    }
+                    if(tensileManualRadioButton.isSelected()){
+
+                        drillingInputsValueArray.add(tensileText.getText());
+                    }
+                    if(cohesionManualButton.isSelected()){
+
+                        drillingInputsValueArray.add(cohesionText.getText());
+                    }
+
+                    drillingInputsValueArray.add(Double.toString(SigmaVR));
+                    drillingInputsValueArray.add(Double.toString(SigmaHR));
+                    drillingInputsValueArray.add(Double.toString(SigmahR));
+                    drillingInputsValueArray.add(Double.toString(porePressureGradient));
+
+
+                    //Rock labels
+
+                    rockInputsLabelArray.add(lithologyLabel.getText());
+                    rockInputsLabelArray.add(permeabilityLabel.getText());
+                    rockInputsLabelArray.add(GSILabel.getText());
+                    rockInputsLabelArray.add(rockDamageLabel.getText());
+
+                    //Rock Values
+
+                    rockInputsValueArray.add(lithologyCombo.getSelectedItem().toString());
+                    rockInputsValueArray.add(permCombo.getSelectedItem().toString());
+                    rockInputsValueArray.add(GSITextField.getText());
+                    rockInputsValueArray.add(rockDamageTextField.getText());
+
+
+                    //Discontinuities Labels
+
+                    discontinuitiesInputsLabelArray.add(beddingPlaneConductivityLabel.getText());
+                    discontinuitiesInputsLabelArray.add(faultConductivityLabel.getText());
+                    discontinuitiesInputsLabelArray.add(naturalFractureFrequencyLabel.getText());
+
+                    //Discontinuities Values
+
+                    discontinuitiesInputsValueArray.add(beddingCombo.getSelectedItem().toString());
+                    discontinuitiesInputsValueArray.add(faultConductCombo.getSelectedItem().toString());
+                    discontinuitiesInputsValueArray.add(naturalFractureCombo.getSelectedItem().toString());
+
+                    //Geomechanical outputs Labels
+
+                    geomechanicalOutputsLabelArray.add(tensileFailureOutputLabel.getText());
+                    geomechanicalOutputsLabelArray.add(shearFailureOutputLabel.getText());
+                    geomechanicalOutputsLabelArray.add(porePressureOutputLabel.getText());
+                    geomechanicalOutputsLabelArray.add(tensileStrengthOutputLabel.getText());
+                    geomechanicalOutputsLabelArray.add(cohesionOutputLabel.getText());
+                    geomechanicalOutputsLabelArray.add(UCSIntactOutputLabel.getText());
+                    geomechanicalOutputsLabelArray.add(UCSDamagedOutputLabel.getText());
+                    geomechanicalOutputsLabelArray.add(criticalFailurePressureLabel.getText());
+                    geomechanicalOutputsLabelArray.add(farSigmaVLabel.getText());
+                    geomechanicalOutputsLabelArray.add(farSigmaHLabel.getText());
+                    geomechanicalOutputsLabelArray.add(farSigmahLabel.getText());
+                    geomechanicalOutputsLabelArray.add(principalSigma1Label.getText());
+                    geomechanicalOutputsLabelArray.add(principalSigma2Label.getText());
+                    geomechanicalOutputsLabelArray.add(principalSigma3Label.getText());
+
+                    //Geomechanical outputs Values
+
+                    geomechanicalOutputsValueArray.add(getTensileFailResult().getText());
+                    geomechanicalOutputsValueArray.add(getShearFailResult().getText());
+                    geomechanicalOutputsValueArray.add(porePressureTextFieldResult.getText());
+                    geomechanicalOutputsValueArray.add(tensileStrengthTextFieldResult.getText());
+                    geomechanicalOutputsValueArray.add(cohesionOutputTextField.getText());
+                    geomechanicalOutputsValueArray.add(UCSIntactOutputTextField.getText());
+                    geomechanicalOutputsValueArray.add(UCSDamagedOutputTextField.getText());
+                    geomechanicalOutputsValueArray.add(criticalFailurePressureTextField.getText());
+                    geomechanicalOutputsValueArray.add(sigmaVTextFieldResult.getText());
+                    geomechanicalOutputsValueArray.add(sigmaMaxTextFieldResult.getText());
+                    geomechanicalOutputsValueArray.add(sigmaMinTextFieldResult.getText());
+                    geomechanicalOutputsValueArray.add(principal1TextFieldResult.getText());
+                    geomechanicalOutputsValueArray.add(principal2TextFieldResult.getText());
+                    geomechanicalOutputsValueArray.add(principal3TextFieldResult.getText());
+
                 }
 
 
