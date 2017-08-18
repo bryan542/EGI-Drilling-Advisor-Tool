@@ -1590,7 +1590,7 @@ public class mainWindow extends JFrame {
 
 
                 //buttonCount is a true/false condition to check if the graph panes are added/removed
-                if (buttonCount == true) {
+                if (buttonCount) {
                     StressPolygonGraph polygonGraphOutput = new StressPolygonGraph(polygonCollection, mainWindow.this,projectCustomPressureType);
                     tabbedPane1.addTab("Stress Polygon", null, polygonGraphOutput, null);
 
@@ -1607,64 +1607,7 @@ public class mainWindow extends JFrame {
                     TensileFailureRatioBarGraph tensileFailureBarGraph = new TensileFailureRatioBarGraph(multivariateTensileDataset,mainWindow.this,projectCustomPressureType);
                     tabbedPane1.addTab("Tensile Fracture Ratio", null,tensileFailureBarGraph,null);
 
-
-
-                    buttonCount = false;
-
-                }
-                else if (buttonCount == false){
-
-                    tabbedPane1.remove(6);
-                    tabbedPane1.remove(5);
-                    tabbedPane1.remove(4);
-                    tabbedPane1.remove(3);
-                    tabbedPane1.remove(2);
-
-                    StressPolygonGraph graphOutput = new StressPolygonGraph(polygonCollection, mainWindow.this,projectCustomPressureType);
-                    tabbedPane1.addTab("Stress Polygon", null, graphOutput, null);
-
-                    FormationPressureGraph formationPressureGraph = new FormationPressureGraph(formationPressureCollection,mainWindow.this,projectCustomPressureType);
-                    tabbedPane1.addTab("Formation Pressure Regime",null,formationPressureGraph,null);
-
-                    MohrFailureGraph MohrGraphOutput = new MohrFailureGraph(mohrCollection, effectiveSortedStresses[2]*(1/pressureUM),effectiveSortedStresses[0]*(1/pressureUM),projectCustomPressureType,mainWindow.this);
-                    setMohrGraphOutputFinal(MohrGraphOutput);
-                    tabbedPane1.addTab("Mohr-Coulomb Failure",null,MohrGraphOutput,null);
-
-                    ShearFailureRatioBarGraph multiGraph = new ShearFailureRatioBarGraph(multivariateShearDataset,mainWindow.this,projectCustomPressureType);
-                    tabbedPane1.addTab("Shear Fracture Ratio", null,multiGraph,null);
-
-                    TensileFailureRatioBarGraph tensileFailureBarGraph = new TensileFailureRatioBarGraph(multivariateTensileDataset,mainWindow.this,projectCustomPressureType);
-                    tabbedPane1.addTab("Tensile Fracture Ratio", null,tensileFailureBarGraph,null);
-
-                }
-
-
-
-
-                sigmaVTextFieldResult.setText(Integer.toString((int) ((SigmaVGradient +porePressureCombination)*(1/pressureUM))));
-                sigmaMaxTextFieldResult.setText(Integer.toString((int) ((SigmaHGradient +porePressureCombination)*(1/pressureUM))));
-                sigmaMinTextFieldResult.setText(Integer.toString((int) ((SigmahGradient +porePressureCombination)*(1/pressureUM))));
-                principal1TextFieldResult.setText(Integer.toString((int) (effectiveSortedStresses[2]*(1/pressureUM))));
-                principal2TextFieldResult.setText(Integer.toString((int) (effectiveSortedStresses[1]*(1/pressureUM))));
-                principal3TextFieldResult.setText(Integer.toString((int) (effectiveSortedStresses[0]*(1/pressureUM))));
-                cohesionOutputTextField.setText(Integer.toString((int) (cohesionInitial*(1/pressureUM))));
-                UCSIntactOutputTextField.setText(Integer.toString((int) (compressiveStrengthIntact*(1/pressureUM))));
-                UCSDamagedOutputTextField.setText(Integer.toString((int) (compressiveStrength*(1/pressureUM))));
-                TensileFailResult.setText(failType);
-                ShearFailResult.setText(shearType);
-
-                //set the stability rating criteria (output under well rating drilling output tab)
-                StabilityConditions sc = new StabilityConditions();
-
-                sc.sumInstabilityCriteria(sumInstability,mainWindow.this);
-                sc.sumLossCirculationCriteria(sumLossOfCirculation,mainWindow.this);
-                sc.sumWellControlCriteria(sumWellControl,mainWindow.this);
-                sc.sumLongTermIntegrityCriteria(sumLongTermIntegrity,mainWindow.this);
-                sc.sumROPCriteria(sumROP,mainWindow.this);
-
-
-                //Grab all of the values to be put in the pdf report
-
+                    //Grab all of the values to be put in the pdf report
 
                     //drilling labels
 
@@ -1794,6 +1737,64 @@ public class mainWindow extends JFrame {
                     geomechanicalOutputsValueArray.add(principal1TextFieldResult.getText());
                     geomechanicalOutputsValueArray.add(principal2TextFieldResult.getText());
                     geomechanicalOutputsValueArray.add(principal3TextFieldResult.getText());
+
+
+
+                    buttonCount = false;
+
+                }
+                else{
+
+                    tabbedPane1.remove(6);
+                    tabbedPane1.remove(5);
+                    tabbedPane1.remove(4);
+                    tabbedPane1.remove(3);
+                    tabbedPane1.remove(2);
+
+                    StressPolygonGraph graphOutput = new StressPolygonGraph(polygonCollection, mainWindow.this,projectCustomPressureType);
+                    tabbedPane1.addTab("Stress Polygon", null, graphOutput, null);
+
+                    FormationPressureGraph formationPressureGraph = new FormationPressureGraph(formationPressureCollection,mainWindow.this,projectCustomPressureType);
+                    tabbedPane1.addTab("Formation Pressure Regime",null,formationPressureGraph,null);
+
+                    MohrFailureGraph MohrGraphOutput = new MohrFailureGraph(mohrCollection, effectiveSortedStresses[2]*(1/pressureUM),effectiveSortedStresses[0]*(1/pressureUM),projectCustomPressureType,mainWindow.this);
+                    setMohrGraphOutputFinal(MohrGraphOutput);
+                    tabbedPane1.addTab("Mohr-Coulomb Failure",null,MohrGraphOutput,null);
+
+                    ShearFailureRatioBarGraph multiGraph = new ShearFailureRatioBarGraph(multivariateShearDataset,mainWindow.this,projectCustomPressureType);
+                    tabbedPane1.addTab("Shear Fracture Ratio", null,multiGraph,null);
+
+                    TensileFailureRatioBarGraph tensileFailureBarGraph = new TensileFailureRatioBarGraph(multivariateTensileDataset,mainWindow.this,projectCustomPressureType);
+                    tabbedPane1.addTab("Tensile Fracture Ratio", null,tensileFailureBarGraph,null);
+
+                }
+
+
+
+
+                sigmaVTextFieldResult.setText(Integer.toString((int) ((SigmaVGradient +porePressureCombination)*(1/pressureUM))));
+                sigmaMaxTextFieldResult.setText(Integer.toString((int) ((SigmaHGradient +porePressureCombination)*(1/pressureUM))));
+                sigmaMinTextFieldResult.setText(Integer.toString((int) ((SigmahGradient +porePressureCombination)*(1/pressureUM))));
+                principal1TextFieldResult.setText(Integer.toString((int) (effectiveSortedStresses[2]*(1/pressureUM))));
+                principal2TextFieldResult.setText(Integer.toString((int) (effectiveSortedStresses[1]*(1/pressureUM))));
+                principal3TextFieldResult.setText(Integer.toString((int) (effectiveSortedStresses[0]*(1/pressureUM))));
+                cohesionOutputTextField.setText(Integer.toString((int) (cohesionInitial*(1/pressureUM))));
+                UCSIntactOutputTextField.setText(Integer.toString((int) (compressiveStrengthIntact*(1/pressureUM))));
+                UCSDamagedOutputTextField.setText(Integer.toString((int) (compressiveStrength*(1/pressureUM))));
+                TensileFailResult.setText(failType);
+                ShearFailResult.setText(shearType);
+
+                //set the stability rating criteria (output under well rating drilling output tab)
+                StabilityConditions sc = new StabilityConditions();
+
+                sc.sumInstabilityCriteria(sumInstability,mainWindow.this);
+                sc.sumLossCirculationCriteria(sumLossOfCirculation,mainWindow.this);
+                sc.sumWellControlCriteria(sumWellControl,mainWindow.this);
+                sc.sumLongTermIntegrityCriteria(sumLongTermIntegrity,mainWindow.this);
+                sc.sumROPCriteria(sumROP,mainWindow.this);
+
+
+
 
                 //generate rating textpane report
 

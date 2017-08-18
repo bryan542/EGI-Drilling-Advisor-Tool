@@ -8,12 +8,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9399ab71-a3e5-41cd-80f0-b6fdb9b63e05" name="Default" comment="only 1 succesfully file path found used">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Executable/DrillingRatingReportPDF.java" afterPath="$PROJECT_DIR$/src/Executable/DrillingRatingReportPDF.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Executable/HydraulicFractureAnalysisDialog.java" afterPath="$PROJECT_DIR$/src/Executable/HydraulicFractureAnalysisDialog.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Executable/HydraulicFracturePDFReportGenerator.java" afterPath="$PROJECT_DIR$/src/Executable/HydraulicFracturePDFReportGenerator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Executable/SaveLoadFileData.java" afterPath="$PROJECT_DIR$/src/Executable/SaveLoadFileData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Executable/SettingDialog.java" afterPath="$PROJECT_DIR$/src/Executable/SettingDialog.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Executable/TextFieldChecker.java" afterPath="$PROJECT_DIR$/src/Executable/TextFieldChecker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Executable/mainWindow.form" afterPath="$PROJECT_DIR$/src/Executable/mainWindow.form" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Executable/mainWindow.java" afterPath="$PROJECT_DIR$/src/Executable/mainWindow.java" />
     </list>
     <ignored path="EGI Drilling Advisor Tool.iws" />
@@ -67,8 +61,8 @@
       <file leaf-file-name="mainWindow.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Executable/mainWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="1857" column="0" lean-forward="true" selection-start-line="1857" selection-start-column="0" selection-end-line="1857" selection-end-column="0" />
+            <state relative-caret-position="2515">
+              <caret line="1748" column="42" lean-forward="true" selection-start-line="1748" selection-start-column="42" selection-end-line="1748" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#8328#8329#0" expanded="true" />
@@ -91,23 +85,32 @@
       <file leaf-file-name="FinalHydraulicReportDialog.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Executable/FinalHydraulicReportDialog.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="224" column="34" lean-forward="true" selection-start-line="224" selection-start-column="34" selection-end-line="224" selection-end-column="34" />
+            <state relative-caret-position="1329">
+              <caret line="242" column="0" lean-forward="true" selection-start-line="242" selection-start-column="0" selection-end-line="242" selection-end-column="0" />
               <folding />
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mainWindow.form" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Executable/mainWindow.form">
+          <provider selected="true" editor-type-id="ui-designer">
+            <state />
           </provider>
         </entry>
       </file>
       <file leaf-file-name="DrillingRatingReportPDF.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Executable/DrillingRatingReportPDF.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="57" column="102" lean-forward="false" selection-start-line="57" selection-start-column="102" selection-end-line="57" selection-end-column="102" />
+            <state relative-caret-position="227">
+              <caret line="51" column="31" lean-forward="true" selection-start-line="51" selection-start-column="31" selection-end-line="51" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#fileNamePosition#0;class#DrillingRatingReportPDF#0" expanded="false" />
                 <element signature="method#getSaveLocation#0;class#DrillingRatingReportPDF#0" expanded="false" />
                 <element signature="method#resizedBufferedImage#0;class#DrillingRatingReportPDF#0" expanded="false" />
                 <element signature="method#scale#0;class#DrillingRatingReportPDF#0" expanded="false" />
+                <element signature="method#reocurringPageItemsSetter#0;class#DrillingRatingReportPDF#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -125,7 +128,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>resource</find>
       <find>buildSplashSc</find>
       <find>EGI.p</find>
       <find>egi.p</find>
@@ -152,9 +154,10 @@
       <find>recomm</find>
       <find>Tail</find>
       <find>hydraulic</find>
-      <find>exportreportbut</find>
       <find>Tail-</find>
       <find>cohesionOutPutTextField</find>
+      <find>reportString</find>
+      <find>exportreportbut</find>
     </findStrings>
     <replaceStrings>
       <replace>valueModulusName</replace>
@@ -238,8 +241,8 @@
         <option value="$PROJECT_DIR$/src/Executable/FinalHydraulicReportDialog.java" />
         <option value="$PROJECT_DIR$/src/Executable/HydraulicFracturePDFReportGenerator.java" />
         <option value="$PROJECT_DIR$/src/Executable/mainWindow.form" />
-        <option value="$PROJECT_DIR$/src/Executable/mainWindow.java" />
         <option value="$PROJECT_DIR$/src/Executable/HydraulicFractureAnalysisDialog.java" />
+        <option value="$PROJECT_DIR$/src/Executable/mainWindow.java" />
         <option value="$PROJECT_DIR$/src/Executable/DrillingRatingReportPDF.java" />
       </list>
     </option>
@@ -1175,7 +1178,7 @@
           </selected-grouping-rules>
         </breakpoints-dialog>
       </breakpoints-dialog>
-      <option name="time" value="792" />
+      <option name="time" value="802" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -1388,28 +1391,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Executable/mainWindow.form">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="ui-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Executable/mainWindow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="1857" column="0" lean-forward="true" selection-start-line="1857" selection-start-column="0" selection-end-line="1857" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#8328#8329#0" expanded="true" />
-            <element signature="e#8361#8362#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/XMLFiles/Formation Pressure Table.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-796">
@@ -1422,14 +1403,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="273">
           <caret line="173" column="50" lean-forward="true" selection-start-line="173" selection-start-column="50" selection-end-line="173" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Executable/FinalHydraulicReportDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="224" column="34" lean-forward="true" selection-start-line="224" selection-start-column="34" selection-end-line="224" selection-end-column="34" />
           <folding />
         </state>
       </provider>
@@ -1452,15 +1425,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Executable/DrillingRatingReportPDF.java">
+    <entry file="file://$PROJECT_DIR$/src/Executable/mainWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="57" column="102" lean-forward="false" selection-start-line="57" selection-start-column="102" selection-end-line="57" selection-end-column="102" />
+        <state relative-caret-position="2515">
+          <caret line="1748" column="42" lean-forward="true" selection-start-line="1748" selection-start-column="42" selection-end-line="1748" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#8328#8329#0" expanded="true" />
+            <element signature="e#8361#8362#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Executable/mainWindow.form">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="ui-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Executable/FinalHydraulicReportDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1329">
+          <caret line="242" column="0" lean-forward="true" selection-start-line="242" selection-start-column="0" selection-end-line="242" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Executable/DrillingRatingReportPDF.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="51" column="31" lean-forward="true" selection-start-line="51" selection-start-column="31" selection-end-line="51" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#fileNamePosition#0;class#DrillingRatingReportPDF#0" expanded="false" />
             <element signature="method#getSaveLocation#0;class#DrillingRatingReportPDF#0" expanded="false" />
             <element signature="method#resizedBufferedImage#0;class#DrillingRatingReportPDF#0" expanded="false" />
             <element signature="method#scale#0;class#DrillingRatingReportPDF#0" expanded="false" />
+            <element signature="method#reocurringPageItemsSetter#0;class#DrillingRatingReportPDF#0" expanded="false" />
           </folding>
         </state>
       </provider>

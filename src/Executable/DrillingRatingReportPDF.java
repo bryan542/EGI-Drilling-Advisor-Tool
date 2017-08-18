@@ -44,21 +44,36 @@ public DrillingRatingReportPDF(ArrayList<String> drillingLabel, ArrayList<String
     int marginLeft = 36;
     int marginRight = 36;
 
+    //highest page top height and low height
+    int minComponentHeight = 115;
+    int maxComponentHeight = 700;
+
+    //When I build a page and add on to it I need a value to track the current page hate before building a new one
+    int currentPageHeight = 85;
+
+    //Current page number used to append items down the list
+    int lastPageNumber = 0;
+
     double resizeWidthRatio = .3;
     double resizeHeightRatio = .3;
     BufferedImage bufferedLogo = resizedBufferedImage(url,resizeWidthRatio,resizeHeightRatio);
 
 
+    //First page added is outside the loop
     pdfDoc.addPage(page);
-
     //adds the drilling components and values
-    reportStringBuilder(pdfDoc,drillingLabel,drillingValue, "Drilling Stability Inputs");
+    currentPageHeight = reportStringBuilder(pdfDoc,lastPageNumber,currentPageHeight,drillingLabel,drillingValue, "Drilling Stability Inputs");
 
-    //add rock inputs
-    ///// Need to add a section to double check page length hitting the footer and creating a new page
-    //PDFPage page2 = pdfDoc.createPage(null);
-    //pdfDoc.addPage(page2);
+    //Page cutoff value. This makes sure a new page is generated if we start appending near the end
+    if(currentPageHeight > 650){
 
+        PDFPage page2 = pdfDoc.createPage(null);
+        pdfDoc.addPage(page2);
+        lastPageNumber = pdfDoc.getPageCount()-1;
+        currentPageHeight = 85;
+    }
+
+    currentPageHeight = reportStringBuilder(pdfDoc,lastPageNumber,currentPageHeight,rockLabel,rockLabel,"Rock Property Inputs");
 
     //adds reocurring items on every page
     reocurringPageItemsSetter(pdfDoc,bufferedLogo,resizeWidthRatio,resizeHeightRatio,pageWidth,pageHeight,marginBot,marginTop,marginLeft,marginRight);
@@ -104,19 +119,22 @@ public DrillingRatingReportPDF(ArrayList<String> drillingLabel, ArrayList<String
 
 
     }
-    public void reportStringBuilder(PDFDocument pdfDoc, ArrayList<String> reportTitles, ArrayList<String> reportValues, String stringTitle){
 
-        int heightinitial = 115;
+    //builds the page and also returns the current page height for checking how much page length is left
+    public int reportStringBuilder(PDFDocument pdfDoc,int lastPageNumber,int currentPageHeight, ArrayList<String> reportTitles, ArrayList<String> reportValues, String stringTitle){
+
+        //Title heights
+        int heightMainTitle = currentPageHeight;
+        int x1MainTitle = 45;
+
+        //Text heights below the title
+        int heightinitial = currentPageHeight+30;
         int lengthLabel = 72;
         int lengthValue = 400;
 
-        //sets the x1,x2, y locations
-        int heightMainTitle = 85;
-        int x1MainTitle = 45;
-
         //builds the basic title
         String firstGlanceTitle = stringTitle;
-        Graphics2D  g2dFirstGlanceTitle = pdfDoc.getPage(0).createGraphics();
+        Graphics2D  g2dFirstGlanceTitle = pdfDoc.getPage(lastPageNumber).createGraphics();
         Font titleFont = new Font("Times New Roman",Font.BOLD,16);
         g2dFirstGlanceTitle.setFont(titleFont);
         g2dFirstGlanceTitle.setColor(Color.black);
@@ -124,22 +142,33 @@ public DrillingRatingReportPDF(ArrayList<String> drillingLabel, ArrayList<String
 
         //underlines the title
         int lineLength = g2dFirstGlanceTitle.getFontMetrics(titleFont).stringWidth(firstGlanceTitle);
-        Graphics2D  g2dTitleUnderline = pdfDoc.getPage(0).createGraphics();
+        Graphics2D  g2dTitleUnderline = pdfDoc.getPage(lastPageNumber).createGraphics();
         g2dTitleUnderline.drawLine(x1MainTitle,heightMainTitle+3,x1MainTitle+lineLength,heightMainTitle+3);
 
 
         for (int i = 0;i<reportTitles.size();i++){
 
+            //Page cutoff value while looping. This makes sure a new page is
+            // generated if we start appending near the end
+            if(heightinitial > 650){
+
+                PDFPage page2 = pdfDoc.createPage(null);
+                pdfDoc.addPage(page2);
+                lastPageNumber = pdfDoc.getPageCount()-1;
+                currentPageHeight = 85;
+                heightinitial = currentPageHeight+30;
+            }
+
             //draws the label string
             String labelTitle = reportTitles.get(i);
-            Graphics2D  g2dlabelTitle = pdfDoc.getPage(0).createGraphics();
+            Graphics2D  g2dlabelTitle = pdfDoc.getPage(lastPageNumber).createGraphics();
             g2dlabelTitle.setFont(new Font("Times New Roman",Font.BOLD,12));
             g2dlabelTitle.setColor(Color.black);
             g2dlabelTitle.drawString(labelTitle,lengthLabel, heightinitial);
 
             //draws the value string
             String valueTitle = reportValues.get(i);
-            Graphics2D  g2dvalueTitle = pdfDoc.getPage(0).createGraphics();
+            Graphics2D  g2dvalueTitle = pdfDoc.getPage(lastPageNumber).createGraphics();
             g2dvalueTitle.setFont(new Font("Times New Roman",Font.PLAIN,12));
             g2dvalueTitle.setColor(Color.black);
             g2dvalueTitle.drawString(valueTitle,lengthValue, heightinitial);
@@ -147,6 +176,8 @@ public DrillingRatingReportPDF(ArrayList<String> drillingLabel, ArrayList<String
             heightinitial = heightinitial+30;
 
         }
+
+        return  heightinitial;
 
     }
     //Has the user choose the file save location of the pdf
