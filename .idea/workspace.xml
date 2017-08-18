@@ -7,6 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9399ab71-a3e5-41cd-80f0-b6fdb9b63e05" name="Default" comment="only 1 succesfully file path found used">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Executable/PDFExportArrayPopulator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$1.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$10.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$10.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$11.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$11.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$12.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$12.class" />
@@ -15,6 +17,13 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$15.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$15.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$16.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$16.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$17.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$17.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$2.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$3.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$4.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$5.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$5.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$6.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$6.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$7.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$7.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$8.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$8.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$9.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$9.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -71,18 +80,35 @@
       <file leaf-file-name="mainWindow.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Executable/mainWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="1896" column="82" lean-forward="false" selection-start-line="1896" selection-start-column="82" selection-end-line="1896" selection-end-column="82" />
-              <folding />
+            <state relative-caret-position="-287">
+              <caret line="916" column="0" lean-forward="false" selection-start-line="916" selection-start-column="0" selection-end-line="916" selection-end-column="0" />
+              <folding>
+                <element signature="method#getGSILabel#0;class#mainWindow#0" expanded="false" />
+                <element signature="method#setGSITextField#0;class#mainWindow#0" expanded="false" />
+                <element signature="method#setProjectCustomDensityType#0;class#mainWindow#0" expanded="false" />
+                <element signature="method#setProjectCustomPressureType#0;class#mainWindow#0" expanded="false" />
+                <element signature="method#setProjectCustomLengthType#0;class#mainWindow#0" expanded="false" />
+                <element signature="method#setLostCirculationConditionResultText#0;class#mainWindow#0" expanded="false" />
+                <element signature="method#setLongTermIntegrityConditionResultText#0;class#mainWindow#0" expanded="false" />
+                <element signature="method#setWellControlConditionResultText#0;class#mainWindow#0" expanded="false" />
+                <element signature="method#getPorePressureCombinationFinal#0;class#mainWindow#0" expanded="false" />
+                <element signature="method#setPorePressureCombinationFinal#0;class#mainWindow#0" expanded="false" />
+                <element signature="method#setCohesionInitialFinal#0;class#mainWindow#0" expanded="false" />
+                <element signature="method#setSigmaVRFinal#0;class#mainWindow#0" expanded="false" />
+                <element signature="method#setSigmaHRFinal#0;class#mainWindow#0" expanded="false" />
+                <element signature="method#setSigmahRFinal#0;class#mainWindow#0" expanded="false" />
+                <element signature="method#setPorePressureGradientFinal#0;class#mainWindow#0" expanded="false" />
+                <element signature="method#setMohrGraphOutputFinal#0;class#mainWindow#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AboutDialog.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Executable/AboutDialog.java">
+      <file leaf-file-name="PDFExportArrayPopulator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Executable/PDFExportArrayPopulator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="14" column="12" lean-forward="false" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
+            <state relative-caret-position="567">
+              <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -91,7 +117,7 @@
       <file leaf-file-name="FinalHydraulicReportDialog.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Executable/FinalHydraulicReportDialog.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2751">
+            <state relative-caret-position="1535">
               <caret line="272" column="0" lean-forward="false" selection-start-line="272" selection-start-column="0" selection-end-line="272" selection-end-column="0" />
               <folding />
             </state>
@@ -117,13 +143,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>buildSplashSc</find>
-      <find>EGI.p</find>
-      <find>egi.p</find>
-      <find>initialize</find>
-      <find>if</find>
-      <find>open</find>
-      <find>getloadl</find>
       <find>getloadloca</find>
       <find>save</find>
       <find>tab</find>
@@ -147,6 +166,13 @@
       <find>cohesionOutPutTextField</find>
       <find>reportString</find>
       <find>exportreportbut</find>
+      <find>porePRessureTypeLabel</find>
+      <find>faultTypeLabel</find>
+      <find>coefficient</find>
+      <find>sigmaV</find>
+      <find>sigmaVRFinal</find>
+      <find>lithologyLabel</find>
+      <find>porepressureoutputlabel</find>
     </findStrings>
     <replaceStrings>
       <replace>valueModulusName</replace>
@@ -182,7 +208,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Executable/TextFieldChecker.java" />
         <option value="$PROJECT_DIR$/src/Executable/MSTEST.java" />
         <option value="$PROJECT_DIR$/src/Executable/MultivariateSolutionsGraph.java" />
         <option value="$PROJECT_DIR$/src/Executable/SaveLoadFileData.java" />
@@ -232,6 +257,7 @@
         <option value="$PROJECT_DIR$/src/Executable/mainWindow.form" />
         <option value="$PROJECT_DIR$/src/Executable/HydraulicFractureAnalysisDialog.java" />
         <option value="$PROJECT_DIR$/src/Executable/DrillingRatingReportPDF.java" />
+        <option value="$PROJECT_DIR$/src/Executable/PDFExportArrayPopulator.java" />
         <option value="$PROJECT_DIR$/src/Executable/mainWindow.java" />
       </list>
     </option>
@@ -1167,7 +1193,7 @@
           </selected-grouping-rules>
         </breakpoints-dialog>
       </breakpoints-dialog>
-      <option name="time" value="802" />
+      <option name="time" value="803" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -1180,8 +1206,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Executable/iris.data" />
-    <entry file="file://$PROJECT_DIR$/src/Executable/TutorialEvaluateDataset.java" />
     <entry file="file://$PROJECT_DIR$/src/Executable/TutorialKNN.java" />
     <entry file="file://$PROJECT_DIR$/src/Executable/hydraulic test.csv" />
     <entry file="file://$PROJECT_DIR$/src/Executable/Young's Modulus Space Delimited.prn" />
@@ -1349,14 +1373,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Executable/AboutDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="14" column="12" lean-forward="false" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Executable/StressPolygonDataset.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -1370,6 +1386,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-796">
           <caret line="165" column="24" lean-forward="false" selection-start-line="165" selection-start-column="24" selection-end-line="165" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1377,6 +1394,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="273">
           <caret line="173" column="50" lean-forward="true" selection-start-line="173" selection-start-column="50" selection-end-line="173" selection-end-column="50" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1398,10 +1416,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Executable/mainWindow.java">
+    <entry file="file://$PROJECT_DIR$/src/Executable/DrillingRatingReportPDF.java" />
+    <entry file="file://$PROJECT_DIR$/src/Executable/FinalHydraulicReportDialog.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="1896" column="82" lean-forward="false" selection-start-line="1896" selection-start-column="82" selection-end-line="1896" selection-end-column="82" />
+        <state relative-caret-position="1535">
+          <caret line="272" column="0" lean-forward="false" selection-start-line="272" selection-start-column="0" selection-end-line="272" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1416,15 +1435,55 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Executable/FinalHydraulicReportDialog.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_101/src.zip!/java/lang/Double.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2751">
-          <caret line="272" column="0" lean-forward="false" selection-start-line="272" selection-start-column="0" selection-end-line="272" selection-end-column="0" />
+        <state relative-caret-position="136">
+          <caret line="48" column="19" lean-forward="false" selection-start-line="48" selection-start-column="19" selection-end-line="48" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Executable/DrillingRatingReportPDF.java" />
+    <entry file="file://$PROJECT_DIR$/src/Executable/AboutDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="14" column="12" lean-forward="false" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Executable/PDFExportArrayPopulator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="567">
+          <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Executable/mainWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-287">
+          <caret line="916" column="0" lean-forward="false" selection-start-line="916" selection-start-column="0" selection-end-line="916" selection-end-column="0" />
+          <folding>
+            <element signature="method#getGSILabel#0;class#mainWindow#0" expanded="false" />
+            <element signature="method#setGSITextField#0;class#mainWindow#0" expanded="false" />
+            <element signature="method#setProjectCustomDensityType#0;class#mainWindow#0" expanded="false" />
+            <element signature="method#setProjectCustomPressureType#0;class#mainWindow#0" expanded="false" />
+            <element signature="method#setProjectCustomLengthType#0;class#mainWindow#0" expanded="false" />
+            <element signature="method#setLostCirculationConditionResultText#0;class#mainWindow#0" expanded="false" />
+            <element signature="method#setLongTermIntegrityConditionResultText#0;class#mainWindow#0" expanded="false" />
+            <element signature="method#setWellControlConditionResultText#0;class#mainWindow#0" expanded="false" />
+            <element signature="method#getPorePressureCombinationFinal#0;class#mainWindow#0" expanded="false" />
+            <element signature="method#setPorePressureCombinationFinal#0;class#mainWindow#0" expanded="false" />
+            <element signature="method#setCohesionInitialFinal#0;class#mainWindow#0" expanded="false" />
+            <element signature="method#setSigmaVRFinal#0;class#mainWindow#0" expanded="false" />
+            <element signature="method#setSigmaHRFinal#0;class#mainWindow#0" expanded="false" />
+            <element signature="method#setSigmahRFinal#0;class#mainWindow#0" expanded="false" />
+            <element signature="method#setPorePressureGradientFinal#0;class#mainWindow#0" expanded="false" />
+            <element signature="method#setMohrGraphOutputFinal#0;class#mainWindow#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
   </component>
   <component name="masterDetails">
     <states>
