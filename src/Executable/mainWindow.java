@@ -154,7 +154,7 @@ public class mainWindow extends JFrame {
     private JButton stressPolygonButton;
     private JButton mohrCoulombFailureButton;
     private JButton rockDamageButton;
-    private JButton multivariateFailureRatioButton;
+    private JButton formationPressureButton;
 
     private JRadioButton stressAutomaticRadioButton;
     private JRadioButton stressManualInputRadioButton;
@@ -1170,6 +1170,12 @@ public class mainWindow extends JFrame {
         permCombo.addItem(PermeabilityList[i]);
         }
 
+        //disables jbuttons until calculated occurs
+        tabbedPane1.setEnabledAt(1,false);
+        stressPolygonButton.setEnabled(false);
+        mohrCoulombFailureButton.setEnabled(false);
+        formationPressureButton.setEnabled(false);
+
         //set textfields to non-editable
         principal1TextFieldResult.setEditable(false);
         principal2TextFieldResult.setEditable(false);
@@ -1817,6 +1823,11 @@ public class mainWindow extends JFrame {
                         TensileFailureRatioBarGraph tensileFailureBarGraph = new TensileFailureRatioBarGraph(multivariateTensileDataset,mainWindow.this,projectCustomPressureType);
                         tabbedPane1.addTab("Tensile Fracture Ratio", null,tensileFailureBarGraph,null);
 
+                        tabbedPane1.setEnabledAt(1,true);
+                        stressPolygonButton.setEnabled(true);
+                        mohrCoulombFailureButton.setEnabled(true);
+                        formationPressureButton.setEnabled(true);
+
 
                         int chartDimensions = 50;
 
@@ -2046,22 +2057,24 @@ public class mainWindow extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-            resetTool();
-            menu.getExportPDF().setEnabled(false); //disables the export option to the jmenuitem if all data is cleared
-            stressPolygonButton.setEnabled(false);
-            mohrCoulombFailureButton.setEnabled(false);
+                resetTool();
+                menu.getExportPDF().setEnabled(false); //disables the export option to the jmenuitem if all data is cleared
+                tabbedPane1.setEnabledAt(1,false);
+                stressPolygonButton.setEnabled(false);
+                mohrCoulombFailureButton.setEnabled(false  );
+                formationPressureButton.setEnabled(false);
             }
         });
         stressPolygonButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                StressPolygonDialog sd = new StressPolygonDialog();
-
                 ChartPanel cp = new ChartPanel(stressPolygonChart);
-                cp.setPreferredSize(new Dimension(800, 800) );
+                cp.setPreferredSize(new Dimension(760, 760) );
 
-                sd.initialize(cp);
+                QuickGraphDialog QGD = new QuickGraphDialog();
+                QGD.initialize(cp);
+
 
 
             }
@@ -2070,23 +2083,26 @@ public class mainWindow extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-
                 ChartPanel cp = new ChartPanel(mohrFailureChart);
-                cp.setPreferredSize(new Dimension(800, 800) );
+                cp.setPreferredSize(new Dimension(760, 760) );
 
-                MohrCoulombDialog mcd = new MohrCoulombDialog();
-                mcd.initialize(cp);
+                QuickGraphDialog QGD = new QuickGraphDialog();
+                QGD.initialize(cp);
 
 
             }
         });
 
-        multivariateFailureRatioButton.addActionListener(new ActionListener() {
+        formationPressureButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                ChartPanel cp = new ChartPanel(formationPressureChart);
+                cp.setPreferredSize(new Dimension(760, 760));
 
-                FailureRatioSolutions multiSolutions = new FailureRatioSolutions();
+                QuickGraphDialog QGD = new QuickGraphDialog();
+                QGD.initialize(cp);
+
 
             }
         });
