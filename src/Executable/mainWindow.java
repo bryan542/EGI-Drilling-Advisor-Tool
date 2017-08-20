@@ -10,12 +10,15 @@ import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
 import java.net.URL;
+import java.nio.Buffer;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 import com.thehowtotutorial.splashscreen.JSplash;
 import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.xy.XYSeriesCollection;
 
@@ -947,6 +950,65 @@ public class mainWindow extends JFrame {
         return porePressureGradientFinal;
     }
 
+    //pdf generated arrays that will be used
+    ArrayList<String> drillingInputsLabelArray = new ArrayList();
+    ArrayList<String> drillingInputsValueArray = new ArrayList();
+    ArrayList<String> rockInputsLabelArray = new ArrayList();
+    ArrayList<String> rockInputsValueArray = new ArrayList();
+    ArrayList<String> discontinuitiesInputsLabelArray = new ArrayList<>();
+    ArrayList<String> discontinuitiesInputsValueArray = new ArrayList<>();
+    ArrayList<String> geomechanicalOutputsLabelArray = new ArrayList<>();
+    ArrayList<String> geomechanicalOutputsValueArray = new ArrayList<>();
+    ArrayList<ArrayList> arrayLabelHolder = new ArrayList();
+    ArrayList<ArrayList> arrayValueHolder = new ArrayList();
+    ArrayList<BufferedImage> chartBufferedImagesArray = new ArrayList();
+
+
+    public ArrayList<BufferedImage> getChartBufferedImagesArray() {
+        return chartBufferedImagesArray;
+    }
+
+    public ArrayList<ArrayList> getArrayLabelHolder() {
+        return arrayLabelHolder;
+    }
+
+    public ArrayList<ArrayList> getArrayValueHolder() {
+        return arrayValueHolder;
+    }
+
+    public ArrayList<String> getDrillingInputsLabelArray() {
+        return drillingInputsLabelArray;
+    }
+
+    public ArrayList<String> getDrillingInputsValueArray() {
+        return drillingInputsValueArray;
+    }
+
+    public ArrayList<String> getRockInputsLabelArray() {
+        return rockInputsLabelArray;
+    }
+
+    public ArrayList<String> getRockInputsValueArray() {
+        return rockInputsValueArray;
+    }
+
+    public ArrayList<String> getDiscontinuitiesInputsLabelArray() {
+        return discontinuitiesInputsLabelArray;
+    }
+
+    public ArrayList<String> getDiscontinuitiesInputsValueArray() {
+        return discontinuitiesInputsValueArray;
+    }
+
+    public ArrayList<String> getGeomechanicalOutputsLabelArray() {
+        return geomechanicalOutputsLabelArray;
+    }
+
+    public ArrayList<String> getGeomechanicalOutputsValueArray() {
+        return geomechanicalOutputsValueArray;
+    }
+
+
     MohrFailureGraph MohrGraphOutputFinal;
 
     public MohrFailureGraph getMohrGraphOutputFinal() {
@@ -1004,15 +1066,7 @@ public class mainWindow extends JFrame {
         getSigmaMinTextField().setText(".6");
         getPorePressureTextField().setText(".433");
 
-        //pdf generated arrays that will be used
-        ArrayList<String> drillingInputsLabelArray = new ArrayList();
-        ArrayList<String> drillingInputsValueArray = new ArrayList();
-        ArrayList<String> rockInputsLabelArray = new ArrayList();
-        ArrayList<String> rockInputsValueArray = new ArrayList();
-        ArrayList<String> discontinuitiesInputsLabelArray = new ArrayList<>();
-        ArrayList<String> discontinuitiesInputsValueArray = new ArrayList<>();
-        ArrayList<String> geomechanicalOutputsLabelArray = new ArrayList<>();
-        ArrayList<String> geomechanicalOutputsValueArray = new ArrayList<>();
+
 
 
         //Does not let you resize the window
@@ -1693,6 +1747,11 @@ public class mainWindow extends JFrame {
                         this.shearType = shearCondition;
                     }
 
+                    BufferedImage stressPolygonBufferedImage = null;
+                    BufferedImage formationPressureBufferedImage = null;
+                    BufferedImage mohrGraphBufferedImage = null;
+                    BufferedImage shearBarGraphBufferedImage = null;
+                    BufferedImage tensileBarGraphBufferedImage = null;
 
                 //buttonCount is a true/false condition to check if the graph panes are added/removed
                 if (buttonCount) {
@@ -1712,12 +1771,31 @@ public class mainWindow extends JFrame {
                     TensileFailureRatioBarGraph tensileFailureBarGraph = new TensileFailureRatioBarGraph(multivariateTensileDataset,mainWindow.this,projectCustomPressureType);
                     tabbedPane1.addTab("Tensile Fracture Ratio", null,tensileFailureBarGraph,null);
 
-                    //Grab all of the values to be put in the pdf report
-                    PDFExportArrayPopulator pdfeap = new PDFExportArrayPopulator(mainWindow.this,drillingInputsLabelArray,drillingInputsValueArray,
-                            rockInputsLabelArray,rockInputsValueArray,discontinuitiesInputsLabelArray,discontinuitiesInputsValueArray,
-                            geomechanicalOutputsLabelArray,geomechanicalOutputsValueArray);
 
-                    buttonCount = false;
+                    int chartDimensions = 50;
+
+
+                    JFreeChart polygonChart =  polygonGraphOutput.StressPolygonGraphPanel(polygonCollection, mainWindow.this,projectCustomPressureType).getChart();
+                    stressPolygonBufferedImage = polygonChart.createBufferedImage(chartDimensions,chartDimensions);
+
+                    JFreeChart formationPressureChart =  formationPressureGraph.FormationPressureGraphPanel(formationPressureCollection,mainWindow.this,projectCustomPressureType).getChart();
+                    formationPressureBufferedImage = formationPressureChart.createBufferedImage(chartDimensions,chartDimensions);
+
+                    JFreeChart mohrFailureChart = MohrGraphOutput.MohrFailureGraphPanel(mohrCollection, effectiveSortedStresses[2]*(1/pressureUM),effectiveSortedStresses[0]*(1/pressureUM),projectCustomPressureType).getChart();
+                    mohrGraphBufferedImage = mohrFailureChart.createBufferedImage(chartDimensions,chartDimensions);
+
+                    JFreeChart shearBarChart = shearFailureBarGraph.MultivariateSolutionsGraphPanel(multivariateShearDataset,mainWindow.this,projectCustomDensityType).getChart();
+                    shearBarGraphBufferedImage = shearBarChart.createBufferedImage(chartDimensions,chartDimensions);
+
+                    JFreeChart tensileBarChart = tensileFailureBarGraph.MultivariateSolutionsGraphPanel(multivariateTensileDataset,mainWindow.this,projectCustomDensityType).getChart();
+                    tensileBarGraphBufferedImage = tensileBarChart.createBufferedImage(chartDimensions,chartDimensions);
+
+                    chartBufferedImagesArray.add(stressPolygonBufferedImage);
+                    chartBufferedImagesArray.add(formationPressureBufferedImage);
+                    chartBufferedImagesArray.add(mohrGraphBufferedImage);
+                    chartBufferedImagesArray.add(shearBarGraphBufferedImage);
+                    chartBufferedImagesArray.add(tensileBarGraphBufferedImage);
+
 
                 }
                 else{
@@ -1727,9 +1805,10 @@ public class mainWindow extends JFrame {
                     tabbedPane1.remove(4);
                     tabbedPane1.remove(3);
                     tabbedPane1.remove(2);
+                    chartBufferedImagesArray.clear();
 
-                    StressPolygonGraph graphOutput = new StressPolygonGraph(polygonCollection, mainWindow.this,projectCustomPressureType);
-                    tabbedPane1.addTab("Stress Polygon", null, graphOutput, null);
+                    StressPolygonGraph polygonGraphOutput = new StressPolygonGraph(polygonCollection, mainWindow.this,projectCustomPressureType);
+                    tabbedPane1.addTab("Stress Polygon", null, polygonGraphOutput, null);
 
                     FormationPressureGraph formationPressureGraph = new FormationPressureGraph(formationPressureCollection,mainWindow.this,projectCustomPressureType);
                     tabbedPane1.addTab("Formation Pressure Regime",null,formationPressureGraph,null);
@@ -1738,31 +1817,38 @@ public class mainWindow extends JFrame {
                     setMohrGraphOutputFinal(MohrGraphOutput);
                     tabbedPane1.addTab("Mohr-Coulomb Failure",null,MohrGraphOutput,null);
 
-                    ShearFailureRatioBarGraph multiGraph = new ShearFailureRatioBarGraph(multivariateShearDataset,mainWindow.this,projectCustomPressureType);
-                    tabbedPane1.addTab("Shear Fracture Ratio", null,multiGraph,null);
+                    ShearFailureRatioBarGraph shearFailureBarGraph = new ShearFailureRatioBarGraph(multivariateShearDataset,mainWindow.this,projectCustomPressureType);
+                    tabbedPane1.addTab("Shear Fracture Ratio", null,shearFailureBarGraph,null);
 
                     TensileFailureRatioBarGraph tensileFailureBarGraph = new TensileFailureRatioBarGraph(multivariateTensileDataset,mainWindow.this,projectCustomPressureType);
                     tabbedPane1.addTab("Tensile Fracture Ratio", null,tensileFailureBarGraph,null);
 
 
-                    //clear the array holding the old data
-                    drillingInputsLabelArray.clear();
-                    drillingInputsValueArray.clear();
-                    rockInputsLabelArray.clear();
-                    rockInputsValueArray.clear();
-                    discontinuitiesInputsLabelArray.clear();
-                    discontinuitiesInputsValueArray.clear();
-                    geomechanicalOutputsLabelArray.clear();
-                    geomechanicalOutputsValueArray.clear();
+                    int chartDimensions = 575;
 
-                    //Grab all of the values to be put in the pdf report
-                    PDFExportArrayPopulator pdfeap = new PDFExportArrayPopulator(mainWindow.this,drillingInputsLabelArray,drillingInputsValueArray,
-                            rockInputsLabelArray,rockInputsValueArray,discontinuitiesInputsLabelArray,discontinuitiesInputsValueArray,
-                            geomechanicalOutputsLabelArray,geomechanicalOutputsValueArray);
+                    JFreeChart polygonChart =  polygonGraphOutput.StressPolygonGraphPanel(polygonCollection, mainWindow.this,projectCustomPressureType).getChart();
+                    stressPolygonBufferedImage = polygonChart.createBufferedImage(chartDimensions,chartDimensions);
+
+                    JFreeChart formationPressureChart =  formationPressureGraph.FormationPressureGraphPanel(formationPressureCollection,mainWindow.this,projectCustomPressureType).getChart();
+                    formationPressureBufferedImage = formationPressureChart.createBufferedImage(chartDimensions,chartDimensions);
+
+                    JFreeChart mohrFailureChart = MohrGraphOutput.MohrFailureGraphPanel(mohrCollection, effectiveSortedStresses[2]*(1/pressureUM),effectiveSortedStresses[0]*(1/pressureUM),projectCustomPressureType).getChart();
+                    mohrGraphBufferedImage = mohrFailureChart.createBufferedImage(chartDimensions,chartDimensions);
+
+                    JFreeChart shearBarChart = shearFailureBarGraph.MultivariateSolutionsGraphPanel(multivariateShearDataset,mainWindow.this,projectCustomDensityType).getChart();
+                    shearBarGraphBufferedImage = shearBarChart.createBufferedImage(chartDimensions,chartDimensions);
+
+                    JFreeChart tensileBarChart = tensileFailureBarGraph.MultivariateSolutionsGraphPanel(multivariateTensileDataset,mainWindow.this,projectCustomDensityType).getChart();
+                    tensileBarGraphBufferedImage = tensileBarChart.createBufferedImage(chartDimensions,chartDimensions);
+
+                    chartBufferedImagesArray.add(stressPolygonBufferedImage);
+                    chartBufferedImagesArray.add(formationPressureBufferedImage);
+                    chartBufferedImagesArray.add(mohrGraphBufferedImage);
+                    chartBufferedImagesArray.add(shearBarGraphBufferedImage);
+                    chartBufferedImagesArray.add(tensileBarGraphBufferedImage);
+
 
                 }
-
-
 
 
                 sigmaVTextFieldResult.setText(Integer.toString((int) ((SigmaVGradient +porePressureCombination)*(1/pressureUM))));
@@ -1777,6 +1863,7 @@ public class mainWindow extends JFrame {
                 TensileFailResult.setText(failType);
                 ShearFailResult.setText(shearType);
 
+
                 //set the stability rating criteria (output under well rating drilling output tab)
                 StabilityConditions sc = new StabilityConditions();
 
@@ -1785,9 +1872,6 @@ public class mainWindow extends JFrame {
                 sc.sumWellControlCriteria(sumWellControl,mainWindow.this);
                 sc.sumLongTermIntegrityCriteria(sumLongTermIntegrity,mainWindow.this);
                 sc.sumROPCriteria(sumROP,mainWindow.this);
-
-
-
 
                 //generate rating textpane report
 
@@ -1842,10 +1926,52 @@ public class mainWindow extends JFrame {
                     System.err.println("Couldn't insert initial text into text pane.");
                 }
 
-                    menu.getExportPDF().setEnabled(true); // sets jmenuitem to enabled if the calculation is successful
-                    stressPolygonButton.setEnabled(true);
-                    mohrCoulombFailureButton.setEnabled(true);
-                }
+                    if(buttonCount){
+
+                        //Grab all of the values to be put in the pdf report
+                        PDFExportArrayPopulator pdfeap = new PDFExportArrayPopulator(mainWindow.this,drillingInputsLabelArray,drillingInputsValueArray,
+                                rockInputsLabelArray,rockInputsValueArray,discontinuitiesInputsLabelArray,discontinuitiesInputsValueArray,
+                                geomechanicalOutputsLabelArray,geomechanicalOutputsValueArray);
+                        buttonCount = false;
+                    }
+                    else{
+
+                        //clear the array holding the old data
+                        drillingInputsLabelArray.clear();
+                        drillingInputsValueArray.clear();
+                        rockInputsLabelArray.clear();
+                        rockInputsValueArray.clear();
+                        discontinuitiesInputsLabelArray.clear();
+                        discontinuitiesInputsValueArray.clear();
+                        geomechanicalOutputsLabelArray.clear();
+                        geomechanicalOutputsValueArray.clear();
+                        arrayLabelHolder.clear();
+                        arrayValueHolder.clear();
+
+                        //Grab all of the values to be put in the pdf report
+                        PDFExportArrayPopulator pdfeap = new PDFExportArrayPopulator(mainWindow.this,drillingInputsLabelArray,drillingInputsValueArray,
+                                rockInputsLabelArray,rockInputsValueArray,discontinuitiesInputsLabelArray,discontinuitiesInputsValueArray,
+                                geomechanicalOutputsLabelArray,geomechanicalOutputsValueArray);
+                    }
+
+                arrayLabelHolder.add(drillingInputsLabelArray);
+                arrayLabelHolder.add(rockInputsLabelArray);
+                arrayLabelHolder.add(discontinuitiesInputsLabelArray);
+                arrayLabelHolder.add(geomechanicalOutputsLabelArray);
+
+
+                arrayValueHolder.add(drillingInputsValueArray);
+                arrayValueHolder.add(rockInputsValueArray);
+                arrayValueHolder.add(discontinuitiesInputsValueArray);
+                arrayValueHolder.add(geomechanicalOutputsValueArray);
+
+
+                menu.getExportPDF().setEnabled(true); // sets jmenuitem to enabled if the calculation is successful
+                stressPolygonButton.setEnabled(true);
+                mohrCoulombFailureButton.setEnabled(true);
+
+
+            }
 
 
             }
@@ -1855,8 +1981,8 @@ public class mainWindow extends JFrame {
         exportReportButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                DrillingRatingReportPDF drr = new DrillingRatingReportPDF(drillingInputsLabelArray ,drillingInputsValueArray,rockInputsLabelArray,rockInputsValueArray,discontinuitiesInputsLabelArray,
-                        discontinuitiesInputsValueArray,geomechanicalOutputsLabelArray,geomechanicalOutputsValueArray);
+
+                DrillingRatingReportPDF drr = new DrillingRatingReportPDF(arrayLabelHolder, arrayValueHolder, chartBufferedImagesArray);
 
             }
         });
