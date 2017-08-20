@@ -104,6 +104,7 @@ public class FormationPressureGraph extends JPanel {
 
 
         add( chartPanel );
+        mw.setFormationPressureChart(lineChart);
 
 
     }
