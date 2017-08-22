@@ -42,7 +42,7 @@ public class DrillingEquations {
 
     // Find stress ranges sigv, sigH, sigh
 
-    public static double SigmaVRange(String FaultType, String PorePressureType) {
+    public static double sigmaVRange() {
         double sigmaV;
         Random rand = new Random();
 
@@ -52,17 +52,17 @@ public class DrillingEquations {
 
     }
     //sigX
-    public static double SigmaHRange(String FaultType, String PorePressureType) {
+    public static double sigmaHRange(String faultType, String porePressureType) {
         double sigmaH = -1;
         Random rand = new Random();
 
-        if (PorePressureType == "Hydrostatic") {
+        if (porePressureType == "Hydrostatic") {
 
-            if (FaultType == "Normal") {
+            if (faultType == "Normal") {
 
                 sigmaH = .77 + (.9 - .77) * rand.nextDouble();
 
-            } else if (FaultType == "Strike-slip") {
+            } else if (faultType == "Strike-slip") {
 
                 sigmaH = 1.1 + (1.2 - 1.1) * rand.nextDouble();
 
@@ -71,13 +71,13 @@ public class DrillingEquations {
                 sigmaH = 1.2 + (1.6 - 1.2) * rand.nextDouble();
             }
         }
-        else if (PorePressureType == "Overpressure") {
+        else if (porePressureType == "Overpressure") {
 
-            if (FaultType == "Normal") {
+            if (faultType == "Normal") {
 
                 sigmaH = .8 + (.9 - .8) * rand.nextDouble();
 
-            } else if (FaultType == "Strike-slip") {
+            } else if (faultType == "Strike-slip") {
 
                 sigmaH = 1.1 + (1.42 - 1.1) * rand.nextDouble();
 
@@ -86,13 +86,13 @@ public class DrillingEquations {
                 sigmaH = 1.2 + (1.9 - 1.2) * rand.nextDouble();
             }
         }
-        else if (PorePressureType == "Underpressure") {
+        else if (porePressureType == "Underpressure") {
 
-            if (FaultType == "Normal") {
+            if (faultType == "Normal") {
 
                 sigmaH = .58 + (.889 - .58) * rand.nextDouble();
 
-            } else if (FaultType == "Strike-slip") {
+            } else if (faultType == "Strike-slip") {
 
                 sigmaH = .883 + (1.188 - .883) * rand.nextDouble();
 
@@ -105,17 +105,17 @@ public class DrillingEquations {
         return sigmaH;
     }
     //sigY
-    public static double SigmahRange(String FaultType, String PorePressureType) {
+    public static double sigmahRange(String faultType, String porePressureType) {
         double sigmah =-1;
         Random rand = new Random();
 
-        if (PorePressureType == "Hydrostatic") {
+        if (porePressureType == "Hydrostatic") {
 
-            if (FaultType == "Normal") {
+            if (faultType == "Normal") {
 
                 sigmah = .6 + (.77 - .6) * rand.nextDouble();
 
-            } else if (FaultType == "Strike-slip") {
+            } else if (faultType == "Strike-slip") {
 
                 sigmah = .6 + (.8 - .6) * rand.nextDouble();
 
@@ -125,13 +125,13 @@ public class DrillingEquations {
             }
 
         }
-        else if (PorePressureType == "Overpressure") {
+        else if (porePressureType == "Overpressure") {
 
-            if (FaultType == "Normal") {
+            if (faultType == "Normal") {
 
                 sigmah = .72 + (.79 - .72) * rand.nextDouble();
 
-            } else if (FaultType == "Strike-slip") {
+            } else if (faultType == "Strike-slip") {
 
                 sigmah = .76 + (.9 - .76) * rand.nextDouble();
 
@@ -140,13 +140,13 @@ public class DrillingEquations {
                 sigmah = 1 + (1.2 - 1) * rand.nextDouble();
             }
         }
-        else if (PorePressureType == "Underpressure") {
+        else if (porePressureType == "Underpressure") {
 
-            if (FaultType == "Normal") {
+            if (faultType == "Normal") {
 
                 sigmah = .483 + (.758 - .483) * rand.nextDouble();
 
-            } else if (FaultType == "Strike-slip") {
+            } else if (faultType == "Strike-slip") {
 
                 sigmah = .483 + (.788 - .483) * rand.nextDouble();
 
@@ -158,20 +158,20 @@ public class DrillingEquations {
         return sigmah;
     }
 
-    public static double PorePressureRange(String FaultType, String PorePressureType){
+    public static double porePressureRange(String faultType, String porePressureType){
 
         double porePR = -1;
         Random rand = new Random();
 
-        if (PorePressureType == "Hydrostatic") {
+        if (porePressureType == "Hydrostatic") {
 
                 porePR = .43 + (.45 - .43) * rand.nextDouble();
         }
-        else if (PorePressureType == "Overpressure") {
+        else if (porePressureType == "Overpressure") {
 
                 porePR = .465 + (.9 - .465) * rand.nextDouble();
         }
-        else if (PorePressureType == "Underpressure") {
+        else if (porePressureType == "Underpressure") {
 
             porePR = .2 + (.432 - .2) * rand.nextDouble();
         }
@@ -187,13 +187,13 @@ public class DrillingEquations {
         return SigmaV;
     }
 
-    public static double SigmaH(double depth, double SigHR, double PorePR){
+    public static double sigmaH(double depth, double SigHR, double PorePR){
 
         double SigmaH;
         SigmaH = depth*(SigHR);
         return SigmaH;
     }
-    public static double Sigmah(double depth, double SighR, double PorePR){
+    public static double sigmah(double depth, double SighR, double PorePR){
 
         double SigmaV;
         SigmaV = depth*(SighR);

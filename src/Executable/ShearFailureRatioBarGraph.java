@@ -98,6 +98,7 @@ public class ShearFailureRatioBarGraph extends JPanel {
         }
 
 
+
         add( chartPanel );
 
         mw.setShearBarChart(barChart);

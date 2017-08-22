@@ -483,7 +483,7 @@
                                     </constraints>
                                     <properties/>
                                   </component>
-                                  <component id="6e551" class="javax.swing.JComboBox" binding="PoreCombo">
+                                  <component id="6e551" class="javax.swing.JComboBox" binding="poreCombo">
                                     <constraints>
                                       <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false">
                                         <preferred-size width="-1" height="2"/>
@@ -494,7 +494,7 @@
                                       <font name="Candara"/>
                                     </properties>
                                   </component>
-                                  <component id="2f690" class="javax.swing.JComboBox" binding="FaultTypeCombo">
+                                  <component id="2f690" class="javax.swing.JComboBox" binding="faultTypeCombo">
                                     <constraints>
                                       <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false">
                                         <preferred-size width="100" height="2"/>

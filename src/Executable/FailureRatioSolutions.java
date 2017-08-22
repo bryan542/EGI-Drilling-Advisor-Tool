@@ -67,32 +67,32 @@ public class FailureRatioSolutions extends DrillingEquations {
         double sigmaHGradientRange = sigmaHGradientInitial/depth;
         double initialRange = -1;
         double finalRange = -1;
-
-        // sets the amount of bars on the ratio graph. reduce or increase the number amount to change the amount reported on the graph
+        double incrimentAmount = 14;
+        // sets the amount of bars on the ratio graph. reduce or increase incrimentAmount variable to change the amount reported on the graph
         //metric units
         if(gradientChange ==1){
 
-            incrimentRange = (sigmaVGradientRange-sigmahGradientRange)/18;
+            incrimentRange = (sigmaVGradientRange-sigmahGradientRange)/incrimentAmount;
             initialRange = sigmahGradientRange;
             finalRange = sigmaVGradientRange;
 
             // sets a proper range if strike-slip or reverse fault behavior gradients are input
             if (sigmaHGradientRange > sigmaVGradientRange && sigmaVGradientRange < sigmahGradientRange && sigmahGradientRange > sigmaHGradientRange){
 
-                incrimentRange = (sigmahGradientRange-sigmaVGradientRange)/18;
+                incrimentRange = (sigmahGradientRange-sigmaVGradientRange)/incrimentAmount;
                 initialRange = sigmaVGradientRange;
                 finalRange = sigmahGradientRange;
 
             }
             else if (sigmaHGradientRange > sigmaVGradientRange && sigmaVGradientRange < sigmahGradientRange && sigmahGradientRange < sigmaHGradientRange ){
 
-                incrimentRange = (sigmaHGradientRange-sigmaVGradientRange)/18;
+                incrimentRange = (sigmaHGradientRange-sigmaVGradientRange)/incrimentAmount;
                 initialRange = sigmaVGradientRange;
                 finalRange = sigmaHGradientRange;
             }
             else if (sigmaHGradientRange > sigmaVGradientRange && sigmaVGradientRange > sigmahGradientRange && sigmahGradientRange < sigmaHGradientRange ){
                 //strike-slip gradient range
-                incrimentRange = (sigmaHGradientRange-sigmahGradientRange)/18;
+                incrimentRange = (sigmaHGradientRange-sigmahGradientRange)/incrimentAmount;
                 initialRange = sigmahGradientRange;
                 finalRange = sigmaHGradientRange;
             }
@@ -135,7 +135,7 @@ public class FailureRatioSolutions extends DrillingEquations {
             gradientIndex = gradientIndex/100;
 
 
-            sigmaHGradient = DrillingEquations.SigmaH(depth,i, porePressureGradient);
+            sigmaHGradient = DrillingEquations.sigmaH(depth,i, porePressureGradient);
             sigZ = DrillingEquations.sigZ(sigmaVGradient,sigmaHGradient,sigmahGradient,gamma,alpha);
             sigX = DrillingEquations.sigX(sigmaVGradient,sigmaHGradient,sigmahGradient,gamma,alpha);
             sigY = DrillingEquations.sigY(sigmaHGradient,sigmahGradient, alpha);

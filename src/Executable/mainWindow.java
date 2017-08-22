@@ -38,8 +38,8 @@ public class mainWindow extends JFrame {
     private JPanel unconformityJPanel;
     private JPanel GSILocationSetter;
 
-    private JComboBox PoreCombo;
-    private JComboBox FaultTypeCombo;
+    private JComboBox poreCombo;
+    private JComboBox faultTypeCombo;
     private JComboBox faultConductCombo;
     private JComboBox beddingCombo;
     private JComboBox naturalFractureCombo;
@@ -235,11 +235,11 @@ public class mainWindow extends JFrame {
     }
 
     public JComboBox getPoreCombo() {
-        return PoreCombo;
+        return poreCombo;
     }
 
     public JComboBox getFaultTypeCombo() {
-        return FaultTypeCombo;
+        return faultTypeCombo;
     }
 
 
@@ -582,7 +582,7 @@ public class mainWindow extends JFrame {
     }
 
     public void setFaultTypeCombo(String text) {
-        FaultTypeCombo.setSelectedItem(text);
+        faultTypeCombo.setSelectedItem(text);
     }
 
     public void setFaultConductCombo(String text) {
@@ -1148,10 +1148,10 @@ public class mainWindow extends JFrame {
         String PermeabilityList[] = listComboLists.GetPermeability();
 
         for  (int i =0; i< faultList.length;i++) {
-            FaultTypeCombo.addItem(faultList[i]);
+            faultTypeCombo.addItem(faultList[i]);
         }
         for  (int i =0; i< PorePressureList.length;i++) {
-            PoreCombo.addItem(PorePressureList[i]);
+            poreCombo.addItem(PorePressureList[i]);
         }
         for  (int i =0; i< FaultConductivityList.length;i++) {
             faultConductCombo.addItem(FaultConductivityList[i]);
@@ -1222,8 +1222,8 @@ public class mainWindow extends JFrame {
             inputSigmaMinLabel.setEnabled(false);
             inputSigmaVLabel.setEnabled(false);
             inputStressGradientLabel.setEnabled(false);
-            PoreCombo.setEnabled(true);
-            FaultTypeCombo.setEnabled(true);
+            poreCombo.setEnabled(true);
+            faultTypeCombo.setEnabled(true);
         }
         else{
             sigmaVTextField.setEnabled(true);
@@ -1235,8 +1235,8 @@ public class mainWindow extends JFrame {
             inputSigmaMinLabel.setEnabled(true);
             inputSigmaVLabel.setEnabled(true);
             inputStressGradientLabel.setEnabled(true);
-            PoreCombo.setEnabled(true);
-            FaultTypeCombo.setEnabled(true);
+            poreCombo.setEnabled(true);
+            faultTypeCombo.setEnabled(true);
         }
 
         //enable/disable actions when the gradient buttons are clicked.
@@ -1252,8 +1252,8 @@ public class mainWindow extends JFrame {
                 inputSigmaMinLabel.setEnabled(false);
                 inputSigmaVLabel.setEnabled(false);
                 inputStressGradientLabel.setEnabled(false);
-                PoreCombo.setEnabled(true);
-                FaultTypeCombo.setEnabled(true);
+                poreCombo.setEnabled(true);
+                faultTypeCombo.setEnabled(true);
             }
         });
 
@@ -1270,8 +1270,8 @@ public class mainWindow extends JFrame {
                 inputSigmaMinLabel.setEnabled(true);
                 inputSigmaVLabel.setEnabled(true);
                 inputStressGradientLabel.setEnabled(true);
-                PoreCombo.setEnabled(false);
-                FaultTypeCombo.setEnabled(false);
+                poreCombo.setEnabled(false);
+                faultTypeCombo.setEnabled(false);
             }
         });
 
@@ -1511,9 +1511,10 @@ public class mainWindow extends JFrame {
 
                     if(stressAutomaticRadioButton.isSelected()) {
 
-                        this.SigmaVR = Equations.SigmaVRange(FaultTypeCombo.getSelectedItem().toString(), PoreCombo.getSelectedItem().toString());
-                        this.SigmaHR = Equations.SigmaHRange(FaultTypeCombo.getSelectedItem().toString(), PoreCombo.getSelectedItem().toString());
-                        this.SigmahR = Equations.SigmahRange(FaultTypeCombo.getSelectedItem().toString(), PoreCombo.getSelectedItem().toString());
+                        this.SigmaVR = Equations.sigmaVRange();
+                        this.SigmaHR = Equations.sigmaHRange(faultTypeCombo.getSelectedItem().toString(), poreCombo.getSelectedItem().toString());
+                        this.SigmahR = Equations.sigmahRange(faultTypeCombo.getSelectedItem().toString(), poreCombo.getSelectedItem().toString());
+                        this.porePressureGradient = Equations.porePressureRange(faultTypeCombo.getSelectedItem().toString(), poreCombo.getSelectedItem().toString());
                         porePressureTextFieldResult.setText(Integer.toString((int) (porePressureGradient * depth *(1/pressureUM))));
 
                         setSigmaVRFinal(this.SigmaVR);
@@ -1523,8 +1524,8 @@ public class mainWindow extends JFrame {
 
                         //Retrieve sigma values
                         this.SigmaVGradient = Equations.SigmaV(depth,SigmaVR, porePressureGradient);
-                        this.SigmaHGradient = Equations.SigmaH(depth,SigmaHR, porePressureGradient);
-                        this.SigmahGradient = Equations.Sigmah(depth,SigmahR, porePressureGradient);
+                        this.SigmaHGradient = Equations.sigmaH(depth,SigmaHR, porePressureGradient);
+                        this.SigmahGradient = Equations.sigmah(depth,SigmahR, porePressureGradient);
 
                         //Retrieve stress tensors sigZ, sigX, sigY
                         this.sigmaZ = Equations.sigZ(SigmaVGradient, SigmaHGradient, SigmahGradient,gamma,Alpha);
@@ -1548,8 +1549,8 @@ public class mainWindow extends JFrame {
                         setPorePressureGradientFinal(this.porePressureGradient);
                         //Retrieve sigma values
                         this.SigmaVGradient = Equations.SigmaV(depth,SigmaVR, porePressureGradient);
-                        this.SigmaHGradient = Equations.SigmaH(depth,SigmaHR, porePressureGradient);
-                        this.SigmahGradient = Equations.Sigmah(depth,SigmahR, porePressureGradient);
+                        this.SigmaHGradient = Equations.sigmaH(depth,SigmaHR, porePressureGradient);
+                        this.SigmahGradient = Equations.sigmah(depth,SigmahR, porePressureGradient);
 
                         //Retrieve stress tensors sigZ, sigX, sigY
                         this.sigmaX = Equations.sigX(SigmaVGradient, SigmaHGradient, SigmahGradient,gamma,Alpha);
@@ -1659,11 +1660,11 @@ public class mainWindow extends JFrame {
 
 
                     //Retrieve first set parameters
-                    this.firstInstability = Equations.firstSetParameters(this.failType,PoreCombo.getSelectedItem().toString(),FaultTypeCombo.getSelectedItem().toString(),"Instability");
-                    this.firstLossOfCirculation = Equations.firstSetParameters(this.failType,PoreCombo.getSelectedItem().toString(),FaultTypeCombo.getSelectedItem().toString(),"LossOfCirculation");
-                    this.firstWellControl = Equations.firstSetParameters(this.failType,PoreCombo.getSelectedItem().toString(),FaultTypeCombo.getSelectedItem().toString(),"WellControl");
-                    this.firstLongTermIntegrity = Equations.firstSetParameters(this.failType,PoreCombo.getSelectedItem().toString(),FaultTypeCombo.getSelectedItem().toString(),"LongTermIntegrity");
-                    this.firstROP= Equations.firstSetParameters(this.failType,PoreCombo.getSelectedItem().toString(),FaultTypeCombo.getSelectedItem().toString(),"ROP");
+                    this.firstInstability = Equations.firstSetParameters(this.failType, poreCombo.getSelectedItem().toString(), faultTypeCombo.getSelectedItem().toString(),"Instability");
+                    this.firstLossOfCirculation = Equations.firstSetParameters(this.failType, poreCombo.getSelectedItem().toString(), faultTypeCombo.getSelectedItem().toString(),"LossOfCirculation");
+                    this.firstWellControl = Equations.firstSetParameters(this.failType, poreCombo.getSelectedItem().toString(), faultTypeCombo.getSelectedItem().toString(),"WellControl");
+                    this.firstLongTermIntegrity = Equations.firstSetParameters(this.failType, poreCombo.getSelectedItem().toString(), faultTypeCombo.getSelectedItem().toString(),"LongTermIntegrity");
+                    this.firstROP= Equations.firstSetParameters(this.failType, poreCombo.getSelectedItem().toString(), faultTypeCombo.getSelectedItem().toString(),"ROP");
 
                     //Retrieve second set parameters
 
@@ -1829,7 +1830,7 @@ public class mainWindow extends JFrame {
                         formationPressureButton.setEnabled(true);
 
 
-                        int chartDimensions = 50;
+                        int chartDimensions = 575;
 
 
 

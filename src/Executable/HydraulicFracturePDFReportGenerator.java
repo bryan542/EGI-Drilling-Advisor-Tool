@@ -25,8 +25,8 @@ public class HydraulicFracturePDFReportGenerator {
 
     public HydraulicFracturePDFReportGenerator(ArrayList<JLabel> reportTitles, ArrayList<JTextField> reportValues){
 
-
-
+        //Restrieves the user selected filepath
+        String filename = getSaveLocation();
 
         DocumentInfo di = new DocumentInfo();
         di.setAuthor("Bryan");
@@ -50,8 +50,11 @@ public class HydraulicFracturePDFReportGenerator {
         int marginLeft = 36;
         int marginRight = 36;
 
+        //resize ratio for the loaded image
         double resizeWidthRatio = .3;
         double resizeHeightRatio = .3;
+
+        //converts .png logo to buffered image
         BufferedImage bufferedLogo = resizedBufferedImage(url,resizeWidthRatio,resizeHeightRatio);
 
 
@@ -62,8 +65,6 @@ public class HydraulicFracturePDFReportGenerator {
         //adds reocurring items on every page
         reocurringPageItemsSetter(pdfDoc,bufferedLogo,resizeWidthRatio,resizeHeightRatio,pageWidth,pageHeight,marginBot,marginTop,marginLeft,marginRight);
 
-
-        String filename = getSaveLocation();
 
         //adds the filename title to the first page
         fileNamePosition(pdfDoc,filename);

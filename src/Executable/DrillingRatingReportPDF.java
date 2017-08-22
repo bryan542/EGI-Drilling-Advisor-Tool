@@ -33,29 +33,27 @@ public class DrillingRatingReportPDF {
 
 public DrillingRatingReportPDF(ArrayList<ArrayList> arrayLabelHolder, ArrayList<ArrayList> arrayValueHolder, ArrayList<BufferedImage> chartBufferedImageArray ) {
 
+    //User selects the file save path
+    String filename = getSaveLocation();
 
-
-
+    //Major subsection of the pdf document
     String[] arrayTitles = {"drilling Stability Inputs","Rock Property Inputs","Discontinuity Inputs","Geomechanical Outputs"};
 
+    //Main document to add pages too
     PDFDocument pdfDoc = new PDFDocument();
     PDFPage page = pdfDoc.createPage(null);
     PageFormat pf = new PageFormat();
     double pageWidth = pf.getWidth();
     double pageHeight = pf.getHeight();
 
-
+    //Company logo set in top right
     URL url = mainWindow.class.getResource("/Images/Nexen Logo.png");
 
-    //page margins 1 inch
+    //page margins 1/2 inch, 1/72 units per inch
     int marginTop = 36;
     int marginBot = 36;
     int marginLeft = 36;
     int marginRight = 36;
-
-    //highest page top height and low height
-    int minComponentHeight = 115;
-    int maxComponentHeight = 700;
 
     //When I build a page and add on to it I need a value to track the current page hate before building a new one
     int currentPageHeight = 85;
@@ -63,10 +61,12 @@ public DrillingRatingReportPDF(ArrayList<ArrayList> arrayLabelHolder, ArrayList<
     //Current page number used to append items down the list
     lastPageNumber = 0;
 
+    //Scale values when resizing the .png image logo
     double resizeWidthRatio = .3;
     double resizeHeightRatio = .3;
-    BufferedImage bufferedLogo = resizedBufferedImage(url,resizeWidthRatio,resizeHeightRatio);
 
+    //convert logo .png to rescaled buffered image
+    BufferedImage bufferedLogo = resizedBufferedImage(url,resizeWidthRatio,resizeHeightRatio);
 
     //First page added is outside the loop
     pdfDoc.addPage(page);
@@ -80,12 +80,12 @@ public DrillingRatingReportPDF(ArrayList<ArrayList> arrayLabelHolder, ArrayList<
         currentPageHeight = pageLengthChecker(currentPageHeight,pdfDoc);
     }
 
+    //Adds the plots
     reportStringBuilder(pdfDoc,lastPageNumber,currentPageHeight,chartBufferedImageArray);
+
     //add the reocurring elements that you want on every page
     reocurringPageItemsSetter(pdfDoc,bufferedLogo,resizeWidthRatio,resizeHeightRatio,pageWidth,pageHeight,marginBot,marginTop,marginLeft,marginRight);
 
-
-    String filename = getSaveLocation();
 
     //adds the filename title to the first page
     fileNamePosition(pdfDoc,filename);
