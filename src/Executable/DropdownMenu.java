@@ -61,7 +61,8 @@ public class DropdownMenu  {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                DrillingRatingReportPDF drr = new DrillingRatingReportPDF(mw.getArrayLabelHolder(),mw.getArrayValueHolder(),mw.getChartBufferedImagesArray());
+                DrillingRatingReportPDF drr = new DrillingRatingReportPDF();
+                drr.saveDocument(mw.getDrillingPDFDoc());
 
             }
         });

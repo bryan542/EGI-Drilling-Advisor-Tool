@@ -15,6 +15,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import com.qoppa.pdfWriter.PDFDocument;
 import com.thehowtotutorial.splashscreen.JSplash;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -25,6 +26,7 @@ import org.jfree.data.xy.XYSeriesCollection;
 /**
  * Created by Bryan on 10/3/2016.
  */
+//This is the main frame execution class
 public class mainWindow extends JFrame {
 
     private JTabbedPane tabbedPane1;
@@ -45,7 +47,7 @@ public class mainWindow extends JFrame {
     private JComboBox naturalFractureCombo;
     private JComboBox lithologyCombo;
     private JComboBox permCombo;
-    private JComboBox GSICombo;
+
 
     private JTextField depthText;
     private JTextField mudWeightText;
@@ -963,12 +965,17 @@ public class mainWindow extends JFrame {
     ArrayList<BufferedImage> chartBufferedImagesArray = new ArrayList();
 
 
+    PDFDocument drillingPDFDoc = new PDFDocument();
 
     JFreeChart stressPolygonChart = null;
     JFreeChart formationPressureChart = null;
     JFreeChart mohrFailureChart = null;
     JFreeChart shearBarChart = null;
     JFreeChart tensileBarChart = null;
+
+    public PDFDocument getDrillingPDFDoc() {
+        return drillingPDFDoc;
+    }
 
     public JFreeChart getStressPolygonChart() {
         return stressPolygonChart;
@@ -1995,6 +2002,9 @@ public class mainWindow extends JFrame {
                         arrayValueHolder.add(discontinuitiesInputsValueArray);
                         arrayValueHolder.add(geomechanicalOutputsValueArray);
 
+                        //builds the drilling pdf document data
+                        DrillingRatingReportPDF drr = new DrillingRatingReportPDF();
+                        drillingPDFDoc = drr.generateDocumentReport(arrayLabelHolder,arrayValueHolder,chartBufferedImagesArray);
 
                         menu.getExportPDF().setEnabled(true); // sets jmenuitem to enabled if the calculation is successful
                         stressPolygonButton.setEnabled(true);
@@ -2011,7 +2021,8 @@ public class mainWindow extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                DrillingRatingReportPDF drr = new DrillingRatingReportPDF(arrayLabelHolder, arrayValueHolder, chartBufferedImagesArray);
+                DrillingRatingReportPDF drr = new DrillingRatingReportPDF();
+                drr.saveDocument(drillingPDFDoc);
 
             }
         });

@@ -31,77 +31,84 @@ public class DrillingRatingReportPDF {
         this.lastPageNumber = lastPageNumber;
     }
 
-public DrillingRatingReportPDF(ArrayList<ArrayList> arrayLabelHolder, ArrayList<ArrayList> arrayValueHolder, ArrayList<BufferedImage> chartBufferedImageArray ) {
+    public DrillingRatingReportPDF(){}
 
-    //User selects the file save path
-    String filename = getSaveLocation();
+    public PDFDocument generateDocumentReport(ArrayList<ArrayList> arrayLabelHolder, ArrayList<ArrayList> arrayValueHolder, ArrayList<BufferedImage> chartBufferedImageArray) {
+        //Major subsection of the pdf document
+        String[] arrayTitles = {"drilling Stability Inputs","Rock Property Inputs","Discontinuity Inputs","Geomechanical Outputs"};
 
-    //Major subsection of the pdf document
-    String[] arrayTitles = {"drilling Stability Inputs","Rock Property Inputs","Discontinuity Inputs","Geomechanical Outputs"};
+        //Main document to add pages too
+        PDFDocument pdfDoc = new PDFDocument();
+        PDFPage page = pdfDoc.createPage(null);
+        PageFormat pf = new PageFormat();
+        double pageWidth = pf.getWidth();
+        double pageHeight = pf.getHeight();
 
-    //Main document to add pages too
-    PDFDocument pdfDoc = new PDFDocument();
-    PDFPage page = pdfDoc.createPage(null);
-    PageFormat pf = new PageFormat();
-    double pageWidth = pf.getWidth();
-    double pageHeight = pf.getHeight();
+        //Company logo set in top right
+        URL url = mainWindow.class.getResource("/Images/Nexen Logo.png");
 
-    //Company logo set in top right
-    URL url = mainWindow.class.getResource("/Images/Nexen Logo.png");
+        //page margins 1/2 inch, 1/72 units per inch
+        int marginTop = 36;
+        int marginBot = 36;
+        int marginLeft = 36;
+        int marginRight = 36;
 
-    //page margins 1/2 inch, 1/72 units per inch
-    int marginTop = 36;
-    int marginBot = 36;
-    int marginLeft = 36;
-    int marginRight = 36;
+        //When I build a page and add on to it I need a value to track the current page hate before building a new one
+        int currentPageHeight = 85;
 
-    //When I build a page and add on to it I need a value to track the current page hate before building a new one
-    int currentPageHeight = 85;
+        //Current page number used to append items down the list
+        lastPageNumber = 0;
 
-    //Current page number used to append items down the list
-    lastPageNumber = 0;
+        //Scale values when resizing the .png image logo
+        double resizeWidthRatio = .3;
+        double resizeHeightRatio = .3;
 
-    //Scale values when resizing the .png image logo
-    double resizeWidthRatio = .3;
-    double resizeHeightRatio = .3;
+        //convert logo .png to rescaled buffered image
+        BufferedImage bufferedLogo = resizedBufferedImage(url,resizeWidthRatio,resizeHeightRatio);
 
-    //convert logo .png to rescaled buffered image
-    BufferedImage bufferedLogo = resizedBufferedImage(url,resizeWidthRatio,resizeHeightRatio);
+        //First page added is outside the loop
+        pdfDoc.addPage(page);
 
-    //First page added is outside the loop
-    pdfDoc.addPage(page);
+        //Loops and adds the drilling components and values
+        for(int i = 0;i<arrayLabelHolder.size();i++){
 
-    //Loops and adds the drilling components and values
-    for(int i = 0;i<arrayLabelHolder.size();i++){
+            currentPageHeight = reportStringBuilder(pdfDoc,lastPageNumber,currentPageHeight,((ArrayList) arrayLabelHolder.get(i)),((ArrayList) arrayValueHolder.get(i)), arrayTitles[i]);
 
-        currentPageHeight = reportStringBuilder(pdfDoc,lastPageNumber,currentPageHeight,((ArrayList) arrayLabelHolder.get(i)),((ArrayList) arrayValueHolder.get(i)), arrayTitles[i]);
-
-        //Page cutoff value. This makes sure a new page is generated if we start appending near the end
-        currentPageHeight = pageLengthChecker(currentPageHeight,pdfDoc);
-    }
-
-    //Adds the plots
-    reportStringBuilder(pdfDoc,lastPageNumber,currentPageHeight,chartBufferedImageArray);
-
-    //add the reocurring elements that you want on every page
-    reocurringPageItemsSetter(pdfDoc,bufferedLogo,resizeWidthRatio,resizeHeightRatio,pageWidth,pageHeight,marginBot,marginTop,marginLeft,marginRight);
-
-
-    //adds the filename title to the first page
-    fileNamePosition(pdfDoc,filename);
-
-    File outFile = new File(filename);
-        if (outFile != null)
-    {
-        // save the document
-        try {
-            pdfDoc.saveDocument (outFile.getAbsolutePath());
-        } catch (IOException e) {
-            e.printStackTrace();
+            //Page cutoff value. This makes sure a new page is generated if we start appending near the end
+            currentPageHeight = pageLengthChecker(currentPageHeight,pdfDoc);
         }
-    }
-}
 
+        //Adds the plots
+        reportStringBuilder(pdfDoc,lastPageNumber,currentPageHeight,chartBufferedImageArray);
+
+        //add the reocurring elements that you want on every page
+        reocurringPageItemsSetter(pdfDoc,bufferedLogo,resizeWidthRatio,resizeHeightRatio,pageWidth,pageHeight,marginBot,marginTop,marginLeft,marginRight);
+
+
+        return pdfDoc;
+    }
+
+
+    public void saveDocument(PDFDocument pdfDoc){
+
+        //User selects the file save path
+        String filename = getSaveLocation();
+
+        //adds the filename title to the first page
+        fileNamePosition(pdfDoc,filename);
+
+        File outFile = new File(filename);
+        if (outFile != null)
+        {
+            // save the document
+            try {
+                pdfDoc.saveDocument (outFile.getAbsolutePath());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
     public void fileNamePosition(PDFDocument pdfDoc, String fileName){
 
         File f = new File(fileName);
