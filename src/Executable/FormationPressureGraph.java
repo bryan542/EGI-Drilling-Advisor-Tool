@@ -86,6 +86,7 @@ public class FormationPressureGraph extends JPanel {
         plot.getRenderer().setSeriesPaint(2,Color.blue);
         plot.getRenderer().setSeriesPaint(3,Color.magenta);
         plot.getRenderer().setSeriesPaint(4,Color.red);
+        plot.getRenderer().setSeriesPaint(5,Color.yellow);
 
         //This builds the dashed lines
         final BasicStroke dashedStroke = new BasicStroke(
@@ -97,6 +98,7 @@ public class FormationPressureGraph extends JPanel {
         plot.getRenderer().setSeriesStroke(2,dashedStroke);
         plot.getRenderer().setSeriesStroke(3,dashedStroke);
         plot.getRenderer().setSeriesStroke(4,dashedStroke);
+        plot.getRenderer().setSeriesStroke(5,dashedStroke);
 
 
         //Thicken plot line of the actual mudweight value
@@ -169,6 +171,7 @@ public class FormationPressureGraph extends JPanel {
         plot.getRenderer().setSeriesPaint(2,Color.blue);
         plot.getRenderer().setSeriesPaint(3,Color.MAGENTA);
         plot.getRenderer().setSeriesPaint(4,Color.red);
+        plot.getRenderer().setSeriesPaint(5,Color.yellow);
 
         //This builds the dashed lines
         final BasicStroke dashedStroke = new BasicStroke(
@@ -180,6 +183,7 @@ public class FormationPressureGraph extends JPanel {
         plot.getRenderer().setSeriesStroke(2,dashedStroke);
         plot.getRenderer().setSeriesStroke(3,dashedStroke);
         plot.getRenderer().setSeriesStroke(4,dashedStroke);
+        plot.getRenderer().setSeriesStroke(5,dashedStroke);
 
 
 

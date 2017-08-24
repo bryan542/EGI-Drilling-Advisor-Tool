@@ -338,6 +338,42 @@ public class DrillingEquations {
         this.ThoRZ = 0;
         return this.ThoRZ;
     }
+    //critical borehole pressure test
+    public double criticalBoreholeFracturePressure(double sigmaX, double sigmaY, double porePressure, double tensileStrength ){
+
+        double criticalBoreholeFracturePressure = -1;
+
+
+        if (sigmaX < sigmaY) {
+
+            criticalBoreholeFracturePressure = 3*sigmaX-sigmaY -tensileStrength;
+        }
+        else{
+
+            criticalBoreholeFracturePressure = 3*sigmaY-sigmaX -tensileStrength;
+        }
+
+        return criticalBoreholeFracturePressure;
+    }
+    //critical borehole pressure test
+    public double criticalBoreholeCollapsePressure(double sigmaX, double sigmaY, double coeffFriction, double porePressure, double tensileStrength ){
+
+        double criticalBoreholePressureCollapse = -1;
+
+        double a = (1-Math.sin(Math.toRadians(coeffFriction)));
+        double b = tensileStrength*Math.cos(Math.toRadians( coeffFriction));
+        double c = porePressure*Math.sin(Math.toRadians(coeffFriction));
+        if (sigmaX < sigmaY) {
+
+            criticalBoreholePressureCollapse = .5*(3*sigmaX-sigmaY)*a-b+c;
+        }
+        else{
+
+            criticalBoreholePressureCollapse = .5*(3*sigmaY-sigmaX)*a-b+c;
+        }
+
+        return criticalBoreholePressureCollapse;
+    }
     //Critical failure Pressure
     public static double criticalFailurePressure(double sigmaX, double sigmaY,double sigmaZ,double thoXY, double thoThetaZ, double porePressure,double tensileStrength, double failureAngle, double gamma) {
 

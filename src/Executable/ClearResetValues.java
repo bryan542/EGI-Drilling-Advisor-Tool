@@ -1,7 +1,6 @@
 package Executable;
 
 import javax.swing.*;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -50,7 +49,7 @@ public class ClearResetValues {
         obj.add(mw.getCohesionOutputTextField());
         obj.add(mw.getCoeffFrictionText());
         obj.add(mw.getRockDamageTextField());
-        obj.add(mw.getCriticalFailurePressureTextField());
+        obj.add(mw.getCriticalFracturePressureTextField());
 
         //add all of the JLabels to obj2
         obj2.add(mw.getTensileFailResult());

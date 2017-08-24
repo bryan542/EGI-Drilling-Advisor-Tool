@@ -8,12 +8,15 @@ import org.jfree.data.xy.XYSeriesCollection;
  */
 public class FormationPressureDataset {
 
-    public XYSeriesCollection formationPressureDataset(double sigmaV, double sigmaH, double sigmah, double porePressure, double depth, double mudweightPsi, double tensileStrength,double criticalFailurePressure){
+    public XYSeriesCollection formationPressureDataset(double sigmaV, double sigmah, double porePressure, double depth, double mudweightPsi,double criticalCollapsePresure,double criticalFracturePresure){
 
         double sigmaVPressure = sigmaV*depth;
-        double sigmaHPressure = sigmaH*depth;
         double sigmahPressure = sigmah*depth;
         double mudWeightPressure = mudweightPsi*depth;
+
+        final XYSeries collapsePressureLine = new XYSeries("Critical Borehole Collapse Pressure");
+        collapsePressureLine.add(0,porePressure);
+        collapsePressureLine.add(criticalCollapsePresure,0);
 
         final XYSeries hydrostaticLine = new XYSeries("Hydrostatic Pressure");
         hydrostaticLine.add(0,porePressure);
@@ -25,10 +28,10 @@ public class FormationPressureDataset {
         minimumFractureLine.add(0,porePressure);
         minimumFractureLine.add(sigmahPressure,0);
 
-        final XYSeries maximumFractureLine = new XYSeries("Critical Wellbore Failure Pressure");
+        final XYSeries maximumFractureLine = new XYSeries("Critical Borehole Fracture Pressure");
 
         maximumFractureLine.add(0,porePressure);
-        maximumFractureLine.add(criticalFailurePressure,0);
+        maximumFractureLine.add(criticalFracturePresure,0);
 
 
 
@@ -50,6 +53,7 @@ public class FormationPressureDataset {
         dataset.addSeries(minimumFractureLine);
         dataset.addSeries((maximumFractureLine));
         dataset.addSeries((lithostaticLine));
+        dataset.addSeries(collapsePressureLine);
 
         return dataset;
     }

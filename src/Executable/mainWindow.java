@@ -78,7 +78,7 @@ public class mainWindow extends JFrame {
     private JTextField cohesionOutputTextField;
     private JTextField coeffFrictionText;
     private JTextField rockDamageTextField;
-    private JTextField criticalFailurePressureTextField;
+    private JTextField criticalFracturePressureTextField;
     private JTextField UCSIntactOutputTextField;
     private JTextField UCSDamagedOutputTextField;
     private JTextField GSITextField;
@@ -138,7 +138,7 @@ public class mainWindow extends JFrame {
     private JLabel UCSIntactOutputLabel;
     private JLabel UCSDamagedOutputLabel;
     private JLabel GSILabel;
-    private JLabel criticalFailurePressureLabel;
+    private JLabel criticalFracturePressureLabel;
     private JLabel faultTypeLabel;
     private JLabel porePressureTypeLabel;
     private JLabel lithologyLabel;
@@ -298,8 +298,8 @@ public class mainWindow extends JFrame {
         return UCSDamagedOutputLabel;
     }
 
-    public JLabel getCriticalFailurePressureLabel() {
-        return criticalFailurePressureLabel;
+    public JLabel getCriticalFracturePressureLabel() {
+        return criticalFracturePressureLabel;
     }
 
     public JLabel getLithologyLabel() {
@@ -403,8 +403,8 @@ public class mainWindow extends JFrame {
         return rockDamageTextField;
     }
 
-    public JTextField getCriticalFailurePressureTextField() {
-        return criticalFailurePressureTextField;
+    public JTextField getCriticalFracturePressureTextField() {
+        return criticalFracturePressureTextField;
     }
 
     public JTextField getAlpha1Text() {
@@ -780,8 +780,8 @@ public class mainWindow extends JFrame {
     }
 
 
-    public void setCriticalFailurePressureLabel(String text) {
-        this.criticalFailurePressureLabel.setText(text);
+    public void setCriticalFracturePressureLabel(String text) {
+        this.criticalFracturePressureLabel.setText(text);
     }
 
     public void setPrincipalSigma3Label(String text) {
@@ -1320,6 +1320,7 @@ public class mainWindow extends JFrame {
                 jointFrequency = naturalFractureCombo.getSelectedItem().toString();
                 beddingConductivity = beddingCombo.getSelectedItem().toString();
 
+                long startTime = System.nanoTime();
                 //checks all the input values and makes sure they are valid inputs
                 TextFieldChecker tfc = new TextFieldChecker();
                 checkResult =tfc.runInputCheck(mainWindow.this);
@@ -1463,11 +1464,7 @@ public class mainWindow extends JFrame {
                         criticalFailurePressure = Equations.criticalFailurePressure(sigmaX,sigmaY,sigmaZ,ThoXY,ThoThetaZ,(porePressureGradient*depth*(1/pressureUM)),tensileStrength,failureAngle, gamma);
                         this.failType = Equations.tensileFailureCondition(mudWeightPsiFt*depth, criticalFailurePressure);
 
-                        //rounds the critical pressure value
-                        criticalFailurePressure = Math.round((criticalFailurePressure)*100);
-                        criticalFailurePressure = criticalFailurePressure/100;
 
-                        criticalFailurePressureTextField.setText(Double.toString(criticalFailurePressure));
 
                     }
                     else if(tensileAutomaticRadioButton.isSelected()){
@@ -1480,9 +1477,6 @@ public class mainWindow extends JFrame {
                         criticalFailurePressure = Equations.criticalFailurePressure(sigmaX,sigmaY,sigmaZ,ThoXY,ThoThetaZ,(porePressureGradient*depth*(1/pressureUM)),tensileStrength,failureAngle,gamma);
                         this.failType = Equations.tensileFailureCondition(mudWeightPsiFt*depth,criticalFailurePressure);
 
-                        //rounds the critical pressure value
-                        int criticalFailurePressureInt = (int) criticalFailurePressure;
-                        criticalFailurePressureTextField.setText(Double.toString(criticalFailurePressureInt));
 
                     }
 
@@ -1573,13 +1567,21 @@ public class mainWindow extends JFrame {
                     XYSeriesCollection polygonCollection = new XYSeriesCollection();
                     MohrDataset mohrDataset = new MohrDataset();
 
+                    double criticalCollapsePressure = Equations.criticalBoreholeCollapsePressure(sigmaX,sigmaY,coeffFriction,(porePressureGradient*depth*(1/pressureUM)),cohesionInitial*(1/pressureUM));
+                    double criticalFracturePressure = Equations.criticalBoreholeFracturePressure(sigmaX,sigmaY,(porePressureGradient*depth*(1/pressureUM)),cohesionInitial*(1/pressureUM));
+                    criticalFracturePressureTextField.setText(Double.toString((int) criticalFracturePressure));
+                    System.out.println("sigX:"+sigmaX);
+                    System.out.println("sigY:"+sigmaY);
+                    System.out.println("Collapse Pressure"+criticalCollapsePressure);
+                    System.out.println("Fracture Pressure"+criticalFracturePressure);
                     //build pressure regime dataset
                     FormationPressureDataset formationDataset = new FormationPressureDataset();
-                    XYSeriesCollection formationPressureCollection = formationDataset.formationPressureDataset(SigmaVR,SigmaHR,SigmahR,porePressureCombination,depth,mudWeightPsiFt,tensileStrength,criticalFailurePressure);
+                    XYSeriesCollection formationPressureCollection = formationDataset.formationPressureDataset(SigmaVR,SigmahR,porePressureCombination,depth,mudWeightPsiFt,criticalCollapsePressure,criticalFracturePressure);
 
 
                     XYSeriesCollection mohrCollection = new XYSeriesCollection();
                     mohrCollection.removeAllSeries();
+
                     if (coefficientAutomaticRadioButton.isSelected()){
 
                         setCoeffFriction(Equations.rockPropertyGSISolver(effectiveSortedStresses[2],effectiveSortedStresses[1],effectiveSortedStresses[0],GSI,lithology,rockDamage,(SigmaVGradient),"CoeffFriction"));
