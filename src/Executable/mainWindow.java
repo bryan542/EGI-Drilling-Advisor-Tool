@@ -145,7 +145,6 @@ public class mainWindow extends JFrame {
     private JLabel permeabilityLabel;
     private JLabel tensileFailureOutputLabel;
     private JLabel shearFailureOutputLabel;
-    private JPanel criticalFailureOutputLabel;
 
     private JTextPane ratingTextPane;
 
@@ -191,10 +190,6 @@ public class mainWindow extends JFrame {
     }
 
     //getters
-
-
-
-
 
     public static String getProjectSettingButton() {
         return projectSettingButton;
@@ -244,6 +239,11 @@ public class mainWindow extends JFrame {
         return faultTypeCombo;
     }
 
+
+
+    public JLabel getInputStressGradientLabel() {
+        return inputStressGradientLabel;
+    }
 
     public JLabel getRockDamageLabel() {
         return rockDamageLabel;
@@ -316,10 +316,6 @@ public class mainWindow extends JFrame {
 
     public JLabel getShearFailureOutputLabel() {
         return shearFailureOutputLabel;
-    }
-
-    public JPanel getCriticalFailureOutputLabel() {
-        return criticalFailureOutputLabel;
     }
 
 
@@ -839,16 +835,9 @@ public class mainWindow extends JFrame {
 
     XYSeriesCollection mohrCollectionFinal;
 
-    public XYSeriesCollection getPolygonCollectionfinal() {
-        return polygonCollectionfinal;
-    }
 
     public void setPolygonCollectionFinal(XYSeriesCollection input) {
         this.polygonCollectionfinal = input;
-    }
-
-    public XYSeriesCollection getMohrCollectionFinal() {
-        return mohrCollectionFinal;
     }
 
     public void setMohrCollectionFinal(XYSeriesCollection input) {
@@ -881,12 +870,7 @@ public class mainWindow extends JFrame {
 
         return porePressureCombinationFinal;
     }
-    public double getSigmaVFinalGradient() {
-        return sigmaVFinalGradient;
-    }
-    public double getPorePressureFinal() {
-        return porePressureFinal;
-    }
+
     public void setSigma1Final(double input) {
         Sigma1Final = input;
     }
@@ -909,9 +893,7 @@ public class mainWindow extends JFrame {
 
         porePressureCombinationFinal = input;
     }
-    public double getCohesionInitialFinal() {
-        return cohesionInitialFinal;
-    }
+
     public void setCohesionInitialFinal(double cohesionInitialFinal) {
         this.cohesionInitialFinal = cohesionInitialFinal;
     }
@@ -967,6 +949,7 @@ public class mainWindow extends JFrame {
 
     PDFDocument drillingPDFDoc = new PDFDocument();
 
+    //Jfree chart holders
     JFreeChart stressPolygonChart = null;
     JFreeChart formationPressureChart = null;
     JFreeChart mohrFailureChart = null;
@@ -1017,56 +1000,8 @@ public class mainWindow extends JFrame {
         this.tensileBarChart = tensileBarChart;
     }
 
-    public ArrayList<BufferedImage> getChartBufferedImagesArray() {
-        return chartBufferedImagesArray;
-    }
-
-    public ArrayList<ArrayList> getArrayLabelHolder() {
-        return arrayLabelHolder;
-    }
-
-    public ArrayList<ArrayList> getArrayValueHolder() {
-        return arrayValueHolder;
-    }
-
-    public ArrayList<String> getDrillingInputsLabelArray() {
-        return drillingInputsLabelArray;
-    }
-
-    public ArrayList<String> getDrillingInputsValueArray() {
-        return drillingInputsValueArray;
-    }
-
-    public ArrayList<String> getRockInputsLabelArray() {
-        return rockInputsLabelArray;
-    }
-
-    public ArrayList<String> getRockInputsValueArray() {
-        return rockInputsValueArray;
-    }
-
-    public ArrayList<String> getDiscontinuitiesInputsLabelArray() {
-        return discontinuitiesInputsLabelArray;
-    }
-
-    public ArrayList<String> getDiscontinuitiesInputsValueArray() {
-        return discontinuitiesInputsValueArray;
-    }
-
-    public ArrayList<String> getGeomechanicalOutputsLabelArray() {
-        return geomechanicalOutputsLabelArray;
-    }
-
-    public ArrayList<String> getGeomechanicalOutputsValueArray() {
-        return geomechanicalOutputsValueArray;
-    }
-
 
     MohrFailureGraph MohrGraphOutputFinal;
-
-    public MohrFailureGraph getMohrGraphOutputFinal() {
-        return MohrGraphOutputFinal;
-    }
 
     public void setMohrGraphOutputFinal(MohrFailureGraph mohrGraphOutputFinal) {
         MohrGraphOutputFinal = mohrGraphOutputFinal;
@@ -1079,20 +1014,16 @@ public class mainWindow extends JFrame {
         ClearResetValues cv = new ClearResetValues();
         cv.resetTool(mainWindow.this);
 
-
         //remove original graphs and reset buttonCount
-        try{
 
-            tabbedPane1.remove(6);
-            tabbedPane1.remove(5);
-            tabbedPane1.remove(4);
-            tabbedPane1.remove(3);
+        //removes every tab above the drilling output tab
+        while(tabbedPane1.getTabCount()>2 ){
+
             tabbedPane1.remove(2);
-            buttonCount = true;
         }
-        catch (Exception e2){
 
-        }
+        buttonCount = true;
+
 
         ratingTextPane.setText("");
     }
@@ -1119,9 +1050,6 @@ public class mainWindow extends JFrame {
         getSigmaMinTextField().setText(".6");
         getPorePressureTextField().setText(".433");
 
-
-
-
         //Does not let you resize the window
         mainWindow.this.setResizable(false);
 
@@ -1144,38 +1072,8 @@ public class mainWindow extends JFrame {
         ratingTextPane.setEditable(false);     // User in the GUI cannot edit the pane now
 
         //Generate dropdown lists.
-        ComboBoxLists listComboLists = new ComboBoxLists();
-        String faultList[] = listComboLists.GetFaultTypes();
-        String PorePressureList[] = listComboLists.GetPorePressure();
-        String FaultConductivityList[] = listComboLists.GetFaultConductivity();
+        ComboBoxListPopulator listComboLists = new ComboBoxListPopulator(mainWindow.this);
 
-        String JointList[] = listComboLists.GetJoint();
-        String BeddingUnconformityList[] = listComboLists.GetBeddingUnconformity();
-        String LithologyList[] = listComboLists.GetLithology();
-        String PermeabilityList[] = listComboLists.GetPermeability();
-
-        for  (int i =0; i< faultList.length;i++) {
-            faultTypeCombo.addItem(faultList[i]);
-        }
-        for  (int i =0; i< PorePressureList.length;i++) {
-            poreCombo.addItem(PorePressureList[i]);
-        }
-        for  (int i =0; i< FaultConductivityList.length;i++) {
-            faultConductCombo.addItem(FaultConductivityList[i]);
-        }
-        for  (int i =0; i< JointList.length;i++) {
-            naturalFractureCombo.addItem(JointList[i]);
-        }
-        for  (int i =0; i< BeddingUnconformityList.length;i++) {
-            beddingCombo.addItem(BeddingUnconformityList[i]);
-        }
-        for  (int i =0; i< LithologyList.length;i++) {
-            lithologyCombo.addItem(LithologyList[i]);
-        }
-
-        for  (int i =0; i< PermeabilityList.length;i++) {
-        permCombo.addItem(PermeabilityList[i]);
-        }
 
         //disables jbuttons until calculated occurs
         tabbedPane1.setEnabledAt(1,false);
@@ -1218,49 +1116,15 @@ public class mainWindow extends JFrame {
         //set the automatic button as the default
         stressAutomaticRadioButton.setSelected(true);
 
-        //set launch conditional parameters. Kinda redundant, but acts as a failsafe too.
-        if(stressAutomaticRadioButton.isSelected()){
-            sigmaVTextField.setEnabled(false);
-            sigmaMaxTextField.setEnabled(false);
-            sigmaMinTextField.setEnabled(false);
-            porePressureTextField.setEnabled(false);
-            inputPorePressureLabel.setEnabled(false);
-            inputSigmaMaxLabel.setEnabled(false);
-            inputSigmaMinLabel.setEnabled(false);
-            inputSigmaVLabel.setEnabled(false);
-            inputStressGradientLabel.setEnabled(false);
-            poreCombo.setEnabled(true);
-            faultTypeCombo.setEnabled(true);
-        }
-        else{
-            sigmaVTextField.setEnabled(true);
-            sigmaMaxTextField.setEnabled(true);
-            sigmaMinTextField.setEnabled(true);
-            porePressureTextField.setEnabled(true);
-            inputPorePressureLabel.setEnabled(true);
-            inputSigmaMaxLabel.setEnabled(true);
-            inputSigmaMinLabel.setEnabled(true);
-            inputSigmaVLabel.setEnabled(true);
-            inputStressGradientLabel.setEnabled(true);
-            poreCombo.setEnabled(true);
-            faultTypeCombo.setEnabled(true);
-        }
+        //makes sure stress button fields are enabled on intial bootup
+        ButtonGroupFieldEnableSetter stressBGSetter = new ButtonGroupFieldEnableSetter(mainWindow.this,stressAutomaticRadioButton,"Stress Button");
 
         //enable/disable actions when the gradient buttons are clicked.
         stressAutomaticRadioButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                sigmaVTextField.setEnabled(false);
-                sigmaMaxTextField.setEnabled(false);
-                sigmaMinTextField.setEnabled(false);
-                porePressureTextField.setEnabled(false);
-                inputPorePressureLabel.setEnabled(false);
-                inputSigmaMaxLabel.setEnabled(false);
-                inputSigmaMinLabel.setEnabled(false);
-                inputSigmaVLabel.setEnabled(false);
-                inputStressGradientLabel.setEnabled(false);
-                poreCombo.setEnabled(true);
-                faultTypeCombo.setEnabled(true);
+                stressBGSetter.fieldEnablerSetter(mainWindow.this,"Stress Button",true);
+
             }
         });
 
@@ -1268,17 +1132,7 @@ public class mainWindow extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                sigmaVTextField.setEnabled(true);
-                sigmaMaxTextField.setEnabled(true);
-                sigmaMinTextField.setEnabled(true);
-                porePressureTextField.setEnabled(true);
-                inputPorePressureLabel.setEnabled(true);
-                inputSigmaMaxLabel.setEnabled(true);
-                inputSigmaMinLabel.setEnabled(true);
-                inputSigmaVLabel.setEnabled(true);
-                inputStressGradientLabel.setEnabled(true);
-                poreCombo.setEnabled(false);
-                faultTypeCombo.setEnabled(false);
+                stressBGSetter.fieldEnablerSetter(mainWindow.this,"Stress Button",false);
             }
         });
 
@@ -1291,12 +1145,7 @@ public class mainWindow extends JFrame {
         coefficientAutomaticRadioButton.setSelected(true);
 
         //set launch conditional parameters. Kinda redundant, but acts as a failsafe too.
-        if(coefficientAutomaticRadioButton.isSelected()){
-            coeffFrictionText.setEnabled(false);
-        }
-        else{
-            coeffFrictionText.setEnabled(true);
-        }
+        ButtonGroupFieldEnableSetter coefficientBGSetter = new ButtonGroupFieldEnableSetter(mainWindow.this,coefficientAutomaticRadioButton,"Coeff Friction");
 
         //enable/disable actions when the gradient buttons are clicked.
         coefficientAutomaticRadioButton.addActionListener(new ActionListener() {
@@ -1314,8 +1163,6 @@ public class mainWindow extends JFrame {
             }
         });
 
-
-
         //Assemble cohesion buttongroup
         ButtonGroup cohesionBg = new ButtonGroup();
         cohesionBg.add(cohesionAutomaticButton);
@@ -1324,14 +1171,8 @@ public class mainWindow extends JFrame {
         cohesionAutomaticButton.setSelected(true);
 
         //set cohesion buttongroup launch parameters
-        if(cohesionAutomaticButton.isSelected()){
+        ButtonGroupFieldEnableSetter cohesionBGSetter = new ButtonGroupFieldEnableSetter(mainWindow.this,cohesionAutomaticButton,"Cohesion");
 
-            cohesionText.setEnabled(false);
-        }
-        else{
-
-            cohesionText.setEnabled(true);
-        }
 
         cohesionAutomaticButton.addActionListener(new ActionListener() {
             @Override
@@ -1353,13 +1194,9 @@ public class mainWindow extends JFrame {
         tensileBG.add(tensileManualRadioButton);
         tensileAutomaticRadioButton.setSelected(true);
 
-        if(tensileAutomaticRadioButton.isSelected()){
-            tensileText.setEnabled(false);
-        }
-        else{
+        //set cohesion buttongroup launch parameters
+        ButtonGroupFieldEnableSetter tensileBGSetter = new ButtonGroupFieldEnableSetter(mainWindow.this,tensileAutomaticRadioButton,"Tensile");
 
-            tensileText.setEnabled(true);
-        }
 
         tensileAutomaticRadioButton.addActionListener(new ActionListener() {
             @Override
@@ -1376,20 +1213,7 @@ public class mainWindow extends JFrame {
                 tensileText.setEnabled(true);
             }
         });
-        /*
-        //Add alpha and beta images to input panel and resize
-        ImageIcon AlphaIcon = new ImageIcon(getClass().getResource(("DrillingGUIPicture.png")));
-        ImageResize Test1 = new ImageResize();
-        AlphaIcon = Test1.getScaledImage(AlphaIcon,400,300);
-        AlphaImageLabel.setIcon(AlphaIcon);
 
-        ImageIcon BetaIcon = new ImageIcon(getClass().getResource(("betaImage.png")));
-        ImageResize Test2 = new ImageResize();
-        BetaIcon = Test2.getScaledImage(BetaIcon,395,325);
-        BetaImageLabel.setIcon(BetaIcon);
-        Border b2 = new LineBorder(Color.BLACK, 2);
-        BetaImageLabel.setBorder(b2);
-*/
 
         calculateButton.addActionListener(new ActionListener() {
             private boolean checkResult;
