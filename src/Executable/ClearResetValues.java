@@ -55,6 +55,7 @@ public class ClearResetValues {
         obj2.add(mw.getTensileFailResult());
         obj2.add(mw.getShearFailResult());
 
+
         //looops through the objects and sets them to empty
         for(int i =0;i<obj.size();i++){
 

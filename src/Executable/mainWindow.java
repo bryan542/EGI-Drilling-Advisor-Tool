@@ -942,6 +942,7 @@ public class mainWindow extends JFrame {
     ArrayList<String> discontinuitiesInputsValueArray = new ArrayList<>();
     ArrayList<String> geomechanicalOutputsLabelArray = new ArrayList<>();
     ArrayList<String> geomechanicalOutputsValueArray = new ArrayList<>();
+
     ArrayList<ArrayList> arrayLabelHolder = new ArrayList();
     ArrayList<ArrayList> arrayValueHolder = new ArrayList();
     ArrayList<BufferedImage> chartBufferedImagesArray = new ArrayList();
@@ -955,6 +956,19 @@ public class mainWindow extends JFrame {
     JFreeChart mohrFailureChart = null;
     JFreeChart shearBarChart = null;
     JFreeChart tensileBarChart = null;
+
+
+    public ArrayList<ArrayList> getArrayLabelHolder() {
+        return arrayLabelHolder;
+    }
+
+    public ArrayList<ArrayList> getArrayValueHolder() {
+        return arrayValueHolder;
+    }
+
+    public ArrayList<BufferedImage> getChartBufferedImagesArray() {
+        return chartBufferedImagesArray;
+    }
 
     public PDFDocument getDrillingPDFDoc() {
         return drillingPDFDoc;
@@ -1013,6 +1027,9 @@ public class mainWindow extends JFrame {
         //resetTool() clears all of the JTextFields and JLabels in the program
         ClearResetValues cv = new ClearResetValues();
         cv.resetTool(mainWindow.this);
+
+        arrayLabelHolder.clear();
+        arrayValueHolder.clear();
 
         //remove original graphs and reset buttonCount
 
@@ -1320,7 +1337,8 @@ public class mainWindow extends JFrame {
                 jointFrequency = naturalFractureCombo.getSelectedItem().toString();
                 beddingConductivity = beddingCombo.getSelectedItem().toString();
 
-                long startTime = System.nanoTime();
+
+
                 //checks all the input values and makes sure they are valid inputs
                 TextFieldChecker tfc = new TextFieldChecker();
                 checkResult =tfc.runInputCheck(mainWindow.this);
@@ -1481,7 +1499,7 @@ public class mainWindow extends JFrame {
                     }
 
 
-
+                    System.out.println("Critical Failure Pressure: "+criticalFailurePressure);
 
 
                     //Retrieve first set parameters
@@ -1567,16 +1585,12 @@ public class mainWindow extends JFrame {
                     XYSeriesCollection polygonCollection = new XYSeriesCollection();
                     MohrDataset mohrDataset = new MohrDataset();
 
-                    double criticalCollapsePressure = Equations.criticalBoreholeCollapsePressure(sigmaX,sigmaY,coeffFriction,(porePressureGradient*depth*(1/pressureUM)),cohesionInitial*(1/pressureUM));
-                    double criticalFracturePressure = Equations.criticalBoreholeFracturePressure(sigmaX,sigmaY,(porePressureGradient*depth*(1/pressureUM)),cohesionInitial*(1/pressureUM));
-                    criticalFracturePressureTextField.setText(Double.toString((int) criticalFracturePressure));
-                    System.out.println("sigX:"+sigmaX);
-                    System.out.println("sigY:"+sigmaY);
-                    System.out.println("Collapse Pressure"+criticalCollapsePressure);
-                    System.out.println("Fracture Pressure"+criticalFracturePressure);
-                    //build pressure regime dataset
+                    double criticalCollapsePressure = -1;
+                    double criticalFracturePressure = -1;
+
                     FormationPressureDataset formationDataset = new FormationPressureDataset();
                     XYSeriesCollection formationPressureCollection = formationDataset.formationPressureDataset(SigmaVR,SigmahR,porePressureCombination,depth,mudWeightPsiFt,criticalCollapsePressure,criticalFracturePressure);
+                    formationPressureCollection.removeAllSeries();
 
 
                     XYSeriesCollection mohrCollection = new XYSeriesCollection();
@@ -1586,6 +1600,16 @@ public class mainWindow extends JFrame {
 
                         setCoeffFriction(Equations.rockPropertyGSISolver(effectiveSortedStresses[2],effectiveSortedStresses[1],effectiveSortedStresses[0],GSI,lithology,rockDamage,(SigmaVGradient),"CoeffFriction"));
 
+                        criticalCollapsePressure = Equations.criticalBoreholeCollapsePressure(sigmaX,sigmaY,coeffFriction,(porePressureGradient*depth*(1/pressureUM)),cohesionInitial*(1/pressureUM));
+                        criticalFracturePressure = Equations.criticalBoreholeFracturePressure(sigmaX,sigmaY,(porePressureGradient*depth*(1/pressureUM)),tensileStrength);
+                        formationPressureCollection = formationDataset.formationPressureDataset(SigmaVR,SigmahR,porePressureCombination,depth,mudWeightPsiFt,criticalCollapsePressure,criticalFracturePressure);
+
+                        criticalFracturePressureTextField.setText(Double.toString((int) criticalFracturePressure));
+                        System.out.println("sigX:"+sigmaX);
+                        System.out.println("sigY:"+sigmaY);
+                        System.out.println("Collapse Pressure"+criticalCollapsePressure);
+                        System.out.println("Fracture Pressure"+criticalFracturePressure);
+                        //build pressure regime dataset
 
                         polygonCollection = polyDataset.stressPolygonDataset(this.SigmaVR*lengthUM*(1/pressureUM),(SigmaHGradient)*(1/pressureUM),(this.SigmahGradient)*(1/pressureUM),this.porePressureGradient*lengthUM*(1/pressureUM),depth*(1/lengthUM),getCoeffFriction());
 
@@ -1606,6 +1630,17 @@ public class mainWindow extends JFrame {
                     else if (coefficientManualRadioButton.isSelected()){
 
                         setCoeffFriction(Double.parseDouble(coeffFrictionText.getText()));
+
+                        criticalCollapsePressure = Equations.criticalBoreholeCollapsePressure(sigmaX,sigmaY,coeffFriction,(porePressureGradient*depth*(1/pressureUM)),cohesionInitial*(1/pressureUM));
+                        criticalFracturePressure = Equations.criticalBoreholeFracturePressure(sigmaX,sigmaY,(porePressureGradient*depth*(1/pressureUM)),tensileStrength);
+                        criticalFracturePressureTextField.setText(Double.toString((int) criticalFracturePressure));
+                        formationPressureCollection = formationDataset.formationPressureDataset(SigmaVR,SigmahR,porePressureCombination,depth,mudWeightPsiFt,criticalCollapsePressure,criticalFracturePressure);
+
+                        System.out.println("sigX:"+sigmaX);
+                        System.out.println("sigY:"+sigmaY);
+                        System.out.println("Collapse Pressure"+criticalCollapsePressure);
+                        System.out.println("Fracture Pressure"+criticalFracturePressure);
+                        //build pressure regime dataset
 
                         polygonCollection = polyDataset.stressPolygonDataset(this.SigmaVR*lengthUM*(1/pressureUM),(SigmaHGradient)*(1/pressureUM),(this.SigmahGradient)*(1/pressureUM),this.porePressureGradient*lengthUM*(1/pressureUM),depth*(1/lengthUM),getCoeffFriction());
 
@@ -1672,6 +1707,8 @@ public class mainWindow extends JFrame {
                         mohrGraphBufferedImage = getMohrFailureChart().createBufferedImage(chartDimensions,chartDimensions);
                         shearBarGraphBufferedImage = getShearBarChart().createBufferedImage(chartDimensions,chartDimensions);
                         tensileBarGraphBufferedImage = getTensileBarChart().createBufferedImage(chartDimensions,chartDimensions);
+
+
 
                         chartBufferedImagesArray.add(stressPolygonBufferedImage);
                         chartBufferedImagesArray.add(formationPressureBufferedImage);
@@ -1816,7 +1853,10 @@ public class mainWindow extends JFrame {
                                     geomechanicalOutputsLabelArray,geomechanicalOutputsValueArray);
                         }
 
-                        //this array holds the jtextfield data that will be exported to the report pdf
+
+
+
+                    //this array holds the jtextfield data that will be exported to the report pdf
                         arrayLabelHolder.add(drillingInputsLabelArray);
                         arrayLabelHolder.add(rockInputsLabelArray);
                         arrayLabelHolder.add(discontinuitiesInputsLabelArray);
@@ -1828,9 +1868,8 @@ public class mainWindow extends JFrame {
                         arrayValueHolder.add(discontinuitiesInputsValueArray);
                         arrayValueHolder.add(geomechanicalOutputsValueArray);
 
-                        //builds the drilling pdf document data
-                        DrillingRatingReportPDF drr = new DrillingRatingReportPDF();
-                        drillingPDFDoc = drr.generateDocumentReport(arrayLabelHolder,arrayValueHolder,chartBufferedImagesArray);
+
+
 
                         menu.getExportPDF().setEnabled(true); // sets jmenuitem to enabled if the calculation is successful
                         stressPolygonButton.setEnabled(true);
@@ -1847,7 +1886,9 @@ public class mainWindow extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                //builds the drilling pdf document data
                 DrillingRatingReportPDF drr = new DrillingRatingReportPDF();
+                drillingPDFDoc = drr.generateDocumentReport(arrayLabelHolder,arrayValueHolder,chartBufferedImagesArray);
                 drr.saveDocument(drillingPDFDoc);
 
             }

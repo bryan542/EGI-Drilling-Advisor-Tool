@@ -78,6 +78,7 @@ public class DrillingRatingReportPDF {
             currentPageHeight = pageLengthChecker(currentPageHeight,pdfDoc);
         }
 
+
         //Adds the plots
         reportStringBuilder(pdfDoc,lastPageNumber,currentPageHeight,chartBufferedImageArray);
 
@@ -201,7 +202,8 @@ public class DrillingRatingReportPDF {
         int heightinitial = currentPageHeight+30;
         PageFormat pf = new PageFormat();
         double pageWidth = pf.getWidth()/2;
-
+        long startTime = System.nanoTime();
+        BufferedImage currentBufferedImage = null;
 
         for (int i = 0;i<bufferedChartArrayList.size();i++){
 
@@ -217,11 +219,15 @@ public class DrillingRatingReportPDF {
                 heightinitial = currentPageHeight+30;
             }
 
-            Graphics2D chartGraphics = pdfDoc.getPage(latestPageNumber).createGraphics();
-            BufferedImageOp op = new ColorConvertOp(ColorSpace.getInstance(ColorSpace.CS_sRGB), null);
+           currentBufferedImage = bufferedChartArrayList.get(i);
 
-            chartGraphics.drawImage(bufferedChartArrayList.get(i), op,20,heightinitial);
 
+            Graphics chartGraphics = pdfDoc.getPage(latestPageNumber).createGraphics();
+
+
+
+            chartGraphics.drawImage(currentBufferedImage,20,heightinitial,575,575,null);
+            chartGraphics.dispose();
 
             heightinitial = heightinitial+575;
 
@@ -229,7 +235,9 @@ public class DrillingRatingReportPDF {
 
 
         }
-
+        long endTime = System.nanoTime();
+        double duration = (double) (endTime-startTime)/1e6;
+        System.out.println("Mili Seconds: " +duration);
         return  heightinitial;
 
     }

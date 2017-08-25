@@ -1,5 +1,7 @@
 package Executable;
 
+import com.qoppa.pdfWriter.PDFDocument;
+
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
@@ -61,8 +63,10 @@ public class DropdownMenu  {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                //builds the drilling pdf document data
                 DrillingRatingReportPDF drr = new DrillingRatingReportPDF();
-                drr.saveDocument(mw.getDrillingPDFDoc());
+                PDFDocument drillingPDFDoc = drr.generateDocumentReport(mw.getArrayLabelHolder(),mw.getArrayValueHolder(),mw.getChartBufferedImagesArray());
+                drr.saveDocument(drillingPDFDoc);
 
             }
         });

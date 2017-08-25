@@ -218,6 +218,7 @@ public class DrillingEquations {
         double sinGammasq = Math.pow(Math.sin(Math.toRadians(gamma)),2);
 
         sigX = (sigH*cosAlphasq+sigh*sinAlphasq)*cosGammasq+sigv*sinGammasq;
+
         return sigX;
     }
     //sigY
@@ -377,25 +378,19 @@ public class DrillingEquations {
     //Critical failure Pressure
     public static double criticalFailurePressure(double sigmaX, double sigmaY,double sigmaZ,double thoXY, double thoThetaZ, double porePressure,double tensileStrength, double failureAngle, double gamma) {
 
-        double criticalPressure = -1;
+        double criticalFracturePressure = -1;
 
-        if (gamma == 0) {
 
-            criticalPressure = 3 * sigmaY - sigmaX - porePressure + tensileStrength;
+        if (sigmaX < sigmaY) {
+
+            criticalFracturePressure = 3*sigmaX-sigmaY -tensileStrength;
         }
-        else if (gamma == 90) {
+        else{
 
-            criticalPressure = 3 * sigmaX - sigmaY - porePressure + tensileStrength;
+            criticalFracturePressure = 3*sigmaY-sigmaX -tensileStrength;
         }
-        else {
 
-            double a = 2 * (sigmaX - sigmaY) * Math.cos(Math.toRadians(2 * failureAngle));
-            double b = 4 * thoXY * Math.sin(Math.toRadians(2 * failureAngle));
-            double c = Math.pow(thoThetaZ, 2) / (sigmaZ - porePressure);
-
-            criticalPressure = sigmaX + sigmaY - a - b - c - porePressure + tensileStrength;
-          }
-        return criticalPressure;
+        return criticalFracturePressure;
     }
     //Calculate sigma1 min
     public static double sigma1(double sigmaTheta, double sigmaZ, double ThoThetaZ){

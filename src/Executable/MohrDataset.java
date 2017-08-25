@@ -48,7 +48,9 @@ public class MohrDataset {
         }
 
         //Finding the failure criterion line
-        for (int i = 0; i < Sigma1int; i++) {
+        double failureStartDouble = -1*cohesionInitial/coeffFriction;
+        int failureStartInt = (int) failureStartDouble;
+        for (int i = failureStartInt; i < Sigma1int; i++) {
             FailurexValue = (double) i;
             FailureyValue = coeffFriction * FailurexValue + cohesionInitial;
             CohesionLine.add(FailurexValue, FailureyValue);
