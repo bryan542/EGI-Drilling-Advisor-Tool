@@ -7,45 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9399ab71-a3e5-41cd-80f0-b6fdb9b63e05" name="Default" comment="only 1 succesfully file path found used">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/jsciencetest.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/ClearResetValues.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/ClearResetValues.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/DrillingEquations.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/DrillingEquations.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/DrillingRatingReportPDF.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/DrillingRatingReportPDF.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/DropdownMenu$1.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/DropdownMenu$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/DropdownMenu$2.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/DropdownMenu$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/DropdownMenu$3.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/DropdownMenu$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/DropdownMenu$4.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/DropdownMenu$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/DropdownMenu$5.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/DropdownMenu$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/DropdownMenu$6.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/DropdownMenu$6.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/DropdownMenu$7.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/DropdownMenu$7.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/DropdownMenu$8.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/DropdownMenu$8.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/DropdownMenu$9.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/DropdownMenu$9.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/DropdownMenu.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/DropdownMenu.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/MohrDataset.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/MohrDataset.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$1.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$10.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$10.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$11.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$11.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$12.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$12.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$13.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$13.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$14.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$14.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$15.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$15.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$16.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$16.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$17.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$17.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$2.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$3.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$4.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$5.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$6.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$6.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$7.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$7.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$8.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$8.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$9.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$9.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Executable/ClearResetValues.java" afterPath="$PROJECT_DIR$/src/Executable/ClearResetValues.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Executable/DrillingEquations.java" afterPath="$PROJECT_DIR$/src/Executable/DrillingEquations.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Executable/DrillingRatingReportPDF.java" afterPath="$PROJECT_DIR$/src/Executable/DrillingRatingReportPDF.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Executable/DropdownMenu.java" afterPath="$PROJECT_DIR$/src/Executable/DropdownMenu.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Executable/MohrDataset.java" afterPath="$PROJECT_DIR$/src/Executable/MohrDataset.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Executable/FailureRatioSolutions.java" afterPath="$PROJECT_DIR$/src/Executable/FailureRatioSolutions.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Executable/mainWindow.java" afterPath="$PROJECT_DIR$/src/Executable/mainWindow.java" />
     </list>
     <ignored path="EGI Drilling Advisor Tool.iws" />
@@ -116,7 +79,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="mainWindow.form" pinned="false" current-in-tab="true">
+      <file leaf-file-name="mainWindow.form" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Executable/mainWindow.form">
           <provider selected="true" editor-type-id="ui-designer">
             <state />
@@ -136,8 +99,8 @@
       <file leaf-file-name="mainWindow.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Executable/mainWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="382">
-              <caret line="1712" column="0" lean-forward="false" selection-start-line="1712" selection-start-column="0" selection-end-line="1712" selection-end-column="0" />
+            <state relative-caret-position="195">
+              <caret line="1746" column="47" lean-forward="false" selection-start-line="1746" selection-start-column="47" selection-end-line="1746" selection-end-column="47" />
               <folding>
                 <element signature="e#24164#24165#0" expanded="true" />
                 <element signature="e#24206#24207#0" expanded="true" />
@@ -149,18 +112,8 @@
       <file leaf-file-name="DrillingRatingReportPDF.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Executable/DrillingRatingReportPDF.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="48" column="0" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MohrFailureGraph.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Executable/MohrFailureGraph.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="30" column="34" lean-forward="false" selection-start-line="30" selection-start-column="34" selection-end-line="30" selection-end-column="34" />
+            <state relative-caret-position="450">
+              <caret line="228" column="58" lean-forward="false" selection-start-line="228" selection-start-column="58" selection-end-line="228" selection-end-column="58" />
               <folding />
             </state>
           </provider>
@@ -169,7 +122,7 @@
       <file leaf-file-name="MohrDataset.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Executable/MohrDataset.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
+            <state relative-caret-position="-51">
               <caret line="54" column="69" lean-forward="false" selection-start-line="54" selection-start-column="69" selection-end-line="54" selection-end-column="69" />
               <folding />
             </state>
@@ -186,11 +139,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FailureRatioSolutions.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="FailureRatioSolutions.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Executable/FailureRatioSolutions.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3655">
-              <caret line="218" column="32" lean-forward="false" selection-start-line="218" selection-start-column="32" selection-end-line="218" selection-end-column="32" />
+            <state relative-caret-position="1122">
+              <caret line="69" column="35" lean-forward="false" selection-start-line="69" selection-start-column="35" selection-end-line="69" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -208,7 +161,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>SI</find>
       <find>faultTypeCombo</find>
       <find>drillingRating</find>
       <find>arrayl</find>
@@ -235,9 +187,10 @@
       <find>arraylabel</find>
       <find>critical</find>
       <find>pdfdoc</find>
-      <find>bufferedimage</find>
       <find>public</find>
       <find>currentbu</find>
+      <find>bufferedimage</find>
+      <find>buffered</find>
     </findStrings>
     <replaceStrings>
       <replace>valueModulusName</replace>
@@ -309,7 +262,6 @@
         <option value="$PROJECT_DIR$/src/Executable/QuickGraphDialog.java" />
         <option value="$PROJECT_DIR$/src/Executable/HydraulicFracturePDFReportGenerator.java" />
         <option value="$PROJECT_DIR$/src/Executable/ShearFailureRatioBarGraph.java" />
-        <option value="$PROJECT_DIR$/src/Executable/FailureRatioSolutions.java" />
         <option value="$PROJECT_DIR$/src/Executable/jsciencetest.java" />
         <option value="$PROJECT_DIR$/src/Executable/ComboBoxLists.java" />
         <option value="$PROJECT_DIR$/src/Executable/ButtonGroupSetter.java" />
@@ -324,6 +276,7 @@
         <option value="$PROJECT_DIR$/src/Executable/RGBImageLoader.java" />
         <option value="$PROJECT_DIR$/src/Executable/mainWindow.java" />
         <option value="$PROJECT_DIR$/src/Executable/DrillingRatingReportPDF.java" />
+        <option value="$PROJECT_DIR$/src/Executable/FailureRatioSolutions.java" />
       </list>
     </option>
   </component>
@@ -1427,14 +1380,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Executable/ComboBoxListPopulator.java" />
     <entry file="file://$PROJECT_DIR$/src/Executable/ButtonGroupFieldEnableSetter.java" />
-    <entry file="file://$PROJECT_DIR$/src/Executable/FailureRatioSolutions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3655">
-          <caret line="218" column="32" lean-forward="false" selection-start-line="218" selection-start-column="32" selection-end-line="218" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/Desktop/jfreechart-1.0.19/lib/jfreechart-1.0.19.jar!/org/jfree/data/xy/XYSeriesCollection.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="167">
@@ -1466,22 +1411,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Executable/MohrFailureGraph.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="30" column="34" lean-forward="false" selection-start-line="30" selection-start-column="34" selection-end-line="30" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Executable/MohrDataset.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="54" column="69" lean-forward="false" selection-start-line="54" selection-start-column="69" selection-end-line="54" selection-end-column="69" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Executable/DrillingEquations.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="608">
@@ -1506,29 +1435,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Executable/mainWindow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="382">
-          <caret line="1712" column="0" lean-forward="false" selection-start-line="1712" selection-start-column="0" selection-end-line="1712" selection-end-column="0" />
-          <folding>
-            <element signature="e#24164#24165#0" expanded="true" />
-            <element signature="e#24206#24207#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Executable/RGBImageLoader.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="399">
           <caret line="134" column="0" lean-forward="false" selection-start-line="134" selection-start-column="0" selection-end-line="134" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Executable/DrillingRatingReportPDF.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="48" column="0" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1540,6 +1450,49 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Executable/mainWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="1746" column="47" lean-forward="false" selection-start-line="1746" selection-start-column="47" selection-end-line="1746" selection-end-column="47" />
+          <folding>
+            <element signature="e#24164#24165#0" expanded="true" />
+            <element signature="e#24206#24207#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Executable/MohrFailureGraph.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="30" column="34" lean-forward="false" selection-start-line="30" selection-start-column="34" selection-end-line="30" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Executable/DrillingRatingReportPDF.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="228" column="58" lean-forward="false" selection-start-line="228" selection-start-column="58" selection-end-line="228" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Executable/MohrDataset.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-51">
+          <caret line="54" column="69" lean-forward="false" selection-start-line="54" selection-start-column="69" selection-end-line="54" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Executable/FailureRatioSolutions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1122">
+          <caret line="69" column="35" lean-forward="false" selection-start-line="69" selection-start-column="35" selection-end-line="69" selection-end-column="35" />
+          <folding />
         </state>
       </provider>
     </entry>

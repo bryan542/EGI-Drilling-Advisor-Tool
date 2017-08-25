@@ -1744,7 +1744,7 @@ public class mainWindow extends JFrame {
                         tabbedPane1.addTab("Tensile Fracture Ratio", null,tensileFailureBarGraph,null);
 
 
-                        int chartDimensions = 575;
+                        int chartDimensions = 300;
 
                         stressPolygonBufferedImage = getStressPolygonChart().createBufferedImage(chartDimensions,chartDimensions);
                         formationPressureBufferedImage = getFormationPressureChart().createBufferedImage(chartDimensions,chartDimensions);

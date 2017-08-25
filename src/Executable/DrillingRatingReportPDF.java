@@ -226,7 +226,7 @@ public class DrillingRatingReportPDF {
 
 
 
-            chartGraphics.drawImage(currentBufferedImage,20,heightinitial,575,575,null);
+            chartGraphics.drawImage(currentBufferedImage,50,heightinitial,500,500,null);
             chartGraphics.dispose();
 
             heightinitial = heightinitial+575;
