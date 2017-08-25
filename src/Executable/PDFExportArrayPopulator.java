@@ -116,6 +116,7 @@ public class PDFExportArrayPopulator {
         geomechanicalOutputsLabelArray.add(mw.getUCSIntactOutputLabel().getText());
         geomechanicalOutputsLabelArray.add(mw.getUCSDamagedOutputLabel().getText());
         geomechanicalOutputsLabelArray.add(mw.getCriticalFracturePressureLabel().getText());
+        geomechanicalOutputsLabelArray.add(mw.getCriticalCollapsePressureLabel().getText());
         geomechanicalOutputsLabelArray.add(mw.getFarSigmaVLabel().getText());
         geomechanicalOutputsLabelArray.add(mw.getFarSigmaHLabel().getText());
         geomechanicalOutputsLabelArray.add(mw.getFarSigmahLabel().getText());
@@ -133,6 +134,7 @@ public class PDFExportArrayPopulator {
         geomechanicalOutputsValueArray.add(mw.getUCSIntactOutputTextField().getText());
         geomechanicalOutputsValueArray.add(mw.getUCSDamagedOutputTextField().getText());
         geomechanicalOutputsValueArray.add(mw.getCriticalFracturePressureTextField().getText());
+        geomechanicalOutputsValueArray.add(mw.getCriticalCollapsePressureTextField().getText());
         geomechanicalOutputsValueArray.add(mw.getSigmaVTextFieldResult().getText());
         geomechanicalOutputsValueArray.add(mw.getSigmaMaxTextFieldResult().getText());
         geomechanicalOutputsValueArray.add(mw.getSigmaMinTextFieldResult().getText());

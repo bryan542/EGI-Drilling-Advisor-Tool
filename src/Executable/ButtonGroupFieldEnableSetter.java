@@ -22,8 +22,8 @@ public class ButtonGroupFieldEnableSetter {
                 mw.getInputSigmaMinLabel().setEnabled(false);
                 mw.getInputSigmaVLabel().setEnabled(false);
                 mw.getInputStressGradientLabel().setEnabled(false);
-                mw.getPoreCombo().setEnabled(false);
-                mw.getFaultTypeCombo().setEnabled(false);
+                mw.getPoreCombo().setEnabled(true);
+                mw.getFaultTypeCombo().setEnabled(true);
             }
             else{
                 mw.getSigmaVTextField().setEnabled(true);
@@ -35,8 +35,8 @@ public class ButtonGroupFieldEnableSetter {
                 mw.getInputSigmaMinLabel().setEnabled(true);
                 mw.getInputSigmaVLabel().setEnabled(true);
                 mw.getInputStressGradientLabel().setEnabled(true);
-                mw.getPoreCombo().setEnabled(true);
-                mw.getFaultTypeCombo().setEnabled(true);
+                mw.getPoreCombo().setEnabled(false);
+                mw.getFaultTypeCombo().setEnabled(false);
 
             }
 
@@ -92,8 +92,8 @@ public class ButtonGroupFieldEnableSetter {
                mw.getInputSigmaMinLabel().setEnabled(false);
                mw.getInputSigmaVLabel().setEnabled(false);
                mw.getInputStressGradientLabel().setEnabled(false);
-               mw.getPoreCombo().setEnabled(false);
-               mw.getFaultTypeCombo().setEnabled(false);
+               mw.getPoreCombo().setEnabled(true);
+               mw.getFaultTypeCombo().setEnabled(true);
            }
            else{
                mw.getSigmaVTextField().setEnabled(true);
@@ -105,8 +105,8 @@ public class ButtonGroupFieldEnableSetter {
                mw.getInputSigmaMinLabel().setEnabled(true);
                mw.getInputSigmaVLabel().setEnabled(true);
                mw.getInputStressGradientLabel().setEnabled(true);
-               mw.getPoreCombo().setEnabled(true);
-               mw.getFaultTypeCombo().setEnabled(true);
+               mw.getPoreCombo().setEnabled(false);
+               mw.getFaultTypeCombo().setEnabled(false);
 
            }
 

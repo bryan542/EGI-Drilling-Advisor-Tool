@@ -211,7 +211,7 @@ public class FailureRatioSolutions extends DrillingEquations {
             sigma2=principalArray[1];
             sigma3=principalArray[0];
             //Build the tensile failure ratio
-            tensileFailureRatio = mudweightTotal/criticalFailurePressure;
+            tensileFailureRatio = mudweightTotal/(criticalFailurePressure);
             //build the failure line
             for(int j = 0; j <sigma1Int;j++){
 

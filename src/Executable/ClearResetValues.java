@@ -50,6 +50,7 @@ public class ClearResetValues {
         obj.add(mw.getCoeffFrictionText());
         obj.add(mw.getRockDamageTextField());
         obj.add(mw.getCriticalFracturePressureTextField());
+        obj.add(mw.getCriticalCollapsePressureTextField());
 
         //add all of the JLabels to obj2
         obj2.add(mw.getTensileFailResult());

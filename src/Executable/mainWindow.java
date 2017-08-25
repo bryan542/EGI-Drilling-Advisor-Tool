@@ -168,6 +168,11 @@ public class mainWindow extends JFrame {
 
     private JScrollPane scrollPane;
 
+    private JLabel criticalCollapsePressureLabel;
+
+
+    private JTextField criticalCollapsePressureTextField;
+
     private static String projectSettingButton = "General";
     private static String projectSettingType = "Oil Field Units";
     private static String projectCustomDensityType = "ppg";
@@ -302,6 +307,12 @@ public class mainWindow extends JFrame {
         return criticalFracturePressureLabel;
     }
 
+    public JLabel getCriticalCollapsePressureLabel() {
+        return criticalCollapsePressureLabel;
+    }
+
+
+
     public JLabel getLithologyLabel() {
         return lithologyLabel;
     }
@@ -406,6 +417,11 @@ public class mainWindow extends JFrame {
     public JTextField getCriticalFracturePressureTextField() {
         return criticalFracturePressureTextField;
     }
+
+    public JTextField getCriticalCollapsePressureTextField() {
+        return criticalCollapsePressureTextField;
+    }
+
 
     public JTextField getAlpha1Text() {
         return alpha1Text;
@@ -784,6 +800,10 @@ public class mainWindow extends JFrame {
         this.criticalFracturePressureLabel.setText(text);
     }
 
+    public void setCriticalCollapsePressureLabel(String text) {
+        this.criticalCollapsePressureLabel.setText(text);
+    }
+
     public void setPrincipalSigma3Label(String text) {
         this.principalSigma3Label.setText(text);
     }
@@ -1047,11 +1067,11 @@ public class mainWindow extends JFrame {
 
     public mainWindow() {
 
-        getDepthText().setText("10000");
+        getDepthText().setText("1000");
         getMudWeightText().setText("16.0561");
         getCohesionText().setText("500");
-        getGammaText().setText("0");
-        getAlpha1Text().setText("90");
+        getGammaText().setText("40");
+        getAlpha1Text().setText("165");
         getAlpha2Text().setText("0");
         getBeddingPlaneStrikeTextField().setText("50");
         getFaultConductivityStrikeTextField().setText("50");
@@ -1062,10 +1082,10 @@ public class mainWindow extends JFrame {
         getPoissonText().setText(".3");
         getRockDamageTextField().setText(".3");
         getGSITextField().setText("100");
-        getSigmaVTextField().setText(".9");
-        getSigmaMaxTextField().setText(".8");
-        getSigmaMinTextField().setText(".6");
-        getPorePressureTextField().setText(".433");
+        getSigmaVTextField().setText("1.45");
+        getSigmaMaxTextField().setText("1.305");
+        getSigmaMinTextField().setText("1.305");
+        getPorePressureTextField().setText(".725");
 
         //Does not let you resize the window
         mainWindow.this.setResizable(false);
@@ -1123,6 +1143,8 @@ public class mainWindow extends JFrame {
         cohesionOutputTextField.setHorizontalAlignment(SwingConstants.CENTER);
         UCSIntactOutputTextField.setHorizontalAlignment(SwingConstants.CENTER);
         UCSDamagedOutputTextField.setHorizontalAlignment(SwingConstants.CENTER);
+        criticalFracturePressureTextField.setHorizontalAlignment(SwingConstants.CENTER);
+        criticalCollapsePressureTextField.setHorizontalAlignment(SwingConstants.CENTER);
 
 
         //Assemble stress gradient buttongroup
@@ -1605,6 +1627,7 @@ public class mainWindow extends JFrame {
                         formationPressureCollection = formationDataset.formationPressureDataset(SigmaVR,SigmahR,porePressureCombination,depth,mudWeightPsiFt,criticalCollapsePressure,criticalFracturePressure);
 
                         criticalFracturePressureTextField.setText(Double.toString((int) criticalFracturePressure));
+                        criticalCollapsePressureTextField.setText(Double.toString((int) criticalCollapsePressure));
                         System.out.println("sigX:"+sigmaX);
                         System.out.println("sigY:"+sigmaY);
                         System.out.println("Collapse Pressure"+criticalCollapsePressure);
@@ -1634,6 +1657,7 @@ public class mainWindow extends JFrame {
                         criticalCollapsePressure = Equations.criticalBoreholeCollapsePressure(sigmaX,sigmaY,coeffFriction,(porePressureGradient*depth*(1/pressureUM)),cohesionInitial*(1/pressureUM));
                         criticalFracturePressure = Equations.criticalBoreholeFracturePressure(sigmaX,sigmaY,(porePressureGradient*depth*(1/pressureUM)),tensileStrength);
                         criticalFracturePressureTextField.setText(Double.toString((int) criticalFracturePressure));
+                        criticalCollapsePressureTextField.setText(Double.toString((int) criticalCollapsePressure));
                         formationPressureCollection = formationDataset.formationPressureDataset(SigmaVR,SigmahR,porePressureCombination,depth,mudWeightPsiFt,criticalCollapsePressure,criticalFracturePressure);
 
                         System.out.println("sigX:"+sigmaX);

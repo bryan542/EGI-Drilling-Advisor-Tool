@@ -174,8 +174,8 @@ public class SettingDialog extends JDialog{
             String inputStressGradients = "Stress Gradients ";
             String UCSIntact = "UCS Intact ";
             String UCSDamaged = "UCS Damaged ";
-            String criticalFail = "Critical Failure Pressure ";
-
+            String criticalFracture = "Critical Fracture Pressure ";
+            String criticalCollapse = "Critical Collapse Pressure";
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -210,7 +210,8 @@ public class SettingDialog extends JDialog{
                         mw.setPrincipalSigma1Label(principal1+pressure);
                         mw.setPrincipalSigma2Label(principal2+pressure);
                         mw.setPrincipalSigma3Label(principal3+pressure);
-                        mw.setCriticalFracturePressureLabel(criticalFail+pressure);
+                        mw.setCriticalFracturePressureLabel(criticalFracture +pressure);
+                        mw.setCriticalCollapsePressureLabel(criticalCollapse +pressure);
                         mw.setInputStressGradientLabel(inputStressGradients+gradient);
                         mw.setDensityUM(densityChange);
                         mw.setPressureUM(pressureChange);
@@ -248,7 +249,8 @@ public class SettingDialog extends JDialog{
                         mw.setPrincipalSigma1Label(principal1+pressure);
                         mw.setPrincipalSigma2Label(principal2+pressure);
                         mw.setPrincipalSigma3Label(principal3+pressure);
-                        mw.setCriticalFracturePressureLabel(criticalFail+pressure);
+                        mw.setCriticalFracturePressureLabel(criticalFracture +pressure);
+                        mw.setCriticalCollapsePressureLabel(criticalCollapse +pressure);
                         mw.setInputStressGradientLabel(inputStressGradients+gradient);
                         mw.setDensityUM(densityChange);
                         mw.setPressureUM(pressureChange);
@@ -311,7 +313,8 @@ public class SettingDialog extends JDialog{
                         mw.setPrincipalSigma1Label(principal1+pressure);
                         mw.setPrincipalSigma2Label(principal2+pressure);
                         mw.setPrincipalSigma3Label(principal3+pressure);
-                        mw.setCriticalFracturePressureLabel(criticalFail+pressure);
+                        mw.setCriticalFracturePressureLabel(criticalFracture +pressure);
+                        mw.setCriticalCollapsePressureLabel(criticalCollapse +pressure);
                         mw.setPressureUM(pressureChange);
                         mw.setProjectCustomPressureType("psi");
 
@@ -337,7 +340,8 @@ public class SettingDialog extends JDialog{
                         mw.setPrincipalSigma1Label(principal1+pressure);
                         mw.setPrincipalSigma2Label(principal2+pressure);
                         mw.setPrincipalSigma3Label(principal3+pressure);
-                        mw.setCriticalFracturePressureLabel(criticalFail+pressure);
+                        mw.setCriticalFracturePressureLabel(criticalFracture +pressure);
+                        mw.setCriticalCollapsePressureLabel(criticalCollapse +pressure);
                         mw.setPressureUM(pressureChange);
                         mw.setProjectCustomPressureType("kPa");
 

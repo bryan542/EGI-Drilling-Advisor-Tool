@@ -249,7 +249,7 @@ public class DrillingEquations {
 
         ThoXZ = -1*sigv*Math.sin(Math.toRadians(gamma))*Math.cos(Math.toRadians(gamma))+sigH*Math.sin(Math.toRadians(gamma))*Math.cos(Math.toRadians(gamma))*Math.cos(Math.toRadians(alpha))*Math.cos(Math.toRadians(alpha))+sigh*Math.sin(Math.toRadians(gamma))*Math.cos(Math.toRadians(gamma))*Math.sin(Math.toRadians(alpha))*Math.sin(Math.toRadians(alpha));
 
-        return ThoXZ;
+        return -1*ThoXZ;
     }
 
     //thoYZ
@@ -357,21 +357,27 @@ public class DrillingEquations {
         return criticalBoreholeFracturePressure;
     }
     //critical borehole pressure test
-    public double criticalBoreholeCollapsePressure(double sigmaX, double sigmaY, double coeffFriction, double porePressure, double tensileStrength ){
+    public double criticalBoreholeCollapsePressure(double sigmaX, double sigmaY, double coeffFriction, double porePressure, double cohesion ){
 
         double criticalBoreholePressureCollapse = -1;
+        double angleFriction = Math.toDegrees(Math.atan(coeffFriction));
 
-        double a = (1-Math.sin(Math.toRadians(coeffFriction)));
-        double b = tensileStrength*Math.cos(Math.toRadians( coeffFriction));
-        double c = porePressure*Math.sin(Math.toRadians(coeffFriction));
-        if (sigmaX < sigmaY) {
+        //trig values
+        double tanAngle =Math.tan(Math.toRadians(angleFriction));
+        double cosAngle = Math.cos(Math.toRadians(angleFriction));
+        double sinAngle = Math.sin(Math.toRadians(angleFriction));
 
-            criticalBoreholePressureCollapse = .5*(3*sigmaX-sigmaY)*a-b+c;
-        }
-        else{
+        //constants factored
+        double sigmaA = sigmaX*3/2 - sigmaY*1/2;
 
-            criticalBoreholePressureCollapse = .5*(3*sigmaY-sigmaX)*a-b+c;
-        }
+        //sum of constants
+        double value = sigmaA*(cosAngle-tanAngle+tanAngle*sinAngle)+porePressure*tanAngle-cohesion;
+
+        //sum of the single variable values
+        double variable = cosAngle+sinAngle*tanAngle;
+
+        //solve for the variable which is Pwc
+        criticalBoreholePressureCollapse = value/variable;
 
         return criticalBoreholePressureCollapse;
     }

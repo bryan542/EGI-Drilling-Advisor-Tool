@@ -52,8 +52,9 @@ public class FormationPressureDataset {
         dataset.addSeries((hydrostaticLine));
         dataset.addSeries(minimumFractureLine);
         dataset.addSeries((maximumFractureLine));
-        dataset.addSeries((lithostaticLine));
         dataset.addSeries(collapsePressureLine);
+        dataset.addSeries((lithostaticLine));
+
 
         return dataset;
     }
