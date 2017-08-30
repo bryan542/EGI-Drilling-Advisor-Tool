@@ -1110,7 +1110,7 @@ public class mainWindow extends JFrame {
     public mainWindow() {
 
         getDepthText().setText("10000");
-        getMudWeightText().setText("8.33");
+        getMudWeightText().setText("15");
         getCohesionText().setText("500");
         getGammaText().setText("90");
         getAlpha1Text().setText("90");
@@ -1648,8 +1648,8 @@ public class mainWindow extends JFrame {
                     //Build Default catagory dataset
 
                     FailureRatioSolutions multiSolutions = new FailureRatioSolutions()  ;
-                    DefaultCategoryDataset multivariateShearDataset = multiSolutions.principalStresses(SigmaVGradient,SigmahGradient,SigmaHGradient,depth, mudWeightGradientValue,Alpha,gamma,DeltaP,poissons,gradientUM,porePressureGradient,GSI,lithology,rockDamage,SigmaVGradient, "Shear Failure Ratio");
-                    DefaultCategoryDataset multivariateTensileDataset = multiSolutions.principalStresses(SigmaVGradient,SigmahGradient,SigmaHGradient,depth, mudWeightGradientValue,Alpha,gamma,DeltaP,poissons,gradientUM,porePressureGradient,GSI,lithology,rockDamage,SigmaVGradient, "Tensile Failure Ratio");
+                    DefaultCategoryDataset multivariateShearDataset = null;
+                    DefaultCategoryDataset multivariateTensileDataset = null;
 
                     //Calculate and build stress polygon dataset and Mohr dataset
                     StressPolygonDataset polyDataset = new StressPolygonDataset();
@@ -1662,6 +1662,17 @@ public class mainWindow extends JFrame {
 
                     FormationPressureDataset formationDataset = new FormationPressureDataset();
                     XYSeriesCollection formationPressureCollection = formationDataset.formationPressureDataset(SigmaVR,SigmahR,porePressureCombination,depth, mudWeightGradientValue,criticalCollapsePressure,criticalFracturePressure);
+
+                    if(isMetricUMBoolean()){
+
+                         formationPressureCollection = formationDataset.formationPressureDataset(SigmaVR/1000,SigmahR/1000,porePressureCombination/1000,depth, mudWeightGradientValue/1000,criticalCollapsePressure/1000,criticalFracturePressure/1000);
+
+                    }
+                    else{
+
+                        formationPressureCollection = formationDataset.formationPressureDataset(SigmaVR,SigmahR,porePressureCombination,depth, mudWeightGradientValue,criticalCollapsePressure,criticalFracturePressure);
+
+                    }
                     formationPressureCollection.removeAllSeries();
 
 
@@ -1674,7 +1685,26 @@ public class mainWindow extends JFrame {
 
                         criticalCollapsePressure = Equations.criticalBoreholeCollapsePressure(sigmaX,sigmaY,coeffFriction,(porePressureGradient*depth),cohesionInitial);
                         criticalFracturePressure = Equations.criticalBoreholeFracturePressure(sigmaX,sigmaY,(porePressureGradient*depth),tensileStrength);
-                        formationPressureCollection = formationDataset.formationPressureDataset(SigmaVR,SigmahR,porePressureCombination,depth, mudWeightGradientValue,criticalCollapsePressure,criticalFracturePressure);
+
+                        //converts to kPa for easier plot reading
+                        if(isMetricUMBoolean()){
+
+                            formationPressureCollection = formationDataset.formationPressureDataset(SigmaVR/1000,SigmahR/1000,porePressureCombination/1000,depth, mudWeightGradientValue/1000,criticalCollapsePressure/1000,criticalFracturePressure/1000);
+                            polygonCollection = polyDataset.stressPolygonDataset(this.SigmaVR/1000,SigmaHGradient/1000,this.SigmahGradient/1000,this.porePressureGradient/1000,depth,getCoeffFriction());
+                            multivariateShearDataset = multiSolutions.principalStresses(SigmaVGradient/1000,SigmahGradient/1000,SigmaHGradient/1000,depth, mudWeightGradientValue/1000,Alpha,gamma,poissons,porePressureGradient/1000,GSI,lithology,rockDamage,SigmaVGradient/1000, "Shear Failure Ratio");
+                            multivariateTensileDataset = multiSolutions.principalStresses(SigmaVGradient/1000,SigmahGradient/1000,SigmaHGradient/1000,depth, mudWeightGradientValue/1000,Alpha,gamma,poissons,porePressureGradient/1000,GSI,lithology,rockDamage,SigmaVGradient/1000, "Tensile Failure Ratio");
+
+                        }
+                        else{
+
+                            formationPressureCollection = formationDataset.formationPressureDataset(SigmaVR,SigmahR,porePressureCombination,depth, mudWeightGradientValue,criticalCollapsePressure,criticalFracturePressure);
+                            polygonCollection = polyDataset.stressPolygonDataset(this.SigmaVR,SigmaHGradient,this.SigmahGradient,this.porePressureGradient,depth,getCoeffFriction());
+                            multivariateShearDataset = multiSolutions.principalStresses(SigmaVGradient,SigmahGradient,SigmaHGradient,depth, mudWeightGradientValue,Alpha,gamma,poissons,porePressureGradient,GSI,lithology,rockDamage,SigmaVGradient, "Shear Failure Ratio");
+                            multivariateTensileDataset = multiSolutions.principalStresses(SigmaVGradient,SigmahGradient,SigmaHGradient,depth, mudWeightGradientValue,Alpha,gamma,poissons,porePressureGradient,GSI,lithology,rockDamage,SigmaVGradient, "Tensile Failure Ratio");
+
+                        }
+
+                        mohrCollection = mohrDataset.mohrDatasetBuild(principalSortedStresses[2],principalSortedStresses[1],principalSortedStresses[0],cohesionInitial,getCoeffFriction(),mainWindow.this);
 
                         criticalFracturePressureTextField.setText(Double.toString((int) criticalFracturePressure));
                         criticalCollapsePressureTextField.setText(Double.toString((int) criticalCollapsePressure));
@@ -1684,18 +1714,11 @@ public class mainWindow extends JFrame {
                         System.out.println("Fracture Pressure"+criticalFracturePressure);
                         //build pressure regime dataset
 
-                        polygonCollection = polyDataset.stressPolygonDataset(this.SigmaVR,(SigmaHGradient),(this.SigmahGradient),this.porePressureGradient,depth,getCoeffFriction());
-
                         setPolygonCollectionFinal(polygonCollection);// sets a grabber for the dataset (used for the stresspolygon button in the initial input tab)
 
 
-
-                        mohrCollection = mohrDataset.mohrDatasetBuild(principalSortedStresses[2],principalSortedStresses[1],principalSortedStresses[0],cohesionInitial,getCoeffFriction(),mainWindow.this);
-
                         setMohrCollectionFinal(mohrCollection);
 
-                        multivariateShearDataset = multiSolutions.principalStresses(SigmaVGradient,SigmahGradient,SigmaHGradient,depth, mudWeightGradientValue,Alpha,gamma,DeltaP,poissons,gradientUM,porePressureGradient,GSI,lithology,rockDamage,SigmaVGradient, "Shear Failure Ratio");
-                        multivariateTensileDataset = multiSolutions.principalStresses(SigmaVGradient,SigmahGradient,SigmaHGradient,depth, mudWeightGradientValue,Alpha,gamma,DeltaP,poissons,gradientUM,porePressureGradient,GSI,lithology,rockDamage,SigmaVGradient, "Tensile Failure Ratio");
 
 
                     }
@@ -1708,7 +1731,26 @@ public class mainWindow extends JFrame {
                         criticalFracturePressure = Equations.criticalBoreholeFracturePressure(sigmaX,sigmaY,(porePressureGradient*depth),tensileStrength);
                         criticalFracturePressureTextField.setText(Double.toString((int) criticalFracturePressure));
                         criticalCollapsePressureTextField.setText(Double.toString((int) criticalCollapsePressure));
-                        formationPressureCollection = formationDataset.formationPressureDataset(SigmaVR,SigmahR,porePressureCombination,depth, mudWeightGradientValue,criticalCollapsePressure,criticalFracturePressure);
+
+                        //converts to kPa for easier plot reading
+                        if(isMetricUMBoolean()){
+
+                            formationPressureCollection = formationDataset.formationPressureDataset(SigmaVR/1000,SigmahR/1000,porePressureCombination/1000,depth, mudWeightGradientValue/1000,criticalCollapsePressure/1000,criticalFracturePressure/1000);
+                            polygonCollection = polyDataset.stressPolygonDataset(this.SigmaVR/1000,SigmaHGradient/1000,this.SigmahGradient/1000,this.porePressureGradient/1000,depth,getCoeffFriction());
+                            multivariateShearDataset = multiSolutions.principalStresses(SigmaVGradient/1000,SigmahGradient/1000,SigmaHGradient/1000,depth, mudWeightGradientValue/1000,Alpha,gamma,poissons,porePressureGradient/1000,GSI,lithology,rockDamage,SigmaVGradient/1000, "Shear Failure Ratio");
+                            multivariateTensileDataset = multiSolutions.principalStresses(SigmaVGradient/1000,SigmahGradient/1000,SigmaHGradient/1000,depth, mudWeightGradientValue/1000,Alpha,gamma,poissons,porePressureGradient/1000,GSI,lithology,rockDamage,SigmaVGradient/1000, "Tensile Failure Ratio");
+
+                        }
+                        else{
+
+                            formationPressureCollection = formationDataset.formationPressureDataset(SigmaVR,SigmahR,porePressureCombination,depth, mudWeightGradientValue,criticalCollapsePressure,criticalFracturePressure);
+                            polygonCollection = polyDataset.stressPolygonDataset(this.SigmaVR,SigmaHGradient,this.SigmahGradient,this.porePressureGradient,depth,getCoeffFriction());
+                            multivariateShearDataset = multiSolutions.principalStresses(SigmaVGradient,SigmahGradient,SigmaHGradient,depth, mudWeightGradientValue,Alpha,gamma,poissons,porePressureGradient,GSI,lithology,rockDamage,SigmaVGradient, "Shear Failure Ratio");
+                            multivariateTensileDataset = multiSolutions.principalStresses(SigmaVGradient,SigmahGradient,SigmaHGradient,depth, mudWeightGradientValue,Alpha,gamma,poissons,porePressureGradient,GSI,lithology,rockDamage,SigmaVGradient, "Tensile Failure Ratio");
+
+                        }
+
+                        mohrCollection = mohrDataset.mohrDatasetBuild(principalSortedStresses[2],principalSortedStresses[1],principalSortedStresses[0],cohesionInitial,getCoeffFriction(),mainWindow.this);
 
                         System.out.println("sigX:"+sigmaX);
                         System.out.println("sigY:"+sigmaY);
@@ -1716,18 +1758,11 @@ public class mainWindow extends JFrame {
                         System.out.println("Fracture Pressure"+criticalFracturePressure);
                         //build pressure regime dataset
 
-                        polygonCollection = polyDataset.stressPolygonDataset(this.SigmaVR,SigmaHGradient,(this.SigmahGradient),this.porePressureGradient,depth,getCoeffFriction());
 
                         setPolygonCollectionFinal(polygonCollection);// sets a grabber for the dataset (used for the stresspolygon button in the initial input tab)
 
-
-                        mohrCollection = mohrDataset.mohrDatasetBuild(principalSortedStresses[2],principalSortedStresses[1],principalSortedStresses[0],cohesionInitial,getCoeffFriction(),mainWindow.this);
-
                         setMohrCollectionFinal(mohrCollection);
 
-                        multivariateShearDataset = multiSolutions.principalStresses(SigmaVGradient,SigmahGradient,SigmaHGradient,depth, mudWeightGradientValue,Alpha,gamma,DeltaP,poissons,gradientUM,porePressureGradient,GSI,lithology,rockDamage,(SigmaVGradient), "Shear Failure Ratio");
-
-                        multivariateTensileDataset = multiSolutions.principalStresses(SigmaVGradient,SigmahGradient,SigmaHGradient,depth, mudWeightGradientValue,Alpha,gamma,DeltaP,poissons,gradientUM,porePressureGradient,GSI,lithology,rockDamage,SigmaVGradient, "Tensile Failure Ratio");
 
                     }
 
@@ -1818,7 +1853,7 @@ public class mainWindow extends JFrame {
                         tabbedPane1.addTab("Tensile Fracture Ratio", null,tensileFailureBarGraph,null);
 
 
-                        int chartDimensions = 300;
+                        int chartDimensions = 575;
 
                         stressPolygonBufferedImage = getStressPolygonChart().createBufferedImage(chartDimensions,chartDimensions);
                         formationPressureBufferedImage = getFormationPressureChart().createBufferedImage(chartDimensions,chartDimensions);

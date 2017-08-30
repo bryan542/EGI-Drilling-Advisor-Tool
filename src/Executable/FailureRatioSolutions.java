@@ -13,7 +13,7 @@ public class FailureRatioSolutions extends DrillingEquations {
     // This method find solutions for a wide range of sigmaH values. First the principal stress solutions for each value of sigmaH. Then, rock property GSI array solutions are added.
     // Following, the mohr and failure line are built for each principal stress and rock property solution. Finally, the failure criteria does a ratio comparrison between the mohr circle
     // and the failure line. Failure occurs if the ratio is above 1 and is stable below 1. The higher the value above 1 the higher the magnitude and likelyhood of failure.
-    public DefaultCategoryDataset principalStresses(double sigmaVGradient, double sigmahGradient,double sigmaHGradientInitial, double depth, double mudweight, double alpha, double gamma, double deltaP, double poisson, double gradientUM, double porePressureGradient, String GSI,String Lithology, double D, double verticalStress, String returnParam){
+    public DefaultCategoryDataset principalStresses(double sigmaVGradient, double sigmahGradient,double sigmaHGradientInitial, double depth, double mudweight, double alpha, double gamma, double poisson, double porePressureGradient, String GSI,String Lithology, double D, double verticalStress, String returnParam){
 
         double gradientIndex = -1;
         double sigmaHGradient = -1;
@@ -29,8 +29,7 @@ public class FailureRatioSolutions extends DrillingEquations {
         double sigmaTheta;
         double sigmaZ;
         double thoThetaZ;
-        double gradientChange = 1/gradientUM;
-        double incriment = .01;
+
 
         //double arrayDoubleSize = gradientChange/(gradientChange*incriment);
         //int arrayIntSize = (int) Math.round(arrayDoubleSize);
@@ -110,7 +109,7 @@ public class FailureRatioSolutions extends DrillingEquations {
             sigZ = DrillingEquations.sigZ(sigmaVGradient,sigmaHGradient,sigmahGradient,gamma,alpha);
             sigX = DrillingEquations.sigX(sigmaVGradient,sigmaHGradient,sigmahGradient,gamma,alpha);
             sigY = DrillingEquations.sigY(sigmaHGradient,sigmahGradient, alpha);
-            deltaP = DrillingEquations.deltaP(depth,mudweight,porePressureGradient);
+            double deltaP = DrillingEquations.deltaP(depth,mudweight,porePressureGradient);
             thoXY = DrillingEquations.thoXY(sigmaHGradient,sigmahGradient,alpha,gamma);
             thoXZ = DrillingEquations.thoXZ(sigmaVGradient,sigmaHGradient,sigmahGradient,alpha,gamma);
             thoYZ = DrillingEquations.thoYZ(sigmaHGradient,sigmahGradient,alpha,gamma);
@@ -185,19 +184,21 @@ public class FailureRatioSolutions extends DrillingEquations {
             tensileFailureRatio = mudweightTotal/(criticalFailurePressure);
             //build the failure line
             double loopRange =-1;
-            if(gradientUM ==1){
+            if(mainWindow.isStandardUMBoolean()){
                 loopRange = 1;
             }
             else{
-                loopRange =6894.76;
+                loopRange =6.89476;
             }
-            for(int j = 0; j <sigma1Int;j += loopRange){
+
+            double failureStartDouble = -1*cohesion/coeffFriction;
+            int failureStartInt = (int) failureStartDouble;
+            for(int j = failureStartInt; j <sigma1Int;j += loopRange){
 
                 FailurexValue = (double) j;
                 FailureyValue = coeffFriction*FailurexValue+cohesion;
                 cohesionLine.add(FailurexValue,FailureyValue);
             }
-
 
             // build the mohr circle
             for (int j=sigma3Int;j<=sigma1Int;j += loopRange){
@@ -216,11 +217,11 @@ public class FailureRatioSolutions extends DrillingEquations {
 
 
             //searches for the x-value to align the faliure curve to the Mohr curve.
-            if(Sigma3MohrLine.getDataItem(0).getX().intValue()   < 0){
+            if(Sigma3MohrLine.getDataItem(0).getX().intValue()   < cohesionLine.getDataItem(0).getX().intValue()){
 
                 for(int j = 0; j <= Sigma3MohrLine.getItemCount()-1;j++){
 
-                    if(Sigma3MohrLine.getDataItem(j).getX().intValue() >= 0){
+                    if(Sigma3MohrLine.getDataItem(j).getX().intValue() >= cohesionLine.getDataItem(0).getX().intValue()){
 
                         mohrxInitial = j;
                         break;
@@ -229,11 +230,12 @@ public class FailureRatioSolutions extends DrillingEquations {
                 }
                 failurexInitial = 0;
             }
-            else if (Sigma3MohrLine.getDataItem(0).getX().intValue() >= 0){
+
+            else if (Sigma3MohrLine.getDataItem(0).getX().intValue() >= cohesionLine.getDataItem(0).getX().intValue()){
 
                 for(int j = 0; j <= cohesionLine.getItemCount()-1;j++){
 
-                    if(cohesionLine.getDataItem(j).getX().intValue() == Sigma3MohrLine.getDataItem(0).getX().intValue()){
+                    if(cohesionLine.getDataItem(j).getX().intValue() >= Sigma3MohrLine.getDataItem(0).getX().intValue()){
 
                         failurexInitial = j;
                         break;
@@ -244,9 +246,8 @@ public class FailureRatioSolutions extends DrillingEquations {
                 mohrxInitial = 0;
             }
 
-
             //failure criteria check between mohr and failure curve. failurexInitial is the element offset to start comparing the value analysis between the 2 curves
-            for (int j = 0;j<=Sigma3MohrLine.getItemCount()-mohrxInitial-200;j++){
+            for (int j = 0;j<=Sigma3MohrLine.getItemCount()-mohrxInitial-2;j++){
 
                 //fills the element in the first array
                 if (j == 0){
@@ -268,7 +269,7 @@ public class FailureRatioSolutions extends DrillingEquations {
             Sigma3MohrLine.clear();
 
             //Populates the dataset
-            if(gradientChange == 1){
+            if(mainWindow.isStandardUMBoolean()){
 
                 shearDCD.addValue(shearFailureRatio,"Sigma H Max Range (psi/ft)", Double.toString(gradientIndex));
                 tensileDCD.addValue(tensileFailureRatio,"Sigma H Max Range (psi/ft)",Double.toString(gradientIndex));
@@ -276,7 +277,7 @@ public class FailureRatioSolutions extends DrillingEquations {
             else{
 
                 //rounds to kPa/m to 2 decimal places
-                gradientIndex = Math.round((gradientIndex/(gradientUM*1000))*100);
+                gradientIndex = Math.round(gradientIndex*100);
                 gradientIndex = gradientIndex/100;
                 shearDCD.addValue(shearFailureRatio,"Sigma H Max Range (kPa/m)", Double.toString(gradientIndex));
                 tensileDCD.addValue(tensileFailureRatio,"Sigma H Max Range (kPa/m)",Double.toString(gradientIndex));

@@ -12,6 +12,7 @@ public class MohrDataset {
 
     public XYSeriesCollection mohrDatasetBuild(double sigma1,double sigma2, double sigma3,double cohesionInitial, double coeffFrictionInput, mainWindow mw){
 
+
         double porePressureCombination = mw.getPorePressureCombinationFinal();
         double[] stressesMaxMinEffective = {sigma1-porePressureCombination,sigma2-porePressureCombination,sigma3-porePressureCombination};
         Arrays.sort(stressesMaxMinEffective);
@@ -78,14 +79,12 @@ public class MohrDataset {
 
         }
 
-        mohrxInitial = Sigma3MohrLine.getDataItem(0).getX().intValue();
-
         //searches for the x-value to align the faliure curve to the Mohr curve.
-        if(Sigma3MohrLine.getDataItem(0).getX().intValue()   < 0){
+        if(Sigma3MohrLine.getDataItem(0).getX().intValue()   < CohesionLine.getDataItem(0).getX().intValue()){
 
             for(int j = 0; j <= Sigma3MohrLine.getItemCount()-1;j++){
 
-                if(Sigma3MohrLine.getDataItem(j).getX().intValue() >= 0){
+                if(Sigma3MohrLine.getDataItem(j).getX().intValue() >= CohesionLine.getDataItem(0).getX().intValue()){
 
                     mohrxInitial = j;
                     break;
@@ -94,11 +93,12 @@ public class MohrDataset {
             }
             failurexInitial = 0;
         }
-        else if (Sigma3MohrLine.getDataItem(0).getX().intValue() >= 0){
+
+        else if (Sigma3MohrLine.getDataItem(0).getX().intValue() >= CohesionLine.getDataItem(0).getX().intValue()){
 
             for(int j = 0; j <= CohesionLine.getItemCount()-1;j++){
 
-                if(CohesionLine.getDataItem(j).getX().intValue() == Sigma3MohrLine.getDataItem(0).getX().intValue()){
+                if(CohesionLine.getDataItem(j).getX().intValue() >= Sigma3MohrLine.getDataItem(0).getX().intValue()){
 
                     failurexInitial = j;
                     break;
@@ -126,21 +126,6 @@ public class MohrDataset {
         }
 
 
-        /*
-        final XYSeries Sigma2MohrLine = new XYSeries("σ2 Mohr Circle");
-        for (int i=Sigma1int;i<=Sigma2int;i++){
-
-            diameter = sigma2-sigma1;
-            radius = diameter/2;
-            midpoint = radius+sigma1;
-            MohrxValue = (double) i;
-            MohryValue = Math.sqrt(radius*radius-(MohrxValue-midpoint)*(MohrxValue-midpoint));
-            if (Double.isNaN(MohryValue)){
-                MohryValue = 0;
-            }
-            Sigma2MohrLine.add(MohrxValue,MohryValue);
-        }
-*/
         XYSeriesCollection dataset = new XYSeriesCollection();
        // dataset.addSeries((Sigma2MohrLine));
         dataset.addSeries((Sigma3MohrLine));

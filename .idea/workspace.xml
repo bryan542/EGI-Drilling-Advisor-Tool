@@ -7,34 +7,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9399ab71-a3e5-41cd-80f0-b6fdb9b63e05" name="Default" comment="only 1 succesfully file path found used">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$10.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$11.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$12.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$13.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$14.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$15.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$16.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$17.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$4.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$5.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$6.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$7.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$8.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$9.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/SettingDialog$1.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/SettingDialog$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/SettingDialog$2.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/SettingDialog$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/SettingDialog$3.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/SettingDialog$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/SettingDialog$4.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/SettingDialog$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/SettingDialog.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/SettingDialog.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/FailureRatioSolutions.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/FailureRatioSolutions.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/MohrDataset.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/MohrDataset.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$10.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$10.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$11.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$11.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$12.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$12.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$13.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$13.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$14.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$14.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$15.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$15.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$16.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$16.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$17.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$17.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$9.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$9.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Executable/FailureRatioSolutions.java" afterPath="$PROJECT_DIR$/src/Executable/FailureRatioSolutions.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Executable/FormationPressureDataset.java" afterPath="$PROJECT_DIR$/src/Executable/FormationPressureDataset.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Executable/MohrDataset.java" afterPath="$PROJECT_DIR$/src/Executable/MohrDataset.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Executable/SettingDialog.java" afterPath="$PROJECT_DIR$/src/Executable/SettingDialog.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Executable/mainWindow.form" afterPath="$PROJECT_DIR$/src/Executable/mainWindow.form" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Executable/mainWindow.java" afterPath="$PROJECT_DIR$/src/Executable/mainWindow.java" />
     </list>
     <ignored path="EGI Drilling Advisor Tool.iws" />
@@ -88,7 +76,7 @@
       <file leaf-file-name="DrillingEquations.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Executable/DrillingEquations.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="202">
+            <state relative-caret-position="17">
               <caret line="182" column="25" lean-forward="false" selection-start-line="182" selection-start-column="25" selection-end-line="182" selection-end-column="25" />
               <folding />
             </state>
@@ -102,28 +90,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DropdownMenu.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Executable/DropdownMenu.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="21">
-              <caret line="67" column="0" lean-forward="false" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
-              <folding>
-                <marker date="1503620578000" expanded="true" signature="2242:2259" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mainWindow.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="mainWindow.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Executable/mainWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="54" lean-forward="true" selection-start-line="21" selection-start-column="54" selection-end-line="21" selection-end-column="54" />
+            <state relative-caret-position="145">
+              <caret line="1734" column="65" lean-forward="false" selection-start-line="1734" selection-start-column="65" selection-end-line="1734" selection-end-column="65" />
               <folding>
-                <element signature="e#7663#7664#0" expanded="true" />
-                <element signature="e#7703#7704#0" expanded="true" />
-                <element signature="e#8038#8039#0" expanded="true" />
-                <element signature="e#8085#8086#0" expanded="true" />
+                <element signature="imports" expanded="true" />
                 <element signature="e#25840#25841#0" expanded="true" />
                 <element signature="e#25876#25877#0" expanded="true" />
               </folding>
@@ -134,28 +107,28 @@
       <file leaf-file-name="MohrDataset.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Executable/MohrDataset.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="383">
-              <caret line="107" column="0" lean-forward="true" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
+            <state relative-caret-position="510">
+              <caret line="60" column="20" lean-forward="false" selection-start-line="60" selection-start-column="20" selection-end-line="60" selection-end-column="20" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FifthSetEquations.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Executable/FifthSetEquations.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="474">
-              <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FailureRatioSolutions.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="FailureRatioSolutions.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Executable/FailureRatioSolutions.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="321">
-              <caret line="251" column="28" lean-forward="true" selection-start-line="251" selection-start-column="28" selection-end-line="251" selection-end-column="28" />
+            <state relative-caret-position="255">
+              <caret line="105" column="0" lean-forward="false" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SettingDialog.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Executable/SettingDialog.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="209">
+              <caret line="460" column="0" lean-forward="false" selection-start-line="460" selection-start-column="0" selection-end-line="460" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -173,14 +146,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>coeff</find>
-      <find>angleoffriction</find>
-      <find>angle</find>
-      <find>collapsePressureText</find>
-      <find>fracturePRessureTextField</find>
-      <find>collapse</find>
-      <find>fracturepressure</find>
-      <find>collapsePressureLabel</find>
       <find>setcriticalfracture</find>
       <find>pdf</find>
       <find>fracturepressurelabel</find>
@@ -203,6 +168,14 @@
       <find>sigmaVText</find>
       <find>UM</find>
       <find>-2</find>
+      <find>.9</find>
+      <find>line</find>
+      <find>chart</find>
+      <find>6894</find>
+      <find>chartBufferedImagesArray</find>
+      <find>ismetr</find>
+      <find>porepressuregrad</find>
+      <find>gradientum</find>
     </findStrings>
     <replaceStrings>
       <replace>valueModulusName</replace>
@@ -238,7 +211,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Executable/TutorialEvaluateDataset.java" />
         <option value="$PROJECT_DIR$/src/Executable/testPolar.java" />
         <option value="$PROJECT_DIR$/src/Executable/hydraulic test.csv" />
         <option value="$PROJECT_DIR$/src/Executable/Young's Modulus Text Tab Delimited.txt" />
@@ -280,12 +252,13 @@
         <option value="$PROJECT_DIR$/src/Executable/RGBImageLoader.java" />
         <option value="$PROJECT_DIR$/src/Executable/DrillingRatingReportPDF.java" />
         <option value="$PROJECT_DIR$/src/Executable/ButtonGroupFieldEnableSetter.java" />
-        <option value="$PROJECT_DIR$/src/Executable/FormationPressureDataset.java" />
         <option value="$PROJECT_DIR$/src/Executable/ClearResetValues.java" />
         <option value="$PROJECT_DIR$/src/Executable/PDFExportArrayPopulator.java" />
         <option value="$PROJECT_DIR$/src/Executable/DrillingEquations.java" />
         <option value="$PROJECT_DIR$/src/Executable/SettingDialog.java" />
         <option value="$PROJECT_DIR$/src/Executable/mainWindow.form" />
+        <option value="$PROJECT_DIR$/src/Executable/StressPolygonDataset.java" />
+        <option value="$PROJECT_DIR$/src/Executable/FormationPressureDataset.java" />
         <option value="$PROJECT_DIR$/src/Executable/MohrDataset.java" />
         <option value="$PROJECT_DIR$/src/Executable/FailureRatioSolutions.java" />
         <option value="$PROJECT_DIR$/src/Executable/mainWindow.java" />
@@ -295,7 +268,7 @@
   <component name="MavenProjectNavigator">
     <treeState />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="18" />
     <option name="y" value="11" />
     <option name="width" value="1918" />
@@ -317,6 +290,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -356,9 +330,8 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="AndroidView" />
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1113,7 +1086,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1176" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1124,19 +1097,18 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26366252" sideWeight="0.50852877" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0072916667" sideWeight="0.4798331" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2147651" sideWeight="0.4849624" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2147651" sideWeight="0.4849624" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3279003" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0063965884" sideWeight="0.5201669" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297414" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22974414" sideWeight="0.48990577" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13539445" sideWeight="0.48990577" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19558965" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24919441" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24971297" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="2414" y="202" width="451" height="455" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37008628" sideWeight="0.4914712" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37008628" sideWeight="0.4914712" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20845272" sideWeight="0.5100942" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1146,6 +1118,7 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32930845" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0063965884" sideWeight="0.5201669" order="8" side_tool="true" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1216,46 +1189,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Executable/DropdownMenu.java</url>
-          <line>67</line>
-          <properties />
-          <option name="timeStamp" value="882" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Executable/PDFExportArrayPopulator.java</url>
-          <line>110</line>
-          <properties />
-          <option name="timeStamp" value="883" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Executable/SettingDialog.java</url>
-          <line>460</line>
-          <properties />
-          <option name="timeStamp" value="891" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Executable/MohrDataset.java</url>
-          <line>112</line>
-          <properties />
-          <option name="timeStamp" value="926" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Executable/FailureRatioSolutions.java</url>
-          <line>248</line>
-          <properties />
-          <option name="timeStamp" value="927" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/Executable/DrillingEquations.java</url>
-          <line>455</line>
-          <properties class="Executable.DrillingEquations">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="885" />
-        </line-breakpoint>
-      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog>
           <selected-grouping-rules>
@@ -1263,7 +1196,7 @@
           </selected-grouping-rules>
         </breakpoints-dialog>
       </breakpoints-dialog>
-      <option name="time" value="928" />
+      <option name="time" value="954" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -1279,14 +1212,6 @@
     <entry file="file://$PROJECT_DIR$/src/Executable/FinalHydraulicReportDialog.form">
       <provider selected="true" editor-type-id="ui-designer">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Executable/StressPolygonDataset.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="19" column="28" lean-forward="true" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/XMLFiles/Formation Pressure Table.xml">
@@ -1430,14 +1355,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Executable/FormationPressureDataset.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="54" column="48" lean-forward="false" selection-start-line="54" selection-start-column="48" selection-end-line="54" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Executable/FormationPressureGraph.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3573">
@@ -1446,26 +1363,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Executable/PDFExportArrayPopulator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="445">
-          <caret line="133" column="47" lean-forward="true" selection-start-line="133" selection-start-column="47" selection-end-line="133" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Executable/DrillingRatingReportPDF.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="123">
           <caret line="35" column="75" lean-forward="true" selection-start-line="35" selection-start-column="75" selection-end-line="35" selection-end-column="75" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Executable/SettingDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="533" column="0" lean-forward="false" selection-start-line="533" selection-start-column="0" selection-end-line="533" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1482,11 +1383,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Executable/DropdownMenu.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
+        <state relative-caret-position="884">
           <caret line="67" column="0" lean-forward="false" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
-          <folding>
-            <marker date="1503620578000" expanded="true" signature="2242:2259" ph="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1494,9 +1393,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="193">
           <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding>
-            <element signature="e#844#845#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1504,64 +1400,92 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Executable/FifthSetEquations.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="986">
+          <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Executable/SettingDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="460" column="0" lean-forward="false" selection-start-line="460" selection-start-column="0" selection-end-line="460" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Executable/PDFExportArrayPopulator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="119" column="77" lean-forward="false" selection-start-line="119" selection-start-column="77" selection-end-line="119" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Executable/FormationPressureDataset.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="10" column="184" lean-forward="false" selection-start-line="10" selection-start-column="184" selection-end-line="10" selection-end-column="184" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Executable/StressPolygonDataset.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="10" column="36" lean-forward="true" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Executable/DrillingEquations.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
+        <state relative-caret-position="17">
           <caret line="182" column="25" lean-forward="false" selection-start-line="182" selection-start-column="25" selection-end-line="182" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Executable/mainWindow.form">
-      <provider selected="true" editor-type-id="ui-designer">
-        <state />
-      </provider>
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Executable/FifthSetEquations.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="474">
-          <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Executable/mainWindow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="54" lean-forward="true" selection-start-line="21" selection-start-column="54" selection-end-line="21" selection-end-column="54" />
-          <folding>
-            <element signature="e#7663#7664#0" expanded="true" />
-            <element signature="e#7703#7704#0" expanded="true" />
-            <element signature="e#8038#8039#0" expanded="true" />
-            <element signature="e#8085#8086#0" expanded="true" />
-            <element signature="e#25840#25841#0" expanded="true" />
-            <element signature="e#25876#25877#0" expanded="true" />
-          </folding>
-        </state>
+      <provider selected="true" editor-type-id="ui-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Executable/MohrDataset.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="107" column="0" lean-forward="true" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
+        <state relative-caret-position="510">
+          <caret line="60" column="20" lean-forward="false" selection-start-line="60" selection-start-column="20" selection-end-line="60" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Executable/FailureRatioSolutions.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="321">
-          <caret line="251" column="28" lean-forward="true" selection-start-line="251" selection-start-column="28" selection-end-line="251" selection-end-column="28" />
+        <state relative-caret-position="255">
+          <caret line="105" column="0" lean-forward="false" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Executable/mainWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="1734" column="65" lean-forward="false" selection-start-line="1734" selection-start-column="65" selection-end-line="1734" selection-end-column="65" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#25840#25841#0" expanded="true" />
+            <element signature="e#25876#25877#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

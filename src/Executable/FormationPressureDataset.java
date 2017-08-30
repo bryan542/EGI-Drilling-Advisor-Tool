@@ -8,11 +8,11 @@ import org.jfree.data.xy.XYSeriesCollection;
  */
 public class FormationPressureDataset {
 
-    public XYSeriesCollection formationPressureDataset(double sigmaV, double sigmah, double porePressure, double depth, double mudweightPsi,double criticalCollapsePresure,double criticalFracturePresure){
+    public XYSeriesCollection formationPressureDataset(double sigmaV, double sigmah, double porePressure, double depth, double mudweight,double criticalCollapsePresure,double criticalFracturePresure){
 
         double sigmaVPressure = sigmaV*depth;
         double sigmahPressure = sigmah*depth;
-        double mudWeightPressure = mudweightPsi*depth;
+        double mudWeightPressure = mudweight*depth;
 
         final XYSeries collapsePressureLine = new XYSeries("Critical Borehole Collapse Pressure");
         collapsePressureLine.add(0,porePressure);
