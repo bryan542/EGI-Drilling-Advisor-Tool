@@ -10,6 +10,7 @@ import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.XYItemRenderer;
 import org.jfree.chart.title.LegendTitle;
 import org.jfree.data.xy.XYDataset;
+import org.jfree.data.xy.XYSeriesCollection;
 
 import javax.swing.*;
 import java.awt.*;
@@ -72,14 +73,20 @@ public class MohrFailureGraph extends JPanel {
         NumberAxis domain = (NumberAxis) plot.getDomainAxis();
         NumberAxis range = (NumberAxis) plot.getRangeAxis();
 
-        if(Sigma3 < 0){
-            domain.setRange(Sigma3,Sigma1);
-            range.setRange(0, Sigma1-Sigma3 );
+        int domainmin = -1;
+        int domainmax = -1;
+        if(((XYSeriesCollection) dataset).getSeries(0).getX(0).intValue()<((XYSeriesCollection) dataset).getSeries(1).getX(0).intValue()){
+
+            domainmin = ((XYSeriesCollection) dataset).getSeries(0).getX(0).intValue();
         }
-        else {
-            domain.setRange(0, Sigma1);
-            range.setRange(0, Sigma1 );
+        else{
+            domainmin = ((XYSeriesCollection) dataset).getSeries(1).getX(0).intValue();
         }
+        domainmax = (int) ((XYSeriesCollection) dataset).getSeries(0).getMaxX();
+
+        domain.setRange(domainmin, domainmax);
+        range.setRange(0,Math.abs(domainmin)+domainmax);
+
 
 
 

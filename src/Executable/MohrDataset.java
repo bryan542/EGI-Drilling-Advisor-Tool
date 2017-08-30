@@ -13,7 +13,7 @@ public class MohrDataset {
     public XYSeriesCollection mohrDatasetBuild(double sigma1,double sigma2, double sigma3,double cohesionInitial, double coeffFrictionInput, mainWindow mw){
 
 
-        double porePressureCombination = mw.getPorePressureCombinationFinal();
+        double porePressureCombination = mw.getPorePressureCombinationFinal()/1000;
         double[] stressesMaxMinEffective = {sigma1-porePressureCombination,sigma2-porePressureCombination,sigma3-porePressureCombination};
         Arrays.sort(stressesMaxMinEffective);
 
@@ -49,7 +49,7 @@ public class MohrDataset {
         }
         double incrimentAmount = -1;
         if(mw.isMetricUMBoolean()){
-            incrimentAmount = 6894;
+            incrimentAmount = 6.894;
         }
         else{
             incrimentAmount = 1;
