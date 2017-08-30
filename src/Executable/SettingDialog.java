@@ -14,14 +14,8 @@ public class SettingDialog extends JDialog{
 
 
     private JPanel projectPanel;
-    private JTabbedPane projectUnits;
-    private JRadioButton generalRadio;
     private JRadioButton oilFieldUnitsRadioButton;
-    private JRadioButton SIUnitsRadioButton;
-    private JRadioButton customRadio;
-    private JComboBox comboBox1;
-    private JComboBox comboBox2;
-    private JComboBox comboBox3;
+    private JRadioButton SIUnitsRadioButton;   ;
     private JButton applyChangesButton;
     private JButton cancelButton;
     private double test;
@@ -63,25 +57,6 @@ public class SettingDialog extends JDialog{
     String[] pressureList = {"psi","Pa"};
     String[] lengthList = {"ft","m"};
 
-        for (int i =0; i< densityList.length;i++){
-
-        comboBox1.addItem(densityList[i]);
-
-    }
-    for (int i =0; i< pressureList.length;i++){
-
-        comboBox2.addItem(pressureList[i]);
-    }
-    for (int i =0; i< lengthList.length;i++){
-
-        comboBox3.addItem(lengthList[i]);
-    }
-
-    //setup buttongroups
-    ButtonGroup customGeneralBg = new ButtonGroup();
-    customGeneralBg.add(generalRadio);
-    customGeneralBg.add(customRadio);
-
 
     ButtonGroup standardMetricBg =  new ButtonGroup();
     standardMetricBg.add(oilFieldUnitsRadioButton);
@@ -90,83 +65,13 @@ public class SettingDialog extends JDialog{
 
     // this if/else statement makes reloads the project settings if the user comes back to it.
     // Also, this will be used to save/load the project setting data properly
-        if(settingButton == "General"){
-            generalRadio.setSelected(true);
 
-            if(settingType == "Oil Field Units"){
-                oilFieldUnitsRadioButton.setSelected(true);
-            }
-            else if(settingType == "SI Units"){
-                SIUnitsRadioButton.setSelected(true);
-            }
-        }
-        else{
-            customRadio.setSelected(true);
-
-            if(customDensityType == "ppg"){
-                comboBox1.setSelectedItem("ppg");
-            }
-            else if(customDensityType =="g/cc"){
-                comboBox1.setSelectedItem("g/cc");
-            }
-
-            if(customPressureType == "psi"){
-                comboBox2.setSelectedItem("psi");
-            }
-            else if(customPressureType =="Pa"){
-                comboBox2.setSelectedItem("Pa");
-            }
-            if(customLengthType == "ft"){
-                comboBox3.setSelectedItem("ft");
-            }
-            else if(customLengthType =="m"){
-                comboBox3.setSelectedItem("m");
-            }
-
-        }
-
-    //buttongroup action/listener setup
-    if(generalRadio.isSelected()){
-        comboBox1.setEnabled(false);
-        comboBox2.setEnabled(false);
-        comboBox3.setEnabled(false);
-        oilFieldUnitsRadioButton.setEnabled(true);
-        SIUnitsRadioButton.setEnabled(true);
+    if(settingType == "Oil Field Units"){
+        oilFieldUnitsRadioButton.setSelected(true);
     }
-
-    else{
-        comboBox1.setEnabled(true);
-        comboBox2.setEnabled(true);
-        comboBox3.setEnabled(true);
-        oilFieldUnitsRadioButton.setEnabled(false);
-        SIUnitsRadioButton.setEnabled(false);
+    else if(settingType == "SI Units"){
+        SIUnitsRadioButton.setSelected(true);
     }
-
-
-    generalRadio.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-
-                comboBox1.setEnabled(false);
-                comboBox2.setEnabled(false);
-                comboBox3.setEnabled(false);
-                oilFieldUnitsRadioButton.setEnabled(true);
-                SIUnitsRadioButton.setEnabled(true);
-
-        }
-    });
-    customRadio.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-
-                comboBox1.setEnabled(true);
-                comboBox2.setEnabled(true);
-                comboBox3.setEnabled(true);
-            oilFieldUnitsRadioButton.setEnabled(false);
-            SIUnitsRadioButton.setEnabled(false);
-
-        }
-    });
 
     //Apply unit changes
         applyChangesButton.addActionListener(new ActionListener() {
@@ -190,202 +95,96 @@ public class SettingDialog extends JDialog{
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                if(generalRadio.isSelected()){
 
-                   mw.setProjectSettingButton("General");
 
-                    if(oilFieldUnitsRadioButton.isSelected() && oilFieldUnitsRadioButton.isEnabled()){
-                        mw.setStandardUMBoolean(true);
-                        mw.setMetricUMBoolean(false);
-                        densityChange = 1;
-                        pressureChange =1;
-                        lengthChange =1;
-                        gradientChange =1;
-                        String pressure = "(psi)";
-                        String density = "(ppg)";
-                        String length = "(ft)";
-                        String gradient = "(psi/ft)";
-                        mw.setDepthLabel(depth+length);
-                        mw.setMudWeightLabel(mudweight+density);
-                        mw.setCohesionInputLabel(cohesion+pressure);
-                        mw.setCohesionTitleLabel(cohesion+pressure);
-                        mw.setCohesionOutputLabel(cohesion+pressure);
-                        mw.setUCSIntactOutputLabel(UCSIntact + pressure);
-                        mw.setUCSDamagedOutputLabel(UCSDamaged + pressure);
-                        mw.setTensileLabel(tensileStrength+pressure);
-                        mw.setInputTensileStrengthLabel(tensileStrength+pressure);
-                        mw.setTensileStrengthOutputLabel(tensileStrength+pressure);
-                        mw.setPorePressureOutputLabel(porePressure+pressure);
-                        mw.setFarSigmaHLabel(farSigmaH+pressure);
-                        mw.setFarSigmahLabel(farSigmah+pressure);
-                        mw.setFarSigmaVLabel(farSigmaV+pressure);
-                        mw.setPrincipalSigma1Label(principal1+pressure);
-                        mw.setPrincipalSigma2Label(principal2+pressure);
-                        mw.setPrincipalSigma3Label(principal3+pressure);
-                        mw.setCriticalFracturePressureLabel(criticalFracture +pressure);
-                        mw.setCriticalCollapsePressureLabel(criticalCollapse +pressure);
-                        mw.setInputStressGradientLabel(inputStressGradients+gradient);
-                        mw.setDensityUM(densityChange);
-                        mw.setPressureUM(pressureChange);
-                        mw.setLengthUM(lengthChange);
-                        mw.setGradientUM(gradientChange);
-                        mw.setProjectSettingType("Oil Field Units");
-                        mw.setProjectCustomPressureType("psi");
-                        mw.setProjectCustomDensityType(density);
-                        mw.setProjectCustomLengthType(length);
-                    }
-                    else if(SIUnitsRadioButton.isSelected() && SIUnitsRadioButton.isEnabled()){
-                        mw.setStandardUMBoolean(false);
-                        mw.setMetricUMBoolean(true);
+               mw.setProjectSettingButton("General");
 
-                        densityChange = 8.3454;
-                        pressureChange =0.145038;
-                        lengthChange =3.28084;
-                        gradientChange = 4.4208e-5;
-                        String pressure = "(kPa)";
-                        String density = "(g/cc)";
-                        String length = "(m)";
-                        String gradient = "(Pa/m)";
-                        mw.setDepthLabel(depth+length);
-                        mw.setMudWeightLabel(mudweight+density);
-                        mw.setCohesionInputLabel(cohesion+pressure);
-                        mw.setCohesionTitleLabel(cohesion+pressure);
-                        mw.setCohesionOutputLabel(cohesion+pressure);
-                        mw.setUCSIntactOutputLabel(UCSIntact + pressure);
-                        mw.setUCSDamagedOutputLabel(UCSDamaged + pressure);
-                        mw.setTensileLabel(tensileStrength+pressure);
-                        mw.setInputTensileStrengthLabel(tensileStrength+pressure);
-                        mw.setTensileStrengthOutputLabel(tensileStrength+pressure);
-                        mw.setPorePressureOutputLabel(porePressure+pressure);
-                        mw.setFarSigmaHLabel(farSigmaH+pressure);
-                        mw.setFarSigmahLabel(farSigmah+pressure);
-                        mw.setFarSigmaVLabel(farSigmaV+pressure);
-                        mw.setPrincipalSigma1Label(principal1+pressure);
-                        mw.setPrincipalSigma2Label(principal2+pressure);
-                        mw.setPrincipalSigma3Label(principal3+pressure);
-                        mw.setCriticalFracturePressureLabel(criticalFracture +pressure);
-                        mw.setCriticalCollapsePressureLabel(criticalCollapse +pressure);
-                        mw.setInputStressGradientLabel(inputStressGradients+gradient);
-                        mw.setDensityUM(densityChange);
-                        mw.setPressureUM(pressureChange);
-                        mw.setLengthUM(lengthChange);
-                        mw.setGradientUM(gradientChange);
-                        mw.setProjectSettingType("SI Units");
-                        mw.setProjectCustomPressureType("kPa");
-                        mw.setProjectCustomDensityType(density);
-                        mw.setProjectCustomLengthType(length);
-                    }
-                    else{
+                if(oilFieldUnitsRadioButton.isSelected() && oilFieldUnitsRadioButton.isEnabled()){
+                    mw.setStandardUMBoolean(true);
+                    mw.setMetricUMBoolean(false);
+                    densityChange = 1;
+                    pressureChange =1;
+                    lengthChange =1;
+                    gradientChange =1;
+                    String pressure = "(psi)";
+                    String density = "(ppg)";
+                    String length = "(ft)";
+                    String gradient = "(psi/ft)";
+                    mw.setDepthLabel(depth+length);
+                    mw.setMudWeightLabel(mudweight+density);
+                    mw.setCohesionInputLabel(cohesion+pressure);
+                    mw.setCohesionTitleLabel(cohesion+pressure);
+                    mw.setCohesionOutputLabel(cohesion+pressure);
+                    mw.setUCSIntactOutputLabel(UCSIntact + pressure);
+                    mw.setUCSDamagedOutputLabel(UCSDamaged + pressure);
+                    mw.setTensileLabel(tensileStrength+pressure);
+                    mw.setInputTensileStrengthLabel(tensileStrength+pressure);
+                    mw.setTensileStrengthOutputLabel(tensileStrength+pressure);
+                    mw.setPorePressureOutputLabel(porePressure+pressure);
+                    mw.setFarSigmaHLabel(farSigmaH+pressure);
+                    mw.setFarSigmahLabel(farSigmah+pressure);
+                    mw.setFarSigmaVLabel(farSigmaV+pressure);
+                    mw.setPrincipalSigma1Label(principal1+pressure);
+                    mw.setPrincipalSigma2Label(principal2+pressure);
+                    mw.setPrincipalSigma3Label(principal3+pressure);
+                    mw.setCriticalFracturePressureLabel(criticalFracture +pressure);
+                    mw.setCriticalCollapsePressureLabel(criticalCollapse +pressure);
+                    mw.setInputStressGradientLabel(inputStressGradients+gradient);
+                    mw.setDensityUM(densityChange);
+                    mw.setPressureUM(pressureChange);
+                    mw.setLengthUM(lengthChange);
+                    mw.setGradientUM(gradientChange);
+                    mw.setProjectSettingType("Oil Field Units");
+                    mw.setProjectCustomPressureType("psi");
+                    mw.setProjectCustomDensityType(density);
+                    mw.setProjectCustomLengthType(length);
+                }
+                else if(SIUnitsRadioButton.isSelected() && SIUnitsRadioButton.isEnabled()){
+                    mw.setStandardUMBoolean(false);
+                    mw.setMetricUMBoolean(true);
 
-                    }
+                    densityChange = 8.3454;
+                    pressureChange =0.145038;
+                    lengthChange =3.28084;
+                    gradientChange = 4.4208e-5;
+                    String pressure = "(kPa)";
+                    String density = "(g/cc)";
+                    String length = "(m)";
+                    String gradient = "(Pa/m)";
+                    mw.setDepthLabel(depth+length);
+                    mw.setMudWeightLabel(mudweight+density);
+                    mw.setCohesionInputLabel(cohesion+pressure);
+                    mw.setCohesionTitleLabel(cohesion+pressure);
+                    mw.setCohesionOutputLabel(cohesion+pressure);
+                    mw.setUCSIntactOutputLabel(UCSIntact + pressure);
+                    mw.setUCSDamagedOutputLabel(UCSDamaged + pressure);
+                    mw.setTensileLabel(tensileStrength+pressure);
+                    mw.setInputTensileStrengthLabel(tensileStrength+pressure);
+                    mw.setTensileStrengthOutputLabel(tensileStrength+pressure);
+                    mw.setPorePressureOutputLabel(porePressure+pressure);
+                    mw.setFarSigmaHLabel(farSigmaH+pressure);
+                    mw.setFarSigmahLabel(farSigmah+pressure);
+                    mw.setFarSigmaVLabel(farSigmaV+pressure);
+                    mw.setPrincipalSigma1Label(principal1+pressure);
+                    mw.setPrincipalSigma2Label(principal2+pressure);
+                    mw.setPrincipalSigma3Label(principal3+pressure);
+                    mw.setCriticalFracturePressureLabel(criticalFracture +pressure);
+                    mw.setCriticalCollapsePressureLabel(criticalCollapse +pressure);
+                    mw.setInputStressGradientLabel(inputStressGradients+gradient);
+                    mw.setDensityUM(densityChange);
+                    mw.setPressureUM(pressureChange);
+                    mw.setLengthUM(lengthChange);
+                    mw.setGradientUM(gradientChange);
+                    mw.setProjectSettingType("SI Units");
+                    mw.setProjectCustomPressureType("kPa");
+                    mw.setProjectCustomDensityType(density);
+                    mw.setProjectCustomLengthType(length);
+                }
+                else{
+
                 }
 
-                else {
 
-                    mw.setProjectSettingButton("Custom");
-
-                    if (comboBox1.getSelectedItem() =="ppg" && comboBox1.isEnabled()){
-
-                        densityChange = 1;
-                        String density = "(ppg)";
-                        mw.setMudWeightLabel(mudweight+density);
-                        mw.setDensityUM(densityChange);
-                        mw.setProjectCustomDensityType("ppg");
-
-
-                    }
-                    else if(comboBox1.getSelectedItem() =="g/cc" && comboBox1.isEnabled()){
-
-                        densityChange = 8.3454;
-                        String density = "(g/cc)";
-                        mw.setMudWeightLabel(mudweight+density);
-                        mw.setDensityUM(densityChange);
-                        mw.setProjectCustomDensityType("g/cc");
-
-                    }
-                    else{
-
-                    }
-
-                    if (comboBox2.getSelectedItem() =="psi" && comboBox2.isEnabled()){
-
-                        pressureChange =1;
-                        String pressure = "(psi)";
-
-                        mw.setCohesionInputLabel(cohesion+pressure);
-                        mw.setCohesionTitleLabel(cohesion+pressure);
-                        mw.setCohesionOutputLabel(cohesion+pressure);
-                        mw.setUCSIntactOutputLabel(UCSIntact + pressure);
-                        mw.setUCSDamagedOutputLabel(UCSDamaged + pressure);
-                        mw.setTensileLabel(tensileStrength+pressure);
-                        mw.setInputTensileStrengthLabel(tensileStrength+pressure);
-                        mw.setTensileStrengthOutputLabel(tensileStrength+pressure);
-                        mw.setPorePressureOutputLabel(porePressure+pressure);
-                        mw.setFarSigmaHLabel(farSigmaH+pressure);
-                        mw.setFarSigmahLabel(farSigmah+pressure);
-                        mw.setFarSigmaVLabel(farSigmaV+pressure);
-                        mw.setPrincipalSigma1Label(principal1+pressure);
-                        mw.setPrincipalSigma2Label(principal2+pressure);
-                        mw.setPrincipalSigma3Label(principal3+pressure);
-                        mw.setCriticalFracturePressureLabel(criticalFracture +pressure);
-                        mw.setCriticalCollapsePressureLabel(criticalCollapse +pressure);
-                        mw.setPressureUM(pressureChange);
-                        mw.setProjectCustomPressureType("psi");
-
-
-                    }
-                    else if(comboBox2.getSelectedItem() =="Pa" && comboBox2.isEnabled()){
-
-                        pressureChange =0.145038;
-                        String pressure = "(kPa)";
-
-                        mw.setCohesionInputLabel(cohesion+pressure);
-                        mw.setCohesionTitleLabel(cohesion+pressure);
-                        mw.setCohesionOutputLabel(cohesion+pressure);
-                        mw.setUCSIntactOutputLabel(UCSIntact + pressure);
-                        mw.setUCSDamagedOutputLabel(UCSDamaged + pressure);
-                        mw.setTensileLabel(tensileStrength+pressure);
-                        mw.setInputTensileStrengthLabel(tensileStrength+pressure);
-                        mw.setTensileStrengthOutputLabel(tensileStrength+pressure);
-                        mw.setPorePressureOutputLabel(porePressure+pressure);
-                        mw.setFarSigmaHLabel(farSigmaH+pressure);
-                        mw.setFarSigmahLabel(farSigmah+pressure);
-                        mw.setFarSigmaVLabel(farSigmaV+pressure);
-                        mw.setPrincipalSigma1Label(principal1+pressure);
-                        mw.setPrincipalSigma2Label(principal2+pressure);
-                        mw.setPrincipalSigma3Label(principal3+pressure);
-                        mw.setCriticalFracturePressureLabel(criticalFracture +pressure);
-                        mw.setCriticalCollapsePressureLabel(criticalCollapse +pressure);
-                        mw.setPressureUM(pressureChange);
-                        mw.setProjectCustomPressureType("kPa");
-
-                    }
-                    else{
-
-                    }
-
-                    if (comboBox3.getSelectedItem() =="ft" && comboBox3.isEnabled()){
-
-                        lengthChange =1;
-                        String length = "(ft)";
-                        mw.setDepthLabel(depth+length);
-                        mw.setLengthUM(lengthChange);
-                        mw.setProjectCustomLengthType("ft");
-
-                    }
-                    else if(comboBox3.getSelectedItem() =="m" && comboBox3.isEnabled()){
-
-                        lengthChange =3.28084;
-                        String length = "(m)";
-                        mw.setDepthLabel(depth+length);
-                        mw.setLengthUM(lengthChange);
-                        mw.setProjectCustomLengthType("m");
-
-                    }
-                    else{
-
-                    }
-                }
 
                if(mw.isMetricUMBoolean() && mw.getMetricUMCount() == 0) {
 
@@ -531,6 +330,7 @@ public class SettingDialog extends JDialog{
                }
                 exportPDF.setEnabled(false); // sets the jmenuitem to disabled if we clear values
 
+                dispose();
             }
 
         });

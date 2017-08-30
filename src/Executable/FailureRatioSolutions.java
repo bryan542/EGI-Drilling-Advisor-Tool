@@ -66,7 +66,7 @@ public class FailureRatioSolutions extends DrillingEquations {
         double sigmaHGradientRange = sigmaHGradientInitial/depth;
         double initialRange = -1;
         double finalRange = -1;
-        double incrimentAmount = 12;
+        double incrimentAmount = 14;
         // sets the amount of bars on the ratio graph. reduce or increase incrimentAmount variable to change the amount reported on the graph
 
         incrimentRange = (sigmaVGradientRange-sigmahGradientRange)/incrimentAmount;
