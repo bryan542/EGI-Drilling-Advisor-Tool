@@ -13,7 +13,7 @@ public class FailureRatioSolutions extends DrillingEquations {
     // This method find solutions for a wide range of sigmaH values. First the principal stress solutions for each value of sigmaH. Then, rock property GSI array solutions are added.
     // Following, the mohr and failure line are built for each principal stress and rock property solution. Finally, the failure criteria does a ratio comparrison between the mohr circle
     // and the failure line. Failure occurs if the ratio is above 1 and is stable below 1. The higher the value above 1 the higher the magnitude and likelyhood of failure.
-    public DefaultCategoryDataset principalStresses(double sigmaVGradient, double sigmahGradient,double sigmaHGradientInitial, double depth, double mudweight, double alpha, double gamma, double deltaP, double poisson, double gradientUM, double porePressureGradient, double lengthUM,String GSI,String Lithology, double D, double verticalStress, String returnParam){
+    public DefaultCategoryDataset principalStresses(double sigmaVGradient, double sigmahGradient,double sigmaHGradientInitial, double depth, double mudweight, double alpha, double gamma, double deltaP, double poisson, double gradientUM, double porePressureGradient, String GSI,String Lithology, double D, double verticalStress, String returnParam){
 
         double gradientIndex = -1;
         double sigmaHGradient = -1;
@@ -69,64 +69,35 @@ public class FailureRatioSolutions extends DrillingEquations {
         double finalRange = -1;
         double incrimentAmount = 12;
         // sets the amount of bars on the ratio graph. reduce or increase incrimentAmount variable to change the amount reported on the graph
-        //metric units
-        if(gradientChange ==1){
 
-            incrimentRange = (sigmaVGradientRange-sigmahGradientRange)/incrimentAmount;
-            initialRange = sigmahGradientRange;
-            finalRange = sigmaVGradientRange;
+        incrimentRange = (sigmaVGradientRange-sigmahGradientRange)/incrimentAmount;
+        initialRange = sigmahGradientRange;
+        finalRange = sigmaVGradientRange;
 
-            // sets a proper range if strike-slip or reverse fault behavior gradients are input
-            if (sigmaHGradientRange > sigmaVGradientRange && sigmaVGradientRange < sigmahGradientRange && sigmahGradientRange > sigmaHGradientRange){
+        // sets a proper range if strike-slip or reverse fault behavior gradients are input
+        if (sigmaHGradientRange > sigmaVGradientRange && sigmaVGradientRange < sigmahGradientRange && sigmahGradientRange > sigmaHGradientRange){
 
-                incrimentRange = (sigmahGradientRange-sigmaVGradientRange)/incrimentAmount;
-                initialRange = sigmaVGradientRange;
-                finalRange = sigmahGradientRange;
+            incrimentRange = (sigmahGradientRange-sigmaVGradientRange)/incrimentAmount;
+            initialRange = sigmaVGradientRange;
+            finalRange = sigmahGradientRange;
 
-            }
-            else if (sigmaHGradientRange > sigmaVGradientRange && sigmaVGradientRange < sigmahGradientRange && sigmahGradientRange < sigmaHGradientRange ){
-
-                incrimentRange = (sigmaHGradientRange-sigmaVGradientRange)/incrimentAmount;
-                initialRange = sigmaVGradientRange;
-                finalRange = sigmaHGradientRange;
-            }
-            else if (sigmaHGradientRange > sigmaVGradientRange && sigmaVGradientRange > sigmahGradientRange && sigmahGradientRange < sigmaHGradientRange ){
-                //strike-slip gradient range
-                incrimentRange = (sigmaHGradientRange-sigmahGradientRange)/incrimentAmount;
-                initialRange = sigmahGradientRange;
-                finalRange = sigmaHGradientRange;
-            }
         }
-        //SI units
-        else{
+        else if (sigmaHGradientRange > sigmaVGradientRange && sigmaVGradientRange < sigmahGradientRange && sigmahGradientRange < sigmaHGradientRange ){
 
-            //normal fault gradient range
-            incrimentRange = (sigmaVGradientRange-sigmahGradientRange)/10;
-            initialRange = sigmahGradientRange;
-            finalRange = sigmaVGradientRange;
-
-
-            // sets a proper range if strike-slip or reverse fault behavior gradients are input
-            if (sigmaHGradientRange > sigmaVGradientRange && sigmaVGradientRange < sigmahGradientRange && sigmahGradientRange > sigmaHGradientRange){
-
-                incrimentRange = (sigmahGradientRange-sigmaVGradientRange)/10;
-                initialRange = sigmaVGradientRange;
-                finalRange = sigmahGradientRange;
-
-            }
-            else if (sigmaHGradientRange > sigmaVGradientRange && sigmaVGradientRange < sigmahGradientRange && sigmahGradientRange < sigmaHGradientRange ){
-
-                incrimentRange = (sigmaHGradientRange-sigmaVGradientRange)/18;
-                initialRange = sigmaVGradientRange;
-                finalRange = sigmaHGradientRange;
-            }
-            else if (sigmaHGradientRange > sigmaVGradientRange && sigmaVGradientRange > sigmahGradientRange && sigmahGradientRange < sigmaHGradientRange ){
-                //strike-slip gradient range
-                incrimentRange = (sigmaHGradientRange-sigmahGradientRange)/18;
-                initialRange = sigmahGradientRange;
-                finalRange = sigmaHGradientRange;
-            }
+            incrimentRange = (sigmaHGradientRange-sigmaVGradientRange)/incrimentAmount;
+            initialRange = sigmaVGradientRange;
+            finalRange = sigmaHGradientRange;
         }
+        else if (sigmaHGradientRange > sigmaVGradientRange && sigmaVGradientRange > sigmahGradientRange && sigmahGradientRange < sigmaHGradientRange ){
+            //strike-slip gradient range
+            incrimentRange = (sigmaHGradientRange-sigmahGradientRange)/incrimentAmount;
+            initialRange = sigmahGradientRange;
+            finalRange = sigmaHGradientRange;
+        }
+
+
+
+
 
 
         for (double i = initialRange;i< finalRange;i += incrimentRange){
@@ -213,7 +184,14 @@ public class FailureRatioSolutions extends DrillingEquations {
             //Build the tensile failure ratio
             tensileFailureRatio = mudweightTotal/(criticalFailurePressure);
             //build the failure line
-            for(int j = 0; j <sigma1Int;j++){
+            double loopRange =-1;
+            if(gradientUM ==1){
+                loopRange = 1;
+            }
+            else{
+                loopRange =6894.76;
+            }
+            for(int j = 0; j <sigma1Int;j += loopRange){
 
                 FailurexValue = (double) j;
                 FailureyValue = coeffFriction*FailurexValue+cohesion;
@@ -222,7 +200,7 @@ public class FailureRatioSolutions extends DrillingEquations {
 
 
             // build the mohr circle
-            for (int j=sigma3Int;j<=sigma1Int;j++){
+            for (int j=sigma3Int;j<=sigma1Int;j += loopRange){
 
                 diameter = sigma1-sigma3;
                 radius = diameter/2;
@@ -242,7 +220,7 @@ public class FailureRatioSolutions extends DrillingEquations {
 
                 for(int j = 0; j <= Sigma3MohrLine.getItemCount()-1;j++){
 
-                    if(Sigma3MohrLine.getDataItem(j).getX().intValue() == 0){
+                    if(Sigma3MohrLine.getDataItem(j).getX().intValue() >= 0){
 
                         mohrxInitial = j;
                         break;
@@ -268,7 +246,7 @@ public class FailureRatioSolutions extends DrillingEquations {
 
 
             //failure criteria check between mohr and failure curve. failurexInitial is the element offset to start comparing the value analysis between the 2 curves
-            for (int j = 0;j<=Sigma3MohrLine.getItemCount()-mohrxInitial-2;j++){
+            for (int j = 0;j<=Sigma3MohrLine.getItemCount()-mohrxInitial-200;j++){
 
                 //fills the element in the first array
                 if (j == 0){

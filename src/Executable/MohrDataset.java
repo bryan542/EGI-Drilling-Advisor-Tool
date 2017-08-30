@@ -46,11 +46,17 @@ public class MohrDataset {
 
             loopRange = Sigma3int;
         }
-
+        double incrimentAmount = -1;
+        if(mw.isMetricUMBoolean()){
+            incrimentAmount = 6894;
+        }
+        else{
+            incrimentAmount = 1;
+        }
         //Finding the failure criterion line
         double failureStartDouble = -1*cohesionInitial/coeffFriction;
         int failureStartInt = (int) failureStartDouble;
-        for (int i = failureStartInt; i < Sigma1int; i++) {
+        for (int i = failureStartInt; i < Sigma1int; i += incrimentAmount) {
             FailurexValue = (double) i;
             FailureyValue = coeffFriction * FailurexValue + cohesionInitial;
             CohesionLine.add(FailurexValue, FailureyValue);
@@ -58,7 +64,7 @@ public class MohrDataset {
 
 
         final XYSeries Sigma3MohrLine = new XYSeries("σ3 Mohr Circle");
-        for (int i=Sigma3int;i<=Sigma1int;i++){
+        for (int i=Sigma3int;i<=Sigma1int;i += incrimentAmount){
 
             diameter = sigma1mohr-sigma3mohr;
             radius = diameter/2;
@@ -79,7 +85,7 @@ public class MohrDataset {
 
             for(int j = 0; j <= Sigma3MohrLine.getItemCount()-1;j++){
 
-                if(Sigma3MohrLine.getDataItem(j).getX().intValue() == 0){
+                if(Sigma3MohrLine.getDataItem(j).getX().intValue() >= 0){
 
                     mohrxInitial = j;
                     break;
@@ -104,7 +110,7 @@ public class MohrDataset {
         }
 
         //failure criteria check between mohr and failure curve. failurexInitial is the element offset to start comparing the value analysis between the 2 curves
-        for (int i = 0;i<=Sigma3MohrLine.getItemCount()-mohrxInitial-2;i++){
+        for (int i = 0;i<=Sigma3MohrLine.getItemCount()-mohrxInitial-200;i++){
 
             if(CohesionLine.getDataItem(failurexInitial+i).getY().doubleValue() < Sigma3MohrLine.getDataItem(i+mohrxInitial).getY().doubleValue()){
 

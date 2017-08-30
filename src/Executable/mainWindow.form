@@ -357,7 +357,7 @@
                                     </constraints>
                                     <properties>
                                       <font name="Candara"/>
-                                      <text value="Mud Weight ECD (ppg)"/>
+                                      <text value="Mud Weight (ppg)"/>
                                     </properties>
                                   </component>
                                   <component id="206d5" class="javax.swing.JLabel" binding="gammaLabel">

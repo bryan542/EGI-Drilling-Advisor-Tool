@@ -3,6 +3,8 @@ package Executable;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.math.BigDecimal;
+import java.math.MathContext;
 import java.net.URL;
 
 /**
@@ -28,6 +30,14 @@ public class SettingDialog extends JDialog{
     private double lengthChange;
     private double gradientChange;
 
+    double depthTextFieldChange = 0;
+    double mudTextFieldChange = 0;
+    double tensileTextFieldChange = 0;
+    double cohesionTextFieldChange = 0;
+    double sigmaVTextFieldChange = 0;
+    double sigmaMaxTextFieldChange = 0;
+    double sigmaMinTextFieldChange = 0;
+    double porePressureFieldChange = 0;
 
     public SettingDialog(mainWindow mw, JMenuItem exportPDF){
 
@@ -161,7 +171,7 @@ public class SettingDialog extends JDialog{
     //Apply unit changes
         applyChangesButton.addActionListener(new ActionListener() {
             String depth = "Depth ";
-            String mudweight = "Mud Weight ECD ";
+            String mudweight = "Mud Weight ";
             String cohesion = "Cohesion ";
             String tensileStrength = "Tensile Strength ";
             String porePressure = "Pore Pressure ";
@@ -185,6 +195,8 @@ public class SettingDialog extends JDialog{
                    mw.setProjectSettingButton("General");
 
                     if(oilFieldUnitsRadioButton.isSelected() && oilFieldUnitsRadioButton.isEnabled()){
+                        mw.setStandardUMBoolean(true);
+                        mw.setMetricUMBoolean(false);
                         densityChange = 1;
                         pressureChange =1;
                         lengthChange =1;
@@ -223,6 +235,8 @@ public class SettingDialog extends JDialog{
                         mw.setProjectCustomLengthType(length);
                     }
                     else if(SIUnitsRadioButton.isSelected() && SIUnitsRadioButton.isEnabled()){
+                        mw.setStandardUMBoolean(false);
+                        mw.setMetricUMBoolean(true);
 
                         densityChange = 8.3454;
                         pressureChange =0.145038;
@@ -373,8 +387,149 @@ public class SettingDialog extends JDialog{
                     }
                 }
 
-            mw.resetTool();
-            exportPDF.setEnabled(false); // sets the jmenuitem to disabled if we clear values
+               if(mw.isMetricUMBoolean() && mw.getMetricUMCount() == 0) {
+
+
+                   try {
+                       depthTextFieldChange = Double.parseDouble(mw.getDepthText().getText()) / lengthChange;
+                       BigDecimal bd = new BigDecimal(depthTextFieldChange);
+                       bd = bd.round(new MathContext(5));
+                       depthTextFieldChange = bd.doubleValue();
+                   } catch (Exception e1) {
+                   }
+                   try {
+                       mudTextFieldChange = Double.parseDouble(mw.getMudWeightText().getText()) / densityChange;
+                       BigDecimal bd = new BigDecimal(mudTextFieldChange);
+                       bd = bd.round(new MathContext(5));
+                       mudTextFieldChange = bd.doubleValue();
+                   } catch (Exception e1) {
+                   }
+                   try {
+                       tensileTextFieldChange = Double.parseDouble(mw.getTensileText().getText()) / pressureChange;
+                       BigDecimal bd = new BigDecimal(tensileTextFieldChange);
+                       bd = bd.round(new MathContext(5));
+                       tensileTextFieldChange = bd.doubleValue();
+                   } catch (Exception e1) {
+                   }
+                   try {
+                       cohesionTextFieldChange = Double.parseDouble(mw.getCohesionText().getText()) / pressureChange;
+                       BigDecimal bd = new BigDecimal(cohesionTextFieldChange);
+                       bd = bd.round(new MathContext(5));
+                       cohesionTextFieldChange = bd.doubleValue();
+                   } catch (Exception e1) {
+                   }
+                   try {
+                       sigmaVTextFieldChange = Double.parseDouble(mw.getSigmaVTextField().getText()) / gradientChange;
+                       BigDecimal bd = new BigDecimal(sigmaVTextFieldChange);
+                       bd = bd.round(new MathContext(5));
+                       sigmaVTextFieldChange = bd.doubleValue();
+                   } catch (Exception e1) {
+                   }
+                   try {
+                       sigmaMaxTextFieldChange = Double.parseDouble(mw.getSigmaMaxTextField().getText()) / gradientChange;
+                       BigDecimal bd = new BigDecimal(sigmaMaxTextFieldChange);
+                       bd = bd.round(new MathContext(5));
+                       sigmaMaxTextFieldChange = bd.doubleValue();
+                   } catch (Exception e1) {
+                   }
+                   try {
+                       sigmaMinTextFieldChange = Double.parseDouble(mw.getSigmaMinTextField().getText()) / gradientChange;
+                       BigDecimal bd = new BigDecimal(sigmaMinTextFieldChange);
+                       bd = bd.round(new MathContext(5));
+                       sigmaMinTextFieldChange = bd.doubleValue();
+                   } catch (Exception e1) {
+                   }
+                   try {
+                       porePressureFieldChange = Double.parseDouble(mw.getPorePressureTextField().getText()) / gradientChange;
+                       BigDecimal bd = new BigDecimal(porePressureFieldChange);
+                       bd = bd.round(new MathContext(5));
+                       porePressureFieldChange = bd.doubleValue();
+                   } catch (Exception e1) {
+                   }
+                   mw.getDepthText().setText(Double.toString(depthTextFieldChange));
+                   mw.getMudWeightText().setText(Double.toString(mudTextFieldChange));
+                   mw.getTensileText().setText(Double.toString(tensileTextFieldChange));
+                   mw.getCohesionText().setText(Double.toString(cohesionTextFieldChange));
+                   mw.getSigmaVTextField().setText(Double.toString(sigmaVTextFieldChange));
+                   mw.getSigmaMaxTextField().setText(Double.toString(sigmaMaxTextFieldChange));
+                   mw.getSigmaMinTextField().setText(Double.toString(sigmaMinTextFieldChange));
+                   mw.getPorePressureTextField().setText(Double.toString(porePressureFieldChange));
+
+                   mw.setMetricUMCount(1);
+                   mw.setStandardUMCount(0);
+               }
+               else if (mw.isStandardUMBoolean() && mw.getStandardUMCount() == 0){
+
+                   try {
+                       depthTextFieldChange = Double.parseDouble(mw.getDepthText().getText()) * 3.28084;
+                       BigDecimal bd = new BigDecimal(depthTextFieldChange);
+                       bd = bd.round(new MathContext(5));
+                       depthTextFieldChange = bd.doubleValue();
+                   } catch (Exception e1) {
+                   }
+                   try {
+                       mudTextFieldChange = Double.parseDouble(mw.getMudWeightText().getText()) * 8.3454;
+                       BigDecimal bd = new BigDecimal(mudTextFieldChange);
+                       bd = bd.round(new MathContext(5));
+                       mudTextFieldChange = bd.doubleValue();
+                   } catch (Exception e1) {
+                   }
+                   try {
+                       tensileTextFieldChange = Double.parseDouble(mw.getTensileText().getText()) * .145038;
+                       BigDecimal bd = new BigDecimal(tensileTextFieldChange);
+                       bd = bd.round(new MathContext(5));
+                       tensileTextFieldChange = bd.doubleValue();
+                   } catch (Exception e1) {
+                   }
+                   try {
+                       cohesionTextFieldChange = Double.parseDouble(mw.getCohesionText().getText()) * .145038;
+                       BigDecimal bd = new BigDecimal(cohesionTextFieldChange);
+                       bd = bd.round(new MathContext(5));
+                       cohesionTextFieldChange = bd.doubleValue();
+                   } catch (Exception e1) {
+                   }
+                   try {
+                       sigmaVTextFieldChange = Double.parseDouble(mw.getSigmaVTextField().getText()) * 4.4208e-5;
+                       BigDecimal bd = new BigDecimal(sigmaVTextFieldChange);
+                       bd = bd.round(new MathContext(5));
+                       sigmaVTextFieldChange = bd.doubleValue();
+                   } catch (Exception e1) {
+                   }
+                   try {
+                       sigmaMaxTextFieldChange = Double.parseDouble(mw.getSigmaMaxTextField().getText()) * 4.4208e-5;
+                       BigDecimal bd = new BigDecimal(sigmaMaxTextFieldChange);
+                       bd = bd.round(new MathContext(5));
+                       sigmaMaxTextFieldChange = bd.doubleValue();
+                   } catch (Exception e1) {
+                   }
+                   try {
+                       sigmaMinTextFieldChange = Double.parseDouble(mw.getSigmaMinTextField().getText()) * 4.4208e-5;
+                       BigDecimal bd = new BigDecimal(sigmaMinTextFieldChange);
+                       bd = bd.round(new MathContext(5));
+                       sigmaMinTextFieldChange = bd.doubleValue();
+                   } catch (Exception e1) {
+                   }
+                   try {
+                       porePressureFieldChange = Double.parseDouble(mw.getPorePressureTextField().getText()) * 4.4208e-5;
+                       BigDecimal bd = new BigDecimal(porePressureFieldChange);
+                       bd = bd.round(new MathContext(5));
+                       porePressureFieldChange = bd.doubleValue();
+                   } catch (Exception e1) {
+                   }
+                   mw.getDepthText().setText(Double.toString(depthTextFieldChange));
+                   mw.getMudWeightText().setText(Double.toString(mudTextFieldChange));
+                   mw.getTensileText().setText(Double.toString(tensileTextFieldChange));
+                   mw.getCohesionText().setText(Double.toString(cohesionTextFieldChange));
+                   mw.getSigmaVTextField().setText(Double.toString(sigmaVTextFieldChange));
+                   mw.getSigmaMaxTextField().setText(Double.toString(sigmaMaxTextFieldChange));
+                   mw.getSigmaMinTextField().setText(Double.toString(sigmaMinTextFieldChange));
+                   mw.getPorePressureTextField().setText(Double.toString(porePressureFieldChange));
+
+                   mw.setMetricUMCount(0);
+                   mw.setStandardUMCount(1);
+
+               }
+                exportPDF.setEnabled(false); // sets the jmenuitem to disabled if we clear values
 
             }
 
