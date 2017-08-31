@@ -420,7 +420,7 @@ public class DrillingEquations {
     }
 
     //Calculate sigma3
-    public double sigma3(double sigmaR){
+    public static double sigma3(double sigmaR){
 
         double sigma3;
         sigma3 = sigmaR;

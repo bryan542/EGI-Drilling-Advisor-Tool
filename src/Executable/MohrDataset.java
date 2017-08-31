@@ -12,8 +12,15 @@ public class MohrDataset {
 
     public XYSeriesCollection mohrDatasetBuild(double sigma1,double sigma2, double sigma3,double cohesionInitial, double coeffFrictionInput, mainWindow mw){
 
+        double porePressureCombination = -1;
 
-        double porePressureCombination = mw.getPorePressureCombinationFinal()/1000;
+        if(mw.isMetricUMBoolean()){
+            porePressureCombination =  mw.getPorePressureCombinationFinal()/1000;
+        }
+        else{
+            porePressureCombination =  mw.getPorePressureCombinationFinal()/1;
+        }
+
         double[] stressesMaxMinEffective = {sigma1-porePressureCombination,sigma2-porePressureCombination,sigma3-porePressureCombination};
         Arrays.sort(stressesMaxMinEffective);
 
@@ -71,7 +78,9 @@ public class MohrDataset {
             radius = diameter/2;
             midpoint = radius+sigma3mohr;
             MohrxValue = (double) i;
+
             MohryValue = Math.sqrt(Math.pow(radius,2)-Math.pow(MohrxValue-midpoint,2));
+
             if (Double.isNaN(MohryValue)){
                 MohryValue = 0;
             }

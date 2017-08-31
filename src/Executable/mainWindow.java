@@ -1702,16 +1702,16 @@ public class mainWindow extends JFrame {
 
                             formationPressureCollection = formationDataset.formationPressureDataset(SigmaVR/1000,SigmahR/1000,porePressureCombination/1000,depth, mudWeightGradientValue/1000,criticalCollapsePressure/1000,criticalFracturePressure/1000);
                             polygonCollection = polyDataset.stressPolygonDataset(this.SigmaVR/1000,SigmaHGradient/1000,this.SigmahGradient/1000,this.porePressureGradient/1000,depth,getCoeffFriction());
-                            multivariateShearDataset = multiSolutions.principalStresses(SigmaVGradient/1000,SigmahGradient/1000,SigmaHGradient/1000,depth, mudWeightGradientValue/1000,Alpha,gamma,poissons,porePressureGradient/1000,GSI,lithology,rockDamage,SigmaVGradient/1000, "Shear Failure Ratio");
-                            multivariateTensileDataset = multiSolutions.principalStresses(SigmaVGradient/1000,SigmahGradient/1000,SigmaHGradient/1000,depth, mudWeightGradientValue/1000,Alpha,gamma,poissons,porePressureGradient/1000,GSI,lithology,rockDamage,SigmaVGradient/1000, "Tensile Failure Ratio");
+                            multivariateShearDataset = multiSolutions.principalStresses(SigmaVGradient/1000,SigmahGradient/1000,SigmaHGradient/1000,depth, mudWeightGradientValue/1000,Alpha,gamma,poissons,porePressureGradient/1000,GSI,lithology,rockDamage, "Shear Failure Ratio");
+                            multivariateTensileDataset = multiSolutions.principalStresses(SigmaVGradient/1000,SigmahGradient/1000,SigmaHGradient/1000,depth, mudWeightGradientValue/1000,Alpha,gamma,poissons,porePressureGradient/1000,GSI,lithology,rockDamage, "Tensile Failure Ratio");
                             mohrCollection = mohrDataset.mohrDatasetBuild(principalSortedStresses[2]/1000,principalSortedStresses[1]/1000,principalSortedStresses[0]/1000,cohesionInitial/1000,getCoeffFriction(),mainWindow.this);
                         }
                         else{
 
                             formationPressureCollection = formationDataset.formationPressureDataset(SigmaVR,SigmahR,porePressureCombination,depth, mudWeightGradientValue,criticalCollapsePressure,criticalFracturePressure);
                             polygonCollection = polyDataset.stressPolygonDataset(this.SigmaVR,SigmaHGradient,this.SigmahGradient,this.porePressureGradient,depth,getCoeffFriction());
-                            multivariateShearDataset = multiSolutions.principalStresses(SigmaVGradient,SigmahGradient,SigmaHGradient,depth, mudWeightGradientValue,Alpha,gamma,poissons,porePressureGradient,GSI,lithology,rockDamage,SigmaVGradient, "Shear Failure Ratio");
-                            multivariateTensileDataset = multiSolutions.principalStresses(SigmaVGradient,SigmahGradient,SigmaHGradient,depth, mudWeightGradientValue,Alpha,gamma,poissons,porePressureGradient,GSI,lithology,rockDamage,SigmaVGradient, "Tensile Failure Ratio");
+                            multivariateShearDataset = multiSolutions.principalStresses(SigmaVGradient,SigmahGradient,SigmaHGradient,depth, mudWeightGradientValue,Alpha,gamma,poissons,porePressureGradient,GSI,lithology,rockDamage, "Shear Failure Ratio");
+                            multivariateTensileDataset = multiSolutions.principalStresses(SigmaVGradient,SigmahGradient,SigmaHGradient,depth, mudWeightGradientValue,Alpha,gamma,poissons,porePressureGradient,GSI,lithology,rockDamage, "Tensile Failure Ratio");
                             mohrCollection = mohrDataset.mohrDatasetBuild(principalSortedStresses[2],principalSortedStresses[1],principalSortedStresses[0],cohesionInitial,getCoeffFriction(),mainWindow.this);
                         }
 
@@ -1748,8 +1748,8 @@ public class mainWindow extends JFrame {
 
                             formationPressureCollection = formationDataset.formationPressureDataset(SigmaVR/1000,SigmahR/1000,porePressureCombination/1000,depth, mudWeightGradientValue/1000,criticalCollapsePressure/1000,criticalFracturePressure/1000);
                             polygonCollection = polyDataset.stressPolygonDataset(this.SigmaVR/1000,SigmaHGradient/1000,this.SigmahGradient/1000,this.porePressureGradient/1000,depth,getCoeffFriction());
-                            multivariateShearDataset = multiSolutions.principalStresses(SigmaVGradient/1000,SigmahGradient/1000,SigmaHGradient/1000,depth, mudWeightGradientValue/1000,Alpha,gamma,poissons,porePressureGradient/1000,GSI,lithology,rockDamage,SigmaVGradient/1000, "Shear Failure Ratio");
-                            multivariateTensileDataset = multiSolutions.principalStresses(SigmaVGradient/1000,SigmahGradient/1000,SigmaHGradient/1000,depth, mudWeightGradientValue/1000,Alpha,gamma,poissons,porePressureGradient/1000,GSI,lithology,rockDamage,SigmaVGradient/1000, "Tensile Failure Ratio");
+                            multivariateShearDataset = multiSolutions.principalStresses(SigmaVGradient/1000,SigmahGradient/1000,SigmaHGradient/1000,depth, mudWeightGradientValue/1000,Alpha,gamma,poissons,porePressureGradient/1000,GSI,lithology,rockDamage, "Shear Failure Ratio");
+                            multivariateTensileDataset = multiSolutions.principalStresses(SigmaVGradient/1000,SigmahGradient/1000,SigmaHGradient/1000,depth, mudWeightGradientValue/1000,Alpha,gamma,poissons,porePressureGradient/1000,GSI,lithology,rockDamage, "Tensile Failure Ratio");
                             mohrCollection = mohrDataset.mohrDatasetBuild(principalSortedStresses[2]/1000,principalSortedStresses[1]/1000,principalSortedStresses[0]/1000,cohesionInitial/1000,getCoeffFriction(),mainWindow.this);
 
                         }
@@ -1757,8 +1757,8 @@ public class mainWindow extends JFrame {
 
                             formationPressureCollection = formationDataset.formationPressureDataset(SigmaVR,SigmahR,porePressureCombination,depth, mudWeightGradientValue,criticalCollapsePressure,criticalFracturePressure);
                             polygonCollection = polyDataset.stressPolygonDataset(this.SigmaVR,SigmaHGradient,this.SigmahGradient,this.porePressureGradient,depth,getCoeffFriction());
-                            multivariateShearDataset = multiSolutions.principalStresses(SigmaVGradient,SigmahGradient,SigmaHGradient,depth, mudWeightGradientValue,Alpha,gamma,poissons,porePressureGradient,GSI,lithology,rockDamage,SigmaVGradient, "Shear Failure Ratio");
-                            multivariateTensileDataset = multiSolutions.principalStresses(SigmaVGradient,SigmahGradient,SigmaHGradient,depth, mudWeightGradientValue,Alpha,gamma,poissons,porePressureGradient,GSI,lithology,rockDamage,SigmaVGradient, "Tensile Failure Ratio");
+                            multivariateShearDataset = multiSolutions.principalStresses(SigmaVGradient,SigmahGradient,SigmaHGradient,depth, mudWeightGradientValue,Alpha,gamma,poissons,porePressureGradient,GSI,lithology,rockDamage, "Shear Failure Ratio");
+                            multivariateTensileDataset = multiSolutions.principalStresses(SigmaVGradient,SigmahGradient,SigmaHGradient,depth, mudWeightGradientValue,Alpha,gamma,poissons,porePressureGradient,GSI,lithology,rockDamage, "Tensile Failure Ratio");
                             mohrCollection = mohrDataset.mohrDatasetBuild(principalSortedStresses[2],principalSortedStresses[1],principalSortedStresses[0],cohesionInitial,getCoeffFriction(),mainWindow.this);
 
                         }
