@@ -264,9 +264,10 @@ public class FinalHydraulicReportDialog extends JDialog {
 
         setContentPane(contentPane);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setTitle("Hydraulic Fracture Report");
         pack();
         setLocationRelativeTo(null);
         setVisible(true);
-        setTitle("Hydraulic Fracture Report");
+
     }
 }

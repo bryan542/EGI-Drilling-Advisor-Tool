@@ -870,9 +870,9 @@ public class HydraulicFractureAnalysisDialog extends JDialog {
 
         // call onCancel() on ESCAPE
         contentPane.registerKeyboardAction(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onCancel();
-            }
+                                                   public void actionPerformed(ActionEvent e) {
+                                                       onCancel();
+                                                   }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
 
     }
@@ -1137,10 +1137,11 @@ public class HydraulicFractureAnalysisDialog extends JDialog {
 
         setContentPane(contentPane);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setTitle("Hydraulic Fracture Analysis");
         pack();
         setLocationRelativeTo(null);
         setVisible(true);
-        setTitle("Hydraulic Fracture Analysis");
+
 
 
     }

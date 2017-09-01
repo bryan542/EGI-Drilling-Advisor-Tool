@@ -21,6 +21,17 @@ public class GSIDialog extends JDialog {
 
     }
 
+    public void initialize(){
+
+        setModal(true);
+        setContentPane(contentPane);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setTitle("GSI Table");
+        pack();
+        setLocationRelativeTo(null);
+        setVisible(true);
+
+    }
     public JPanel getContentPane(){
 
         return contentPane;

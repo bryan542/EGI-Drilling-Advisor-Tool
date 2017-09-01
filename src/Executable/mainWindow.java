@@ -2022,41 +2022,50 @@ public class mainWindow extends JFrame {
 
 
 
-        GSIDialog GD = new GSIDialog();
+
 
         GSITableButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                GD.setContentPane(GD.getContentPane());
-                GD.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-                GD.pack();
-                GD.setLocationRelativeTo(GSILocationSetter);
-                GD.setVisible(true);
-                GD.setTitle("GSI Selection Table");
+                GSIDialog GD = new GSIDialog();
+
+                ActionListener GSIClose=new ActionListener(){
+                    public void actionPerformed(ActionEvent ae)
+                    {
+                        GD.dispose();
+                    }
+                };
+
+
+                GD.getRootPane().registerKeyboardAction(GSIClose,KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE,0),JComponent.WHEN_IN_FOCUSED_WINDOW);
+                GD.initialize();
             }
         });
 
-        /*
-        GSITableButton.addMouseListener(new java.awt.event.MouseAdapter(){
 
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
 
-                GD.setContentPane(GD.contentPane);
-                GD.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-                GD.pack();
-                GD.setLocationRelativeTo(GSILocationSetter);
-                GD.setVisible(true);
-                GD.setTitle("GSI Selection Table");
-
-            }
+        rockDamageButton.addActionListener(new ActionListener() {
             @Override
-            public void mouseClicked(MouseEvent e) {
+            public void actionPerformed(ActionEvent e) {
+                RockDamageDialog RD = new RockDamageDialog();
 
-                GD.dispose();
+                ActionListener rockClose=new ActionListener(){
+                    public void actionPerformed(ActionEvent ae)
+                    {
+                        RD.dispose();
+                    }
+                };
+
+                RD.getRootPane().registerKeyboardAction(rockClose,KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE,0),JComponent.WHEN_IN_FOCUSED_WINDOW);
+                RD.initialize();
+
+
+
+
+
             }
         });
-        */
 
         clearButton.addActionListener(new ActionListener() {
             @Override
@@ -2112,20 +2121,6 @@ public class mainWindow extends JFrame {
                 QGD.initialize(cp);
 
 
-            }
-        });
-        RockDamageDialog RD = new RockDamageDialog();
-        rockDamageButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-
-                RD.setContentPane(RD.getContentPane());
-                RD.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-                RD.pack();
-                RD.setLocationRelativeTo(GSILocationSetter);
-                RD.setVisible(true);
-                RD.setTitle("Rock Damage Selection Table");
             }
         });
 

@@ -3,6 +3,7 @@ package Executable;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.net.URL;
@@ -34,6 +35,13 @@ public class SettingDialog extends JDialog{
     double porePressureFieldChange = 0;
 
     public SettingDialog(mainWindow mw, JMenuItem exportPDF){
+
+        // call onCancel() on ESCAPE
+        projectPanel.registerKeyboardAction(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
 
         boolean generalCustom;
         boolean oilfieldSI;

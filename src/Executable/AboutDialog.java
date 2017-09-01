@@ -20,6 +20,13 @@ public class AboutDialog extends JDialog {
 
     public AboutDialog(String versionNumber) {
 
+        // call onCancel() on ESCAPE
+        contentPane.registerKeyboardAction(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+
         setResizable(false); // removes the default java imageicon
 
         //Set Image Icon
