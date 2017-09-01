@@ -95,6 +95,8 @@ public class DropdownMenu  {
             public void actionPerformed(ActionEvent e) {
 
                 AboutDialog ad = new AboutDialog(mw.getVersionNumber());
+                ad.setModal(true);
+
                 ad.initialize();
 
             }
@@ -106,6 +108,7 @@ public class DropdownMenu  {
             public void actionPerformed(ActionEvent e) {
 
                 HydraulicFractureAnalysisDialog HFA = new HydraulicFractureAnalysisDialog();
+                HFA.setModal(true);
                 HFA.initialize();
             }
         });
@@ -192,6 +195,7 @@ public class DropdownMenu  {
             public void actionPerformed(ActionEvent e) {
 
                 SettingDialog sf = new SettingDialog(mw,exportPDF );
+                sf.setModal(true);
                 sf.initialize();
 
             }

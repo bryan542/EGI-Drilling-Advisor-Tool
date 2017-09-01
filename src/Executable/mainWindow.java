@@ -2078,6 +2078,7 @@ public class mainWindow extends JFrame {
                 cp.setPreferredSize(new Dimension(760, 760) );
 
                 QuickGraphDialog QGD = new QuickGraphDialog();
+                QGD.setModal(true);
                 QGD.initialize(cp);
 
 
@@ -2092,6 +2093,7 @@ public class mainWindow extends JFrame {
                 cp.setPreferredSize(new Dimension(760, 760) );
 
                 QuickGraphDialog QGD = new QuickGraphDialog();
+                QGD.setModal(true);
                 QGD.initialize(cp);
 
 
@@ -2106,6 +2108,7 @@ public class mainWindow extends JFrame {
                 cp.setPreferredSize(new Dimension(760, 760));
 
                 QuickGraphDialog QGD = new QuickGraphDialog();
+                QGD.setModal(true);
                 QGD.initialize(cp);
 
 

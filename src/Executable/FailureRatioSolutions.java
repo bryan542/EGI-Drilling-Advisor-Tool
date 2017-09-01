@@ -70,7 +70,7 @@ public class FailureRatioSolutions extends DrillingEquations {
         // sets the amount of bars on the ratio graph. reduce or increase incrimentAmount variable to change the amount reported on the graph
 
         incrimentRange = (sigmaVGradientRange-sigmahGradientRange)/incrimentAmount;
-        initialRange = sigmahGradientRange+sigmahGradientRange*.02;
+        initialRange = sigmahGradientRange+sigmahGradientRange*.1;
         finalRange = sigmaVGradientRange;
 
         // sets a proper range if strike-slip or reverse fault behavior gradients are input

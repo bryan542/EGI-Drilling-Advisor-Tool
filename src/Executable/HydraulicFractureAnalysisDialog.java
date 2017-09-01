@@ -848,7 +848,8 @@ public class HydraulicFractureAnalysisDialog extends JDialog {
             public void actionPerformed(ActionEvent e) {
                 double[] averagesArray = finalHydraulicFractureSumAverages(totalJTextFieldCollections); //sums and averages all the tabbed values
                 String[] summationNames = populateReportTextField(averagesArray); // takes the sums and finds the highest value
-                FinalHydraulicReportDialog FHRD = new FinalHydraulicReportDialog(summationNames); // Passes the named value into the class to settext the jtextfields
+                FinalHydraulicReportDialog FHRD = new FinalHydraulicReportDialog(summationNames);
+                FHRD.setModal(true);// Passes the named value into the class to settext the jtextfields
                 FHRD.initialize(); //builds the dialog window
             }
         });
