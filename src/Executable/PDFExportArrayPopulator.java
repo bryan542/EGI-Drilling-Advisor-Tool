@@ -7,7 +7,8 @@ public class PDFExportArrayPopulator {
     public PDFExportArrayPopulator(mainWindow mw, ArrayList<String> drillingInputsLabelArray,ArrayList<String> drillingInputsValueArray,
                                    ArrayList<String> rockInputsLabelArray,ArrayList<String> rockInputsValueArray,
                                    ArrayList<String> discontinuitiesInputsLabelArray,ArrayList<String> discontinuitiesInputsValueArray,
-                                   ArrayList<String> geomechanicalOutputsLabelArray,ArrayList<String> geomechanicalOutputsValueArray){
+                                   ArrayList<String> geomechanicalOutputsLabelArray,ArrayList<String> geomechanicalOutputsValueArray,
+                                   ArrayList<String> wellRatingOutputsLabelArray,ArrayList<String> wellRatingOutputsValueArray){
 
         //Grab all of the values to be put in the pdf report
 
@@ -141,5 +142,21 @@ public class PDFExportArrayPopulator {
         geomechanicalOutputsValueArray.add(mw.getPrincipal1TextFieldResult().getText());
         geomechanicalOutputsValueArray.add(mw.getPrincipal2TextFieldResult().getText());
         geomechanicalOutputsValueArray.add(mw.getPrincipal3TextFieldResult().getText());
+
+        //Geomechanical outputs Labels
+
+        wellRatingOutputsLabelArray.add(mw.getInstabilityRatingLabel().getText());
+        wellRatingOutputsLabelArray.add(mw.getLostCirculationRatingLabel().getText());
+        wellRatingOutputsLabelArray.add(mw.getWellControlRatingLabel().getText());
+        wellRatingOutputsLabelArray.add(mw.getLongTermIntegrityRatingLabel().getText());
+        wellRatingOutputsLabelArray.add(mw.getROPRatingLabel().getText());
+
+        //Geomechanical outputs Values
+
+        wellRatingOutputsValueArray.add(mw.getInstabilityRatingValue().getText());
+        wellRatingOutputsValueArray.add(mw.getLostCirculationRatingValue().getText());
+        wellRatingOutputsValueArray.add(mw.getWellControlRatingValue().getText());
+        wellRatingOutputsValueArray.add(mw.getLongTermIntegrityRatingValue().getText());
+        wellRatingOutputsValueArray.add(mw.getROPRatingValue().getText());
     }
 }

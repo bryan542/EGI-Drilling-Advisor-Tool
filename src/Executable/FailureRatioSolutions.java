@@ -66,11 +66,11 @@ public class FailureRatioSolutions extends DrillingEquations {
         double sigmaHGradientRange = sigmaHGradientInitial/depth;
         double initialRange = -1;
         double finalRange = -1;
-        double incrimentAmount = 14;
+        double incrimentAmount = 10;
         // sets the amount of bars on the ratio graph. reduce or increase incrimentAmount variable to change the amount reported on the graph
 
         incrimentRange = (sigmaVGradientRange-sigmahGradientRange)/incrimentAmount;
-        initialRange = sigmahGradientRange+sigmahGradientRange*.1;
+        initialRange = sigmahGradientRange;
         finalRange = sigmaVGradientRange;
 
         // sets a proper range if strike-slip or reverse fault behavior gradients are input
@@ -243,6 +243,7 @@ public class FailureRatioSolutions extends DrillingEquations {
                 mohrxInitial = 0;
             }
 
+
             //failure criteria check between mohr and failure curve. failurexInitial is the element offset to start comparing the value analysis between the 2 curves
             for (int j = 0;j<=Sigma3MohrLine.getItemCount()-mohrxInitial-2;j++){
 
@@ -261,6 +262,10 @@ public class FailureRatioSolutions extends DrillingEquations {
                 }
             }
 
+            //sets the failure ratio within a reasonable bounds on the bar graph. A value of 10 means an extreme failure condition
+            if(shearFailureRatio > 10){
+                shearFailureRatio = 10;
+            }
             // Clear the data series at the end of a loop of iteration i
             cohesionLine.clear();
             Sigma3MohrLine.clear();

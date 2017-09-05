@@ -3,6 +3,7 @@ package Executable;
 
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.SimpleAttributeSet;
@@ -98,10 +99,11 @@ public class mainWindow extends JFrame {
     private JLabel WellControlRating;
     private JLabel LongTermIntegrityRating;
     private JLabel ROPRating;
-    private JLabel InstableConditionResult;
-    private JLabel LostCirculationConditionResult;
-    private JLabel LongTermIntegrityConditionResult;
-    private JLabel ROPConditionResult;
+    private JLabel instabilityRatingValue;
+    private JLabel lostCirculationRatingValue;
+    private JLabel wellControlRatingValue;
+    private JLabel longTermIntegrityRatingValue;
+    private JLabel ROPRatingValue;
     private JLabel WellControlConditionResult;
     private JLabel BetaImageLabel;
     private JLabel depthLabel;
@@ -145,6 +147,12 @@ public class mainWindow extends JFrame {
     private JLabel permeabilityLabel;
     private JLabel tensileFailureOutputLabel;
     private JLabel shearFailureOutputLabel;
+    private JLabel instabilityRatingLabel;
+    private JLabel lostCirculationRatingLabel;
+    private JLabel wellControlRatingLabel;
+
+    private JLabel longTermIntegrityRatingLabel;
+    private JLabel ROPRatingLabel;
 
     private JTextPane ratingTextPane;
 
@@ -172,6 +180,10 @@ public class mainWindow extends JFrame {
 
 
     private JTextField criticalCollapsePressureTextField;
+    private JPanel calculateJPanel;
+    private JPanel rockPropertyJPanel;
+    private JPanel drillingStabilityJPanel;
+
 
     private static String projectSettingButton = "General";
     private static String projectSettingType = "Oil Field Units";
@@ -206,6 +218,46 @@ public class mainWindow extends JFrame {
     }
 
     //getters
+
+    public JLabel getInstabilityRatingValue() {
+        return instabilityRatingValue;
+    }
+
+    public JLabel getLostCirculationRatingValue() {
+        return lostCirculationRatingValue;
+    }
+
+    public JLabel getWellControlRatingValue() {
+        return wellControlRatingValue;
+    }
+
+    public JLabel getLongTermIntegrityRatingValue() {
+        return longTermIntegrityRatingValue;
+    }
+
+    public JLabel getROPRatingValue() {
+        return ROPRatingValue;
+    }
+
+    public JLabel getInstabilityRatingLabel() {
+        return instabilityRatingLabel;
+    }
+
+    public JLabel getLostCirculationRatingLabel() {
+        return lostCirculationRatingLabel;
+    }
+
+    public JLabel getWellControlRatingLabel() {
+        return wellControlRatingLabel;
+    }
+
+    public JLabel getLongTermIntegrityRatingLabel() {
+        return longTermIntegrityRatingLabel;
+    }
+
+    public JLabel getROPRatingLabel() {
+        return ROPRatingLabel;
+    }
 
     public static String getPreviousUOMSetting() {
         return previousUOMSetting;
@@ -851,23 +903,23 @@ public class mainWindow extends JFrame {
     }
 
     public void setInstableConditionResultText(String stringChange) {
-        InstableConditionResult.setText(stringChange);
+        instabilityRatingValue.setText(stringChange);
     }
 
     public void setLostCirculationConditionResultText(String stringChange) {
-        LostCirculationConditionResult.setText(stringChange);
+        lostCirculationRatingValue.setText(stringChange);
     }
 
     public void setLongTermIntegrityConditionResultText(String stringChange) {
-        LongTermIntegrityConditionResult.setText(stringChange);
+        longTermIntegrityRatingValue.setText(stringChange);
     }
 
     public void setROPConditionResultText(String stringChange) {
-        this.ROPConditionResult.setText(stringChange);
+        ROPRatingValue.setText(stringChange);
     }
 
     public void setWellControlConditionResultText(String stringChange) {
-        WellControlConditionResult.setText(stringChange);
+        wellControlRatingValue.setText(stringChange);
     }
 
     public double getDensityUM() {
@@ -1004,6 +1056,8 @@ public class mainWindow extends JFrame {
     ArrayList<String> discontinuitiesInputsValueArray = new ArrayList<>();
     ArrayList<String> geomechanicalOutputsLabelArray = new ArrayList<>();
     ArrayList<String> geomechanicalOutputsValueArray = new ArrayList<>();
+    ArrayList<String> wellRatingOutputsLabelArray = new ArrayList<>();
+    ArrayList<String> wellRatingOutputsValueArray = new ArrayList<>();
 
     ArrayList<ArrayList> arrayLabelHolder = new ArrayList();
     ArrayList<ArrayList> arrayValueHolder = new ArrayList();
@@ -1105,9 +1159,16 @@ public class mainWindow extends JFrame {
 
 
         ratingTextPane.setText("");
+
+
+
+
     }
 
     public mainWindow() {
+
+
+
 
         getDepthText().setText("10000");
         getMudWeightText().setText("15");
@@ -1144,6 +1205,9 @@ public class mainWindow extends JFrame {
         DropdownMenu menu = new DropdownMenu();
         menu.buildMenuBar(mainWindow.this);
 
+        //Selects the all of the input textfields when a mouse is clicked on it. Allows for easier editing
+        TextFieldSelectAllListeners seleJTextctAll= new TextFieldSelectAllListeners(mainWindow.this);
+
         //ratingTextPane UI settings in drilling input tab
         ratingTextPane.setBorder(new LineBorder(Color.black,1));
         Font font = new Font("Candara", Font.PLAIN,12);     //set font
@@ -1153,6 +1217,11 @@ public class mainWindow extends JFrame {
         //Generate dropdown lists.
         ComboBoxListPopulator listComboLists = new ComboBoxListPopulator(mainWindow.this);
 
+        //gives the input JPanels black borders
+        calculateJPanel.setBorder( BorderFactory.createLineBorder(Color.black,1));
+        rockPropertyJPanel.setBorder( BorderFactory.createLineBorder(Color.black,1));
+        secondInputsPanel.setBorder( BorderFactory.createLineBorder(Color.black,1));
+        drillingStabilityJPanel.setBorder( BorderFactory.createLineBorder(Color.black,1));
 
         //disables jbuttons until calculated occurs
         tabbedPane1.setEnabledAt(1,false);
@@ -1297,6 +1366,9 @@ public class mainWindow extends JFrame {
 
 
         calculateButton.addActionListener(new ActionListener() {
+
+
+
             private boolean checkResult;
             private double mudWeightGradientValue;
             private double phi;
@@ -1387,6 +1459,8 @@ public class mainWindow extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
+
+
 
                 depth = Double.parseDouble(depthText.getText());
                 gamma = Double.parseDouble(gammaText.getText());
@@ -1956,7 +2030,8 @@ public class mainWindow extends JFrame {
                             //Grab all of the values to be put in the pdf report
                             PDFExportArrayPopulator pdfeap = new PDFExportArrayPopulator(mainWindow.this,drillingInputsLabelArray,drillingInputsValueArray,
                                     rockInputsLabelArray,rockInputsValueArray,discontinuitiesInputsLabelArray,discontinuitiesInputsValueArray,
-                                    geomechanicalOutputsLabelArray,geomechanicalOutputsValueArray);
+                                    geomechanicalOutputsLabelArray,geomechanicalOutputsValueArray,
+                                    wellRatingOutputsLabelArray,wellRatingOutputsValueArray);
                             buttonCount = false;
                         }
                         else{
@@ -1970,13 +2045,16 @@ public class mainWindow extends JFrame {
                             discontinuitiesInputsValueArray.clear();
                             geomechanicalOutputsLabelArray.clear();
                             geomechanicalOutputsValueArray.clear();
+                            wellRatingOutputsLabelArray.clear();
+                            wellRatingOutputsValueArray.clear();
                             arrayLabelHolder.clear();
                             arrayValueHolder.clear();
 
                             //Grab all of the values to be put in the pdf report
                             PDFExportArrayPopulator pdfeap = new PDFExportArrayPopulator(mainWindow.this,drillingInputsLabelArray,drillingInputsValueArray,
                                     rockInputsLabelArray,rockInputsValueArray,discontinuitiesInputsLabelArray,discontinuitiesInputsValueArray,
-                                    geomechanicalOutputsLabelArray,geomechanicalOutputsValueArray);
+                                    geomechanicalOutputsLabelArray,geomechanicalOutputsValueArray,
+                                    wellRatingOutputsLabelArray,wellRatingOutputsValueArray);
                         }
 
 
@@ -1987,12 +2065,14 @@ public class mainWindow extends JFrame {
                         arrayLabelHolder.add(rockInputsLabelArray);
                         arrayLabelHolder.add(discontinuitiesInputsLabelArray);
                         arrayLabelHolder.add(geomechanicalOutputsLabelArray);
+                        arrayLabelHolder.add(wellRatingOutputsLabelArray);
 
 
                         arrayValueHolder.add(drillingInputsValueArray);
                         arrayValueHolder.add(rockInputsValueArray);
                         arrayValueHolder.add(discontinuitiesInputsValueArray);
                         arrayValueHolder.add(geomechanicalOutputsValueArray);
+                        arrayValueHolder.add(wellRatingOutputsValueArray);
 
 
 
@@ -2202,4 +2282,7 @@ public class mainWindow extends JFrame {
     }
 
 
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
+    }
 }

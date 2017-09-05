@@ -35,7 +35,7 @@ public class DrillingRatingReportPDF {
 
     public PDFDocument generateDocumentReport(ArrayList<ArrayList> arrayLabelHolder, ArrayList<ArrayList> arrayValueHolder, ArrayList<BufferedImage> chartBufferedImageArray) {
         //Major subsection of the pdf document
-        String[] arrayTitles = {"drilling Stability Inputs","Rock Property Inputs","Discontinuity Inputs","Geomechanical Outputs"};
+        String[] arrayTitles = {"drilling Stability Inputs","Rock Property Inputs","Discontinuity Inputs","Geomechanical Outputs","Well Rating"};
 
         //Main document to add pages too
         PDFDocument pdfDoc = new PDFDocument();
@@ -80,7 +80,7 @@ public class DrillingRatingReportPDF {
 
 
         //Adds the plots
-        reportStringBuilder(pdfDoc,lastPageNumber,currentPageHeight,chartBufferedImageArray);
+        reportStringBuilder(pdfDoc,chartBufferedImageArray);
 
         //add the reocurring elements that you want on every page
         reocurringPageItemsSetter(pdfDoc,bufferedLogo,resizeWidthRatio,resizeHeightRatio,pageWidth,pageHeight,marginBot,marginTop,marginLeft,marginRight);
@@ -196,50 +196,29 @@ public class DrillingRatingReportPDF {
         return  heightinitial;
 
     }
-    public int reportStringBuilder(PDFDocument pdfDoc,int latestPageNumber,int currentPageHeight, ArrayList<BufferedImage> bufferedChartArrayList){
+    public void reportStringBuilder(PDFDocument pdfDoc, ArrayList<BufferedImage> bufferedChartArrayList){
 
-        //Text heights below the title
-        int heightinitial = currentPageHeight+30;
+
         PageFormat pf = new PageFormat();
-        double pageWidth = pf.getWidth()/2;
-        long startTime = System.nanoTime();
+        int pageHeightInt = 100;
         BufferedImage currentBufferedImage = null;
-
+        int latestPageNumber = -1;
         for (int i = 0;i<bufferedChartArrayList.size();i++){
 
-            //Page cutoff value while looping. This makes sure a new page is
-            // generated if we start appending near the end
-            if(heightinitial > 600){
 
-                PDFPage page2 = pdfDoc.createPage(null);
-                pdfDoc.addPage(page2);
-                setLastPageNumber(pdfDoc.getPageCount()-1);
-                latestPageNumber = getLastPageNumber();
-                currentPageHeight = 85;
-                heightinitial = currentPageHeight+30;
-            }
+            PDFPage page2 = pdfDoc.createPage(null);
+            pdfDoc.addPage(page2);
+            setLastPageNumber(pdfDoc.getPageCount()-1);
+            latestPageNumber = getLastPageNumber();
 
            currentBufferedImage = bufferedChartArrayList.get(i);
 
-
             Graphics chartGraphics = pdfDoc.getPage(latestPageNumber).createGraphics();
 
-
-
-            chartGraphics.drawImage(currentBufferedImage,50,heightinitial,500,500,null);
+            chartGraphics.drawImage(currentBufferedImage,50,pageHeightInt,500,500,null);
             chartGraphics.dispose();
 
-            heightinitial = heightinitial+575;
-
-
-
-
         }
-        long endTime = System.nanoTime();
-        double duration = (double) (endTime-startTime)/1e6;
-        System.out.println("Mili Seconds: " +duration);
-        return  heightinitial;
-
     }
     public int pageLengthChecker(int pageHeightChecked, PDFDocument pdfDoc ){
 
