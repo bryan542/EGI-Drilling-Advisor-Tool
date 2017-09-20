@@ -7,27 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9399ab71-a3e5-41cd-80f0-b6fdb9b63e05" name="Default" comment="only 1 succesfully file path found used">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Executable/Task.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/CalculateProgressBar$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/CalculateProgressBar$3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/CalculateProgressBar$4.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/CalculateProgressBar$1.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/CalculateProgressBar$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/CalculateProgressBar.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/CalculateProgressBar.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$11.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$11.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$12$1.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$12$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$12.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$12.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$13.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$13.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$14.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$14.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$15.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$15.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$16.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$16.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$17.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$17.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow.class" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Executable/CalculateProgressBar.form" afterPath="$PROJECT_DIR$/src/Executable/CalculateProgressBar.form" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Executable/CalculateProgressBar.java" afterPath="$PROJECT_DIR$/src/Executable/CalculateProgressBar.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Executable/DrillingEquations.java" afterPath="$PROJECT_DIR$/src/Executable/DrillingEquations.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Executable/SaveLoadFileData.java" afterPath="$PROJECT_DIR$/src/Executable/SaveLoadFileData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Executable/StabilityConditions.java" afterPath="$PROJECT_DIR$/src/Executable/StabilityConditions.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Executable/mainWindow.java" afterPath="$PROJECT_DIR$/src/Executable/mainWindow.java" />
     </list>
     <ignored path="EGI Drilling Advisor Tool.iws" />
@@ -84,8 +64,8 @@
       <file leaf-file-name="DrillingEquations.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Executable/DrillingEquations.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="94">
-              <caret line="557" column="31" lean-forward="true" selection-start-line="557" selection-start-column="31" selection-end-line="557" selection-end-column="31" />
+            <state relative-caret-position="363">
+              <caret line="351" column="73" lean-forward="false" selection-start-line="351" selection-start-column="60" selection-end-line="351" selection-end-column="73" />
               <folding />
             </state>
           </provider>
@@ -94,8 +74,8 @@
       <file leaf-file-name="mainWindow.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Executable/mainWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="279">
-              <caret line="1907" column="91" lean-forward="true" selection-start-line="1907" selection-start-column="91" selection-end-line="1907" selection-end-column="91" />
+            <state relative-caret-position="205">
+              <caret line="1706" column="169" lean-forward="false" selection-start-line="1706" selection-start-column="169" selection-end-line="1706" selection-end-column="169" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#7806#7807#0" expanded="true" />
@@ -191,9 +171,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>shear</find>
-      <find>drilling</find>
-      <find>mohr</find>
       <find>stresspolygonbutton</find>
       <find>GSI</find>
       <find>escape</find>
@@ -221,6 +198,9 @@
       <find>first</find>
       <find>shearfail</find>
       <find>sheartype</find>
+      <find>90</find>
+      <find>critical</find>
+      <find>alpha1</find>
     </findStrings>
     <replaceStrings>
       <replace>valueModulusName</replace>
@@ -1233,7 +1213,7 @@
           </selected-grouping-rules>
         </breakpoints-dialog>
       </breakpoints-dialog>
-      <option name="time" value="978" />
+      <option name="time" value="981" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -1490,8 +1470,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Executable/mainWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="1907" column="91" lean-forward="true" selection-start-line="1907" selection-start-column="91" selection-end-line="1907" selection-end-column="91" />
+        <state relative-caret-position="205">
+          <caret line="1706" column="169" lean-forward="false" selection-start-line="1706" selection-start-column="169" selection-end-line="1706" selection-end-column="169" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#7806#7807#0" expanded="true" />
@@ -1506,8 +1486,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Executable/DrillingEquations.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="94">
-          <caret line="557" column="31" lean-forward="true" selection-start-line="557" selection-start-column="31" selection-end-line="557" selection-end-column="31" />
+        <state relative-caret-position="363">
+          <caret line="351" column="73" lean-forward="false" selection-start-line="351" selection-start-column="60" selection-end-line="351" selection-end-column="73" />
           <folding />
         </state>
       </provider>

@@ -340,19 +340,16 @@ public class DrillingEquations {
         return this.ThoRZ;
     }
     //critical borehole pressure test
-    public double criticalBoreholeFracturePressure(double sigmaX, double sigmaY, double porePressure, double tensileStrength ){
+    public double criticalBoreholeFracturePressure(double sigmaX, double sigmaY,double sigmaZ, double porePressure,double shearXY,double shearThetaZ, double tensileStrength ){
 
         double criticalBoreholeFracturePressure = -1;
 
+        double A = Math.toDegrees(2*shearXY/(sigmaX-sigmaY));
+        double fractureAngle = Math.tanh(2*shearXY/(sigmaX-sigmaY))/2;
 
-        if (sigmaX < sigmaY) {
-
-            criticalBoreholeFracturePressure = 3*sigmaX-sigmaY -tensileStrength;
-        }
-        else{
-
-            criticalBoreholeFracturePressure = 3*sigmaY-sigmaX -tensileStrength;
-        }
+        double B = -2*(sigmaX-sigmaY)*Math.cos(2*fractureAngle);
+        double C = -4*shearXY*Math.sin(2*fractureAngle)-Math.pow(shearThetaZ,2)/(sigmaZ-porePressure);
+        criticalBoreholeFracturePressure = sigmaX+sigmaY+B+C-porePressure-tensileStrength;
 
         return criticalBoreholeFracturePressure;
     }

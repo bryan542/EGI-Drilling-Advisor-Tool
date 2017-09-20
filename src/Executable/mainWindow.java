@@ -1173,7 +1173,7 @@ public class mainWindow extends JFrame {
         getDepthText().setText("10000");
         getMudWeightText().setText("15");
         getCohesionText().setText("500");
-        getGammaText().setText("90");
+        getGammaText().setText("0");
         getAlpha1Text().setText("90");
         getAlpha2Text().setText("0");
         getBeddingPlaneStrikeTextField().setText("50");
@@ -1704,7 +1704,7 @@ public class mainWindow extends JFrame {
                         setCoeffFriction(Equations.rockPropertyGSISolver(effectiveSortedStresses[2],effectiveSortedStresses[1],effectiveSortedStresses[0],GSI,lithology,rockDamage,(SigmaVGradient),"CoeffFriction"));
 
                         criticalCollapsePressure = Equations.criticalBoreholeCollapsePressure(sigmaX,sigmaY,coeffFriction,(porePressureGradient*depth),cohesionInitial);
-                        criticalFracturePressure = Equations.criticalBoreholeFracturePressure(sigmaX,sigmaY,(porePressureGradient*depth),tensileStrength);
+                        criticalFracturePressure = Equations.criticalBoreholeFracturePressure(sigmaX,sigmaY,sigmaZ,(porePressureGradient*depth),this.ThoXY,this.ThoThetaZ,tensileStrength);
 
                         //converts to kPa for easier plot reading
                         if(isMetricUMBoolean()){
@@ -1748,7 +1748,7 @@ public class mainWindow extends JFrame {
                         setCoeffFriction(Double.parseDouble(coeffFrictionText.getText()));
 
                         criticalCollapsePressure = Equations.criticalBoreholeCollapsePressure(sigmaX,sigmaY,coeffFriction,(porePressureGradient*depth),cohesionInitial);
-                        criticalFracturePressure = Equations.criticalBoreholeFracturePressure(sigmaX,sigmaY,(porePressureGradient*depth),tensileStrength);
+                        criticalFracturePressure = Equations.criticalBoreholeFracturePressure(sigmaX,sigmaY,sigmaZ,(porePressureGradient*depth),this.ThoXY,this.ThoThetaZ,tensileStrength);
                         criticalFracturePressureTextField.setText(Double.toString((int) (criticalFracturePressure/unitAmount)));
                         criticalCollapsePressureTextField.setText(Double.toString((int) (criticalCollapsePressure/unitAmount)));
 
