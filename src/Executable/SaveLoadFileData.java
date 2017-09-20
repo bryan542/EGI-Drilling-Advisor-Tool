@@ -467,7 +467,7 @@ public class SaveLoadFileData {
                 String cohesion = "";
 
                 mw.setDepthText(record.get("Depth ("+lengthUnit+")"));
-                mw.setMudWeightText(record.get("Mud Weight ECD ("+densityUnit+")"));
+                mw.setMudWeightText(record.get("Mud Weight ("+densityUnit+")"));
                 mw.setGammaText(record.get("Deviation Angle Gamma"));
                 mw.setAlpha1Text(record.get("Alpha 1"));
                 mw.setAlpha2Text(record.get("Alpha 2"));

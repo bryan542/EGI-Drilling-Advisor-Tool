@@ -1653,71 +1653,6 @@ public class mainWindow extends JFrame {
 
                     }
 
-
-                    System.out.println("Critical Failure Pressure: "+criticalFailurePressure);
-
-
-                    //Retrieve first set parameters
-                    this.firstInstability = Equations.firstSetParameters(this.failType, poreCombo.getSelectedItem().toString(), faultTypeCombo.getSelectedItem().toString(),"Instability");
-                    this.firstLossOfCirculation = Equations.firstSetParameters(this.failType, poreCombo.getSelectedItem().toString(), faultTypeCombo.getSelectedItem().toString(),"LossOfCirculation");
-                    this.firstWellControl = Equations.firstSetParameters(this.failType, poreCombo.getSelectedItem().toString(), faultTypeCombo.getSelectedItem().toString(),"WellControl");
-                    this.firstLongTermIntegrity = Equations.firstSetParameters(this.failType, poreCombo.getSelectedItem().toString(), faultTypeCombo.getSelectedItem().toString(),"LongTermIntegrity");
-                    this.firstROP= Equations.firstSetParameters(this.failType, poreCombo.getSelectedItem().toString(), faultTypeCombo.getSelectedItem().toString(),"ROP");
-
-                    //Retrieve second set parameters
-
-                    SecondSetEquations secondEquations = new SecondSetEquations();
-                    //find unique beta value for each second set type
-                    betaFaultParam = secondEquations.betaAngle(Integer.parseInt(faultConductivityStrikeTextField.getText()), (int) failureAngle, Integer.parseInt(faultConductivityDipTextField.getText()),Integer.parseInt(gammaText.getText()), phi );
-                    betaJointParam = secondEquations.betaAngle(Integer.parseInt(jointStrikeTextField.getText()), (int) failureAngle, Integer.parseInt(jointDipTextField.getText()),Integer.parseInt(gammaText.getText()), phi );
-                    betaUnconformityParam = secondEquations.betaAngle(Integer.parseInt(beddingPlaneStrikeTextField.getText()), (int) failureAngle, Integer.parseInt(beddingPlaneDipTextField.getText()),Integer.parseInt(gammaText.getText()), phi );
-
-                    this.secondInstability = secondEquations.secondSetValues(faultConductivity,jointFrequency,beddingConductivity,betaFaultParam,betaJointParam,betaUnconformityParam,"Instability");
-                    this.secondLossOfCirculation = secondEquations.secondSetValues(faultConductivity,jointFrequency,beddingConductivity,betaFaultParam,betaJointParam,betaUnconformityParam,"LossOfCirculation");
-                    this.secondWellControl = secondEquations.secondSetValues(faultConductivity,jointFrequency,beddingConductivity,betaFaultParam,betaJointParam,betaUnconformityParam,"WellControl");
-                    this.secondLongTermIntegrity = secondEquations.secondSetValues(faultConductivity,jointFrequency,beddingConductivity,betaFaultParam,betaJointParam,betaUnconformityParam,"LongTermIntegrity");
-                    this.secondROP = secondEquations.secondSetValues(faultConductivity,jointFrequency,beddingConductivity,betaFaultParam,betaJointParam,betaUnconformityParam,"ROP");
-
-                    //Retrieve third set parameters
-
-                    ThirdSetEquations thirdEquations = new ThirdSetEquations();
-
-                    this.thirdInstability = ThirdSetEquations.thirdSetParameters(lithology,"Instability");
-                    this.thirdLossOfCirculation = ThirdSetEquations.thirdSetParameters(lithology,"LossOfCirculation");
-                    this.thirdWellControl = ThirdSetEquations.thirdSetParameters(lithology,"WellControl");
-                    this.thirdLongTermIntegrity = ThirdSetEquations.thirdSetParameters(lithology,"LongTermIntegrity");
-                    this.thirdROP = ThirdSetEquations.thirdSetParameters(lithology,"ROP");
-
-                    //Retrieve fourth set parameters
-
-                    FourthSetEquations fourthEquations = new FourthSetEquations();
-
-                    this.fourthInstability = FourthSetEquations.fourthSetParameters(GSI,"Instability");
-                    this.fourthLossOfCirculation = FourthSetEquations.fourthSetParameters(GSI,"LossOfCirculation");
-                    this.fourthWellControl = FourthSetEquations.fourthSetParameters(GSI,"WellControl");
-                    this.fourthLongTermIntegrity = FourthSetEquations.fourthSetParameters(GSI,"LongTermIntegrity");
-                    this.fourthROP = FourthSetEquations.fourthSetParameters(GSI,"ROP");
-
-                    //Retrieve fifth set parameters
-
-                    FifthSetEquations fifthEquations = new FifthSetEquations();
-
-                    this.fifthInstability = FifthSetEquations.fifthSetParameters(permeability,"Instability");
-                    this.fifthLossOfCirculation = FifthSetEquations.fifthSetParameters(permeability,"LossOfCirculation");
-                    this.fifthWellControl = FifthSetEquations.fifthSetParameters(permeability,"WellControl");
-                    this.fifthLongTermIntegrity = FifthSetEquations.fifthSetParameters(permeability,"LongTermIntegrity");
-                    this.fifthROP = FifthSetEquations.fifthSetParameters(permeability,"ROP");
-
-
-                    //Final parameter sums used in solution rubric
-                    sumInstability = this.firstInstability+this.secondInstability+this.thirdInstability+this.fourthInstability+this.fifthInstability;
-                    sumLossOfCirculation = this.firstLossOfCirculation+this.secondLossOfCirculation+this.thirdLossOfCirculation+this.fourthLossOfCirculation+this.fifthLossOfCirculation;
-                    sumWellControl = this.firstWellControl+this.secondWellControl+this.thirdWellControl+this.fourthWellControl+this.fifthWellControl;
-                    sumLongTermIntegrity = this.firstLongTermIntegrity+this.secondLongTermIntegrity+this.thirdLongTermIntegrity+this.fourthLongTermIntegrity+this.fifthLongTermIntegrity;
-                    sumROP = this.firstROP+this.secondROP+this.thirdROP+this.fourthROP+this.fifthROP;
-
-
-
                     //find cohesionInitial value
 
                     if(cohesionManualButton.isSelected()){
@@ -1975,6 +1910,65 @@ public class mainWindow extends JFrame {
                     TensileFailResult.setText(failType);
                     ShearFailResult.setText(shearType);
 
+                    //Retrieve first set parameters
+                    this.firstInstability = Equations.firstSetParameters(this.failType,this.shearType, poreCombo.getSelectedItem().toString(), faultTypeCombo.getSelectedItem().toString(),"Instability");
+                    this.firstLossOfCirculation = Equations.firstSetParameters(this.failType,this.shearType, poreCombo.getSelectedItem().toString(), faultTypeCombo.getSelectedItem().toString(),"LossOfCirculation");
+                    this.firstWellControl = Equations.firstSetParameters(this.failType,this.shearType, poreCombo.getSelectedItem().toString(), faultTypeCombo.getSelectedItem().toString(),"WellControl");
+                    this.firstLongTermIntegrity = Equations.firstSetParameters(this.failType,this.shearType, poreCombo.getSelectedItem().toString(), faultTypeCombo.getSelectedItem().toString(),"LongTermIntegrity");
+                    this.firstROP= Equations.firstSetParameters(this.failType,this.shearType, poreCombo.getSelectedItem().toString(), faultTypeCombo.getSelectedItem().toString(),"ROP");
+
+                    //Retrieve second set parameters
+
+                    SecondSetEquations secondEquations = new SecondSetEquations();
+                    //find unique beta value for each second set type
+                    betaFaultParam = secondEquations.betaAngle(Integer.parseInt(faultConductivityStrikeTextField.getText()), (int) failureAngle, Integer.parseInt(faultConductivityDipTextField.getText()),Integer.parseInt(gammaText.getText()), phi );
+                    betaJointParam = secondEquations.betaAngle(Integer.parseInt(jointStrikeTextField.getText()), (int) failureAngle, Integer.parseInt(jointDipTextField.getText()),Integer.parseInt(gammaText.getText()), phi );
+                    betaUnconformityParam = secondEquations.betaAngle(Integer.parseInt(beddingPlaneStrikeTextField.getText()), (int) failureAngle, Integer.parseInt(beddingPlaneDipTextField.getText()),Integer.parseInt(gammaText.getText()), phi );
+
+                    this.secondInstability = secondEquations.secondSetValues(faultConductivity,jointFrequency,beddingConductivity,betaFaultParam,betaJointParam,betaUnconformityParam,"Instability");
+                    this.secondLossOfCirculation = secondEquations.secondSetValues(faultConductivity,jointFrequency,beddingConductivity,betaFaultParam,betaJointParam,betaUnconformityParam,"LossOfCirculation");
+                    this.secondWellControl = secondEquations.secondSetValues(faultConductivity,jointFrequency,beddingConductivity,betaFaultParam,betaJointParam,betaUnconformityParam,"WellControl");
+                    this.secondLongTermIntegrity = secondEquations.secondSetValues(faultConductivity,jointFrequency,beddingConductivity,betaFaultParam,betaJointParam,betaUnconformityParam,"LongTermIntegrity");
+                    this.secondROP = secondEquations.secondSetValues(faultConductivity,jointFrequency,beddingConductivity,betaFaultParam,betaJointParam,betaUnconformityParam,"ROP");
+
+                    //Retrieve third set parameters
+
+                    ThirdSetEquations thirdEquations = new ThirdSetEquations();
+
+                    this.thirdInstability = ThirdSetEquations.thirdSetParameters(lithology,"Instability");
+                    this.thirdLossOfCirculation = ThirdSetEquations.thirdSetParameters(lithology,"LossOfCirculation");
+                    this.thirdWellControl = ThirdSetEquations.thirdSetParameters(lithology,"WellControl");
+                    this.thirdLongTermIntegrity = ThirdSetEquations.thirdSetParameters(lithology,"LongTermIntegrity");
+                    this.thirdROP = ThirdSetEquations.thirdSetParameters(lithology,"ROP");
+
+                    //Retrieve fourth set parameters
+
+                    FourthSetEquations fourthEquations = new FourthSetEquations();
+
+                    this.fourthInstability = FourthSetEquations.fourthSetParameters(GSI,"Instability");
+                    this.fourthLossOfCirculation = FourthSetEquations.fourthSetParameters(GSI,"LossOfCirculation");
+                    this.fourthWellControl = FourthSetEquations.fourthSetParameters(GSI,"WellControl");
+                    this.fourthLongTermIntegrity = FourthSetEquations.fourthSetParameters(GSI,"LongTermIntegrity");
+                    this.fourthROP = FourthSetEquations.fourthSetParameters(GSI,"ROP");
+
+                    //Retrieve fifth set parameters
+
+                    FifthSetEquations fifthEquations = new FifthSetEquations();
+
+                    this.fifthInstability = FifthSetEquations.fifthSetParameters(permeability,"Instability");
+                    this.fifthLossOfCirculation = FifthSetEquations.fifthSetParameters(permeability,"LossOfCirculation");
+                    this.fifthWellControl = FifthSetEquations.fifthSetParameters(permeability,"WellControl");
+                    this.fifthLongTermIntegrity = FifthSetEquations.fifthSetParameters(permeability,"LongTermIntegrity");
+                    this.fifthROP = FifthSetEquations.fifthSetParameters(permeability,"ROP");
+
+
+                    //Final parameter sums used in solution rubric
+                    sumInstability = this.firstInstability+this.secondInstability+this.thirdInstability+this.fourthInstability+this.fifthInstability;
+                    sumLossOfCirculation = this.firstLossOfCirculation+this.secondLossOfCirculation+this.thirdLossOfCirculation+this.fourthLossOfCirculation+this.fifthLossOfCirculation;
+                    sumWellControl = this.firstWellControl+this.secondWellControl+this.thirdWellControl+this.fourthWellControl+this.fifthWellControl;
+                    sumLongTermIntegrity = this.firstLongTermIntegrity+this.secondLongTermIntegrity+this.thirdLongTermIntegrity+this.fourthLongTermIntegrity+this.fifthLongTermIntegrity;
+                    sumROP = this.firstROP+this.secondROP+this.thirdROP+this.fourthROP+this.fifthROP;
+
 
                     //set the stability rating criteria (output under well rating drilling output tab)
                     StabilityConditions sc = new StabilityConditions();
@@ -2117,8 +2111,10 @@ public class mainWindow extends JFrame {
                     }
                 };
 
-
+                //Pressing the escape key closes the dialog window
                 GD.getRootPane().registerKeyboardAction(GSIClose,KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE,0),JComponent.WHEN_IN_FOCUSED_WINDOW);
+
+                //sets the title modality and pack()
                 GD.initialize();
             }
         });
@@ -2130,6 +2126,7 @@ public class mainWindow extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 RockDamageDialog RD = new RockDamageDialog();
 
+
                 ActionListener rockClose=new ActionListener(){
                     public void actionPerformed(ActionEvent ae)
                     {
@@ -2137,7 +2134,10 @@ public class mainWindow extends JFrame {
                     }
                 };
 
+                //Pressing the escape key closes the dialog window
                 RD.getRootPane().registerKeyboardAction(rockClose,KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE,0),JComponent.WHEN_IN_FOCUSED_WINDOW);
+
+                //sets the title modality and pack()
                 RD.initialize();
 
 
