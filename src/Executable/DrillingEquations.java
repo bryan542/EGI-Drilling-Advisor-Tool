@@ -560,11 +560,22 @@ public class DrillingEquations {
 
         if(tensileFailType == "Failure" || shearFailType =="Shear Failure"){
 
-            instability = failureRatio*10+15;
-            lossOfCirc = failureRatio*10+15;
-            wellControl= failureRatio*10+15;
-            longTermIntegrity= failureRatio*10+15;
-            ROP = failureRatio*10+15;
+            if(failureRatio != -1){
+                instability = failureRatio*10+15;
+                lossOfCirc = failureRatio*10+15;
+                wellControl= failureRatio*10+15;
+                longTermIntegrity= failureRatio*10+15;
+                ROP = failureRatio*10+15;
+            }
+            else{
+                instability = 40 + (45-40)*rand.nextDouble();
+                lossOfCirc = 40 + (45-40)*rand.nextDouble();
+                wellControl= 40 + (45-40)*rand.nextDouble();
+                longTermIntegrity= 40 + (45-40)*rand.nextDouble();
+                ROP = 40 + (45-40)*rand.nextDouble();
+            }
+
+
         }
         else{
 
