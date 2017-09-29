@@ -579,90 +579,62 @@ public class DrillingEquations {
         }
         else{
 
+            double valueRange = -1;
+
             if ( pressureType == "Overpressure"){
 
                 if(faultType == "Normal"){
 
-                    instability = 25 + (30-25)*rand.nextDouble();
-                    lossOfCirc = 25 + (30-25)*rand.nextDouble();
-                    wellControl= 25 + (30-25)*rand.nextDouble();
-                    longTermIntegrity= 25 + (30-25)*rand.nextDouble();
-                    ROP = 25 + (30-25)*rand.nextDouble();
+                    valueRange = 10 + (15-10)*rand.nextDouble();
                 }
                 else if(faultType == "Reverse") {
 
-                    instability = 35 + (40-35)*rand.nextDouble();
-                    lossOfCirc = 35 + (40-35)*rand.nextDouble();
-                    wellControl= 35 + (40-35)*rand.nextDouble();
-                    longTermIntegrity= 35 + (40-35)*rand.nextDouble();
-                    ROP = 35 + (40-35)*rand.nextDouble();
+                    valueRange = 20 + (25-20)*rand.nextDouble();
                 }
 
                 else {
-                    instability = 30 + (35-30)*rand.nextDouble();
-                    lossOfCirc = 30 + (35-30)*rand.nextDouble();
-                    wellControl= 30 + (35-30)*rand.nextDouble();
-                    longTermIntegrity= 30 + (35-30)*rand.nextDouble();
-                    ROP = 30 + (35-30)*rand.nextDouble();
+
+                    valueRange = 15 + (20-15)*rand.nextDouble();
                 }
             }
             else if (pressureType == "Hydrostatic"){
 
                 if(faultType == "Normal"){
 
-                    instability = 10 + (15-10)*rand.nextDouble();
-                    lossOfCirc = 10 + (15-10)*rand.nextDouble();
-                    wellControl= 10 + (15-10)*rand.nextDouble();
-                    longTermIntegrity= 10 + (15-10)*rand.nextDouble();
-                    ROP = 10 + (15-10)*rand.nextDouble();
+                    valueRange = 2 +(5-2)*rand.nextDouble();
                 }
                 else if(faultType == "Reverse") {
 
-                    instability = 20 + (25-20)*rand.nextDouble();
-                    lossOfCirc = 20 + (25-20)*rand.nextDouble();
-                    wellControl= 20 + (25-20)*rand.nextDouble();
-                    longTermIntegrity= 20 + (25-20)*rand.nextDouble();
-                    ROP = 20 + (25-20)*rand.nextDouble();
+                    valueRange = 8 +(10-8)*rand.nextDouble();
                 }
 
                 else {
 
-                    instability = 15 + (20-15)*rand.nextDouble();
-                    lossOfCirc = 15 + (20-15)*rand.nextDouble();
-                    wellControl= 15 + (20-15)*rand.nextDouble();
-                    longTermIntegrity= 15 + (20-15)*rand.nextDouble();
-                    ROP = 15 + (20-15)*rand.nextDouble();
+                    valueRange = 5 +(8-5)*rand.nextDouble();
                 }
             }
             else if (pressureType == "Under pressure"){
 
                 if(faultType == "Normal"){
 
-                    instability = 10 + (15-10)*rand.nextDouble();
-                    lossOfCirc = 10 + (15-10)*rand.nextDouble();
-                    wellControl= 10 + (15-10)*rand.nextDouble();
-                    longTermIntegrity= 10 + (15-10)*rand.nextDouble();
-                    ROP = 10 + (15-10)*rand.nextDouble();
+                    valueRange = 0 +(2-0)*rand.nextDouble();
                 }
                 else if(faultType == "Reverse") {
 
-                    instability = 20 + (25-20)*rand.nextDouble();
-                    lossOfCirc = 20 + (25-20)*rand.nextDouble();
-                    wellControl= 20 + (25-20)*rand.nextDouble();
-                    longTermIntegrity= 20 + (25-20)*rand.nextDouble();
-                    ROP = 20 + (25-20)*rand.nextDouble();
+                    valueRange = 0 +(2-20)*rand.nextDouble();
                 }
 
                 else {
 
-                    instability = 15 + (20-15)*rand.nextDouble();
-                    lossOfCirc = 15 + (20-15)*rand.nextDouble();
-                    wellControl= 15 + (20-15)*rand.nextDouble();
-                    longTermIntegrity= 15 + (20-15)*rand.nextDouble();
-                    ROP = 15 + (20-15)*rand.nextDouble();
+                    valueRange = 0 +(2-0)*rand.nextDouble();
                 }
             }
 
+            instability = valueRange;
+            lossOfCirc = valueRange;
+            wellControl= valueRange;
+            longTermIntegrity= valueRange;
+            ROP = valueRange;
         }
 
         if (chooseParam == "Instability"){
