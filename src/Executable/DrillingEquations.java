@@ -561,11 +561,29 @@ public class DrillingEquations {
         if(tensileFailType == "Failure" || shearFailType =="Shear Failure"){
 
             if(failureRatio != -1){
-                instability = failureRatio*10+15;
-                lossOfCirc = failureRatio*10+15;
-                wellControl= failureRatio*10+15;
-                longTermIntegrity= failureRatio*10+15;
-                ROP = failureRatio*10+15;
+
+
+                if(failureRatio <= 3){
+
+                    instability = failureRatio*10+15;
+                    lossOfCirc = failureRatio*10+15;
+                    wellControl= failureRatio*10+15;
+                    longTermIntegrity= failureRatio*10+15;
+                    ROP = failureRatio*10+15;
+                }
+
+                // the failure ratio is able to get quite large. We are setting the boundary conditions between 1 to 3
+                // Anything greater than 3 is an indication of complete failure and shouldn't be assigned more weight.
+                else if (failureRatio > 3){
+
+                    failureRatio = 3;
+                    instability = failureRatio*10+15;
+                    lossOfCirc = failureRatio*10+15;
+                    wellControl= failureRatio*10+15;
+                    longTermIntegrity= failureRatio*10+15;
+                    ROP = failureRatio*10+15;
+                }
+
             }
             else{
                 instability = 40 + (45-40)*rand.nextDouble();
