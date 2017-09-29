@@ -549,7 +549,7 @@ public class DrillingEquations {
     }
 
     // Retrieves the classification for the first set of parameters. String choosePara is where you define which parameter you want back (aka instability, loss of circ, ROP, ect)
-    public static double firstSetParameters(String tensileFailType,String shearFailType, String pressureType, String faultType, String chooseParam){
+    public static double firstSetParameters(double failureRatio, String tensileFailType,String shearFailType, String pressureType, String faultType, String chooseParam){
 
         double instability = -1;
         double lossOfCirc = -1;
@@ -560,11 +560,11 @@ public class DrillingEquations {
 
         if(tensileFailType == "Failure" || shearFailType =="Shear Failure"){
 
-            instability = 40 + (45-40)*rand.nextDouble();
-            lossOfCirc = 40 + (45-40)*rand.nextDouble();
-            wellControl= 40 + (45-40)*rand.nextDouble();
-            longTermIntegrity= 40 + (45-40)*rand.nextDouble();
-            ROP = 40 + (45-40)*rand.nextDouble();
+            instability = failureRatio*10+15;
+            lossOfCirc = failureRatio*10+15;
+            wellControl= failureRatio*10+15;
+            longTermIntegrity= failureRatio*10+15;
+            ROP = failureRatio*10+15;
         }
         else{
 

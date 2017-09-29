@@ -39,6 +39,7 @@ public class MohrDataset {
         double radius;
         double midpoint;
         double coeffFriction = coeffFrictionInput;
+        double maxFailureRatio = -1;
         // used to find the zero root for the failure line
         double loopStart = -1*cohesionInitial/coeffFriction;
         int loopRange = (int) loopStart;
@@ -134,6 +135,22 @@ public class MohrDataset {
             }
         }
 
+        double failureRatioInitial = -1;
+        //Finds the maximum failure ratio. This is used to describe the magnitude of shear failure
+        for (int i = 0;i<=Sigma3MohrLine.getItemCount()-mohrxInitial-200;i++){
+
+            if(CohesionLine.getDataItem(failurexInitial+i).getY().doubleValue() < Sigma3MohrLine.getDataItem(i+mohrxInitial).getY().doubleValue()){
+
+                failureRatioInitial = Sigma3MohrLine.getDataItem(i+mohrxInitial).getY().doubleValue()/CohesionLine.getDataItem(failurexInitial+i).getY().doubleValue();
+
+                if (failureRatioInitial > maxFailureRatio){
+
+                    maxFailureRatio = failureRatioInitial;
+                }
+            }
+        }
+
+        mw.setMohrFailureRatio(maxFailureRatio);
 
         XYSeriesCollection dataset = new XYSeriesCollection();
        // dataset.addSeries((Sigma2MohrLine));

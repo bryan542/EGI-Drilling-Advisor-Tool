@@ -971,6 +971,14 @@ public class mainWindow extends JFrame {
     private double SigmahRFinal = -1;
     private double porePressureGradientFinal = -1;
 
+
+
+    double mohrFailureRatio = -1;
+
+
+    public double getMohrFailureRatio() {
+        return mohrFailureRatio;
+    }
     public double getSigma1Final() {
         return Sigma1Final;
     }
@@ -985,6 +993,9 @@ public class mainWindow extends JFrame {
         return porePressureCombinationFinal;
     }
 
+    public void setMohrFailureRatio(double mohrFailureRatio) {
+        this.mohrFailureRatio = mohrFailureRatio;
+    }
     public void setSigma1Final(double input) {
         Sigma1Final = input;
     }
@@ -1910,12 +1921,13 @@ public class mainWindow extends JFrame {
                     TensileFailResult.setText(failType);
                     ShearFailResult.setText(shearType);
 
+
                     //Retrieve first set parameters
-                    this.firstInstability = Equations.firstSetParameters(this.failType,this.shearType, poreCombo.getSelectedItem().toString(), faultTypeCombo.getSelectedItem().toString(),"Instability");
-                    this.firstLossOfCirculation = Equations.firstSetParameters(this.failType,this.shearType, poreCombo.getSelectedItem().toString(), faultTypeCombo.getSelectedItem().toString(),"LossOfCirculation");
-                    this.firstWellControl = Equations.firstSetParameters(this.failType,this.shearType, poreCombo.getSelectedItem().toString(), faultTypeCombo.getSelectedItem().toString(),"WellControl");
-                    this.firstLongTermIntegrity = Equations.firstSetParameters(this.failType,this.shearType, poreCombo.getSelectedItem().toString(), faultTypeCombo.getSelectedItem().toString(),"LongTermIntegrity");
-                    this.firstROP= Equations.firstSetParameters(this.failType,this.shearType, poreCombo.getSelectedItem().toString(), faultTypeCombo.getSelectedItem().toString(),"ROP");
+                    this.firstInstability = Equations.firstSetParameters(mohrFailureRatio,this.failType,this.shearType, poreCombo.getSelectedItem().toString(), faultTypeCombo.getSelectedItem().toString(),"Instability");
+                    this.firstLossOfCirculation = Equations.firstSetParameters(mohrFailureRatio,this.failType,this.shearType, poreCombo.getSelectedItem().toString(), faultTypeCombo.getSelectedItem().toString(),"LossOfCirculation");
+                    this.firstWellControl = Equations.firstSetParameters(mohrFailureRatio,this.failType,this.shearType, poreCombo.getSelectedItem().toString(), faultTypeCombo.getSelectedItem().toString(),"WellControl");
+                    this.firstLongTermIntegrity = Equations.firstSetParameters(mohrFailureRatio,this.failType,this.shearType, poreCombo.getSelectedItem().toString(), faultTypeCombo.getSelectedItem().toString(),"LongTermIntegrity");
+                    this.firstROP= Equations.firstSetParameters(mohrFailureRatio,this.failType,this.shearType, poreCombo.getSelectedItem().toString(), faultTypeCombo.getSelectedItem().toString(),"ROP");
 
                     //Retrieve second set parameters
 
