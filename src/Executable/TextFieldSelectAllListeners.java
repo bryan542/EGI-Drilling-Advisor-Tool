@@ -9,7 +9,7 @@ public class TextFieldSelectAllListeners {
 
     public TextFieldSelectAllListeners(mainWindow mw){
 
-        ArrayList<JTextField> obj = new ArrayList<>();
+        final ArrayList<JTextField> obj = new ArrayList<>();
         ArrayList<JLabel> obj2 = new ArrayList<>();
 
         //add all of the Jtextfields to obj
@@ -44,7 +44,7 @@ public class TextFieldSelectAllListeners {
 
        for (int i = 0 ; i<obj.size();i++){
 
-           int j = i;
+           final int j = i;
            obj.get(i).addMouseListener(new MouseAdapter() {
                @Override
                public void mouseClicked(MouseEvent e) {

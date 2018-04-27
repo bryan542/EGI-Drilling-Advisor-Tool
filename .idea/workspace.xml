@@ -7,11 +7,121 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9399ab71-a3e5-41cd-80f0-b6fdb9b63e05" name="Default" comment="only 1 succesfully file path found used">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Executable/DrillingEquations.java" afterPath="$PROJECT_DIR$/src/Executable/DrillingEquations.java" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/jfreechart_1_0_19.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/EGI_Drilling_Advisor_ToolV2_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/EGI_Drilling_Advisor_Tool_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/EGI_Drilling_Advisor_Tool_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/jPDFWriter.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EGI Drilling Advisor Tool.iml" beforeDir="false" afterPath="$PROJECT_DIR$/EGI Drilling Advisor Tool.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Drilling Tool Latest executable and setup/Drilling Exploration Tool setup.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Drilling Tool Latest executable and setup/Drilling Exploration Tool.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Drilling Tool Latest executable and setup/Drilling Exploration Tool.iss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Drilling Tool Latest executable and setup/Drilling Exploration Tool.lnk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/AboutDialog$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/AboutDialog$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/AboutDialog$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/AboutDialog$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/AboutDialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/AboutDialog.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/ButtonGroupFieldEnableSetter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/ButtonGroupFieldEnableSetter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/CalculateProgressBar$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/CalculateProgressBar$1$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/CalculateProgressBar$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/CalculateProgressBar$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/CalculateProgressBar.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/CalculateProgressBar.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/ClearResetValues.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/ClearResetValues.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/ComboBoxListPopulator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/ComboBoxListPopulator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/DOMXMLParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/DOMXMLParser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/DrillingEquations.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/DrillingEquations.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/DrillingRatingReportPDF.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/DrillingRatingReportPDF.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/DropdownMenu$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/DropdownMenu$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/DropdownMenu$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/DropdownMenu$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/DropdownMenu$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/DropdownMenu$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/DropdownMenu$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/DropdownMenu$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/DropdownMenu$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/DropdownMenu$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/DropdownMenu$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/DropdownMenu$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/DropdownMenu$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/DropdownMenu$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/DropdownMenu$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/DropdownMenu$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/DropdownMenu$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/DropdownMenu$9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/DropdownMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/DropdownMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/FailureRatioSolutions.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/FailureRatioSolutions.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/FifthSetEquations.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/FifthSetEquations.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/FinalHydraulicReportDialog$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/FinalHydraulicReportDialog$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/FinalHydraulicReportDialog$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/FinalHydraulicReportDialog$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/FinalHydraulicReportDialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/FinalHydraulicReportDialog.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/FormationPressureDataset.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/FormationPressureDataset.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/FormationPressureGraph.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/FormationPressureGraph.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/FourthSetEquations.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/FourthSetEquations.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/FractureTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/FractureTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/GSIDialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/GSIDialog.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/HydraulicFractureAnalysisDialog$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/HydraulicFractureAnalysisDialog$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/HydraulicFractureAnalysisDialog$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/HydraulicFractureAnalysisDialog$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/HydraulicFractureAnalysisDialog$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/HydraulicFractureAnalysisDialog$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/HydraulicFractureAnalysisDialog$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/HydraulicFractureAnalysisDialog$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/HydraulicFractureAnalysisDialog$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/HydraulicFractureAnalysisDialog$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/HydraulicFractureAnalysisDialog$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/HydraulicFractureAnalysisDialog$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/HydraulicFractureAnalysisDialog$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/HydraulicFractureAnalysisDialog$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/HydraulicFractureAnalysisDialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/HydraulicFractureAnalysisDialog.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/HydraulicFracturePDFReportGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/HydraulicFracturePDFReportGenerator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/ImageResize.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/ImageResize.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/MohrDataset.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/MohrDataset.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/MohrFailureGraph.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/MohrFailureGraph.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/PDFExportArrayPopulator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/PDFExportArrayPopulator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/QuickGraphDialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/QuickGraphDialog.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/ReportStrings.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/ReportStrings.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/ResourceFilePathRetriever.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/ResourceFilePathRetriever.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/RockDamageDialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/RockDamageDialog.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/RootTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/RootTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/SaveLoadFileData.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/SaveLoadFileData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/SecondSetEquations.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/SecondSetEquations.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/SettingDialog$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/SettingDialog$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/SettingDialog$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/SettingDialog$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/SettingDialog$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/SettingDialog$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/SettingDialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/SettingDialog.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/ShearFailureRatioBarGraph.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/ShearFailureRatioBarGraph.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/StabilityConditions.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/StabilityConditions.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/StressPolygonDataset.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/StressPolygonDataset.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/StressPolygonGraph.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/StressPolygonGraph.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/Task.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/Task.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/TensileFailureRatioBarGraph.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/TensileFailureRatioBarGraph.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/TextFieldChecker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/TextFieldChecker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/TextFieldSelectAllListeners$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/TextFieldSelectAllListeners$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/TextFieldSelectAllListeners.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/TextFieldSelectAllListeners.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/ThirdSetEquations.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/ThirdSetEquations.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$10.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$11$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$11$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$11.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$12$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$12$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$12.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$13.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$13.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$14.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$14.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$15.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$15.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$16.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$16.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$17.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$17.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow$9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/Executable/mainWindow.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/com/intellij/uiDesigner/core/LayoutState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EGI Drilling Advisor Tool/com/intellij/uiDesigner/core/LayoutState.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Executable/DOMXMLParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Executable/DOMXMLParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Executable/DrillingRatingReportPDF.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Executable/DrillingRatingReportPDF.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Executable/DropdownMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Executable/DropdownMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Executable/FinalHydraulicReportDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Executable/FinalHydraulicReportDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Executable/HydraulicFractureAnalysisDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Executable/HydraulicFractureAnalysisDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Executable/RootTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Executable/RootTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Executable/SettingDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Executable/SettingDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Executable/TextFieldSelectAllListeners.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Executable/TextFieldSelectAllListeners.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Executable/mainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Executable/mainWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" beforeDir="false" />
     </list>
     <ignored path="EGI Drilling Advisor Tool.iws" />
-    <ignored path=".idea/workspace.xml" />
-    <ignored path="$PROJECT_DIR$/out/" />
+    <ignored mask="*.SF" />
+    <ignored mask="*.RSA" />
+    <manually-removed-from-ignored>
+      <directory path="$PROJECT_DIR$/out/" />
+    </manually-removed-from-ignored>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,19 +130,16 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/EGI Drilling Advisor Tool$SecondSetEquations.coverage" NAME="SecondSetEquations Coverage Results" MODIFIED="1478732832733" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>Executable.*</FILTER>
-    </SUITE>
     <SUITE FILE_PATH="coverage/EGI Drilling Advisor Tool$TestSolver.coverage" NAME="TestSolver Coverage Results" MODIFIED="1485807478939" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>Executable.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/EGI Drilling Advisor Tool$testPolar.coverage" NAME="testPolar Coverage Results" MODIFIED="1482454619209" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>Executable.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/EGI_Drilling_Advisor_Tool$CalculateProgressBar.coverage" NAME="CalculateProgressBar Coverage Results" MODIFIED="1504651770166" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/EGI Drilling Advisor Tool$mainWindow.coverage" NAME="mainWindow Coverage Results" MODIFIED="1489793559427" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>Executable.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/EGI Drilling Advisor Tool$buildGui.coverage" NAME="buildGui Coverage Results" MODIFIED="1476825147197" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>Executable.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/EGI Drilling Advisor Tool$SecondSetEquations.coverage" NAME="SecondSetEquations Coverage Results" MODIFIED="1478732832733" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>Executable.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/EGI_Drilling_Advisor_Tool$UserHandler.coverage" NAME="UserHandler Coverage Results" MODIFIED="1497561683236" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
@@ -41,7 +148,10 @@
     <SUITE FILE_PATH="coverage/EGI_Drilling_Advisor_Tool$mainWindow.coverage" NAME="mainWindow Coverage Results" MODIFIED="1504052183411" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>Executable.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/EGI Drilling Advisor Tool$mainWindow.coverage" NAME="mainWindow Coverage Results" MODIFIED="1489793559427" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/EGI Drilling Advisor Tool$testPolar.coverage" NAME="testPolar Coverage Results" MODIFIED="1482454619209" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>Executable.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/EGI_Drilling_Advisor_Tool$CalculateProgressBar.coverage" NAME="CalculateProgressBar Coverage Results" MODIFIED="1504651770166" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>Executable.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/EGI Drilling Advisor Tool$DrillingEquations.coverage" NAME="DrillingEquations Coverage Results" MODIFIED="1475726506912" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
@@ -51,6 +161,20 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="F:\EGI Drilling Advisor Tool" />
   </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
   <component name="ErrorTreeViewConfiguration">
     <option name="hideWarnings" value="true" />
     <option name="HIDE_WARNINGS" value="true" />
@@ -59,55 +183,12 @@
     <favorites_list name="EGI Drilling Advisor Tool" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DrillingEquations.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Executable/DrillingEquations.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="373">
-              <caret line="575" column="118" lean-forward="false" selection-start-line="575" selection-start-column="118" selection-end-line="575" selection-end-column="118" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file leaf-file-name="mainWindow.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Executable/mainWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="1925" column="0" lean-forward="false" selection-start-line="1925" selection-start-column="0" selection-end-line="1925" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#getPorePressureCombinationFinal#0;class#mainWindow#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MohrDataset.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Executable/MohrDataset.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="262">
-              <caret line="149" column="13" lean-forward="false" selection-start-line="149" selection-start-column="13" selection-end-line="149" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FailureRatioSolutions.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Executable/FailureRatioSolutions.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2116">
-              <caret line="253" column="17" lean-forward="true" selection-start-line="253" selection-start-column="17" selection-end-line="253" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StabilityConditions.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Executable/StabilityConditions.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3192">
-              <caret line="153" column="0" lean-forward="false" selection-start-line="153" selection-start-column="0" selection-end-line="153" selection-end-column="0" />
+            <state relative-caret-position="21522">
+              <caret line="1693" column="34" selection-start-line="1693" selection-start-column="34" selection-end-line="1693" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -115,53 +196,41 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SaveLoadFileData.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Executable/SaveLoadFileData.java">
+      <file leaf-file-name="FormationPressureDataset.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Executable/FormationPressureDataset.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="9660">
-              <caret line="469" column="59" lean-forward="false" selection-start-line="469" selection-start-column="59" selection-end-line="469" selection-end-column="59" />
-              <folding />
+            <state relative-caret-position="153">
+              <caret line="10" column="184" selection-start-line="10" selection-start-column="184" selection-end-line="10" selection-end-column="184" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CalculateProgressBar.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Executable/CalculateProgressBar.java">
+      <file leaf-file-name="FinalHydraulicReportDialog.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Executable/FinalHydraulicReportDialog.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="924">
-              <caret line="48" column="19" lean-forward="false" selection-start-line="48" selection-start-column="19" selection-end-line="48" selection-end-column="19" />
+            <state relative-caret-position="2652">
+              <caret line="228" column="116" selection-start-line="228" selection-start-column="116" selection-end-line="228" selection-end-column="116" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SettingDialog.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Executable/SettingDialog.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="5610">
+              <caret line="338" column="16" selection-start-line="338" selection-start-column="16" selection-end-line="338" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DrillingEquations.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Executable/DrillingEquations.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="207">
+              <caret line="359" column="32" lean-forward="true" selection-start-line="359" selection-start-column="32" selection-end-line="359" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Task.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Executable/Task.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="15" column="23" lean-forward="false" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mainWindow.form" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Executable/mainWindow.form">
-          <provider selected="true" editor-type-id="ui-designer">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PDFExportArrayPopulator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Executable/PDFExportArrayPopulator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3255">
-              <caret line="155" column="43" lean-forward="false" selection-start-line="155" selection-start-column="43" selection-end-line="155" selection-end-column="43" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -178,29 +247,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>gsiLocationSetter</find>
-      <find>project</find>
-      <find>button</find>
-      <find>tensileFail</find>
-      <find>depthtext</find>
-      <find>pois</find>
-      <find>arraytitl</find>
-      <find>holder</find>
-      <find>wellrating</find>
-      <find>instabilityratinglabel</find>
-      <find>instabilityC</find>
-      <find>instability</find>
-      <find>longTerm</find>
-      <find>longTermIntegrityRatingValue</find>
-      <find>long</find>
-      <find>actioneven</find>
-      <find>actionperformed</find>
-      <find>principalsigma1l</find>
-      <find>suminstability</find>
-      <find>failtype</find>
-      <find>first</find>
-      <find>shearfail</find>
-      <find>sheartype</find>
       <find>90</find>
       <find>critical</find>
       <find>alpha1</find>
@@ -208,6 +254,29 @@
       <find>ratio</find>
       <find>firstset</find>
       <find>firstI</find>
+      <find>jfreechart</find>
+      <find>mudweight</find>
+      <find>index</find>
+      <find>failtype</find>
+      <find>tensile</find>
+      <find>main</find>
+      <find>public static void main</find>
+      <find>failurepressure</find>
+      <find>polydataset</find>
+      <find>sigmaVR</find>
+      <find>report</find>
+      <find>lookand</find>
+      <find>bu</find>
+      <find>drillingratingreport</find>
+      <find>final</find>
+      <find>menu</find>
+      <find>failure</find>
+      <find>tensilefailure</find>
+      <find>tensilefail</find>
+      <find>criticalfailurepressure</find>
+      <find>cri</find>
+      <find>collapse</find>
+      <find>stresspol</find>
     </findStrings>
     <replaceStrings>
       <replace>valueModulusName</replace>
@@ -231,31 +300,14 @@
     <option name="PUSH_TAGS">
       <GitPushTagMode />
     </option>
-    <push-targets>
-      <push-target-info target-remote="github" target-branch="LatestVersion" repo="$PROJECT_DIR$" source="LatestVersion" />
-    </push-targets>
-  </component>
-  <component name="GradleLocalSettings">
-    <option name="externalProjectsViewState">
-      <projects_view />
-    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Executable/testxml.txt" />
-        <option value="$PROJECT_DIR$/src/Executable/DOMParserXMLFinalTest.java" />
-        <option value="$PROJECT_DIR$/src/Executable/HydraulicFractureAnalysis.form" />
-        <option value="$PROJECT_DIR$/src/Executable/HydraulicFractureAnalysis.java" />
-        <option value="$PROJECT_DIR$/src/XMLFiles/Formation Pressure Table.xml" />
-        <option value="$PROJECT_DIR$/src/XMLFiles/Natural Fracture Tables.xml" />
-        <option value="$PROJECT_DIR$/src/Executable/ResourceFilePathRetriever.java" />
         <option value="$PROJECT_DIR$/src/Executable/HydraulicFractureAnalysisDialog.form" />
-        <option value="$PROJECT_DIR$/src/Executable/DOMXMLParser.java" />
         <option value="$PROJECT_DIR$/src/Executable/AboutDialog.form" />
         <option value="$PROJECT_DIR$/src/Executable/FinalHydraulicReportDialog.form" />
         <option value="$PROJECT_DIR$/src/Executable/MohrCoulombDialog.form" />
-        <option value="$PROJECT_DIR$/src/Executable/StressPolygonGraph.java" />
         <option value="$PROJECT_DIR$/src/Executable/TensileFailureRatioBarGraph.java" />
         <option value="$PROJECT_DIR$/src/Executable/QuickGraphDialog.form" />
         <option value="$PROJECT_DIR$/src/Executable/QuickGraphDialog.java" />
@@ -269,61 +321,67 @@
         <option value="$PROJECT_DIR$/src/Executable/RGBImageLoader.java" />
         <option value="$PROJECT_DIR$/src/Executable/ButtonGroupFieldEnableSetter.java" />
         <option value="$PROJECT_DIR$/src/Executable/ClearResetValues.java" />
-        <option value="$PROJECT_DIR$/src/Executable/StressPolygonDataset.java" />
         <option value="$PROJECT_DIR$/src/Executable/FormationPressureDataset.java" />
         <option value="$PROJECT_DIR$/src/Executable/MohrFailureGraph.java" />
         <option value="$PROJECT_DIR$/src/Executable/SettingDialog.form" />
-        <option value="$PROJECT_DIR$/src/Executable/DropdownMenu.java" />
-        <option value="$PROJECT_DIR$/src/Executable/SettingDialog.java" />
         <option value="$PROJECT_DIR$/src/Executable/AboutDialog.java" />
         <option value="$PROJECT_DIR$/src/Executable/RockDamageDialog.form" />
         <option value="$PROJECT_DIR$/src/Executable/RockDamageDialog.java" />
         <option value="$PROJECT_DIR$/src/Executable/GSIDialog.java" />
-        <option value="$PROJECT_DIR$/src/Executable/HydraulicFractureAnalysisDialog.java" />
-        <option value="$PROJECT_DIR$/src/Executable/FinalHydraulicReportDialog.java" />
-        <option value="$PROJECT_DIR$/src/Executable/TextFieldSelectAllListeners.java" />
         <option value="$PROJECT_DIR$/src/Executable/PDFExportArrayPopulator.java" />
-        <option value="$PROJECT_DIR$/src/Executable/FailureRatioSolutions.java" />
-        <option value="$PROJECT_DIR$/src/Executable/DrillingRatingReportPDF.java" />
         <option value="$PROJECT_DIR$/src/Executable/mainWindow.form" />
         <option value="$PROJECT_DIR$/src/Executable/Task.java" />
         <option value="$PROJECT_DIR$/src/Executable/CalculateProgressBar.form" />
         <option value="$PROJECT_DIR$/src/Executable/CalculateProgressBar.java" />
         <option value="$PROJECT_DIR$/src/Executable/SaveLoadFileData.java" />
         <option value="$PROJECT_DIR$/src/Executable/StabilityConditions.java" />
-        <option value="$PROJECT_DIR$/src/Executable/mainWindow.java" />
         <option value="$PROJECT_DIR$/src/Executable/MohrDataset.java" />
         <option value="$PROJECT_DIR$/src/Executable/DrillingEquations.java" />
+        <option value="$USER_HOME$/Desktop/jfreechart-1.0.19/lib/jfreechart-1.0.19.jar!/META-INF/MANIFEST.MF" />
+        <option value="$USER_HOME$/Desktop/jfreechart-1.0.19/lib/jfreechart-1.0.19.jar!/org/jfree/chart/JFreeChart.class" />
+        <option value="$PROJECT_DIR$/.idea/artifacts/unnamed.xml" />
+        <option value="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
+        <option value="$PROJECT_DIR$/.idea/artifacts/EGI_Drilling_Advisor_Tool_jar.xml" />
+        <option value="$PROJECT_DIR$/.idea/workspace.xml" />
+        <option value="$PROJECT_DIR$/src/Executable/FailureRatioSolutions.java" />
+        <option value="$PROJECT_DIR$/src/Executable/StressPolygonGraph.java" />
+        <option value="$PROJECT_DIR$/src/Executable/StressPolygonDataset.java" />
+        <option value="$PROJECT_DIR$/src/Executable/DrillingRatingReportPDF.java" />
+        <option value="$PROJECT_DIR$/src/Executable/DOMXMLParser.java" />
+        <option value="$PROJECT_DIR$/src/Executable/RootTest.java" />
+        <option value="$PROJECT_DIR$/src/Executable/mainWindow.java" />
+        <option value="$PROJECT_DIR$/src/Executable/DropdownMenu.java" />
+        <option value="$PROJECT_DIR$/src/Executable/FinalHydraulicReportDialog.java" />
+        <option value="$PROJECT_DIR$/src/Executable/HydraulicFractureAnalysisDialog.java" />
+        <option value="$PROJECT_DIR$/src/Executable/SettingDialog.java" />
+        <option value="$PROJECT_DIR$/src/Executable/TextFieldSelectAllListeners.java" />
       </list>
     </option>
   </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
   <component name="MavenProjectNavigator">
-    <treeState />
+    <treeState>
+      <expand />
+      <select />
+    </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-9" />
-    <option name="y" value="-9" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="x" value="-10" />
+    <option name="y" value="-10" />
+    <option name="width" value="1940" />
+    <option name="height" value="1100" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
-      <flattenPackages />
-      <showMembers />
-      <showModules />
-      <showLibraryContents />
-      <hideEmptyPackages />
-      <abbreviatePackageNames />
-      <autoscrollToSource />
-      <autoscrollFromSource />
-      <sortByType />
-      <manualOrder />
+    <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="AndroidView" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -348,41 +406,48 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.20229885" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="356" />
-    <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH" value="178" />
-    <property name="findjar.last.used.dir" value="$PROJECT_DIR$" />
-    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.STATE" value="left" />
-    <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.STATE" value="right" />
-    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW" value="true" />
-    <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW" value="true" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+    <property name="GenerateAntBuildDialog.backupFiles" value="true" />
+    <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
+    <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
+    <property name="GenerateAntBuildDialog.outputFileNameProperty" value="egi_drilling_advisor_tool" />
     <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
+    <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW" value="true" />
+    <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.STATE" value="right" />
+    <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH" value="178" />
+    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW" value="true" />
+    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.STATE" value="left" />
+    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="228" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="findjar.last.used.dir" value="$PROJECT_DIR$" />
     <property name="ignore_missing_gitignore" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.20669746" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\EGI Drilling Advisor Tool" />
+      <recent name="E:\EGI Drilling Advisor Tool\src" />
+      <recent name="E:\EGI Drilling Advisor Tool\.idea\artifacts" />
+      <recent name="E:\EGI Drilling Advisor Tool\Library" />
+      <recent name="E:\EGI Drilling Advisor Tool\src\Images" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="Executable" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\EGI Drilling Advisor Tool\src\Images" />
       <recent name="E:\EGI Drilling Advisor Tool\src\Executable" />
       <recent name="E:\EGI Drilling Advisor Tool\src\XMLFiles" />
       <recent name="E:\EGI Drilling Advisor Tool\src\Executable\DataSets" />
       <recent name="D:\EGI Drilling Advisor Tool\src\Images" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="Executable" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\EGI Drilling Advisor Tool\src\Images" />
-      <recent name="E:\EGI Drilling Advisor Tool\src\Executable" />
-      <recent name="E:\EGI Drilling Advisor Tool\src\XMLFiles" />
-      <recent name="E:\EGI Drilling Advisor Tool\src\DataSets" />
-      <recent name="F:\EGI Drilling Advisor Tool\src\Images" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -398,87 +463,68 @@
     </option>
   </component>
   <component name="RunManager" selected="Application.mainWindow">
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+    </configuration>
     <configuration name="CalculateProgressBar" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+      <option name="MAIN_CLASS_NAME" value="Executable.CalculateProgressBar" />
+      <module name="EGI Drilling Advisor Tool" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="Executable.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="Executable.CalculateProgressBar" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="EGI Drilling Advisor Tool" />
-      <envs />
     </configuration>
     <configuration name="HydraulicFractureAnalysisDialog" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+      <option name="MAIN_CLASS_NAME" value="Executable.HydraulicFractureAnalysisDialog" />
+      <module name="EGI Drilling Advisor Tool" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="Executable.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="Executable.HydraulicFractureAnalysisDialog" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="EGI Drilling Advisor Tool" />
-      <envs />
     </configuration>
     <configuration name="HydraulicFracturePDFReportGenerator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+      <option name="MAIN_CLASS_NAME" value="Executable.HydraulicFracturePDFReportGenerator" />
+      <module name="EGI Drilling Advisor Tool" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="Executable.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="Executable.HydraulicFracturePDFReportGenerator" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="EGI Drilling Advisor Tool" />
-      <envs />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <module />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
+    </configuration>
+    <configuration name="jsciencetest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Executable.jsciencetest" />
+      <module name="EGI Drilling Advisor Tool" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Executable.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+    </configuration>
+    <configuration name="mainWindow" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Executable.mainWindow" />
+      <module name="EGI Drilling Advisor Tool" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Executable.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" />
@@ -488,30 +534,13 @@
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <option name="TEST_SEARCH_SCOPE">
         <value defaultName="singleModule" />
       </option>
-      <envs />
       <patterns />
     </configuration>
-    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
-      <module name="" />
-      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
-      <option name="PROGRAM_PARAMETERS" />
-      <predefined_log_file id="idea.log" enabled="true" />
-    </configuration>
-    <configuration default="true" type="Remote" factoryName="Remote">
-      <option name="USE_SOCKET_TRANSPORT" value="true" />
-      <option name="SERVER_MODE" value="false" />
-      <option name="SHMEM_ADDRESS" value="javadebug" />
-      <option name="HOST" value="localhost" />
-      <option name="PORT" value="5005" />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="SUITE_NAME" />
@@ -524,15 +553,12 @@
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <option name="OUTPUT_DIRECTORY" />
-      <option name="ANNOTATION_TYPE" />
-      <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <option name="TEST_SEARCH_SCOPE">
         <value defaultName="singleModule" />
       </option>
       <option name="USE_DEFAULT_REPORTERS" value="false" />
       <option name="PROPERTIES_FILE" />
-      <envs />
       <properties />
       <listeners />
     </configuration>
@@ -677,63 +703,35 @@
       <envs />
       <method />
     </configuration>
-    <configuration name="jsciencetest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="Executable.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="Executable.jsciencetest" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="EGI Drilling Advisor Tool" />
-      <envs />
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
     </configuration>
-    <configuration name="mainWindow" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="Executable.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="Executable.mainWindow" />
-      <option name="VM_PARAMETERS" />
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
       <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="EGI Drilling Advisor Tool" />
-      <envs />
+      <predefined_log_file id="idea.log" enabled="true" />
     </configuration>
-    <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Application.mainWindow" />
-      <item index="1" class="java.lang.String" itemvalue="Application.HydraulicFractureAnalysisDialog" />
-      <item index="2" class="java.lang.String" itemvalue="Application.HydraulicFracturePDFReportGenerator" />
-      <item index="3" class="java.lang.String" itemvalue="Application.jsciencetest" />
-      <item index="4" class="java.lang.String" itemvalue="Application.CalculateProgressBar" />
+    <list>
+      <item itemvalue="Application.mainWindow" />
+      <item itemvalue="Application.HydraulicFractureAnalysisDialog" />
+      <item itemvalue="Application.HydraulicFracturePDFReportGenerator" />
+      <item itemvalue="Application.jsciencetest" />
+      <item itemvalue="Application.CalculateProgressBar" />
     </list>
     <recent_temporary>
-      <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.mainWindow" />
-        <item index="1" class="java.lang.String" itemvalue="Application.CalculateProgressBar" />
-        <item index="2" class="java.lang.String" itemvalue="Application.jsciencetest" />
-        <item index="3" class="java.lang.String" itemvalue="Application.HydraulicFracturePDFReportGenerator" />
-        <item index="4" class="java.lang.String" itemvalue="Application.HydraulicFractureAnalysisDialog" />
+      <list>
+        <item itemvalue="Application.mainWindow" />
+        <item itemvalue="Application.CalculateProgressBar" />
+        <item itemvalue="Application.jsciencetest" />
+        <item itemvalue="Application.HydraulicFracturePDFReportGenerator" />
+        <item itemvalue="Application.HydraulicFractureAnalysisDialog" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="ShelveChangesManager" show_recycled="false">
-    <option name="remove_strategy" value="false" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -745,6 +743,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1475518621829</updated>
+      <workItem from="1523037037518" duration="1192000" />
+      <workItem from="1523563191986" duration="802000" />
+      <workItem from="1523915017325" duration="728000" />
     </task>
     <task id="LOCAL-00014" summary="only 1 succesfully file path found used&#10;">
       <created>1477514946863</created>
@@ -1092,6 +1093,9 @@
     <option name="localTasksCounter" value="63" />
     <servers />
   </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="2722000" />
+  </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
       <is-autoscroll-to-source value="true" />
@@ -1102,72 +1106,77 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32885906" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19457014" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20888889" sideWeight="0.5171858" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0072916667" sideWeight="0.4798331" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21266969" sideWeight="0.4828142" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3279003" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297414" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30719656" sideWeight="0.48990577" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24919441" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24971297" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="2414" y="202" width="451" height="455" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36888888" sideWeight="0.4914712" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20845272" sideWeight="0.5100942" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32930845" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0063965884" sideWeight="0.5201669" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19457014" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49570355" weight="0.3280543" />
+      <window_info id="Palette&#9;" order="2" />
+      <window_info id="Image Layers" order="2" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5042965" side_tool="true" weight="0.2081448" />
+      <window_info anchor="right" id="Maven Projects" order="9" sideWeight="0.4798331" weight="0.20939597" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32692307" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4828142" weight="0.25659978" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32936078" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info anchor="right" id="Designer" order="5" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.48990577" visible="true" weight="0.20416667" />
+      <window_info id="Learn" order="3" weight="0.32995737" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.2489339" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.24946696" />
+      <window_info x="2414" y="202" width="451" height="455" id="UI Designer" order="2" type="FLOATING" />
+      <window_info anchor="right" id="Theme Preview" order="7" />
+      <window_info id="Favorites" order="2" sideWeight="0.5100942" side_tool="true" weight="0.20845272" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4914712" weight="0.22510822" />
+      <window_info anchor="right" id="Coverage" order="8" sideWeight="0.5201669" side_tool="true" weight="0.0063965884" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.19218585" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="bottom" id="Inspection Results" order="8" visible="true" weight="0.32930845" />
+      <window_info id="Nl-Palette" order="2" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="right" id="Properties" order="6" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.19372295" />
+      <window_info anchor="right" id="Database" order="10" weight="0.21744792" />
     </layout>
     <layout-to-restore>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16228893" sideWeight="0.50416666" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0072916667" sideWeight="0.4798331" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32930845" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24971297" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24971297" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" x="2414" y="202" width="451" height="455" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27708533" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32885906" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19558965" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1198466" sideWeight="0.49583334" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3279003" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0069296374" sideWeight="0.5201669" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297414" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22547974" sideWeight="0.48990577" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15288788" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20845272" sideWeight="0.5100942" order="7" side_tool="true" content_ui="tabs" />
+      <window_info anchor="right" id="Designer" order="5" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info id="Image Layers" order="6" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4828142" weight="0.21235102" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.24971297" />
+      <window_info x="2414" y="202" width="451" height="455" id="UI Designer" order="4" type="FLOATING" />
+      <window_info anchor="right" id="Properties" order="6" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.3297414" />
+      <window_info id="Capture Tool" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="bottom" id="Inspection Results" order="11" visible="true" weight="0.32930845" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5171858" side_tool="true" weight="0.20888889" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info id="Favorites" order="7" sideWeight="0.5100942" side_tool="true" weight="0.20845272" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.3279003" />
+      <window_info id="Nl-Palette" order="2" />
+      <window_info anchor="right" id="Maven Projects" order="9" sideWeight="0.4798331" weight="0.0072916667" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.48990577" visible="true" weight="0.3139659" />
+      <window_info anchor="bottom" id="Messages" order="8" weight="0.19393283" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32885906" />
+      <window_info id="Palette&#9;" order="5" />
+      <window_info anchor="right" id="Theme Preview" order="7" />
+      <window_info id="Structure" order="1" weight="0.24919441" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Coverage" order="8" sideWeight="0.5201669" side_tool="true" weight="0.0063965884" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.19457014" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4914712" weight="0.36888888" />
     </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -1207,10 +1216,10 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Executable/mainWindow.java</url>
-          <line>1925</line>
+          <url />
+          <line>67</line>
           <properties />
-          <option name="timeStamp" value="977" />
+          <option name="timeStamp" value="991" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -1220,11 +1229,12 @@
           </selected-grouping-rules>
         </breakpoints-dialog>
       </breakpoints-dialog>
-      <option name="time" value="982" />
+      <option name="time" value="992" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="valuesJPanel.layoutMgr" />
+        <watch expression="GFX_CONFIG" />
       </configuration>
     </watches-manager>
   </component>
@@ -1232,50 +1242,61 @@
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>mw.getChartBufferedImagesArray()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>chartGraphics.getDeviceConfiguration()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>pdfDoc.getPage(latestPageNumber).createGraphics()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Executable/StressPolygonDialog.form" />
-    <entry file="file://$PROJECT_DIR$/src/Executable/DistributionAnalysis.java" />
-    <entry file="file://$PROJECT_DIR$/src/Executable/QuickGraphDialog.form" />
-    <entry file="file://$PROJECT_DIR$/src/Executable/HydraulicFracturePDFReportGenerator.java">
+    <entry file="file://$PROJECT_DIR$/src/Executable/StressPolygonGraph.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="56" column="29" lean-forward="false" selection-start-line="56" selection-start-column="29" selection-end-line="56" selection-end-column="29" />
+        <state relative-caret-position="1241">
+          <caret line="97" column="73" lean-forward="true" selection-start-line="97" selection-start-column="73" selection-end-line="97" selection-end-column="73" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Executable/QuickGraphDialog.java" />
-    <entry file="jar://E:/../jscience-4.3.jar!/javax/measure/unit/ProductUnit.class" />
-    <entry file="jar://E:/../jscience-4.3.jar!/javax/measure/unit/Unit.class" />
-    <entry file="jar://E:/../jscience-4.3.jar!/org/jscience/physics/amount/Amount.class" />
-    <entry file="jar://E:/../jscience-4.3.jar!/javolution/testing/TestCase.class" />
-    <entry file="jar://E:/../jscience-4.3.jar!/javax/measure/quantity/Pressure.class" />
-    <entry file="jar://E:/../jscience-4.3.jar!/javax/measure/Measure.class" />
-    <entry file="jar://E:/../jscience-4.3.jar!/javax/measure/Measurable.class" />
-    <entry file="file://$PROJECT_DIR$/src/Executable/jsciencetest.java" />
-    <entry file="file://$PROJECT_DIR$/src/Executable/ShearFailureRatioBarGraph.java">
+    <entry file="file://$PROJECT_DIR$/src/Executable/DrillingRatingReportPDF.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="24" column="63" lean-forward="false" selection-start-line="24" selection-start-column="63" selection-end-line="24" selection-end-column="63" />
-          <folding />
+        <state relative-caret-position="3298">
+          <caret line="216" column="54" selection-start-line="216" selection-start-column="54" selection-end-line="216" selection-end-column="54" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Executable/ComboBoxListPopulator.java" />
-    <entry file="jar://E:/../jfreechart-1.0.19/lib/jfreechart-1.0.19.jar!/org/jfree/data/xy/XYSeriesCollection.class" />
-    <entry file="file://$PROJECT_DIR$/src/Executable/RGBImageLoader.java" />
+    <entry file="file://$PROJECT_DIR$/src/Executable/mainWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="26435">
+          <caret line="1555" column="36" selection-start-line="1555" selection-start-column="29" selection-end-line="1555" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Executable/StressPolygonDataset.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="44" lean-forward="true" selection-start-line="25" selection-start-column="44" selection-end-line="25" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Executable/ButtonGroupFieldEnableSetter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
-          <caret line="108" column="54" lean-forward="false" selection-start-line="108" selection-start-column="54" selection-end-line="108" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Executable/FormationPressureGraph.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3573">
-          <caret line="185" column="44" lean-forward="false" selection-start-line="185" selection-start-column="44" selection-end-line="185" selection-end-column="44" />
-          <folding />
+          <caret line="108" column="54" selection-start-line="108" selection-start-column="54" selection-end-line="108" selection-end-column="54" />
         </state>
       </provider>
     </entry>
@@ -1285,211 +1306,237 @@
     <entry file="file://$PROJECT_DIR$/src/Executable/FifthSetEquations.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="986">
-          <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Executable/FormationPressureDataset.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="10" column="184" lean-forward="false" selection-start-line="10" selection-start-column="184" selection-end-line="10" selection-end-column="184" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Executable/StressPolygonDataset.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="10" column="36" lean-forward="true" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
-          <folding />
+          <caret line="58" selection-start-line="58" selection-end-line="58" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Executable/test.java" />
     <entry file="file://$PROJECT_DIR$/src/Executable/test.form" />
-    <entry file="file://$PROJECT_DIR$/src/Executable/SettingDialog.form">
-      <provider selected="true" editor-type-id="ui-designer">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Executable/MohrFailureGraph.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="734">
-          <caret line="67" column="0" lean-forward="false" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Executable/RockDamageDialog.form">
-      <provider selected="true" editor-type-id="ui-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Executable/FinalHydraulicReportDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="239" column="55" lean-forward="true" selection-start-line="239" selection-start-column="55" selection-end-line="239" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Executable/HydraulicFractureAnalysisDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="846" column="14" lean-forward="false" selection-start-line="846" selection-start-column="8" selection-end-line="846" selection-end-column="14" />
-          <folding />
+          <caret line="67" selection-start-line="67" selection-end-line="67" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Executable/RockDamageDialog.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
-          <caret line="19" column="34" lean-forward="false" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
-          <folding />
+          <caret line="19" column="34" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Executable/AboutDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="592">
-          <caret line="66" column="25" lean-forward="false" selection-start-line="62" selection-start-column="7" selection-end-line="66" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Executable/SettingDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="366" column="5" lean-forward="false" selection-start-line="358" selection-start-column="3" selection-end-line="366" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Executable/TextFieldSelectAllListeners.java" />
     <entry file="file://$PROJECT_DIR$/src/Executable/ClearResetValues.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
-          <caret line="49" column="43" lean-forward="false" selection-start-line="49" selection-start-column="43" selection-end-line="49" selection-end-column="43" />
-          <folding />
+          <caret line="49" column="43" selection-start-line="49" selection-start-column="43" selection-end-line="49" selection-end-column="43" />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Executable/DrillingRatingReportPDF.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="202" column="31" lean-forward="false" selection-start-line="202" selection-start-column="31" selection-end-line="202" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Executable/DropdownMenu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="521">
-          <caret line="198" column="22" lean-forward="false" selection-start-line="198" selection-start-column="22" selection-end-line="198" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Executable/CalculateProgressBar.form">
-      <provider selected="true" editor-type-id="ui-designer">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Executable/CalculateProgressBar.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="924">
-          <caret line="48" column="19" lean-forward="false" selection-start-line="48" selection-start-column="19" selection-end-line="48" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="748">
+          <caret line="48" column="19" selection-start-line="48" selection-start-column="19" selection-end-line="48" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Executable/GSIDialog.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="147">
-          <caret line="9" column="32" lean-forward="false" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
-          <folding />
+          <caret line="9" column="32" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Executable/Task.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="15" column="23" lean-forward="false" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="221">
+          <caret line="15" column="23" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Executable/PDFExportArrayPopulator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3255">
-          <caret line="155" column="43" lean-forward="false" selection-start-line="155" selection-start-column="43" selection-end-line="155" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Executable/SaveLoadFileData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9660">
-          <caret line="469" column="59" lean-forward="false" selection-start-line="469" selection-start-column="59" selection-end-line="469" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Executable/mainWindow.form">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="ui-designer">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Executable/StabilityConditions.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3192">
-          <caret line="153" column="0" lean-forward="false" selection-start-line="153" selection-start-column="0" selection-end-line="153" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Executable/FailureRatioSolutions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2116">
-          <caret line="253" column="17" lean-forward="true" selection-start-line="253" selection-start-column="17" selection-end-line="253" selection-end-column="17" />
-          <folding />
+        <state relative-caret-position="2584">
+          <caret line="153" selection-start-line="153" selection-end-line="153" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Executable/MohrDataset.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="149" column="13" lean-forward="false" selection-start-line="149" selection-start-column="13" selection-end-line="149" selection-end-column="13" />
-          <folding />
+        <state relative-caret-position="2703">
+          <caret line="162" selection-start-line="162" selection-end-line="162" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Executable/DrillingEquations.java">
+    <entry file="jar://$USER_HOME$/Desktop/jfreechart-1.0.19/lib/jfreechart-1.0.19.jar!/META-INF/MANIFEST.MF" />
+    <entry file="jar://$USER_HOME$/Desktop/jfreechart-1.0.19/lib/jfreechart-1.0.19.jar!/org/jfree/chart/JFreeChart.class" />
+    <entry file="file://$PROJECT_DIR$/src/Executable/FormationPressureGraph.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="575" column="118" lean-forward="false" selection-start-line="575" selection-start-column="118" selection-end-line="575" selection-end-column="118" />
-          <folding />
+        <state relative-caret-position="289">
+          <caret line="17" column="3" selection-start-line="17" selection-start-column="3" selection-end-line="17" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.ideaLibSources/jfreechart-1.0.19-sources.jar!/org/jfree/chart/JFreeChart.java" />
+    <entry file="file://$PROJECT_DIR$/egi_drilling_advisor_tool.properties" />
+    <entry file="file://$PROJECT_DIR$/src/Executable/resources/META-INF/MANIFEST.MF" />
+    <entry file="file://$PROJECT_DIR$/src/META-INF/MANIFEST.MF">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/libraries/commons_csv_1_4.xml" />
+    <entry file="file://$PROJECT_DIR$/.idea/artifacts/EGI_Drilling_Advisor_Tool_jar.xml" />
+    <entry file="file://$PROJECT_DIR$/.idea/artifacts/unnamed.xml" />
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="6" column="14" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_101/src.zip!/java/lang/Runnable.java" />
+    <entry file="file://$PROJECT_DIR$/src/Executable/FourthSetEquations.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Executable/FailureRatioSolutions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="582">
+          <caret line="180" column="73" selection-start-line="180" selection-start-column="73" selection-end-line="180" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Executable/StressPolygonGraph.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1241">
+          <caret line="97" column="73" selection-start-line="97" selection-start-column="73" selection-end-line="97" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Executable/PDFExportArrayPopulator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="764">
+          <caret line="155" column="43" selection-start-line="155" selection-start-column="43" selection-end-line="155" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Executable/HydraulicFracturePDFReportGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-238">
+          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Executable/DrillingRatingReportPDF.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3281">
+          <caret line="215" column="19" selection-start-line="215" selection-start-column="19" selection-end-line="215" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Executable/DOMXMLParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Executable/SaveLoadFileData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="269" column="13" selection-start-line="269" selection-start-column="13" selection-end-line="269" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Executable/AboutDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="213">
+          <caret line="43" selection-start-line="43" selection-end-line="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Executable/RootTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="27" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Executable/DropdownMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="67" column="122" selection-start-line="67" selection-start-column="122" selection-end-line="67" selection-end-column="122" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Executable/HydraulicFractureAnalysisDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="786" column="7" selection-start-line="786" selection-start-column="7" selection-end-line="786" selection-end-column="7" />
+          <folding>
+            <element signature="e#42820#42834#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Executable/FinalHydraulicReportDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2652">
+          <caret line="228" column="116" selection-start-line="228" selection-start-column="116" selection-end-line="228" selection-end-column="116" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Executable/TextFieldSelectAllListeners.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="398">
+          <caret line="50" column="27" selection-start-line="50" selection-start-column="27" selection-end-line="50" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Executable/SettingDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5610">
+          <caret line="338" column="16" selection-start-line="338" selection-start-column="16" selection-end-line="338" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Executable/StressPolygonDataset.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="744">
+          <caret line="79" column="34" selection-start-line="79" selection-start-column="34" selection-end-line="79" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Executable/FormationPressureDataset.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="10" column="184" selection-start-line="10" selection-start-column="184" selection-end-line="10" selection-end-column="184" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Executable/mainWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="1925" column="0" lean-forward="false" selection-start-line="1925" selection-start-column="0" selection-end-line="1925" selection-end-column="0" />
+        <state relative-caret-position="21522">
+          <caret line="1693" column="34" selection-start-line="1693" selection-start-column="34" selection-end-line="1693" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#getPorePressureCombinationFinal#0;class#mainWindow#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Executable/DrillingEquations.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="359" column="32" lean-forward="true" selection-start-line="359" selection-start-column="32" selection-end-line="359" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1499,13 +1546,14 @@
     <states>
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
-          <artifact-editor />
-          <last-edited>EGI Drilling Advisor Tool:jar</last-edited>
+          <artifact-editor>
+            <show-sorted>false</show-sorted>
+          </artifact-editor>
+          <last-edited />
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.20229885" />
-                <option value="0.5" />
+                <option value="0.20669746" />
               </list>
             </option>
           </splitter-proportions>
@@ -1513,11 +1561,11 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited>No facets are configured</last-edited>
+          <last-edited />
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.20229885" />
+                <option value="0.20669746" />
               </list>
             </option>
           </splitter-proportions>
@@ -1536,11 +1584,11 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
-          <last-edited>1.8</last-edited>
+          <last-edited>9</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.20229885" />
+                <option value="0.20669746" />
               </list>
             </option>
           </splitter-proportions>
@@ -1548,11 +1596,11 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>EGI Drilling Advisor Tool</last-edited>
+          <last-edited />
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.20229885" />
+                <option value="0.20669746" />
               </list>
             </option>
           </splitter-proportions>
@@ -1572,11 +1620,11 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>jPDFWriter</last-edited>
+          <last-edited>jfreechart-1.0.19</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.20229885" />
+                <option value="0.20669746" />
               </list>
             </option>
           </splitter-proportions>

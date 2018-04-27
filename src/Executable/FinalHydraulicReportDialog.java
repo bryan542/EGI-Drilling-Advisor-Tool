@@ -182,7 +182,7 @@ public class FinalHydraulicReportDialog extends JDialog {
         EURReportJTextField.setEditable(false);
 
         //add all the textfields to a list to cycle through
-        ArrayList<JLabel> reportJLabelList = new ArrayList<>();
+        final ArrayList<JLabel> reportJLabelList = new ArrayList<>();
         reportJLabelList.add(fluidSystemReportJLabel);
         reportJLabelList.add(fluidVolumeReportJLabel);
         reportJLabelList.add(fluidLossReportJLabel);
@@ -202,7 +202,7 @@ public class FinalHydraulicReportDialog extends JDialog {
         reportJLabelList.add(EURReportJLabel);
 
         //add all the textfields to a list to cycle through
-        ArrayList<JTextField> reportJTextFieldList = new ArrayList<>();
+        final ArrayList<JTextField> reportJTextFieldList = new ArrayList<>();
         reportJTextFieldList.add(fluidSystemReportJTextField);
         reportJTextFieldList.add(fluidVolumeReportJTextField);
         reportJTextFieldList.add(fluidLossReportJTextField);

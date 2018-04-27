@@ -34,7 +34,7 @@ public class SettingDialog extends JDialog{
     double sigmaMinTextFieldChange = 0;
     double porePressureFieldChange = 0;
 
-    public SettingDialog(mainWindow mw, JMenuItem exportPDF){
+    public SettingDialog(final mainWindow mw, final JMenuItem exportPDF){
 
         // call onCancel() on ESCAPE
         projectPanel.registerKeyboardAction(new ActionListener() {

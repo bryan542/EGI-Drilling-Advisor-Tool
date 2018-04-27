@@ -1213,7 +1213,7 @@ public class mainWindow extends JFrame {
         //set tool title
         this.setTitle("EGI Exploration Tool");
 
-        DropdownMenu menu = new DropdownMenu();
+        final DropdownMenu menu = new DropdownMenu();
         menu.buildMenuBar(mainWindow.this);
 
         //Selects the all of the input textfields when a mouse is clicked on it. Allows for easier editing
@@ -1278,7 +1278,7 @@ public class mainWindow extends JFrame {
         stressAutomaticRadioButton.setSelected(true);
 
         //makes sure stress button fields are enabled on intial bootup
-        ButtonGroupFieldEnableSetter stressBGSetter = new ButtonGroupFieldEnableSetter(mainWindow.this,stressAutomaticRadioButton,"Stress Button");
+        final ButtonGroupFieldEnableSetter stressBGSetter = new ButtonGroupFieldEnableSetter(mainWindow.this,stressAutomaticRadioButton,"Stress Button");
 
         //enable/disable actions when the gradient buttons are clicked.
         stressAutomaticRadioButton.addActionListener(new ActionListener() {
@@ -2114,7 +2114,7 @@ public class mainWindow extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                GSIDialog GD = new GSIDialog();
+                final GSIDialog GD = new GSIDialog();
 
                 ActionListener GSIClose=new ActionListener(){
                     public void actionPerformed(ActionEvent ae)
@@ -2136,7 +2136,7 @@ public class mainWindow extends JFrame {
         rockDamageButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                RockDamageDialog RD = new RockDamageDialog();
+                final RockDamageDialog RD = new RockDamageDialog();
 
 
                 ActionListener rockClose=new ActionListener(){

@@ -728,7 +728,7 @@ public class HydraulicFractureAnalysisDialog extends JDialog {
         Image EGIImage = EGIImageIcon.getImage();
         this.setIconImage(EGIImage);
 
-        JTextField[] youngModulusTextFields = {getSlickwaterYoungsTextField(),getHybridYoungsTextField(),getCrossLinkedYoungsTextField(),getFoamYoungsTextField(),getFluidVolumeYoungsHighJtextField()
+        final JTextField[] youngModulusTextFields = {getSlickwaterYoungsTextField(),getHybridYoungsTextField(),getCrossLinkedYoungsTextField(),getFoamYoungsTextField(),getFluidVolumeYoungsHighJtextField()
         ,getFluidVolumeYoungsModerateJtextField(),getFluidVolumeYoungsLowJtextField(),getFluidLossYoungsHighJTextField(),getFluidLossYoungsModerateJTextField(),getFluidLossYoungsLowJTextField(),getTreatmentRateYoungsLowJTextField()
         ,getTreatmentRateYoungsModerateJTextField(),getTreatmentRateYoungsHighJTextField(),getRampUpYoungsSlowJTextField(),getRampUpYoungsModerateJTextField(),getRampUpYoungsFastJTextField(),getFracturePressureYoungsHighJTextField()
         ,getFracturePressureYoungsModerateJTextField(),getFracturePressureYoungsLowJTextField(),getProppantConcentrationYoungsHighJTextField(),getProppantConcentrationYoungsModerateJTextField(),getProppantConcentrationYoungsLowJTextField()
@@ -740,7 +740,7 @@ public class HydraulicFractureAnalysisDialog extends JDialog {
         ,getFractureHeightYoungsHighJTextField(),getFractureHeightYoungsModerateJTextField(),getFractureHeightYoungsImpliedJTextField(),getFractureLengthYoungsSmallJTextField(),getFractureLengthYoungsModerateJTextField()
         ,getFractureLengthYoungsLongJTextField(),getEURYoungsHighJTextField(),getEURYoungsModerateJTextField(),getEURYoungsLowJTextField()};
 
-        JTextField[] naturalFractureTextFields = {getSlickwaterNaturalFractureJTextField(),getHybridNaturalFractureJTextField(),getCrossLinkedNaturalFractureJTextField(),getFoamNaturalFractureJTextField()
+        final JTextField[] naturalFractureTextFields = {getSlickwaterNaturalFractureJTextField(),getHybridNaturalFractureJTextField(),getCrossLinkedNaturalFractureJTextField(),getFoamNaturalFractureJTextField()
         ,getFluidVolumeNaturalFractureHighJTextField(),getFluidVolumeNaturalFractureModerateJTextField(),getFluidVolumeNaturalFractureLowJTextField()
         ,getFluidLossNaturalFractureHighJTextField(),getFluidLossNaturalFractureModerateJTextField(),getFluidLossNaturalFractureLowJTextField()
         ,getTreatmentRateNaturalFractureLowJTextField(),getTreatmentRateNaturalFractureModerateJTextField(),getTreatmentRateNaturalFractureHighJTextField()
@@ -758,7 +758,7 @@ public class HydraulicFractureAnalysisDialog extends JDialog {
         ,getFractureLengthNaturalFractureSmallJTextField(),getFractureLengthNaturalFractureModerateJTextField(),getFractureLengthNaturalFractureLongJTextField(),getEURNaturalFractureHighJTextField()
         ,getEURNaturalFractureModerateJTextField(),getEURNaturalFractureLowJTextField()};
 
-        JTextField[] formationPressureTextFields = {getSlickwaterFormationPressureJTextField(),getHybridFormationPressureJTextField(),getCrossLinkedFormationPressureJTextField(),getFoamFormationPressureJTextField()
+        final JTextField[] formationPressureTextFields = {getSlickwaterFormationPressureJTextField(),getHybridFormationPressureJTextField(),getCrossLinkedFormationPressureJTextField(),getFoamFormationPressureJTextField()
         ,getFluidVolumeFormationPressureHighJTextField(),getFluidVolumeFormationPressureModerateJTextField(),getFluidVolumeFormationPressureLowJTextField()
         ,getFluidLossFormationPressureHighJTextField(),getFluidLossFormationPressureModerateJTextField(),getFluidLossFormationPressureLowJTextField()
         ,getTreatmentRateFormationPressureLowJTextField(),getTreatmentRateFormationPressureModerateJTextField(),getTreatmentRateFormationPressureHighJTextField()
@@ -784,7 +784,7 @@ public class HydraulicFractureAnalysisDialog extends JDialog {
         ArrayList<String> formationPressureList = new ArrayList<String>(dParser.getComboItems("formationpressure","formationpressurevalue","XMLFiles/Formation Pressure Table.xml"));
 
         //Used when we find the sum/averages of the values across the tabs
-        ArrayList<JTextField[]> totalJTextFieldCollections = new ArrayList<JTextField[]>();
+        final  ArrayList<JTextField[]> totalJTextFieldCollections = new ArrayList<JTextField[]>();
         totalJTextFieldCollections.add(youngModulusTextFields);
         totalJTextFieldCollections.add(naturalFractureTextFields);
         totalJTextFieldCollections.add(formationPressureTextFields);

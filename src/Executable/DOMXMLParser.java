@@ -1,7 +1,5 @@
 package Executable;
 
-import com.sun.org.apache.xml.internal.resolver.helpers.FileURL;
-import org.jfree.io.FileUtilities;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;

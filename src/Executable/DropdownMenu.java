@@ -26,7 +26,7 @@ public class DropdownMenu  {
         return exportPDF;
     }
 
-    public void buildMenuBar(mainWindow mw){
+    public void buildMenuBar(final mainWindow mw){
 
         //build file menu
 
